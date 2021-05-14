@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+mat-card {
+  width: 30vmax;
+}
+
+mat-form-field,
+mat-button {
+  display: block;
+}
