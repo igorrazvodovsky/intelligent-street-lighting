@@ -1,14 +1,97 @@
-<h3>ADMIN</h3>
-<nav>
+<!-- <nav>
   <a routerLink="./" routerLinkActive="active"
     [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
   <a routerLink="./crises" routerLinkActive="active">Manage Crises</a>
   <a routerLink="./heroes" routerLinkActive="active">Manage Heroes</a>
 </nav>
-<router-outlet></router-outlet>
+<router-outlet></router-outlet> -->
 
-<!-- 
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
--->
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+    <div>
+      <button
+        mat-icon-button
+        aria-label="Dashboard"
+        routerLink="./"
+        routerLinkActive="active"
+      >
+        <mat-icon svgIcon="dashboardBold"></mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        aria-label="Devices"
+        routerLink="./devices"
+        routerLinkActive="active"
+      >
+        <mat-icon svgIcon="planetBold"></mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        aria-label="Profiles"
+        routerLink="./profiles"
+        routerLinkActive="active"
+      >
+        <mat-icon svgIcon="profileBold"></mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        aria-label="Reports"
+        routerLink="./reports"
+        routerLinkActive="active"
+      >
+        <mat-icon svgIcon="chartBold"></mat-icon>
+      </button>
+    </div>
+    <div>
+      <button
+        mat-icon-button
+        aria-label="Administration"
+        routerLink="./admin"
+        routerLinkActive="active"
+      >
+        <mat-icon svgIcon="gearBold"></mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        aria-label="User profile"
+        routerLink="./profile"
+        routerLinkActive="active"
+        [matMenuTriggerFor]="userMenu"
+      >
+        <mat-icon svgIcon="userBold"></mat-icon>
+      </button>
+      <mat-menu #userMenu="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="languages">Language</button>
+        <button mat-menu-item>Profile</button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item>Log out</button>
+      </mat-menu>
+      <mat-menu #languages="matMenu">
+        <button mat-menu-item>English</button>
+        <button mat-menu-item>Latvian</button>
+        <button mat-menu-item>Estonian</button>
+      </mat-menu>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <mat-toolbar>
+      <button mat-icon-button aria-label="Menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <!-- TODO: Placeholder for context actions -->
+      <!-- <ng-content></ng-content> -->
+      <button mat-icon-button aria-label="Notifications">
+        <mat-icon
+          matBadge="15"
+          matBadgeColor="warn"
+          svgIcon="notificationBold"
+        ></mat-icon>
+        <!-- Include text description of the icon's meaning for screen-readers -->
+        <span class="cdk-visually-hidden">15 notifications</span>
+      </button>
+    </mat-toolbar>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-drawer-content>
+</mat-drawer-container>

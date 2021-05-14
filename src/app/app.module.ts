@@ -2,16 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { Router } from '@angular/router';
-
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
-
-import { MatSliderModule } from '@angular/material/slider';
+import { MaterialModule } from './material-module';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   imports: [
@@ -20,7 +17,8 @@ import { MatSliderModule } from '@angular/material/slider';
     FormsModule,
     AuthModule,
     AppRoutingModule,
-    MatSliderModule
+    MaterialModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent,
