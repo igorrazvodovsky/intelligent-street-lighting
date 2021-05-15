@@ -84,7 +84,9 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <button mat-button [matMenuTriggerFor]="menu">Daugavpils</button>
+      <button mat-button [matMenuTriggerFor]="menu">
+        Daugavpils<mat-icon svgIcon="dropdownMedium"></mat-icon>
+      </button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item>Daugavpils</button>
         <button mat-menu-item>Valka</button>

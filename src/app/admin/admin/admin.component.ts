@@ -49,6 +49,10 @@ export class AdminComponent {
       `gearBold`,
       this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/bold/popular_gear-maintenance-preferences-settings-adjustments-options-b-s.svg")
     );
+    this.matIconRegistry.addSvgIcon(
+      `dropdownMedium`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/medium/arrows_chevron-small-down-drop-down-expand-more-m-a.svg")
+    );
   };
 }
 

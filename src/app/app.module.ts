@@ -9,6 +9,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { MaterialModule } from './material-module';
 import { HttpClientModule } from "@angular/common/http";
+import { RippleGlobalOptions, MAT_RIPPLE_GLOBAL_OPTIONS } from '@angular/material/core'
+
+const globalRippleConfig: RippleGlobalOptions = {
+  disabled: true,
+  animation: {
+    enterDuration: 0,
+    exitDuration: 0
+  }
+};
 
 @NgModule({
   imports: [
@@ -18,13 +27,16 @@ import { HttpClientModule } from "@angular/common/http";
     AuthModule,
     AppRoutingModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   declarations: [
     AppComponent,
     PageNotFoundComponent
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent],
+  providers: [
+    {provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig}
+  ]
 })
 export class AppModule {
   // Diagnostic only: inspect router configuration
@@ -35,10 +47,3 @@ export class AppModule {
     // console.log('Routes: ', JSON.stringify(router.config, replacer, 2));
   }
 }
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/
