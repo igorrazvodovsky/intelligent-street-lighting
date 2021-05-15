@@ -6,11 +6,11 @@ import { map } from 'rxjs/operators';
 import { SelectivePreloadingStrategyService } from '../../selective-preloading-strategy.service';
 
 @Component({
-  selector: 'app-admin-dashboard',
-  templateUrl: './admin-dashboard.component.html',
-  styleUrls: ['./admin-dashboard.component.css']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
 })
-export class AdminDashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit {
   sessionId: Observable<string>;
   token: Observable<string>;
   modules: string[];
