@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AdminComponent } from './admin/admin.component';
+import { NavigationComponent } from './navigation/navigation.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ManageCrisesComponent } from './manage-crises/manage-crises.component';
 import { ManageHeroesComponent } from './manage-heroes/manage-heroes.component';
 
 import { AuthGuard } from '../auth/auth.guard';
 
-const adminRoutes: Routes = [
+const managementRoutes: Routes = [
   {
     path: '',
-    component: AdminComponent,
+    component: NavigationComponent,
     canActivate: [AuthGuard],
     children: [
       {
@@ -29,13 +29,13 @@ const adminRoutes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forChild(adminRoutes)
+    RouterModule.forChild(managementRoutes)
   ],
   exports: [
     RouterModule
   ]
 })
-export class AdminRoutingModule {}
+export class ManagementRoutingModule {}
 
 
 /*

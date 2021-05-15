@@ -8,11 +8,11 @@ import { SelectivePreloadingStrategyService } from './selective-preloading-strat
 
 const appRoutes: Routes = [
   {
-    path: 'admin',
-    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+    path: 'management',
+    loadChildren: () => import('./management/management.module').then(m => m.ManagementModule),
     canLoad: [AuthGuard]
   },
-  { path: '',   redirectTo: '/admin', pathMatch: 'full' },
+  { path: '',   redirectTo: '/management', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 

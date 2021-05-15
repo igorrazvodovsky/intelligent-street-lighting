@@ -1,26 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdminComponent } from './admin/admin.component';
+import { NavigationComponent } from './navigation/navigation.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ManageCrisesComponent } from './manage-crises/manage-crises.component';
 import { ManageHeroesComponent } from './manage-heroes/manage-heroes.component';
-import { AdminRoutingModule } from './admin-routing.module';
-import { MaterialModule } from '.././material-module';
+import { ManagementRoutingModule } from './management-routing.module';
+import { MaterialModule } from '../material-module';
 
 @NgModule({
   imports: [
     CommonModule,
-    AdminRoutingModule,
+    ManagementRoutingModule,
     MaterialModule
   ],
   declarations: [
-    AdminComponent,
+    NavigationComponent,
     DashboardComponent,
     ManageCrisesComponent,
     ManageHeroesComponent
   ]
 })
-export class AdminModule {}
+export class ManagementModule {}
 
 
 /*

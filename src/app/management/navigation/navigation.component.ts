@@ -6,10 +6,10 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html'
+  selector: 'app-navigation',
+  templateUrl: './navigation.component.html'
 })
-export class AdminComponent {
+export class NavigationComponent {
     isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
