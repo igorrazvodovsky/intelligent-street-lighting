@@ -51,6 +51,10 @@ body {
 }
 
 .mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
   background: transparent;
   button:first-of-type {
     margin-right: auto;
@@ -84,6 +88,15 @@ body {
 }
 
 main {
-  padding: 2.5rem;
+  padding: 2rem;
   flex: 1 auto;
+}
+
+.text-secondary {
+  color: gray;
+}
+
+svg,
+path {
+  fill: currentColor;
 }

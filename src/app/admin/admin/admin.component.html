@@ -1,19 +1,19 @@
-<!-- <nav>
-  <a routerLink="./" routerLinkActive="active"
-    [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
-  <a routerLink="./crises" routerLinkActive="active">Manage Crises</a>
-  <a routerLink="./heroes" routerLinkActive="active">Manage Heroes</a>
-</nav>
-<router-outlet></router-outlet> -->
-
-<mat-drawer-container class="example-container">
-  <mat-drawer mode="side" opened>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
     <div>
       <button
         mat-icon-button
         aria-label="Dashboard"
         routerLink="./"
         routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
       >
         <mat-icon svgIcon="dashboardBold"></mat-icon>
       </button>
@@ -42,7 +42,7 @@
         <mat-icon svgIcon="chartBold"></mat-icon>
       </button>
     </div>
-    <div>
+    <div class="text-secondary">
       <button
         mat-icon-button
         aria-label="Administration"
@@ -72,26 +72,34 @@
         <button mat-menu-item>Estonian</button>
       </mat-menu>
     </div>
-  </mat-drawer>
-  <mat-drawer-content>
+  </mat-sidenav>
+  <mat-sidenav-content>
     <mat-toolbar>
-      <button mat-icon-button aria-label="Menu">
-        <mat-icon>menu</mat-icon>
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <!-- TODO: Placeholder for context actions -->
-      <!-- <ng-content></ng-content> -->
+      <button mat-button [matMenuTriggerFor]="menu">Daugavpils</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Daugavpils</button>
+        <button mat-menu-item>Valka</button>
+      </mat-menu>
       <button mat-icon-button aria-label="Notifications">
         <mat-icon
           matBadge="15"
           matBadgeColor="warn"
           svgIcon="notificationBold"
         ></mat-icon>
-        <!-- Include text description of the icon's meaning for screen-readers -->
         <span class="cdk-visually-hidden">15 notifications</span>
       </button>
     </mat-toolbar>
     <main>
       <router-outlet></router-outlet>
     </main>
-  </mat-drawer-content>
-</mat-drawer-container>
+  </mat-sidenav-content>
+</mat-sidenav-container>
