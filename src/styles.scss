@@ -80,6 +80,7 @@ body {
 .mat-drawer-content {
   display: flex !important;
   flex-direction: column;
+  flex-wrap: wrap;
 }
 
 main {

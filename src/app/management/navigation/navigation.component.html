@@ -34,6 +34,7 @@
         <mat-icon svgIcon="profileBold"></mat-icon>
       </button>
       <button
+        disabled
         mat-icon-button
         aria-label="Reports"
         routerLink="./reports"
@@ -54,7 +55,6 @@
       <button
         mat-icon-button
         aria-label="User profile"
-        routerLink="./profile"
         routerLinkActive="active"
         [matMenuTriggerFor]="userMenu"
       >
@@ -62,9 +62,9 @@
       </button>
       <mat-menu #userMenu="matMenu">
         <button mat-menu-item [matMenuTriggerFor]="languages">Language</button>
-        <button mat-menu-item>Profile</button>
+        <button mat-menu-item routerLink="./user-profile">Profile</button>
         <mat-divider></mat-divider>
-        <button mat-menu-item>Log out</button>
+        <button (click)="logout()" mat-menu-item>Log out</button>
       </mat-menu>
       <mat-menu #languages="matMenu">
         <button mat-menu-item>English</button>

@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
+import { AuthGuard } from '../auth/auth.guard';
 import { NavigationComponent } from './navigation/navigation.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ManageCrisesComponent } from './manage-crises/manage-crises.component';
-import { ManageHeroesComponent } from './manage-heroes/manage-heroes.component';
-
-import { AuthGuard } from '../auth/auth.guard';
+import { DevicesComponent } from './manage-crises/devices';
+import { ProfilesComponent } from './profiles/profiles.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const managementRoutes: Routes = [
   {
@@ -18,8 +17,9 @@ const managementRoutes: Routes = [
         path: '',
         canActivateChild: [AuthGuard],
         children: [
-          { path: 'crises', component: ManageCrisesComponent },
-          { path: 'heroes', component: ManageHeroesComponent },
+          { path: 'devices', component: DevicesComponent },
+          { path: 'profiles', component: ProfilesComponent },
+          { path: 'user-profile', component: UserProfileComponent },
           { path: '', component: DashboardComponent }
         ]
       }

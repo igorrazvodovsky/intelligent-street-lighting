@@ -2,29 +2,36 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationComponent } from './navigation/navigation.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ManageCrisesComponent } from './manage-crises/manage-crises.component';
-import { ManageHeroesComponent } from './manage-heroes/manage-heroes.component';
+import { DevicesComponent } from './manage-crises/devices';
+import { ProfilesComponent } from './profiles/profiles.component';
 import { ManagementRoutingModule } from './management-routing.module';
 import { MaterialModule } from '../material-module';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     ManagementRoutingModule,
-    MaterialModule
+    MaterialModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    ReactiveFormsModule
   ],
   declarations: [
     NavigationComponent,
     DashboardComponent,
-    ManageCrisesComponent,
-    ManageHeroesComponent
+    DevicesComponent,
+    ProfilesComponent,
+    UserProfileComponent,
   ]
 })
 export class ManagementModule {}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/

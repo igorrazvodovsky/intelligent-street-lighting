@@ -4,6 +4,8 @@ import { DomSanitizer } from "@angular/platform-browser";
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { AuthService } from '../../auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -17,6 +19,8 @@ export class NavigationComponent {
     );
 
   constructor(
+    public router: Router,
+    public authService: AuthService,
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
     private breakpointObserver: BreakpointObserver
@@ -54,6 +58,11 @@ export class NavigationComponent {
       this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/medium/arrows_chevron-small-down-drop-down-expand-more-m-a.svg")
     );
   };
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/']);
+  }
 }
 
 
