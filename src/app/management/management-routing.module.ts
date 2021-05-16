@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../auth/auth.guard';
 import { NavigationComponent } from './navigation/navigation.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { DevicesComponent } from './manage-crises/devices';
+import { DevicesComponent } from './devices/devices.component';
 import { ProfilesComponent } from './profiles/profiles.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 

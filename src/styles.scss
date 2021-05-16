@@ -48,13 +48,6 @@ body {
   font-family: "General Sans", "Helvetica Neue", sans-serif;
 }
 
-.mat-toolbar {
-  background: transparent;
-  button:first-of-type {
-    margin-left: auto;
-  }
-}
-
 .mat-drawer-container {
   height: 100%;
 }
@@ -103,4 +96,15 @@ path {
 
 .mat-icon-button:not(.active):not([disabled]):hover {
   background: hsla(0, 0%, 0%, 0.05);
+}
+
+@mixin transition {
+  transition-property: background-color, border-color, color, fill, stroke,
+    opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+button {
+  @include transition;
 }

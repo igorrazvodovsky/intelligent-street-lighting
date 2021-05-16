@@ -1,0 +1,16 @@
+<app-page-actions>
+  <button mat-button [matMenuTriggerFor]="menu">
+    Daugavpils<mat-icon svgIcon="dropdownMedium"></mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Daugavpils</button>
+    <button mat-menu-item>Valka</button>
+  </mat-menu>
+</app-page-actions>
+
+<mat-chip-list aria-label="Fish selection">
+  <mat-chip>One fish</mat-chip>
+  <mat-chip>Two fish</mat-chip>
+  <mat-chip color="primary" selected>Primary fish</mat-chip>
+  <mat-chip color="accent" selected>Accent fish</mat-chip>
+</mat-chip-list>

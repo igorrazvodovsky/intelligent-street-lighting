@@ -1,1 +1,16 @@
-Profiles
+<app-page-actions>
+  <button mat-button [matMenuTriggerFor]="menu">
+    Daugavpils<mat-icon svgIcon="dropdownMedium"></mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Daugavpils</button>
+    <button mat-menu-item>Valka</button>
+  </mat-menu>
+</app-page-actions>
+
+<mat-selection-list role="list" [multiple]="false">
+  <mat-list-option role="listitem">Create profile</mat-list-option>
+  <mat-list-option role="listitem">Busy street</mat-list-option>
+  <mat-list-option role="listitem">Park</mat-list-option>
+  <mat-list-option role="listitem">Another profile</mat-list-option>
+</mat-selection-list>

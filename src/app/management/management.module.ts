@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationComponent } from './navigation/navigation.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { DevicesComponent } from './manage-crises/devices';
+import { DevicesComponent } from './devices/devices.component';
 import { ProfilesComponent } from './profiles/profiles.component';
 import { ManagementRoutingModule } from './management-routing.module';
 import { MaterialModule } from '../material-module';
