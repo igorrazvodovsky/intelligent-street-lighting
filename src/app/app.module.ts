@@ -10,6 +10,7 @@ import { AuthModule } from './auth/auth.module';
 import { MaterialModule } from './material-module';
 import { HttpClientModule } from "@angular/common/http";
 import { RippleGlobalOptions, MAT_RIPPLE_GLOBAL_OPTIONS } from '@angular/material/core'
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 const globalRippleConfig: RippleGlobalOptions = {
   disabled: true,
@@ -35,7 +36,8 @@ const globalRippleConfig: RippleGlobalOptions = {
   ],
   bootstrap: [AppComponent],
   providers: [
-    {provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig}
+    { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig },
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
   ]
 })
 export class AppModule {
