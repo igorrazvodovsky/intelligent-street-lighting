@@ -84,13 +84,9 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <button mat-button [matMenuTriggerFor]="menu">
-        Daugavpils<mat-icon svgIcon="dropdownMedium"></mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>Daugavpils</button>
-        <button mat-menu-item>Valka</button>
-      </mat-menu>
+      <div id="page-actions-container">
+        <!-- content will be placed dynamically via Cdk Portal -->
+      </div>
       <button mat-icon-button aria-label="Notifications">
         <mat-icon
           matBadge="15"

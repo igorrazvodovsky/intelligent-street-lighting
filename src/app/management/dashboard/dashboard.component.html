@@ -1,3 +1,12 @@
+<app-page-actions>
+  <button mat-button [matMenuTriggerFor]="menu">
+    Daugavpils<mat-icon svgIcon="dropdownMedium"></mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Daugavpils</button>
+    <button mat-menu-item>Valka</button>
+  </mat-menu>
+</app-page-actions>
 <mat-grid-list cols="2">
   <mat-grid-tile
     *ngFor="let card of cards | async"

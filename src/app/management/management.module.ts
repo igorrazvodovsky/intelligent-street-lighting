@@ -13,6 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PageActionsComponent } from './page-actions/page-actions.component';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     DevicesComponent,
     ProfilesComponent,
     UserProfileComponent,
+    PageActionsComponent
   ]
 })
 export class ManagementModule {}
