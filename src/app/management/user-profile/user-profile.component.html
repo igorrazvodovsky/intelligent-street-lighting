@@ -8,14 +8,14 @@
     <mat-card-content>
       <div class="row">
         <div class="col">
-          <mat-form-field appearance="outline" class="full-width">
+          <mat-form-field class="full-width">
             <input matInput placeholder="Company" formControlName="company" />
           </mat-form-field>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <mat-form-field appearance="outline" class="full-width">
+          <mat-form-field class="full-width">
             <input
               matInput
               placeholder="First name"
@@ -29,7 +29,7 @@
           </mat-form-field>
         </div>
         <div class="col">
-          <mat-form-field appearance="outline" class="full-width">
+          <mat-form-field class="full-width">
             <input
               matInput
               placeholder="Last name"
@@ -45,7 +45,7 @@
       </div>
       <div class="row">
         <div class="col">
-          <mat-form-field appearance="outline" class="full-width">
+          <mat-form-field class="full-width">
             <textarea
               matInput
               placeholder="Address"
@@ -72,7 +72,7 @@
       </div>
       <div class="row" *ngIf="hasUnitNumber">
         <div class="col">
-          <mat-form-field appearance="outline" class="full-width">
+          <mat-form-field class="full-width">
             <textarea
               matInput
               placeholder="Address 2"
@@ -83,7 +83,7 @@
       </div>
       <div class="row">
         <div class="col">
-          <mat-form-field appearance="outline" class="full-width">
+          <mat-form-field class="full-width">
             <input matInput placeholder="City" formControlName="city" />
             <mat-error
               *ngIf="addressForm.controls['city'].hasError('required')"
@@ -93,7 +93,7 @@
           </mat-form-field>
         </div>
         <div class="col">
-          <mat-form-field appearance="outline" class="full-width">
+          <mat-form-field class="full-width">
             <mat-select placeholder="State" formControlName="state">
               <mat-option
                 *ngFor="let state of states"
@@ -112,7 +112,7 @@
       </div>
       <div class="row">
         <div class="col">
-          <mat-form-field appearance="outline">
+          <mat-form-field>
             <input
               matInput
               #postalCode
