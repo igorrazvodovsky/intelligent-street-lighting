@@ -14,6 +14,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PageActionsComponent } from './page-actions/page-actions.component';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { PageActionsComponent } from './page-actions/page-actions.component';
     MatSelectModule,
     MatRadioModule,
     MatCardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AdminModule
   ],
   declarations: [
     NavigationComponent,

@@ -1,0 +1,9 @@
+<nav mat-tab-nav-bar>
+  <a mat-tab-link routerLink="./users" routerLinkActive="active">Users</a>
+  <a mat-tab-link routerLink="./groups" routerLinkActive="active">Groups</a>
+  <a mat-tab-link routerLink="./orgs" routerLinkActive="active" disabled
+    >Organisations</a
+  >
+</nav>
+<router-outlet></router-outlet>
+<!-- [active]="activeLink == link" -->
