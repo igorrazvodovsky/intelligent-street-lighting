@@ -5,7 +5,7 @@ import { AdminComponent } from './admin/admin.component';
 import { UsersComponent } from './users/users.component';
 import { GroupsComponent } from './groups/groups.component';
 import { OrgsComponent } from './orgs/orgs.component';
-import { MaterialModule } from '../../material-module';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { MaterialModule } from '../../material-module';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    MaterialModule
+    SharedModule
   ]
 })
 export class AdminModule { }

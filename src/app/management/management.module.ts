@@ -5,7 +5,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DevicesComponent } from './devices/devices.component';
 import { ProfilesComponent } from './profiles/profiles.component';
 import { ManagementRoutingModule } from './management-routing.module';
-import { MaterialModule } from '../material-module';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,29 +12,29 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
-import { PageActionsComponent } from './page-actions/page-actions.component';
+import { SharedModule } from '../shared/shared.module';
 import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   imports: [
     CommonModule,
     ManagementRoutingModule,
-    MaterialModule,
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
     MatRadioModule,
     MatCardModule,
     ReactiveFormsModule,
-    AdminModule
+    AdminModule,
+    SharedModule
   ],
   declarations: [
     NavigationComponent,
     DashboardComponent,
     DevicesComponent,
     ProfilesComponent,
-    UserProfileComponent,
-    PageActionsComponent
+    UserProfileComponent
   ]
+
 })
 export class ManagementModule {}
