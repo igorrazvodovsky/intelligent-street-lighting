@@ -1,4 +1,19 @@
+.mat-drawer {
+  background: transparent;
+  padding: 0.75rem 0.5rem;
+}
+
+.mat-drawer-container {
+  height: 100%;
+}
+
+.mat-drawer-side {
+  background: transparent;
+  border-right: 0;
+}
+
 .mat-toolbar {
+  z-index: 500;
   flex: 1 0 64px;
   background: transparent;
   button#notifications {

@@ -14,6 +14,7 @@ import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { AdminModule } from './admin/admin.module';
+import { MapComponent } from './devices/map/map.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { AdminModule } from './admin/admin.module';
     DashboardComponent,
     DevicesComponent,
     ProfilesComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    MapComponent
   ]
 
 })
