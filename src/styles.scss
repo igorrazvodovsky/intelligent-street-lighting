@@ -73,12 +73,7 @@ body {
 .mat-drawer-content {
   display: flex !important;
   flex-direction: column;
-  flex-wrap: wrap;
-}
-
-main {
-  padding: 2rem;
-  flex: 1 auto;
+  flex-wrap: nowrap;
 }
 
 .text-secondary {

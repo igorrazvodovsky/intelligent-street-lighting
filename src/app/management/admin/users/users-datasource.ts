@@ -20,7 +20,7 @@ const EXAMPLE_DATA: UsersItem[] = [
   {id: 3, name: 'Ava Wright', status: 'trial', enabled: true, locked: true},
   {id: 4, name: 'Kate Morrison', status: 'trial', enabled: true, locked: false},
   {id: 5, name: 'Makiyah Yeager', status: 'trial', enabled: true, locked: false},
-  {id: 6, name: 'Tripp Mckay', status: 'member', enabled: true, locked: true},
+  {id: 6, name: 'Tripp Mckay', status: 'member', enabled: false, locked: true},
   {id: 7, name: 'Amilia Luna', status: 'member', enabled: true, locked: false},
   {id: 8, name: 'Lori Bryson', status: 'member', enabled: true, locked: false},
   {id: 9, name: 'Macie Naquin', status: 'member', enabled: true, locked: true},

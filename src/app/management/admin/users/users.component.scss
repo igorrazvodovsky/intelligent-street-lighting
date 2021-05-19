@@ -1,3 +1,12 @@
 .full-width-table {
   width: 100%;
 }
+
+.mat-table,
+.mat-paginator {
+  background: transparent;
+}
+
+.mat-row:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
