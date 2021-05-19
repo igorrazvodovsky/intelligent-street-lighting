@@ -92,3 +92,7 @@ button.active {
 button {
   @include transition;
 }
+
+.mat-tab-link {
+  min-width: 0 !important;
+}

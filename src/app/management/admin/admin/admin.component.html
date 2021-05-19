@@ -1,7 +1,23 @@
 <nav mat-tab-nav-bar>
-  <a mat-tab-link routerLink="./users" routerLinkActive="active">Users</a>
-  <a mat-tab-link routerLink="./groups" routerLinkActive="active">Groups</a>
-  <a mat-tab-link routerLink="./orgs" routerLinkActive="active"
+  <a
+    mat-tab-link
+    routerLink="./users"
+    [active]="
+      currentRoute === '/management/admin' ||
+      currentRoute === '/management/admin/users'
+    "
+    >Users</a
+  >
+  <a
+    mat-tab-link
+    routerLink="./groups"
+    [active]="currentRoute === '/management/admin/groups'"
+    >Groups</a
+  >
+  <a
+    mat-tab-link
+    routerLink="./orgs"
+    [active]="currentRoute === '/management/admin/orgs'"
     >Organisations</a
   >
 </nav>
