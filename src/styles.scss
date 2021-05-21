@@ -96,3 +96,35 @@ button {
 .mat-tab-link {
   min-width: 0 !important;
 }
+
+.mat-icon svg {
+  width: 1.5rem;
+}
+
+.mat-icon-inline svg {
+  vertical-align: middle;
+}
+
+.small svg{
+  height: 1rem;
+  width: 1rem;
+}
+
+.mat-chip.mat-standard-chip.outlined {
+  background-color: transparent;
+  border: 1px solid hsla(0, 0%, 0%, 0.1);
+  color: hsla(0, 0%, 0%, 0.6);
+  font-weight: normal;
+  & > .mat-icon {
+    transform: translateX(-0.25rem);
+    height: 1rem;
+  }
+}
+
+.mat-card-header-text:first-child {
+  margin: 0 !important;
+}
+
+.mat-list-avatar svg {
+  color: hsla(0, 0%, 0%, 0.3);
+}

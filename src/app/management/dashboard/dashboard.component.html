@@ -7,13 +7,44 @@
     <button mat-menu-item>Valka</button>
   </mat-menu>
 </app-page-actions>
-<mat-grid-list cols="2">
-  <mat-grid-tile
-    *ngFor="let card of cards | async"
-    [colspan]="card.cols"
-    [rowspan]="card.rows"
-  >
-    <mat-card class="dashboard-card">
+
+<section id="main">
+  <mat-card id="lucidus" class="mat-elevation-z0">
+    <mat-card-header>
+      <div mat-card-avatar>
+        <mat-icon svgIcon="chartBold"></mat-icon>
+      </div>
+      <mat-card-title>Power consumption</mat-card-title>
+      <mat-card-subtitle>smartcity.lucidus.lv</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+  <mat-card class="stats mat-elevation-z0">
+    <mat-card-header>
+      <mat-card-title>61</mat-card-title>
+      <mat-card-subtitle>Unregistered</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+  <mat-card class="stats mat-elevation-z0">
+    <mat-card-header>
+      <mat-card-title>0</mat-card-title>
+      <mat-card-subtitle>Offline</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+  <mat-card class="stats mat-elevation-z0">
+    <mat-card-header>
+      <mat-card-title>12</mat-card-title>
+      <mat-card-subtitle>Something else</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+</section>
+<section id="tasks">
+  <tasks></tasks>
+</section>
+<section id="activity">
+  <activity></activity>
+</section>
+
+    <!-- <mat-card class="dashboard-card">
       <mat-card-content>
         {{ card.title }}
         <button
@@ -29,6 +60,4 @@
           <button mat-menu-item>Remove</button>
         </mat-menu>
       </mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+    </mat-card> -->

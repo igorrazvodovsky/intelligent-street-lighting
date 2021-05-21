@@ -1,0 +1,61 @@
+<h2>Tasks</h2>
+<button mat-button [matMenuTriggerFor]="menu">
+  Unassigned<mat-icon svgIcon="dropdownMedium"></mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>All</button>
+  <button mat-menu-item>Unassigned</button>
+  <button mat-menu-item>...</button>
+</mat-menu>
+
+<mat-card class="mat-elevation-z0">
+  <mat-card-header>
+    <mat-card-title>Fix communication failure</mat-card-title>
+    <mat-card-subtitle>
+      <mat-chip-list aria-label="Status and priority">
+        <mat-chip>New</mat-chip>
+        <mat-chip>Low priority</mat-chip>
+      </mat-chip-list>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="text-secondary">
+    <div>
+        <mat-icon inline class="small" svgIcon="locationRegular"></mat-icon> Cīrulīši • Lamp 01-01/02
+    </div>
+    <div>
+        <mat-icon inline class="small" svgIcon="userRegular"></mat-icon>
+        Unassigned
+    </div>
+  </mat-card-content>
+</mat-card>
+  <mat-card class="mat-elevation-z0" *ngFor="let task of tasks">
+    <mat-card-header>
+      <mat-card-title>{{task.title}}</mat-card-title>
+      <mat-card-subtitle>
+        <mat-chip-list aria-label="Status and priority">
+          <mat-chip>{{task.status}}</mat-chip>
+          <mat-chip>{{task.priority}} priority</mat-chip>
+        </mat-chip-list>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div>
+        <mat-chip class="outlined">
+          <mat-icon svgIcon="locationRegular"></mat-icon>
+          {{task.device}}
+        </mat-chip>
+      </div>
+      <div>
+        <mat-chip class="outlined">
+          <mat-icon svgIcon="userRegular"></mat-icon>
+          {{task.assignee ? task.assignee : 'Unassigned'}}
+        </mat-chip>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-icon-button>
+        <mat-icon svgIcon="messageRegular"></mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+

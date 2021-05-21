@@ -55,8 +55,28 @@ export class NavigationComponent {
       this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/bold/popular_gear-maintenance-preferences-settings-adjustments-options-b-s.svg")
     );
     this.matIconRegistry.addSvgIcon(
+      `searchBold`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/bold/popular_search-magnifying-glass-hand-lens-b-a.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
       `dropdownMedium`,
       this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/medium/arrows_chevron-small-down-drop-down-expand-more-m-a.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      `locationRegular`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/regular/popular_location-place-r-s.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      `userRegular`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/regular/popular_user-identity-person-personal-r-s.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      `messageRegular`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/regular/popular_message-r-s.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      `lightningFill`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/fill/weather_lightning-flash-electricity-a-f.svg")
     );
   };
 

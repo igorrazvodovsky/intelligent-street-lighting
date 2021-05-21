@@ -1,17 +1,51 @@
-.grid-container {
-  margin: 1rem;
+:host {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
 }
 
-.dashboard-card {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  right: 1rem;
-  bottom: 1rem;
+section {
+  padding: 1rem;
 }
 
-.more-button {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+section#main {
+  grid-column: 1;
+  & > * + * {
+    margin-top: 0.5rem;
+  }
+  .mat-card-subtitle {
+    margin-bottom: 0;
+  }
+}
+
+.stats {
+  background: hsla(0, 0%, 0%, 0.1);
+}
+
+// TODO
+#lucidus {
+  &:hover {
+    // TODO: Normal link
+    background: hsla(0, 0%, 0%, 0.05);
+    cursor: pointer;
+  }
+
+  .mat-card-header-text {
+    margin: 0 1rem;
+  }
+  .mat-card-avatar {
+    background-color: hsla(0, 0%, 0%, 0.1);
+    text-align: center;
+    .mat-icon {
+      height: 100%;
+    }
+  }
+  .mat-card-subtitle {
+    margin-bottom: 0;
+  }
+}
+
+// TODO: Move to theme
+.mat-card {
+  border-radius: 0 !important;
 }

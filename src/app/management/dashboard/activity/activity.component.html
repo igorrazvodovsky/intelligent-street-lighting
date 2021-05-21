@@ -1,0 +1,25 @@
+<h2>Activity</h2>
+<button mat-button [matMenuTriggerFor]="menu">
+  All<mat-icon svgIcon="dropdownMedium"></mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>All</button>
+  <button mat-menu-item>User actions</button>
+  <button mat-menu-item>Device events</button>
+  <button mat-menu-item>...</button>
+</mat-menu>
+
+<mat-selection-list [multiple]="false">
+  <mat-list-option  *ngFor="let activity of activities">
+    <img matListAvatar [src]="activity.avatar" [alt]="activity.subject">
+    <h3 matLine> {{activity.subject}} </h3>
+    <p matLine>{{activity.details}}</p>
+  </mat-list-option>
+  <mat-list-option>
+    <mat-icon svgIcon="lightningFill" matListAvatar></mat-icon>
+    <h3 matLine>Power is too high</h3>
+    <p matLine>
+      At Tabore → Arhipišķi → Lamp 01/09.
+    </p>
+  </mat-list-option>
+</mat-selection-list>

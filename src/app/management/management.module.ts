@@ -13,6 +13,8 @@ import { SharedModule } from '../shared/shared.module';
 import { AdminModule } from './admin/admin.module';
 import { MapComponent } from './devices/map/map.component';
 import { MarkerService } from '../services/marker.service';
+import { TasksComponent } from './dashboard/tasks/tasks.component';
+import { ActivityComponent } from './dashboard/activity/activity.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -28,7 +30,9 @@ import { MarkerService } from '../services/marker.service';
     DevicesComponent,
     ProfilesComponent,
     UserProfileComponent,
-    MapComponent
+    MapComponent,
+    TasksComponent,
+    ActivityComponent
   ],
   providers: [
     MarkerService
