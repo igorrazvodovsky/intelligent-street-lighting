@@ -16,6 +16,7 @@ section#activity {
 }
 
 section#main {
+  padding-left: 0rem;
   grid-column: 1;
   & > * + * {
     margin-top: 0.5rem;

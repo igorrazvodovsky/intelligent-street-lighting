@@ -13,6 +13,7 @@
 }
 
 .mat-toolbar {
+  padding-left: 3.375rem;
   position: absolute;
   z-index: 500;
   flex: 1 0 64px;
@@ -30,6 +31,6 @@
 }
 
 main {
-  padding: 0 0 0 2rem;
+  padding: 0 0 0 4.5rem;
   flex: 1 0 100%;
 }
