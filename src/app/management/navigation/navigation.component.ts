@@ -75,6 +75,10 @@ export class NavigationComponent {
       this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/regular/popular_message-r-s.svg")
     );
     this.matIconRegistry.addSvgIcon(
+      `openInNewRegular`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/regular/arrows_open-in-new-android-launch-r-a.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
       `lightningFill`,
       this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/fill/weather_lightning-flash-electricity-a-f.svg")
     );
