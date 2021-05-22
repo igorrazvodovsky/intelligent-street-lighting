@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { LoadingService } from '../../services/loading.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +10,18 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  loading: boolean;
+  loading$ = this.loader.loading$;
 
-  constructor(public authService: AuthService, public router: Router) {
-    this.loading = false;
+  constructor(
+    public authService: AuthService,
+    public router: Router,
+    public loader: LoadingService,
+    private http: HttpClient,
+  ) {
   }
 
   login() {
-    this.loading = true;
+    this.loader.show()
 
     this.authService.login().subscribe(() => {
       if (this.authService.isLoggedIn) {
@@ -29,7 +35,7 @@ export class LoginComponent {
           preserveFragment: true
         };
 
-        // Redirect the user
+        this.loader.hide()
         this.router.navigate([redirectUrl], navigationExtras);
       }
     });

@@ -1,9 +1,7 @@
 <mat-card class="mat-elevation-z0">
   <mat-card-header>
     <mat-card-title>Citintelly</mat-card-title>
-    <mat-card-subtitle>
-      Street lighting control system
-    </mat-card-subtitle>
+    <mat-card-subtitle> Street lighting control system </mat-card-subtitle>
   </mat-card-header>
   <form>
     <mat-form-field dense>
@@ -15,7 +13,7 @@
       <input type="password" matInput />
     </mat-form-field>
     <button
-      [disabled]="loading"
+      [disabled]="loading$ | async"
       (click)="login()"
       mat-flat-button
       color="accent"

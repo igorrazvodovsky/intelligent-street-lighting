@@ -11,7 +11,7 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$primary: mat-palette($mat-green);
+$primary: mat-palette($mat-light-blue);
 $accent: mat-palette($mat-amber, A200, A100, A400);
 $warn: mat-palette($mat-red);
 
@@ -106,7 +106,7 @@ button {
   vertical-align: middle;
 }
 
-.small svg{
+.small svg {
   height: 1rem;
   width: 1rem;
 }
@@ -130,6 +130,7 @@ button {
   color: hsla(0, 0%, 0%, 0.3);
 }
 
-.mat-toolbar button, .mat-drawer button {
+.mat-toolbar button,
+.mat-drawer button {
   pointer-events: initial;
 }
