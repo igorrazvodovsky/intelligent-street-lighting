@@ -22,7 +22,7 @@ export class ActivityComponent implements OnInit {
       details: 'Changed Busy street profile configuration.',
       avatar: 'https://uifaces.co/our-content/donated/Xp0NB-TL.jpg',
       object: {},
-      created: new Date('1/1/16'),
+      created: new Date(),
     },
     {
       type: 'user',

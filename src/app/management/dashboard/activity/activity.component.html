@@ -10,9 +10,12 @@
 </mat-menu>
 
 <mat-selection-list [multiple]="false">
-  <mat-list-option  *ngFor="let activity of activities">
+  <mat-list-option class="entry" *ngFor="let activity of activities">
     <img matListAvatar [src]="activity.avatar" [alt]="activity.subject">
-    <h3 matLine> {{activity.subject}} </h3>
+    <div matLine>
+      <h3> {{activity.subject}}</h3>
+      <small class="text-secondary">{{activity.created | date:"shortTime"}}</small>
+    </div>
     <p matLine>{{activity.details}}</p>
   </mat-list-option>
   <mat-list-option>
