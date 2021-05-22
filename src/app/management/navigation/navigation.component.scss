@@ -1,6 +1,7 @@
 .mat-drawer {
   background: transparent;
-  padding: 1rem 0.5rem;
+  padding: 5rem 0.5rem 1rem 0.5rem;
+  pointer-events: none;
 }
 
 .mat-drawer-container {
@@ -13,11 +14,17 @@
 }
 
 .mat-toolbar {
-  padding-left: 3.375rem;
+  padding-left: 3.5rem;
   position: absolute;
   z-index: 500;
   flex: 1 0 64px;
   background: transparent;
+  pointer-events: none;
+
+  & button {
+    pointer-events: initial;
+  }
+
   button#notifications {
     margin-left: auto;
   }
@@ -31,6 +38,10 @@
 }
 
 main {
-  padding: 0 0 0 4.5rem;
+  // padding: 0 0 0 4.5rem;
   flex: 1 0 100%;
+}
+
+.main-content {
+  margin-left: 0 !important;
 }

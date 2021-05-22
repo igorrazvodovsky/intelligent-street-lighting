@@ -59,6 +59,14 @@ export class NavigationComponent {
       this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/bold/popular_search-magnifying-glass-hand-lens-b-a.svg")
     );
     this.matIconRegistry.addSvgIcon(
+      `chevronLeftBold`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/bold/popular_chevron-left-keyboard-arrow-left-b-a.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      `chevronRightBold`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/bold/arrows_chevron-right-keyboard-arrow-right-b-a.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
       `dropdownMedium`,
       this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/medium/arrows_chevron-small-down-drop-down-expand-more-m-a.svg")
     );

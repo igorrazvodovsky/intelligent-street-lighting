@@ -1,0 +1,20 @@
+<mat-sidenav-container class="sidenav-container" >
+  <mat-sidenav [(opened)]="opened" #drawer class="sidenav"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+      <ng-content select="[list]"></ng-content>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <button
+      class="list-toggle"
+      type="button"
+      aria-label="Toggle sidenav"
+      mat-icon-button
+      (click)="drawer.toggle()"
+      >
+      <mat-icon [svgIcon]="opened ? 'chevronLeftBold' : 'chevronRightBold'" aria-label="List toggle icon"></mat-icon>
+    </button>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

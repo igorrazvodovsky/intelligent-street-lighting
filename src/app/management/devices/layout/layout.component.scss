@@ -1,0 +1,16 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  background: #fafafa;
+  border-right: 0;
+  width: 30vw;
+}
+
+.list-toggle {
+  position: absolute;
+  left: 0.5rem;
+  top: 1rem;
+  z-index: 600;
+}

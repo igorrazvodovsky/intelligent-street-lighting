@@ -1,0 +1,23 @@
+<div class="breadcrumbs">
+  <button mat-button [matMenuTriggerFor]="menu">
+    Daugavpils<mat-icon svgIcon="dropdownMedium"></mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Daugavpils</button>
+    <button mat-menu-item>Valka</button>
+  </mat-menu>
+</div>
+
+<mat-chip-list aria-label="Fish selection">
+  <mat-chip>Property</mat-chip>
+  <mat-chip>Another property</mat-chip>
+  <mat-chip color="primary" selected>Primary property</mat-chip>
+  <mat-chip color="accent" selected>Accent property</mat-chip>
+</mat-chip-list>
+
+<mat-selection-list role="list" [multiple]="false">
+  <mat-list-option role="listitem" *ngFor="let group of groups">
+    <div matLine>{{ group.name }}</div>
+    <span matLine>{{ group.lamps }} lamps, {{ group.profile }} profile</span>
+  </mat-list-option>
+</mat-selection-list>

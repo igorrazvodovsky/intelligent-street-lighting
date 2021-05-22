@@ -63,7 +63,7 @@ body {
   display: flex !important;
   flex-direction: column;
   flex-wrap: nowrap;
-  margin-left: 0 !important;
+  // margin-left: 0 !important;
 }
 
 .text-secondary {
@@ -128,4 +128,8 @@ button {
 
 .mat-list-avatar svg {
   color: hsla(0, 0%, 0%, 0.3);
+}
+
+.mat-toolbar button, .mat-drawer button {
+  pointer-events: initial;
 }

@@ -15,6 +15,14 @@ import { MapComponent } from './devices/map/map.component';
 import { MarkerService } from '../services/marker.service';
 import { TasksComponent } from './dashboard/tasks/tasks.component';
 import { ActivityComponent } from './dashboard/activity/activity.component';
+import { LayoutComponent } from './devices/layout/layout.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { ListComponent } from './devices/list/list.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -22,7 +30,13 @@ import { ActivityComponent } from './dashboard/activity/activity.component';
     ReactiveFormsModule,
     AdminModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   declarations: [
     NavigationComponent,
@@ -32,7 +46,9 @@ import { ActivityComponent } from './dashboard/activity/activity.component';
     UserProfileComponent,
     MapComponent,
     TasksComponent,
-    ActivityComponent
+    ActivityComponent,
+    LayoutComponent,
+    ListComponent
   ],
   providers: [
     MarkerService

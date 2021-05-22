@@ -16,7 +16,7 @@ const iconDefault = L.icon({
   shadowSize: [41, 41]
 });
 @Component({
-  selector: 'app-map',
+  selector: 'devices-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
