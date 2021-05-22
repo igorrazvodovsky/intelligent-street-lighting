@@ -15,27 +15,32 @@
         <mat-icon svgIcon="chartBold"></mat-icon>
       </div>
       <mat-card-title>Power consumption</mat-card-title>
-      <mat-card-subtitle>smartcity.lucidus.lv <mat-icon inline class="small" svgIcon="openInNewRegular"></mat-icon></mat-card-subtitle>
+      <mat-card-subtitle
+        >smartcity.lucidus.lv
+        <mat-icon inline class="small" svgIcon="openInNewRegular"></mat-icon
+      ></mat-card-subtitle>
     </mat-card-header>
   </mat-card>
-  <mat-card class="stats mat-elevation-z0">
-    <mat-card-header>
-      <mat-card-title>61</mat-card-title>
-      <mat-card-subtitle>Unregistered</mat-card-subtitle>
-    </mat-card-header>
-  </mat-card>
-  <mat-card class="stats mat-elevation-z0">
-    <mat-card-header>
-      <mat-card-title>0</mat-card-title>
-      <mat-card-subtitle>Offline</mat-card-subtitle>
-    </mat-card-header>
-  </mat-card>
-  <mat-card class="stats mat-elevation-z0">
-    <mat-card-header>
-      <mat-card-title>12</mat-card-title>
-      <mat-card-subtitle>Something else</mat-card-subtitle>
-    </mat-card-header>
-  </mat-card>
+  <section class="stats">
+    <mat-card class="mat-elevation-z0">
+      <mat-card-header>
+        <mat-card-title>61</mat-card-title>
+        <mat-card-subtitle>Unregistered</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+    <mat-card class="mat-elevation-z0">
+      <mat-card-header>
+        <mat-card-title>0</mat-card-title>
+        <mat-card-subtitle>Offline</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+    <mat-card class="mat-elevation-z0">
+      <mat-card-header>
+        <mat-card-title>12</mat-card-title>
+        <mat-card-subtitle>Something else</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+  </section>
 </section>
 <section id="tasks">
   <tasks></tasks>
@@ -44,7 +49,7 @@
   <activity></activity>
 </section>
 
-    <!-- <mat-card class="dashboard-card">
+<!-- <mat-card class="dashboard-card">
       <mat-card-content>
         {{ card.title }}
         <button
