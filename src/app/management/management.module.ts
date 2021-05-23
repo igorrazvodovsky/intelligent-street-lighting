@@ -24,6 +24,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { ListComponent } from './devices/list/list.component';
 import { TaskDialogComponent } from './dashboard/tasks/task-dialog/task-dialog.component';
+import { PopupService } from '../services/popup.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -53,7 +55,8 @@ import { TaskDialogComponent } from './dashboard/tasks/task-dialog/task-dialog.c
     TaskDialogComponent
   ],
   providers: [
-    MarkerService
+    MarkerService,
+    PopupService
   ]
 })
 export class ManagementModule {}
