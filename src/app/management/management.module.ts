@@ -23,6 +23,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { ListComponent } from './devices/list/list.component';
+import { TaskDialogComponent } from './dashboard/tasks/task-dialog/task-dialog.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -48,7 +49,8 @@ import { ListComponent } from './devices/list/list.component';
     TasksComponent,
     ActivityComponent,
     LayoutComponent,
-    ListComponent
+    ListComponent,
+    TaskDialogComponent
   ],
   providers: [
     MarkerService

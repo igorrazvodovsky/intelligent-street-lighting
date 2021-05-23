@@ -27,6 +27,10 @@ export class NavigationComponent {
     private breakpointObserver: BreakpointObserver
   ) {
     this.matIconRegistry.addSvgIcon(
+      `filterBold`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/bold/interface_filter-funnel-sort-b-s.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
       `notificationBold`,
       this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/bold/popular_notification-bell-alert-b-s.svg")
     );

@@ -16,3 +16,10 @@
 #map {
   height: 100%;
 }
+
+.mat-chip {
+  z-index: 500;
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+}

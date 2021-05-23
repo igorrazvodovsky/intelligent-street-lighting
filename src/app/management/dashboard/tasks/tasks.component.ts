@@ -1,4 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { TaskDialogComponent } from './task-dialog/task-dialog.component';
+
+export interface Comment {
+  id: number;
+  author: any;
+  comment: string;
+  created: Date;
+}
 
 export interface Task {
   id: number;
@@ -11,7 +20,7 @@ export interface Task {
   assignee: string;
   created: Date;
   updated: Date;
-  comments: [];
+  comments: any;
 }
 
 @Component({
@@ -28,15 +37,28 @@ export class TasksComponent implements OnInit {
       priority: 'Low',
       device: 'Cīrulīši • Lamp 01-01/02',
       eventId: 1,
-      assignee: '',
+      assignee: 'Niall Mercado',
       created: new Date('1/1/16'),
       updated: new Date('1/1/16'),
-      comments: []
+      comments: [
+        {
+          id: 1,
+          author: 'John',
+          comment: 'On my way.',
+          created: new Date('1/1/16'),
+        },
+        {
+          id: 2,
+          author: 'Mary',
+          comment: 'I am not doing this.',
+          created: new Date('1/1/16'),
+        }
+      ]
     },
     {
       id: 2,
       title: 'Fix communication failure',
-      status: 'Rejected',
+      status: 'New',
       priority: 'High',
       device: 'Maļutki • Lamp 02-17/01',
       eventId: 1,
@@ -57,8 +79,41 @@ export class TasksComponent implements OnInit {
       updated: new Date('1/1/16'),
       comments: []
     },
+      {
+      id: 4,
+      title: 'Fix communication failure',
+      status: 'Rejected',
+      priority: 'High',
+      device: 'Maļutki • Lamp 02-17/01',
+      eventId: 1,
+      assignee: '',
+      created: new Date('1/1/16'),
+      updated: new Date('1/1/16'),
+      comments: []
+    },
+    {
+      id: 5,
+      title: 'Close the door',
+      status: 'New',
+      priority: 'Normal',
+      device: 'Maļutki • Lamp 01-16/02',
+      eventId: 3,
+      assignee: '',
+      created: new Date('1/1/16'),
+      updated: new Date('1/1/16'),
+      comments: []
+    },
   ];
-  constructor() { }
+  constructor(public dialog: MatDialog) {}
+  openDialog(task) {
+    const dialogRef = this.dialog.open(TaskDialogComponent, {
+      data: { task: task },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
   ngOnInit(): void {
   }

@@ -8,58 +8,30 @@
   <button mat-menu-item>...</button>
 </mat-menu>
 
-<mat-card class="mat-elevation-z0">
-  <mat-card-header>
-    <mat-card-title>Fix communication failure</mat-card-title>
-    <mat-card-subtitle>
-      <mat-chip-list aria-label="Status and priority">
-        <mat-chip>New</mat-chip>
-        <mat-chip>Low priority</mat-chip>
-      </mat-chip-list>
-    </mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content class="text-secondary">
-    <div>
-        <mat-icon inline class="small" svgIcon="locationRegular"></mat-icon> Lamp 01-01/02 ← Cīrulīši
-    </div>
-    <div>
-        <mat-icon inline class="small" svgIcon="userRegular"></mat-icon>
-        Unassigned
-    </div>
-    <div>
-      <mat-icon inline class="small" svgIcon="messageRegular"></mat-icon>
-      2 comments
-  </div>
-  </mat-card-content>
-</mat-card>
-  <mat-card class="mat-elevation-z0" *ngFor="let task of tasks">
+<ng-container *ngFor="let task of tasks">
+  <mat-card (click)="openDialog(task)" class="mat-elevation-z0">
     <mat-card-header>
-      <mat-card-title>{{task.title}}</mat-card-title>
+      <mat-card-title>{{ task.title }}</mat-card-title>
       <mat-card-subtitle>
         <mat-chip-list aria-label="Status and priority">
-          <mat-chip>{{task.status}}</mat-chip>
-          <mat-chip>{{task.priority}} priority</mat-chip>
+          <mat-chip>{{ task.status }}</mat-chip>
+          <mat-chip>{{ task.priority }} priority</mat-chip>
         </mat-chip-list>
       </mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content>
+    <mat-card-content class="text-secondary">
       <div>
-        <mat-chip class="outlined">
-          <mat-icon svgIcon="locationRegular"></mat-icon>
-          {{task.device}}
-        </mat-chip>
+        <mat-icon inline class="small" svgIcon="locationRegular"></mat-icon>
+        {{ task.device }}
       </div>
       <div>
-        <mat-chip class="outlined">
-          <mat-icon svgIcon="userRegular"></mat-icon>
-          {{task.assignee ? task.assignee : 'Unassigned'}}
-        </mat-chip>
+        <mat-icon inline class="small" svgIcon="userRegular"></mat-icon>
+        {{ task.assignee ? task.assignee : "Unassigned" }}
+      </div>
+      <div *ngIf="task.comments.length">
+        <mat-icon inline class="small" svgIcon="messageRegular"></mat-icon>
+        {{ task.comments.length }} comments
       </div>
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-icon-button>
-        <mat-icon svgIcon="messageRegular"></mat-icon>
-      </button>
-    </mat-card-actions>
   </mat-card>
-
+</ng-container>

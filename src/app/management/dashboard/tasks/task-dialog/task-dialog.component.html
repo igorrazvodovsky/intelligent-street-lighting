@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>{{ data.task.title }}</h2>
+<mat-dialog-content>
+  <mat-chip-list aria-label="Status and priority">
+    <mat-chip>New</mat-chip>
+    <mat-chip>Low priority</mat-chip>
+    <!-- <mat-chip>
+      <mat-icon svgIcon="userRegular"></mat-icon>
+      Unassigned
+    </mat-chip> -->
+  </mat-chip-list>
+
+  <!-- Device -->
+
+  <!-- Event -->
+
+  <!-- Comments -->
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Close</button>
+</mat-dialog-actions>
