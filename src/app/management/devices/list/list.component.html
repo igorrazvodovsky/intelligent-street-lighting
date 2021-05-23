@@ -17,6 +17,7 @@
 
 <mat-selection-list role="list" [multiple]="false">
   <mat-list-option role="listitem" *ngFor="let group of groups">
+    <!-- <mat-icon matListIcon svgIcon="chevronRightRegular"></mat-icon> -->
     <div matLine>{{ group.name }}</div>
     <span matLine>{{ group.lamps }} lamps, {{ group.profile }} profile</span>
   </mat-list-option>

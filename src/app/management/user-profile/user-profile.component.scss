@@ -1,6 +1,10 @@
 :host {
-  display: block;
-  padding: 5rem 0 5rem 4.5rem;
+  display: flex;
+  padding: 5rem 3.5rem;
+  gap: 1rem;
+  & > .mat-card {
+    width: 100%;
+  }
 }
 
 .full-width {

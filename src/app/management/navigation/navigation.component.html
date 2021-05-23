@@ -81,7 +81,10 @@
         (click)="drawer.toggle()"
         *ngIf="isHandset$ | async"
       >
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        <mat-icon
+          svgIcon="menuBold"
+          aria-label="Side nav toggle icon"
+        ></mat-icon>
       </button>
       <div id="page-actions-container">
         <!-- content will be placed dynamically via Cdk Portal -->

@@ -11,18 +11,18 @@
 
 <mat-selection-list [multiple]="false">
   <mat-list-option class="entry" *ngFor="let activity of activities">
-    <img matListAvatar [src]="activity.avatar" [alt]="activity.subject">
+    <img matListAvatar [src]="activity.avatar" [alt]="activity.subject" />
     <div matLine>
-      <h3> {{activity.subject}}</h3>
-      <small class="text-secondary">{{activity.created | date:"shortTime"}}</small>
+      <h3>{{ activity.subject }}</h3>
+      <small class="text-secondary">{{
+        activity.created | date: "shortTime"
+      }}</small>
     </div>
-    <p matLine>{{activity.details}}</p>
+    <p matLine>{{ activity.details }}</p>
   </mat-list-option>
   <mat-list-option>
     <mat-icon svgIcon="lightningFill" matListAvatar></mat-icon>
     <h3 matLine>Power is too high</h3>
-    <p matLine>
-      Lamp 01/09 ← Arhipišķi ← Tabore
-    </p>
+    <p matLine>Lamp 01/09 ← Arhipišķi ← Tabore</p>
   </mat-list-option>
 </mat-selection-list>

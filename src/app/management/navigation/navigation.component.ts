@@ -25,76 +25,7 @@ export class NavigationComponent {
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
     private breakpointObserver: BreakpointObserver
-  ) {
-    this.matIconRegistry.addSvgIcon(
-      `filterBold`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/bold/interface_filter-funnel-sort-b-s.svg")
-    );
-    this.matIconRegistry.addSvgIcon(
-      `notificationBold`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/bold/popular_notification-bell-alert-b-s.svg")
-    );
-    this.matIconRegistry.addSvgIcon(
-      `userBold`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/bold/popular_user-identity-person-personal-b-s.svg")
-    );
-    this.matIconRegistry.addSvgIcon(
-      `planetBold`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/bold/popular_planet-earth-internet-public-b-s.svg")
-    );
-    this.matIconRegistry.addSvgIcon(
-      `chartBold`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/bold/interface_chart-bar-investment-equalizer-graphic-eq-b-a.svg")
-    );
-    this.matIconRegistry.addSvgIcon(
-      `dashboardBold`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/bold/interface_dashboard-view-dashboard-b-s.svg")
-    );
-    this.matIconRegistry.addSvgIcon(
-      `profileBold`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/bold/interface_preferences-settings-adjustments-filter-options-b-s.svg")
-    );
-    this.matIconRegistry.addSvgIcon(
-      `gearBold`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/bold/popular_gear-maintenance-preferences-settings-adjustments-options-b-s.svg")
-    );
-    this.matIconRegistry.addSvgIcon(
-      `searchBold`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/bold/popular_search-magnifying-glass-hand-lens-b-a.svg")
-    );
-    this.matIconRegistry.addSvgIcon(
-      `chevronLeftBold`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/bold/popular_chevron-left-keyboard-arrow-left-b-a.svg")
-    );
-    this.matIconRegistry.addSvgIcon(
-      `chevronRightBold`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/bold/arrows_chevron-right-keyboard-arrow-right-b-a.svg")
-    );
-    this.matIconRegistry.addSvgIcon(
-      `dropdownMedium`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/medium/arrows_chevron-small-down-drop-down-expand-more-m-a.svg")
-    );
-    this.matIconRegistry.addSvgIcon(
-      `locationRegular`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/regular/popular_location-place-r-s.svg")
-    );
-    this.matIconRegistry.addSvgIcon(
-      `userRegular`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/regular/popular_user-identity-person-personal-r-s.svg")
-    );
-    this.matIconRegistry.addSvgIcon(
-      `messageRegular`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/regular/popular_message-r-s.svg")
-    );
-    this.matIconRegistry.addSvgIcon(
-      `openInNewRegular`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/regular/arrows_open-in-new-android-launch-r-a.svg")
-    );
-    this.matIconRegistry.addSvgIcon(
-      `lightningFill`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/fill/weather_lightning-flash-electricity-a-f.svg")
-    );
-  };
+  ) {};
 
   logout() {
     this.authService.logout();
