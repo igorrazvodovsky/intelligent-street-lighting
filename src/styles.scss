@@ -99,7 +99,7 @@ button {
   min-width: 0 !important;
 }
 
-.mat-icon svg {
+.mat-icon.mat-list-avatar svg {
   width: 1.5rem;
 }
 
@@ -132,6 +132,12 @@ button {
 }
 
 .mat-toolbar button,
+.mat-toolbar .mat-chip,
 .mat-drawer button {
   pointer-events: initial;
+}
+
+// TODO: Move to theme
+.mat-card {
+  border-radius: 0 !important;
 }

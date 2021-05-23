@@ -4,6 +4,7 @@ import { DomSanitizer } from "@angular/platform-browser";
 
 export enum Fill {
   Alarm = 'lightning',
+  Cancel = 'cancel'
 }
 
 export enum Bold {
@@ -23,6 +24,8 @@ export enum Bold {
 
 export enum Medium {
   Dropdown = 'dropdown',
+  Close = 'close',
+  Cancel = 'cancel'
 }
 
 export enum Regular {

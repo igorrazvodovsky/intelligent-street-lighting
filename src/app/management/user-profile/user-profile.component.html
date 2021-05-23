@@ -12,11 +12,8 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input
-              matInput
-              placeholder="First name"
-              formControlName="firstName"
-            />
+            <mat-label>First name</mat-label>
+            <input matInput formControlName="firstName" />
             <mat-error
               *ngIf="addressForm.controls['firstName'].hasError('required')"
             >
@@ -26,11 +23,8 @@
         </div>
         <div class="col">
           <mat-form-field class="full-width">
-            <input
-              matInput
-              placeholder="Last name"
-              formControlName="lastName"
-            />
+            <mat-label>Last name</mat-label>
+            <input matInput formControlName="lastName" />
             <mat-error
               *ngIf="addressForm.controls['lastName'].hasError('required')"
             >

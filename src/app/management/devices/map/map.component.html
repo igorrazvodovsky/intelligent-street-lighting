@@ -1,18 +1,32 @@
-<button
-  class="filters-toggle"
-  type="button"
-  aria-label="Toggle filters menu"
-  mat-icon-button
->
-  <!-- <mat-icon
-    [svgIcon]="chevronLeftBold"
-    aria-label="Filter toggle icon"
-  ></mat-icon> -->
-</button>
-<mat-chip removable>
-  No power
-  <!-- <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon> -->
-</mat-chip>
+<app-page-actions>
+  <div></div>
+  <div>
+    <mat-chip removable>
+      No power
+      <mat-icon svgIcon="closeMedium" matChipRemove></mat-icon>
+    </mat-chip>
+    <button
+      [matMenuTriggerFor]="menu"
+      class="filters-toggle"
+      type="button"
+      aria-label="Toggle filters menu"
+      mat-icon-button
+    >
+      <mat-icon svgIcon="filterBold" aria-label="Filter toggle icon"></mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>All</button>
+      <button mat-menu-item>Alarm</button>
+      <button mat-menu-item>No power</button>
+      <button mat-menu-item>Not responding</button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item>Off</button>
+      <button mat-menu-item>Active</button>
+      <button mat-menu-item>Inactive</button>
+      <button mat-menu-item>Uninitialised</button>
+    </mat-menu>
+  </div>
+</app-page-actions>
 <div class="map-container">
   <div class="map-frame">
     <div id="map"></div>

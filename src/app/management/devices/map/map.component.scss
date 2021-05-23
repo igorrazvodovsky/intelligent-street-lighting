@@ -17,9 +17,9 @@
   height: 100%;
 }
 
-.mat-chip {
-  z-index: 500;
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
+.mat-chip.mat-standard-chip::after {
+  background: none;
+}
+.mat-chip.mat-standard-chip:not(.mat-chip-disabled):active {
+  box-shadow: none;
 }

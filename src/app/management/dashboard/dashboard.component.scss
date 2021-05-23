@@ -23,7 +23,7 @@ section#main {
   padding-left: 0rem;
   grid-column: 1;
   & > * + * {
-    margin-top: 0.5rem;
+    margin-top: 1.5rem;
   }
   .mat-card-subtitle {
     margin-bottom: 0;
@@ -63,7 +63,16 @@ section#main {
   }
 }
 
-// TODO: Move to theme
-.mat-card {
-  border-radius: 0 !important;
+.empty {
+  border: 1px dashed hsla(0, 0%, 0%, 0.1);
+  padding: 4rem 2rem;
+  h3,
+  p {
+    color: hsla(0, 0%, 0%, 0.3);
+    text-align: center;
+    margin: 0;
+  }
+  h3 {
+    color: hsla(0, 0%, 0%, 0.6);
+  }
 }
