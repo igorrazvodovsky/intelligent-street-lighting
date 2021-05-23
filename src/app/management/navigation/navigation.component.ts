@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { MatIconRegistry } from "@angular/material/icon";
-import { DomSanitizer } from "@angular/platform-browser";
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -22,8 +20,6 @@ export class NavigationComponent {
   constructor(
     public router: Router,
     public authService: AuthService,
-    private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer,
     private breakpointObserver: BreakpointObserver
   ) {};
 
