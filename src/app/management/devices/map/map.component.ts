@@ -1,6 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
 import { MarkerService } from '../../../services/marker.service';
+import { ShapeService } from '../../../services/shape.service';
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -22,6 +23,7 @@ const iconDefault = L.icon({
 })
 export class MapComponent implements AfterViewInit {
   private map;
+  private areas;
 
   private initMap(): void {
     this.map = L.map('map', {
@@ -41,13 +43,33 @@ export class MapComponent implements AfterViewInit {
     tiles.addTo(this.map);
   }
 
+  constructor(
+    private markerService: MarkerService,
+    private shapeService: ShapeService
+  ) { }
 
+  private initAreasLayer() {
+    const stateLayer = L.geoJSON(this.areas, {
+      style: (feature) => ({
+        weight: 3,
+        opacity: 0.3,
+        color: '#008f68',
+        fillOpacity: 0.6,
+        fillColor: '#6DB65B'
+      })
+    });
 
-  constructor(private markerService: MarkerService) { }
+    this.map.addLayer(stateLayer);
+  }
 
   ngAfterViewInit(): void {
     this.initMap();
     this.markerService.makeCapitalMarkers(this.map);
+    // TODO: preload the data in a resolver
+    this.shapeService.getStateShapes().subscribe(areas => {
+      this.areas = areas;
+      this.initAreasLayer();
+    });
   }
 
 }

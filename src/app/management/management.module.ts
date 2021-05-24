@@ -25,6 +25,7 @@ import { MatListModule } from '@angular/material/list';
 import { ListComponent } from './devices/list/list.component';
 import { TaskDialogComponent } from './dashboard/tasks/task-dialog/task-dialog.component';
 import { PopupService } from '../services/popup.service';
+import { ShapeService } from '../services/shape.service';
 
 @NgModule({
   imports: [
@@ -56,7 +57,8 @@ import { PopupService } from '../services/popup.service';
   ],
   providers: [
     MarkerService,
-    PopupService
+    PopupService,
+    ShapeService
   ]
 })
 export class ManagementModule {}
