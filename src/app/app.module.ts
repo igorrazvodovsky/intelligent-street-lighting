@@ -37,7 +37,7 @@ const globalRippleConfig: RippleGlobalOptions = {
   bootstrap: [AppComponent],
   providers: [
     { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig },
-    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
   ]
 })
 export class AppModule {

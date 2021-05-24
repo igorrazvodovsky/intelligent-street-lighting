@@ -48,18 +48,42 @@ export class MapComponent implements AfterViewInit {
     private shapeService: ShapeService
   ) { }
 
+  private highlightFeature(e) {
+    const layer = e.target;
+
+    layer.setStyle({
+      opacity: 1.0,
+      color: '#DFA612',
+      fill: true
+    });
+  }
+
+  private resetFeature(e) {
+    const layer = e.target;
+
+    layer.setStyle({
+      opacity: 0.5,
+      color: '#008f68'
+    });
+  }
+
   private initAreasLayer() {
-    const stateLayer = L.geoJSON(this.areas, {
+    const areaLayer = L.geoJSON(this.areas, {
       style: (feature) => ({
-        weight: 3,
-        opacity: 0.3,
+        opacity: 0.5,
         color: '#008f68',
-        fillOpacity: 0.6,
-        fillColor: '#6DB65B'
-      })
+        fill: true
+      }),
+      onEachFeature: (feature, layer) => (
+        layer.on({
+          mouseover: (e) => (this.highlightFeature(e)),
+          mouseout: (e) => (this.resetFeature(e)),
+        })
+      )
     });
 
-    this.map.addLayer(stateLayer);
+    this.map.addLayer(areaLayer);
+    areaLayer.bringToBack();
   }
 
   ngAfterViewInit(): void {
