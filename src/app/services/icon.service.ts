@@ -18,6 +18,7 @@ export enum Bold {
   Search = 'search',
   Admin = 'gear',
   Filter = 'filter',
+  Layers = 'layers',
   ChevronLeft = 'chevronLeft',
   ChevronRight = 'chevronRight'
 }
@@ -25,7 +26,10 @@ export enum Bold {
 export enum Medium {
   Dropdown = 'dropdown',
   Close = 'close',
-  Cancel = 'cancel'
+  Cancel = 'cancel',
+  Location = 'location',
+  Coordinated = 'coordinates',
+  Info = 'info',
 }
 
 export enum Regular {
@@ -35,7 +39,9 @@ export enum Regular {
   Lock = 'lock',
   Message = 'message',
   User = 'user',
-  ChevronRight = 'chevronRight'
+  ChevronRight = 'chevronRight',
+  RadioOn = 'radioOn',
+  RadioOff = 'radioOff'
 }
 
 @Injectable({

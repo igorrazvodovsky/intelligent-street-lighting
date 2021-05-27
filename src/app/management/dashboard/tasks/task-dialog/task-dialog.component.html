@@ -9,26 +9,47 @@
     </mat-chip> -->
   </mat-chip-list>
 
-  <!-- Device -->
+  <mat-card class="mat-elevation-z0">
+    <mat-card-header>
+      <mat-card-title>LC-01-03-D02</mat-card-title>
+      <mat-card-subtitle>
+        Model KN-3, SN000786345
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+      <button mat-button>Details</button>
+      <button mat-button>Show on map</button>
+    </mat-card-actions>
+  </mat-card>
 
-  <!-- Event -->
+</mat-dialog-content>
 
-  <!-- Comments -->
+  <mat-selection-list [multiple]="false">
+    <h3 matSubheader>Event</h3>
+    <mat-list-option class="list-item-icon-right">
+      <mat-icon svgIcon="chevronRightRegular" matListIcon></mat-icon>
+      <h4 matLine>Lamp failure</h4>
+      <p matLine>12:36</p>
+    </mat-list-option>
+  </mat-selection-list>
+
   <mat-list>
-    <mat-list-item>
-<!--      <mat-icon inline svgIcon="chevronRightRegular"></mat-icon>-->
-      <h4 matLine>Event name</h4>
-      <p matLine>Property</p>
-    </mat-list-item>
-    <mat-divider></mat-divider>
     <h3 matSubheader>Comments</h3>
     <mat-list-item>
-      <!-- <mat-icon inline svgIcon="messageRegular"></mat-icon> -->
-      <h4 matLine>John</h4>
+      <h4 matLine>Alec Whitten</h4>
       <p matLine>Haha, no</p>
     </mat-list-item>
+    <mat-list-item>
+      <h4 matLine>Kari Rasmussen</h4>
+      <p matLine>
+        We’ll be creating a visualization of population density per US state. As the amount of data (state shapes and
+        the density value for each state) is not very big, the most convenient and simple way to store and then display
+        it is GeoJSON.
+      </p>
+    </mat-list-item>
   </mat-list>
-</mat-dialog-content>
+
 <mat-dialog-actions align="end">
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Close</button>
+  <button mat-button [mat-dialog-close]="true">Close</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Update status</button>
 </mat-dialog-actions>

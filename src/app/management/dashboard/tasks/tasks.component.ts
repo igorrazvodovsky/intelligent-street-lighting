@@ -1,27 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskDialogComponent } from './task-dialog/task-dialog.component';
-
-export interface Comment {
-  id: number;
-  author: any;
-  comment: string;
-  created: Date;
-}
-
-export interface Task {
-  id: number;
-  title: string;
-  description?: string;
-  status: string;
-  priority: string;
-  device: string;
-  eventId: number;
-  assignee: string;
-  created: Date;
-  updated: Date;
-  comments: any;
-}
+import { Task, Comment } from '../../../types'
 
 @Component({
   selector: 'tasks',
@@ -107,6 +87,7 @@ export class TasksComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
   openDialog(task) {
     const dialogRef = this.dialog.open(TaskDialogComponent, {
+      id: 'task-dialog',
       data: { task: task },
     });
 

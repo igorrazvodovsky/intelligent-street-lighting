@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DeviceGroup } from '../../../types'
 
-export interface DeviceGroup {
-  name: string;
-  lamps: number;
-  profile: string;
-}
 
 @Component({
   selector: 'devices-list',

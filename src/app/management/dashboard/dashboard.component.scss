@@ -1,9 +1,15 @@
 :host {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(3, minmax(240px, 1fr));
   padding: 0 0 0 4.5rem;
+  height: 100%;
+
+  & > app-page-actions {
+    display: none;
+  }
 
   & > section {
+    height: 100%;
     padding: 5rem 1.5rem 2rem 1.5rem;
     &:last-of-type {
       padding-right: 0;
@@ -21,7 +27,6 @@ section#activity {
 
 section#main {
   padding-left: 0rem;
-  grid-column: 1;
   & > * + * {
     margin-top: 1.5rem;
   }

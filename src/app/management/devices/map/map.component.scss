@@ -23,3 +23,15 @@
 .mat-chip.mat-standard-chip:not(.mat-chip-disabled):active {
   box-shadow: none;
 }
+
+// TODO: Specify
+.mat-menu-item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.mat-menu-item .mat-icon {
+  margin-right: 0;
+}

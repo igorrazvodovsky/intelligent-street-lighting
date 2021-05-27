@@ -148,3 +148,31 @@ button {
 .mat-form-field-underline {
   display: none !important;
 }
+
+#task-dialog.mat-dialog-container {
+  max-width: 50vmax;
+  padding: 1.5rem 0 1.5rem 0;
+  .mat-dialog-content, .mat-dialog-title, .mat-dialog-actions {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+  .mat-dialog-content, .mat-dialog-title {
+    padding: 0;
+  }
+
+  .mat-list-item-content {
+    padding: 0 1.5rem;
+  }
+  .mat-subheader {
+    padding: 0 1.5rem;
+  }
+}
+
+.mat-list-item.list-item-icon-right {
+  .mat-icon {
+    order: -1;
+  }
+  .mat-list-text {
+    padding: 0 !important;
+  }
+}

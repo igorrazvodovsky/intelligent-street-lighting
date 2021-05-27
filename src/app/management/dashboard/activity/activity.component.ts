@@ -1,13 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Activity } from '../../../types'
 
-export interface Activity {
-  type: string;
-  subject: string;
-  details: string;
-  object: {};
-  avatar?: string;
-  created: Date;
-}
 
 @Component({
   selector: 'activity',
