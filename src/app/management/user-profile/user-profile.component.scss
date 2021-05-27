@@ -1,9 +1,12 @@
 :host {
-  display: flex;
+  display: block;
   padding: 5rem 3.5rem;
   gap: 1rem;
   & > .mat-card {
     width: 100%;
+  }
+  & > * + * {
+    margin-top: 1rem;
   }
 }
 
@@ -28,4 +31,12 @@
 
 .col:last-child {
   margin-right: 0;
+}
+
+.org__list-item {
+  .mat-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }

@@ -20,7 +20,8 @@ export enum Bold {
   Filter = 'filter',
   Layers = 'layers',
   ChevronLeft = 'chevronLeft',
-  ChevronRight = 'chevronRight'
+  ChevronRight = 'chevronRight',
+  Map = 'map'
 }
 
 export enum Medium {
@@ -30,6 +31,7 @@ export enum Medium {
   Location = 'location',
   Coordinated = 'coordinates',
   Info = 'info',
+  Trash = 'trash'
 }
 
 export enum Regular {

@@ -10,6 +10,7 @@ import { map, shareReplay } from 'rxjs/operators';
 })
 export class LayoutComponent {
   opened: boolean;
+  maximized: boolean = false;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -17,5 +18,11 @@ export class LayoutComponent {
     );
 
   constructor(private breakpointObserver: BreakpointObserver) {}
+
+  public toggleMaximize() {
+    this.maximized = !this.maximized
+  }
+
+
 
 }

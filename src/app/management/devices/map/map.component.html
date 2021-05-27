@@ -1,76 +1,74 @@
-<app-page-actions>
-  <div></div>
-  <div>
-    <mat-chip removable>
-      No power
-      <mat-icon svgIcon="closeMedium" matChipRemove></mat-icon>
-    </mat-chip>
-    <button
-      [matMenuTriggerFor]="menuFilters"
-      class="filters-toggle"
-      type="button"
-      aria-label="Toggle filters menu"
-      mat-icon-button
-    >
-      <mat-icon svgIcon="filterBold" aria-label="Filter toggle icon"></mat-icon>
+<div>
+  <mat-chip removable>
+    No power
+    <mat-icon svgIcon="closeMedium" matChipRemove></mat-icon>
+  </mat-chip>
+  <button
+    [matMenuTriggerFor]="menuFilters"
+    class="filters-toggle"
+    type="button"
+    aria-label="Toggle filters menu"
+    mat-icon-button
+  >
+    <mat-icon svgIcon="filterBold" aria-label="Filter toggle icon"></mat-icon>
+  </button>
+  <mat-menu class="filter-menu" #menuFilters="matMenu">
+    <button mat-menu-item>All</button>
+    <button mat-menu-item>Alarm</button>
+    <button mat-menu-item>No power</button>
+    <button mat-menu-item>Not responding</button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item>Off</button>
+    <button mat-menu-item>Active</button>
+    <button mat-menu-item>Inactive</button>
+    <button mat-menu-item>Uninitialised</button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item>
+      Show sensor icons
+      <mat-slide-toggle></mat-slide-toggle>
     </button>
-    <mat-menu class="filter-menu" #menuFilters="matMenu">
-      <button mat-menu-item>All</button>
-      <button mat-menu-item>Alarm</button>
-      <button mat-menu-item>No power</button>
-      <button mat-menu-item>Not responding</button>
-      <mat-divider></mat-divider>
-      <button mat-menu-item>Off</button>
-      <button mat-menu-item>Active</button>
-      <button mat-menu-item>Inactive</button>
-      <button mat-menu-item>Uninitialised</button>
-      <mat-divider></mat-divider>
-      <button mat-menu-item>
-        Show sensor icons
-        <mat-slide-toggle></mat-slide-toggle>
-      </button>
-      <!-- TODO: check for a11y issues -->
-      <!-- https://github.com/angular/components/issues/9739-->
-      <button mat-menu-item>
-        Sensor icons
-        <mat-slide-toggle></mat-slide-toggle>
-      </button>
-      <button mat-menu-item>
-        Device names
-        <mat-slide-toggle></mat-slide-toggle>
-      </button>
-    </mat-menu>
+    <!-- TODO: check for a11y issues -->
+    <!-- https://github.com/angular/components/issues/9739-->
+    <button mat-menu-item>
+      Sensor icons
+      <mat-slide-toggle></mat-slide-toggle>
+    </button>
+    <button mat-menu-item>
+      Device names
+      <mat-slide-toggle></mat-slide-toggle>
+    </button>
+  </mat-menu>
 
-    <button
-      [matMenuTriggerFor]="menuLayers"
-      class="filters-toggle"
-      type="button"
-      aria-label="Toggle layers menu"
-      mat-icon-button
-    >
-      <mat-icon svgIcon="layersBold" aria-label="Layer toggle icon"></mat-icon>
+  <button
+    [matMenuTriggerFor]="menuLayers"
+    class="filters-toggle"
+    type="button"
+    aria-label="Toggle layers menu"
+    mat-icon-button
+  >
+    <mat-icon svgIcon="layersBold" aria-label="Layer toggle icon"></mat-icon>
+  </button>
+  <mat-menu class="filter-menu" #menuLayers="matMenu">
+    <button mat-menu-item>
+      Areas
+      <mat-slide-toggle></mat-slide-toggle>
     </button>
-    <mat-menu class="filter-menu" #menuLayers="matMenu">
-      <button mat-menu-item>
-        Areas
-        <mat-slide-toggle></mat-slide-toggle>
-      </button>
-      <button mat-menu-item>
-        Profiles
-        <mat-slide-toggle></mat-slide-toggle>
-      </button>
-      <mat-divider></mat-divider>
-      <button mat-menu-item>
-        Street
-        <mat-icon svgIcon="radioOnRegular"></mat-icon>
-      </button>
-      <button mat-menu-item>
-        Hybrid
-        <mat-icon svgIcon="radioOffRegular"></mat-icon>
-      </button>
-    </mat-menu>
-  </div>
-</app-page-actions>
+    <button mat-menu-item>
+      Profiles
+      <mat-slide-toggle></mat-slide-toggle>
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item>
+      Street
+      <mat-icon svgIcon="radioOnRegular"></mat-icon>
+    </button>
+    <button mat-menu-item>
+      Hybrid
+      <mat-icon svgIcon="radioOffRegular"></mat-icon>
+    </button>
+  </mat-menu>
+</div>
+
 <div class="map-container">
   <div class="map-frame">
     <div id="map"></div>

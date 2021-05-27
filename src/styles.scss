@@ -152,11 +152,14 @@ button {
 #task-dialog.mat-dialog-container {
   max-width: 50vmax;
   padding: 1.5rem 0 1.5rem 0;
-  .mat-dialog-content, .mat-dialog-title, .mat-dialog-actions {
+  .mat-dialog-content,
+  .mat-dialog-title,
+  .mat-dialog-actions {
     margin-left: 1.5rem;
     margin-right: 1.5rem;
   }
-  .mat-dialog-content, .mat-dialog-title {
+  .mat-dialog-content,
+  .mat-dialog-title {
     padding: 0;
   }
 

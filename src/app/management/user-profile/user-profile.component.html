@@ -9,6 +9,10 @@
       <mat-card-title>Personal information</mat-card-title>
     </mat-card-header>
     <mat-card-content>
+      <mat-form-field class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" />
+      </mat-form-field>
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
@@ -33,12 +37,85 @@
           </mat-form-field>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Phone</mat-label>
+            <input matInput type="tel" formControlName="phone" />
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Time zone</mat-label>
+            <input matInput formControlName="timezone" />
+          </mat-form-field>
+        </div>
+      </div>
     </mat-card-content>
   </form>
 </mat-card>
 
 <mat-card class="mat-elevation-z0">
   <mat-card-header>
-    <mat-card-title>Security</mat-card-title>
+    <mat-card-title>Change password</mat-card-title>
   </mat-card-header>
+  <mat-card-content>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+          <mat-label>New password</mat-label>
+          <input matInput formControlName="password" />
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="full-width">
+          <mat-label>Repeat new password</mat-label>
+          <input matInput formControlName="passwordRepeat" />
+        </mat-form-field>
+      </div>
+    </div>
+    <button mat-stroked-button>Change</button>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="mat-elevation-z0">
+  <mat-card-header>
+    <mat-card-title>Organisations</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-selection-list [multiple]="false">
+      <mat-list-option class="org__list-item list-item-icon-right">
+        <mat-icon mat-list-icon svgIcon="trashMedium"></mat-icon>
+        <div mat-line>
+          Daugavpils
+          <button mat-button [matMenuTriggerFor]="menu">
+            Fitter<mat-icon svgIcon="dropdownMedium"></mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Organisation administrator</button>
+            <button mat-menu-item>City administrator</button>
+            <button mat-menu-item>Fitter</button>
+          </mat-menu>
+        </div>
+      </mat-list-option>
+      <mat-list-option> Add </mat-list-option>
+    </mat-selection-list>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="mat-elevation-z0">
+  <mat-card-header>
+    <mat-card-title>Notifications</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list role="list">
+      <mat-list-item role="listitem">The voltage is too low</mat-list-item>
+      <mat-list-item role="listitem">Power is too low</mat-list-item>
+      <mat-list-item role="listitem">Power is too high</mat-list-item>
+    </mat-list>
+    <mat-selection-list [multiple]="false">
+      <mat-list-option> Edit </mat-list-option>
+    </mat-selection-list>
+  </mat-card-content>
 </mat-card>
