@@ -1,0 +1,24 @@
+<mat-accordion id="permissions">
+  <mat-expansion-panel
+    *ngFor="let permissionGroup of permissions"
+    class="mat-elevation-z0"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{ permissionGroup.name }}</mat-panel-title>
+      <mat-panel-description>
+        <ng-container *ngFor="let permisssion of permissionGroup.permissions">
+          {{ permisssion.enabled ? permisssion.name : "" }}
+        </ng-container>
+        <!-- {{ permissionGroup.permissions | pluck: "enabled" | json }} -->
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-selection-list
+      *ngFor="let permission of permissionGroup.permissions"
+      #permissionsList
+    >
+      <mat-list-option>
+        {{ permission.name }}
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-expansion-panel>
+</mat-accordion>

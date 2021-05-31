@@ -67,14 +67,18 @@ body {
   // margin-left: 0 !important;
 }
 
+.text-primary {
+  color: hsla(0, 0%, 0%, 0.9);
+}
+
 .text-secondary {
   color: hsla(0, 0%, 0%, 0.6);
 }
 
-svg,
-path {
-  fill: currentColor;
-}
+// svg,
+// path {
+//   fill: currentColor;
+// }
 
 button.active {
   background: mat-color($mat-amber, 400);
@@ -177,5 +181,30 @@ button {
   }
   .mat-list-text {
     padding: 0 !important;
+  }
+}
+
+#permissions {
+  .mat-expansion-panel-body {
+    padding: 0.5rem;
+  }
+}
+
+#device {
+  .mat-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .mat-expansion-panel-body {
+    padding: 1rem 1.5rem;
+    & > .mat-form-field + .mat-form-field {
+      margin-left: 1rem;
+    }
+  }
+  .mat-expansion-panel.mat-expanded {
+    background: hsla(0, 0%, 0%, 0.05);
+  }
+  .mat-expansion-panel-header.mat-expanded {
+    height: 48px;
   }
 }

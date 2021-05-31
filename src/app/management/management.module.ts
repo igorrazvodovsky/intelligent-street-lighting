@@ -17,15 +17,12 @@ import { TasksComponent } from './dashboard/tasks/tasks.component';
 import { ActivityComponent } from './dashboard/activity/activity.component';
 import { LayoutComponent } from './devices/layout/layout.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
 import { ListComponent } from './devices/list/list.component';
 import { TaskDialogComponent } from './dashboard/tasks/task-dialog/task-dialog.component';
 import { PopupService } from '../services/popup.service';
 import { ShapeService } from '../services/shape.service';
+import { PermissionsComponent } from './user-profile/permissions/permissions.component';
+import { DeviceComponent } from './devices/device/device.component'
 
 @NgModule({
   imports: [
@@ -36,11 +33,7 @@ import { ShapeService } from '../services/shape.service';
     SharedModule,
     HttpClientModule,
     LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule
+
   ],
   declarations: [
     NavigationComponent,
@@ -53,7 +46,9 @@ import { ShapeService } from '../services/shape.service';
     ActivityComponent,
     LayoutComponent,
     ListComponent,
-    TaskDialogComponent
+    TaskDialogComponent,
+    PermissionsComponent,
+    DeviceComponent
   ],
   providers: [
     MarkerService,

@@ -1,0 +1,69 @@
+<div class="breadcrumbs">
+  <button mat-button [matMenuTriggerFor]="menu">
+    Daugavpils<mat-icon svgIcon="dropdownMedium"></mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Daugavpils</button>
+    <button mat-menu-item>Valka</button>
+  </mat-menu>
+  Tabore → Upes iela
+</div>
+<h1>Lamp 01-03</h1>
+<mat-tab-group id="device">
+  <mat-tab label="Overview">
+    <h3>Controller health</h3>
+    <mat-accordion>
+      <mat-expansion-panel class="mat-elevation-z0">
+        <mat-expansion-panel-header>
+          <mat-panel-title> Communication </mat-panel-title>
+          <mat-panel-description>
+            <p><span class="text-primary">60%.</span> Alert if less than 50.</p>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-form-field>
+          <mat-label>Alert if less than</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>or more than</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <p><small>Updated 5 min ago.</small></p>
+      </mat-expansion-panel>
+      <mat-expansion-panel class="mat-elevation-z0">
+        <mat-expansion-panel-header>
+          <mat-panel-title> Temperature </mat-panel-title>
+          <mat-panel-description>
+            <p>
+              <span class="text-primary">35°C.</span> Alert if more than 70.
+            </p>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>This is the primary content of the panel.</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <ul class="mat-subheading-1">
+      <li>
+        <mat-checkbox>Communication, %</mat-checkbox>
+      </li>
+      <li>
+        <mat-checkbox>Temperature, °C</mat-checkbox>
+      </li>
+    </ul>
+
+    <!-- <ul>
+      <li *ngFor="let subtask of task.subtasks">
+        <mat-checkbox [(ngModel)]="subtask.completed"
+                      [color]="subtask.color"
+                      (ngModelChange)="updateAllComplete()">
+          {{subtask.name}}
+        </mat-checkbox>
+      </li>
+    </ul> -->
+  </mat-tab>
+  <mat-tab label="Motion sensor"> Content 2 </mat-tab>
+  <mat-tab label="Measurements"> Content 3 </mat-tab>
+  <mat-tab label="Information"> Content 2 </mat-tab>
+  <mat-tab label="History"> Content 3 </mat-tab>
+</mat-tab-group>
