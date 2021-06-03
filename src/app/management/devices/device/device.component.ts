@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Chart } from 'angular-highcharts';
+import { Options } from 'highcharts';
 
 export interface MeasurementGroup {
   name: string,
@@ -31,66 +33,66 @@ export class DeviceComponent implements OnInit {
     {
       name: "Controller health",
       measurements: [
-      {
-        name: "Communication",
-        units: "%",
-        values: [
-          {
-            value: 60,
-            date: new Date()
+        {
+          name: "Communication",
+          units: "%",
+          values: [
+            {
+              value: 60,
+              date: new Date()
+            }
+          ],
+          thresholds: {
+            min: 50,
           }
-        ],
-        thresholds: {
-          min: 50,
-        }
-      },
-      {
-        name: "Temperature",
-        units: "°C",
-        values: [
-          {
-            value: 32.2,
-            date: new Date()
+        },
+        {
+          name: "Temperature",
+          units: "°C",
+          values: [
+            {
+              value: 32.2,
+              date: new Date()
+            }
+          ],
+          thresholds: {
+            min: 50,
           }
-        ],
-        thresholds: {
-          min: 50,
         }
-      }
-    ]
-  },
+      ]
+    },
     {
       name: "Controller health",
       measurements: [
-      {
-        name: "Communication",
-        units: "%",
-        values: [
-          {
-            value: 60,
-            date: new Date()
+        {
+          name: "Communication",
+          units: "%",
+          values: [
+            {
+              value: 60,
+              date: new Date()
+            }
+          ],
+          thresholds: {
+            min: 50,
           }
-        ],
-        thresholds: {
-          min: 50,
-        }
-      },
-      {
-        name: "Temperature",
-        units: "°C",
-        values: [
-          {
-            value: 32.2,
-            date: new Date()
+        },
+        {
+          name: "Temperature",
+          units: "°C",
+          values: [
+            {
+              value: 32.2,
+              date: new Date()
+            }
+          ],
+          thresholds: {
+            min: 50,
           }
-        ],
-        thresholds: {
-          min: 50,
         }
-      }
-    ]
-  }
-];
+      ]
+    }
+  ];
 
   constructor() { }
 

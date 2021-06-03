@@ -22,7 +22,9 @@ import { TaskDialogComponent } from './dashboard/tasks/task-dialog/task-dialog.c
 import { PopupService } from '../services/popup.service';
 import { ShapeService } from '../services/shape.service';
 import { PermissionsComponent } from './user-profile/permissions/permissions.component';
-import { DeviceComponent } from './devices/device/device.component'
+import { DeviceComponent } from './devices/device/device.component';
+import { ChartComponent } from './devices/device/chart/chart.component'
+import { ChartModule } from 'angular-highcharts';
 
 @NgModule({
   imports: [
@@ -33,7 +35,7 @@ import { DeviceComponent } from './devices/device/device.component'
     SharedModule,
     HttpClientModule,
     LayoutModule,
-
+    ChartModule
   ],
   declarations: [
     NavigationComponent,
@@ -48,7 +50,8 @@ import { DeviceComponent } from './devices/device/device.component'
     ListComponent,
     TaskDialogComponent,
     PermissionsComponent,
-    DeviceComponent
+    DeviceComponent,
+    ChartComponent
   ],
   providers: [
     MarkerService,
