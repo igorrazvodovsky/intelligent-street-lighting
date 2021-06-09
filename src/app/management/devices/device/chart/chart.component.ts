@@ -11,7 +11,8 @@ export class ChartComponent implements OnInit {
 chart = new Chart({
     chart: {
         type: 'line',
-        inverted: true
+        inverted: true,
+        styledMode: true
     },
     title:{
         text:''

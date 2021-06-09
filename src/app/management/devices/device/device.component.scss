@@ -4,6 +4,7 @@
 }
 
 .breadcrumbs {
+  color: hsla(0, 0%, 0%, 0.6);
   margin-bottom: 1rem;
 }
 
@@ -28,4 +29,19 @@ ul {
   li {
     padding: 0.25rem 0;
   }
+}
+
+#chart {
+  ul {
+    float: left;
+  }
+  device-chart {
+    float: right;
+  }
+}
+
+#list-chart-toggle {
+  position: absolute;
+  right: 0.5rem;
+  top: 1rem;
 }

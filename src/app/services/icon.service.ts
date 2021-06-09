@@ -31,7 +31,8 @@ export enum Medium {
   Location = 'location',
   Coordinated = 'coordinates',
   Info = 'info',
-  Trash = 'trash'
+  Trash = 'trash',
+  Chart = 'chart'
 }
 
 export enum Regular {

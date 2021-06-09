@@ -28,6 +28,7 @@ export interface Measurement {
   styleUrls: ['./device.component.scss']
 })
 export class DeviceComponent implements OnInit {
+  chart: boolean = false;
 
   measurements: MeasurementGroup[] = [
     {
@@ -97,6 +98,10 @@ export class DeviceComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  public toggleChart() {
+    this.chart = !this.chart
   }
 
 }

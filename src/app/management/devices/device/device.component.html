@@ -1,16 +1,28 @@
-<div class="breadcrumbs">
-  <button mat-button [matMenuTriggerFor]="menu">
-    Daugavpils<mat-icon svgIcon="dropdownMedium"></mat-icon>
+<div class="breadcrumbs mat-body-2">
+  <button class="btn-link mat-body-2" [matMenuTriggerFor]="menu">
+    Daugavpils
   </button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item>Daugavpils</button>
     <button mat-menu-item>Valka</button>
   </mat-menu>
-  Tabore → Upes iela
+  → Tabore → Upes iela
 </div>
 <h1>Lamp 01-03</h1>
 <mat-tab-group id="device">
   <mat-tab label="Overview">
+    <button
+      [color]="chart ? '' : 'accent'"
+      id="list-chart-toggle"
+      class="mat-elevation-z0"
+      type="button"
+      aria-label="Toggle sidenav"
+      mat-mini-fab
+      (click)="toggleChart()"
+      matTooltip="Show history"
+    >
+      <mat-icon svgIcon="chartMedium" aria-label="List toggle icon"></mat-icon>
+    </button>
     <h3>Controller health</h3>
     <mat-accordion>
       <mat-expansion-panel class="mat-elevation-z0">
@@ -43,26 +55,28 @@
       </mat-expansion-panel>
     </mat-accordion>
 
-    <ul class="mat-subheading-1">
-      <li>
-        <mat-checkbox>Communication, %</mat-checkbox>
-      </li>
-      <li>
-        <mat-checkbox>Temperature, °C</mat-checkbox>
-      </li>
-    </ul>
+    <section id="chart">
+      <ul class="mat-subheading-1">
+        <li>
+          <mat-checkbox>Communication, %</mat-checkbox>
+        </li>
+        <li>
+          <mat-checkbox>Temperature, °C</mat-checkbox>
+        </li>
+      </ul>
 
-    <!-- <ul>
-      <li *ngFor="let subtask of task.subtasks">
-        <mat-checkbox [(ngModel)]="subtask.completed"
-                      [color]="subtask.color"
-                      (ngModelChange)="updateAllComplete()">
-          {{subtask.name}}
-        </mat-checkbox>
-      </li>
-    </ul> -->
+      <!-- <ul>
+        <li *ngFor="let subtask of task.subtasks">
+          <mat-checkbox [(ngModel)]="subtask.completed"
+                        [color]="subtask.color"
+                        (ngModelChange)="updateAllComplete()">
+            {{subtask.name}}
+          </mat-checkbox>
+        </li>
+      </ul> -->
 
-    <device-chart></device-chart>
+      <device-chart></device-chart>
+    </section>
   </mat-tab>
   <mat-tab label="Motion sensor"> Content 2 </mat-tab>
   <mat-tab label="Measurements"> Content 3 </mat-tab>
