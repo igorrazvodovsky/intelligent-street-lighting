@@ -22,7 +22,4 @@ export class LayoutComponent {
   public toggleMaximize() {
     this.maximized = !this.maximized
   }
-
-
-
 }

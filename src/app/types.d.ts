@@ -55,3 +55,8 @@ export interface Activity {
   avatar?: string;
   created: Date;
 }
+
+export interface Device {
+  id: number;
+  name: string;
+}

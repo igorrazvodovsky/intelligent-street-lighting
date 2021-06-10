@@ -23,11 +23,11 @@ export interface Measurement {
 }
 
 @Component({
-  selector: 'devices-device',
-  templateUrl: './device.component.html',
-  styleUrls: ['./device.component.scss']
+  selector: 'device-detail',
+  templateUrl: './device-detail.component.html',
+  styleUrls: ['./device-detail.component.scss']
 })
-export class DeviceComponent implements OnInit {
+export class DeviceDetailComponent implements OnInit {
   chart: boolean = false;
 
   measurements: MeasurementGroup[] = [

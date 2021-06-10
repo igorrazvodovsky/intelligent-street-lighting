@@ -1,13 +1,18 @@
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
-import { DeviceGroup } from '../../../types'
-
+import { DeviceGroup, Device } from '../../../types'
+import { ActivatedRoute } from '@angular/router';
+import { DeviceService } from '../../../services/device.service';
 
 @Component({
-  selector: 'devices-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  selector: 'device-list',
+  templateUrl: './device-list.component.html',
+  styleUrls: ['./device-list.component.scss']
 })
-export class ListComponent implements OnInit {
+export class DeviceListComponent implements OnInit {
+  devices$!: Observable<Device[]>;
+  selectedId = 0;
   groups: DeviceGroup[] = [
     {
         name: 'Dzelzceļnieks',
@@ -60,9 +65,19 @@ export class ListComponent implements OnInit {
     profile: 'Default'
   }
   ];
-  constructor() { }
 
-  ngOnInit(): void {
+  constructor(
+    private service: DeviceService,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
+    this.devices$ = this.route.paramMap.pipe(
+      switchMap(params => {
+        this.selectedId = parseInt(params.get('id')!, 10);
+        return this.service.getDevices();
+      })
+    );
   }
 
 }

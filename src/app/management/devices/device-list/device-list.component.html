@@ -15,6 +15,17 @@
   <mat-chip color="accent" selected>Accent property</mat-chip>
 </mat-chip-list>
 
+<ul>
+  <li
+    *ngFor="let device of devices$ | async"
+    [class.selected]="device.id === selectedId"
+  >
+    <a [routerLink]="[device.id]">
+      {{ device.name }}
+    </a>
+  </li>
+</ul>
+
 <mat-selection-list role="list" [multiple]="false">
   <mat-list-option role="listitem" *ngFor="let group of groups">
     <!-- <mat-icon matListIcon svgIcon="chevronRightRegular"></mat-icon> -->
