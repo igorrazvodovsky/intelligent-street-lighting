@@ -33,7 +33,8 @@ export enum Medium {
   Info = 'info',
   Trash = 'trash',
   Chart = 'chart',
-  Alert = 'alert'
+  Alert = 'alert',
+  History = 'history'
 }
 
 export enum Regular {
@@ -49,7 +50,8 @@ export enum Regular {
   Move = 'move',
   Delete = 'delete',
   Firmware = 'firmware',
-  Sun = 'sun'
+  Sun = 'sun',
+  Enter = 'enter'
 }
 
 @Injectable({

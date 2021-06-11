@@ -1,1 +1,61 @@
-<p>device-motion-sensor works!</p>
+<mat-accordion>
+  <mat-expansion-panel class="mat-elevation-z0" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Status</mat-panel-title>
+      <mat-panel-description> On </mat-panel-description>
+    </mat-expansion-panel-header>
+    ???
+  </mat-expansion-panel>
+  <mat-divider></mat-divider>
+  <mat-expansion-panel class="mat-elevation-z0" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Sensitivity</mat-panel-title>
+      <mat-panel-description> 63% </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-slider aria-label="unit(s)"></mat-slider>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-divider></mat-divider>
+<h3>Friends</h3>
+<small class="text-secondary">Maximum 10</small>
+<mat-list>
+  <mat-list-item>
+    <p matLine>7611</p>
+    <button mat-icon-button aria-label="Remove friend">
+      <mat-icon svgIcon="deleteRegular"></mat-icon>
+    </button>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item>
+    <p matLine>7612</p>
+    <button mat-icon-button aria-label="Remove friend">
+      <mat-icon svgIcon="deleteRegular"></mat-icon>
+    </button>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item>
+    <p matLine>7613</p>
+    <button mat-icon-button aria-label="Remove friend">
+      <mat-icon svgIcon="deleteRegular"></mat-icon>
+    </button>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+</mat-list>
+
+<mat-form-field appearance="standard">
+  <mat-label>Add friend</mat-label>
+  <input
+    type="text"
+    placeholder="Pick one"
+    aria-label="Number"
+    matInput
+    [matAutocomplete]="auto"
+  />
+  <mat-icon matSuffix svgIcon="enterRegular"></mat-icon>
+
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let option of options" [value]="option">
+      {{ option }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
