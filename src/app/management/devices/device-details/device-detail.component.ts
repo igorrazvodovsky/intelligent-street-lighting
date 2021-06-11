@@ -1,26 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Chart } from 'angular-highcharts';
-import { Options } from 'highcharts';
-
-export interface MeasurementGroup {
-  name: string,
-  measurements: Measurement[]
-}
-
-export interface Measurement {
-  name: string,
-  units: string,
-  values: [
-    {
-      value: number,
-      date: Date
-    }
-  ],
-  thresholds: {
-    min?: number,
-    max?: number
-  }
-}
+import { Device, MeasurementGroup } from '../../../types'
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { DeviceService } from '../../../services/device.service'
 
 @Component({
   selector: 'device-detail',
@@ -28,6 +11,7 @@ export interface Measurement {
   styleUrls: ['./device-detail.component.scss']
 })
 export class DeviceDetailComponent implements OnInit {
+  device$!: Observable<Device>;
   chart: boolean = false;
 
   measurements: MeasurementGroup[] = [
@@ -95,9 +79,17 @@ export class DeviceDetailComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private service: DeviceService
+  ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.device$ = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) =>
+        this.service.getDevice(params.get('id')!))
+    );
   }
 
   public toggleChart() {

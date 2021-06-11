@@ -61,3 +61,23 @@ export interface Device {
   id: number;
   name: string;
 }
+
+export interface MeasurementGroup {
+  name: string,
+  measurements: Measurement[]
+}
+
+export interface Measurement {
+  name: string,
+  units: string,
+  values: [
+    {
+      value: number,
+      date: Date
+    }
+  ],
+  thresholds: {
+    min?: number,
+    max?: number
+  }
+}
