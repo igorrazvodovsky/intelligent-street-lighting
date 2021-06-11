@@ -215,3 +215,23 @@ button {
     vertical-align: middle;
   }
 }
+
+.breadcrumbs {
+  color: hsla(0, 0%, 0%, 0.6);
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  a {
+    text-decoration: none;
+  }
+  a,
+  button {
+    @include transition;
+    color: hsla(0, 0%, 0%, 0.6);
+    &:hover {
+      color: hsla(0, 0%, 0%, 0.9);
+    }
+  }
+  & :last-child {
+    color: hsla(0, 0%, 0%, 0.9) !important;
+  }
+}

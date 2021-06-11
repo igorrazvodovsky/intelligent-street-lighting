@@ -1,31 +1,28 @@
-<div class="breadcrumbs mat-body-2">
+<div class="breadcrumbs">
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Daugavpils</button>
+    <button mat-menu-item>Valka</button>
+  </mat-menu>
   <button class="btn-link mat-body-2" [matMenuTriggerFor]="menu">
     Daugavpils
   </button>
-  <mat-menu #menu="matMenu">
-    <button routerLink="../" mat-menu-item>Daugavpils</button>
-    <button disabled mat-menu-item>Valka</button>
-  </mat-menu>
-  → <span>Group name</span>
 </div>
 
-<mat-chip-list aria-label="Fish selection">
+<mat-chip-list aria-label="Filters">
   <mat-chip>Property</mat-chip>
   <mat-chip>Another property</mat-chip>
   <mat-chip color="primary" selected>Primary property</mat-chip>
   <mat-chip color="accent" selected>Accent property</mat-chip>
 </mat-chip-list>
 
-<!-- [class.selected]="device.id === selectedId" -->
-
 <mat-selection-list role="list" [multiple]="false">
   <mat-list-option
-    [routerLink]="[device.id]"
+    [routerLink]="[group.id]"
     role="listitem"
-    *ngFor="let device of devices$ | async"
+    *ngFor="let group of groups"
   >
     <!-- <mat-icon matListIcon svgIcon="chevronRightRegular"></mat-icon> -->
-    <div matLine>{{ device.name }}</div>
-    <span matLine>1 luminaire, surge protector, motion sensor</span>
+    <div matLine>{{ group.name }}</div>
+    <span matLine>{{ group.lamps }} lamps, {{ group.profile }} profile</span>
   </mat-list-option>
 </mat-selection-list>

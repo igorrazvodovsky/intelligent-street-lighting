@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { DevicesComponent } from './devices.component'
 import { DeviceListComponent } from './device-list/device-list.component'
+import { GroupListComponent } from './group-list/group-list.component'
 import { DeviceDetailComponent } from './device-details/device-detail.component'
 
 const devicesRoutes: Routes = [
@@ -13,9 +14,10 @@ const devicesRoutes: Routes = [
       {
         path: '',
         children: [
-          { path: ':id', component: DeviceDetailComponent, data: { animation: 'device' } },
+          { path: ':id/:id', component: DeviceDetailComponent, data: { animation: 'device' } },
+          { path: ':id', component: DeviceListComponent, data: { animation: 'device' } },
           { path: '',
-            component: DeviceListComponent,
+            component: GroupListComponent,
             data: { animation: 'devices' },
             pathMatch: 'full'
           }

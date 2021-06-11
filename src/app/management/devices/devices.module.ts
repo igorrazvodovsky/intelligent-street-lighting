@@ -5,7 +5,6 @@ import { SharedModule } from '../../shared/shared.module';
 import { DevicesComponent } from './devices.component';
 import { DeviceListComponent } from './device-list/device-list.component';
 import { DeviceDetailComponent } from './device-details/device-detail.component';
-import { LayoutComponent } from './layout/layout.component';
 import { MapComponent } from './map/map.component';
 
 import { ChartComponent } from './device-details/chart/chart.component'
@@ -16,6 +15,7 @@ import { PopupService } from '../../services/popup.service';
 import { ShapeService } from '../../services/shape.service';
 
 import { DevicesRoutingModule } from './devices-routing.module';
+import { GroupListComponent } from './group-list/group-list.component';
 
 
 @NgModule({
@@ -23,9 +23,9 @@ import { DevicesRoutingModule } from './devices-routing.module';
     DevicesComponent,
     DeviceListComponent,
     DeviceDetailComponent,
-    LayoutComponent,
     ChartComponent,
-    MapComponent
+    MapComponent,
+    GroupListComponent
   ],
   imports: [
     CommonModule,

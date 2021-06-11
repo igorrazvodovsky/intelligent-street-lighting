@@ -42,6 +42,7 @@ export interface Alert {
 }
 
 export interface DeviceGroup {
+  id: number,
   name: string;
   lamps: number;
   profile: string;
