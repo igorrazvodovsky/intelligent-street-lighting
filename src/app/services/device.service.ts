@@ -17,7 +17,6 @@ export class DeviceService {
     return groups;
   }
 
-
   getGroup(id: number | string) {
     return this.getGroups().pipe(
       // (+) before `id` turns the string into a number
@@ -30,7 +29,6 @@ export class DeviceService {
     this.messageService.add('DeviceService: fetched devices');
     return devices;
   }
-
 
   getDevice(id: number | string) {
     return this.getDevices().pipe(

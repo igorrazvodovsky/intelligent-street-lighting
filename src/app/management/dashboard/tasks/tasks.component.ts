@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskDialogComponent } from './task-dialog/task-dialog.component';
-import { Task, Comment } from '../../../types'
+import { Task } from '../../../types'
+import { TaskService } from '../../../services/task.service';
 
 @Component({
   selector: 'tasks',
@@ -9,82 +10,10 @@ import { Task, Comment } from '../../../types'
   styleUrls: ['./tasks.component.scss']
 })
 export class TasksComponent implements OnInit {
-  tasks: Task[] = [
-    {
-      id: 1,
-      title: 'Fix communication failure',
-      status: 'New',
-      priority: 'Low',
-      device: 'Cīrulīši • Lamp 01-01/02',
-      eventId: 1,
-      assignee: 'Niall Mercado',
-      created: new Date('1/1/16'),
-      updated: new Date('1/1/16'),
-      comments: [
-        {
-          id: 1,
-          author: 'John',
-          comment: 'On my way.',
-          created: new Date('1/1/16'),
-        },
-        {
-          id: 2,
-          author: 'Mary',
-          comment: 'I am not doing this.',
-          created: new Date('1/1/16'),
-        }
-      ]
-    },
-    {
-      id: 2,
-      title: 'Fix communication failure',
-      status: 'New',
-      priority: 'High',
-      device: 'Maļutki • Lamp 02-17/01',
-      eventId: 1,
-      assignee: '',
-      created: new Date('1/1/16'),
-      updated: new Date('1/1/16'),
-      comments: []
-    },
-    {
-      id: 3,
-      title: 'Close the door',
-      status: 'New',
-      priority: 'Normal',
-      device: 'Maļutki • Lamp 01-16/02',
-      eventId: 3,
-      assignee: '',
-      created: new Date('1/1/16'),
-      updated: new Date('1/1/16'),
-      comments: []
-    },
-      {
-      id: 4,
-      title: 'Fix communication failure',
-      status: 'Rejected',
-      priority: 'High',
-      device: 'Maļutki • Lamp 02-17/01',
-      eventId: 1,
-      assignee: '',
-      created: new Date('1/1/16'),
-      updated: new Date('1/1/16'),
-      comments: []
-    },
-    {
-      id: 5,
-      title: 'Close the door',
-      status: 'New',
-      priority: 'Normal',
-      device: 'Maļutki • Lamp 01-16/02',
-      eventId: 3,
-      assignee: '',
-      created: new Date('1/1/16'),
-      updated: new Date('1/1/16'),
-      comments: []
-    },
-  ];
-  constructor(public dialog: MatDialog) {}
+  tasks: Task[] = [];
+  selectedTask?: Task;
+
+  constructor(public dialog: MatDialog, private taskService: TaskService) {}
   openDialog(task) {
     const dialogRef = this.dialog.open(TaskDialogComponent, {
       id: 'task-dialog',
@@ -96,7 +25,17 @@ export class TasksComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.getTasks();
+  }
+
+  onSelect(hero: Task): void {
+    this.selectedTask = hero;
+  }
+
+  getTasks(): void {
+    this.taskService.getTasks()
+      .subscribe(tasks => this.tasks = tasks);
   }
 
 }
