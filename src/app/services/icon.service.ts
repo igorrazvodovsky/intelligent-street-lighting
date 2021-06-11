@@ -44,7 +44,11 @@ export enum Regular {
   User = 'user',
   ChevronRight = 'chevronRight',
   RadioOn = 'radioOn',
-  RadioOff = 'radioOff'
+  RadioOff = 'radioOff',
+  Move = 'move',
+  Delete = 'delete',
+  Firmware = 'firmware',
+  Sun = 'sun'
 }
 
 @Injectable({

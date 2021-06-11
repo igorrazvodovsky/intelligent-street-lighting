@@ -1,0 +1,48 @@
+<section>Alert</section>
+<section>Task</section>
+
+<mat-accordion>
+  <mat-expansion-panel class="mat-elevation-z0" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Profile</mat-panel-title>
+      <mat-panel-description>
+        <p>
+          <span class="text-primary">Daugavpils default.</span
+          ><mat-icon inline matListIcon svgIcon="sunRegular"></mat-icon> 65%
+          until 22:00
+        </p>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    Profile selection and custom settings
+  </mat-expansion-panel>
+  <mat-expansion-panel class="mat-elevation-z0" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Orientation</mat-panel-title>
+      <mat-panel-description> 90° </mat-panel-description>
+    </mat-expansion-panel-header>
+    Slider?
+  </mat-expansion-panel>
+  <mat-expansion-panel class="mat-elevation-z0" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Surge protector </mat-panel-title>
+      <mat-panel-description> None </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>This is the primary content of the panel.</p>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<mat-divider></mat-divider>
+<mat-selection-list role="list" [multiple]="false">
+  <mat-list-option role="listitem">
+    <mat-icon matListIcon svgIcon="moveRegular"></mat-icon>
+    <div matLine>Move</div>
+  </mat-list-option>
+  <mat-list-option role="listitem">
+    <mat-icon matListIcon svgIcon="firmwareRegular"></mat-icon>
+    <div matLine>Update firmware</div>
+  </mat-list-option>
+  <mat-list-option role="listitem">
+    <mat-icon matListIcon svgIcon="deleteRegular"></mat-icon>
+    <div matLine>Delete</div>
+  </mat-list-option>
+</mat-selection-list>

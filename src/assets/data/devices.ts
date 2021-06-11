@@ -1,4 +1,4 @@
-import { Device } from '../../app/types';
+import { Device, DeviceGroup } from '../../app/types';
 
 export const DEVICES: Device[] = [
   { id: 11, name: '01-01' },
@@ -12,3 +12,66 @@ export const DEVICES: Device[] = [
   { id: 19, name: '01-09' },
   { id: 20, name: '01-10' }
 ];
+
+export const GROUPS: DeviceGroup[] = [
+    {
+      id: 1,
+      name: 'Dzelzceļnieks',
+      lamps: 67,
+      profile: 'Default'
+    },
+    {
+      id: 2,
+      name: 'Cietoksnis',
+      lamps: 12,
+      profile: 'Default'
+    },
+    {
+      id: 3,
+      name: 'Autoosta',
+      lamps: 5,
+      profile: 'Default'
+  },
+  {
+    id: 4,
+    name: 'Group 3',
+    lamps: 18,
+    profile: 'Default'
+  },
+  {
+    id: 5,
+    name: 'Lokomotīve',
+    lamps: 25,
+    profile: 'Default'
+  },
+  {
+    id:  6,
+    name: 'Dzelzceļnieks',
+    lamps: 67,
+    profile: 'Default'
+  },
+  {
+    id: 7,
+    name: 'Cietoksnis',
+    lamps: 12,
+    profile: 'Default'
+  },
+  {
+    id: 8,
+    name: 'Autoosta',
+    lamps: 5,
+    profile: 'Default'
+  },
+  {
+    id: 9,
+    name: 'Group 3',
+    lamps: 18,
+    profile: 'Default'
+  },
+  {
+    id: 10,
+    name: 'Lokomotīve',
+    lamps: 25,
+    profile: 'Default'
+  }
+  ];

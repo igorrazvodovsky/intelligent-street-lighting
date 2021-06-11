@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Device } from '../types';
-import { DEVICES } from '../../assets/data/devices';
+import { Device, DeviceGroup } from '../types';
+import { DEVICES, GROUPS } from '../../assets/data/devices';
 import { MessageService } from './message.service';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -10,6 +10,20 @@ import { map } from 'rxjs/operators';
 })
 export class DeviceService {
   constructor(private messageService: MessageService) { }
+
+  getGroups(): Observable<DeviceGroup[]> {
+    const groups = of(GROUPS);
+    this.messageService.add('DeviceService: fetched groups');
+    return groups;
+  }
+
+
+  getGroup(id: number | string) {
+    return this.getGroups().pipe(
+      // (+) before `id` turns the string into a number
+      map((groups: DeviceGroup[]) => groups.find(group => group.id === +id)!)
+    );
+  }
 
   getDevices(): Observable<Device[]> {
     const devices = of(DEVICES);

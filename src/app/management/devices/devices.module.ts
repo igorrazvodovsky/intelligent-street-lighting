@@ -16,6 +16,11 @@ import { ShapeService } from '../../services/shape.service';
 
 import { DevicesRoutingModule } from './devices-routing.module';
 import { GroupListComponent } from './group-list/group-list.component';
+import { DeviceOverviewComponent } from './device-details/device-overview/device-overview.component';
+import { DeviceMotionSensorComponent } from './device-details/device-motion-sensor/device-motion-sensor.component';
+import { DeviceMetricsComponent } from './device-details/device-metrics/device-metrics.component';
+import { DeviceInfoComponent } from './device-details/device-info/device-info.component';
+import { DeviceHistoryComponent } from './device-details/device-history/device-history.component';
 
 
 @NgModule({
@@ -25,7 +30,12 @@ import { GroupListComponent } from './group-list/group-list.component';
     DeviceDetailComponent,
     ChartComponent,
     MapComponent,
-    GroupListComponent
+    GroupListComponent,
+    DeviceOverviewComponent,
+    DeviceMotionSensorComponent,
+    DeviceMetricsComponent,
+    DeviceInfoComponent,
+    DeviceHistoryComponent
   ],
   imports: [
     CommonModule,

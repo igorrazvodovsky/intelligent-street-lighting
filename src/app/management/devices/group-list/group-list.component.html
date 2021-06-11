@@ -19,7 +19,7 @@
   <mat-list-option
     [routerLink]="[group.id]"
     role="listitem"
-    *ngFor="let group of groups"
+    *ngFor="let group of groups$ | async"
   >
     <!-- <mat-icon matListIcon svgIcon="chevronRightRegular"></mat-icon> -->
     <div matLine>{{ group.name }}</div>

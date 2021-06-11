@@ -1,5 +1,11 @@
+// TODO: How devices are added to the group?
+
+import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { DeviceGroup } from '../../../types'
+import { ActivatedRoute } from '@angular/router';
+import { DeviceService } from '../../../services/device.service';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-group-list',
@@ -7,72 +13,19 @@ import { DeviceGroup } from '../../../types'
   styleUrls: ['./group-list.component.scss']
 })
 export class GroupListComponent implements OnInit {
-  groups: DeviceGroup[] = [
-    {
-      id: 1,
-      name: 'Dzelzceļnieks',
-      lamps: 67,
-      profile: 'Default'
-    },
-    {
-      id: 2,
-      name: 'Cietoksnis',
-      lamps: 12,
-      profile: 'Default'
-    },
-    {
-      id: 3,
-      name: 'Autoosta',
-      lamps: 5,
-      profile: 'Default'
-  },
-  {
-    id: 4,
-    name: 'Group 3',
-    lamps: 18,
-    profile: 'Default'
-  },
-  {
-    id: 5,
-    name: 'Lokomotīve',
-    lamps: 25,
-    profile: 'Default'
-  },
-  {
-    id:  6,
-    name: 'Dzelzceļnieks',
-    lamps: 67,
-    profile: 'Default'
-  },
-  {
-    id: 7,
-    name: 'Cietoksnis',
-    lamps: 12,
-    profile: 'Default'
-  },
-  {
-    id: 8,
-    name: 'Autoosta',
-    lamps: 5,
-    profile: 'Default'
-  },
-  {
-    id: 9,
-    name: 'Group 3',
-    lamps: 18,
-    profile: 'Default'
-  },
-  {
-    id: 10,
-    name: 'Lokomotīve',
-    lamps: 25,
-    profile: 'Default'
-  }
-  ];
+  groups$!: Observable<DeviceGroup[]>;
 
-  constructor() { }
+  constructor(
+    private service: DeviceService,
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.groups$ = this.route.paramMap.pipe(
+      switchMap(params => {
+        return this.service.getGroups();
+      })
+    );
   }
 
 }
