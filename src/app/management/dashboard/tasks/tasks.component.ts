@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { TaskDialogComponent } from './task-dialog/task-dialog.component';
 import { Task } from '../../../types'
 import { TaskService } from '../../../services/task.service';
 
@@ -13,24 +11,14 @@ export class TasksComponent implements OnInit {
   tasks: Task[] = [];
   selectedTask?: Task;
 
-  constructor(public dialog: MatDialog, private taskService: TaskService) {}
-  openDialog(task) {
-    const dialogRef = this.dialog.open(TaskDialogComponent, {
-      id: 'task-dialog',
-      data: { task: task },
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
+  constructor(private taskService: TaskService) {}
 
   ngOnInit() {
     this.getTasks();
   }
 
-  onSelect(hero: Task): void {
-    this.selectedTask = hero;
+  onSelect(task: Task): void {
+    this.selectedTask = task;
   }
 
   getTasks(): void {

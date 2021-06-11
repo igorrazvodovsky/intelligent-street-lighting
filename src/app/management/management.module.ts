@@ -13,7 +13,6 @@ import { AdminModule } from './admin/admin.module';
 import { TasksComponent } from './dashboard/tasks/tasks.component';
 import { ActivityComponent } from './dashboard/activity/activity.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { TaskDialogComponent } from './dashboard/tasks/task-dialog/task-dialog.component';
 import { PermissionsComponent } from './user-profile/permissions/permissions.component';
 import { DevicesModule } from './devices/devices.module';
 
@@ -36,7 +35,6 @@ import { DevicesModule } from './devices/devices.module';
     UserProfileComponent,
     TasksComponent,
     ActivityComponent,
-    TaskDialogComponent,
     PermissionsComponent
   ]
 })

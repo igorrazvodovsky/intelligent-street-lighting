@@ -2,7 +2,9 @@
   <mat-icon inline matListIcon svgIcon="alertMedium"></mat-icon>
   Lamp failure
 </section>
-<section *ngFor="let task of tasks">{{ task.title }}</section>
+<section>
+  <task-card *ngFor="let task of tasks" [task]="task"></task-card>
+</section>
 
 <mat-accordion>
   <mat-expansion-panel class="mat-elevation-z0" hideToggle>

@@ -148,11 +148,11 @@ button {
 
 // TODO: Move to theme
 .mat-card {
-  border-radius: 4px !important;
+  border-radius: 0 !important;
 }
 
 .mat-form-field-appearance-fill .mat-form-field-flex {
-  border-radius: 4px !important;
+  border-radius: 0 !important;
 }
 .mat-form-field-underline {
   display: none !important;
@@ -248,5 +248,4 @@ button {
   color: hsla(0, 72%, 51%, 0.9);
   background: hsla(0, 72%, 51%, 0.1);
   padding: 0.75rem 1rem;
-  margin-right: 1rem;
 }

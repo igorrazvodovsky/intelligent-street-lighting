@@ -1,1 +1,25 @@
-<p>task works!</p>
+<mat-card (click)="openDialog(task)" class="mat-elevation-z0">
+  <mat-card-header>
+    <mat-card-title>{{ task.title }}</mat-card-title>
+    <mat-card-subtitle>
+      <mat-chip-list aria-label="Status and priority">
+        <mat-chip>{{ task.status }}</mat-chip>
+        <mat-chip>{{ task.priority }} priority</mat-chip>
+      </mat-chip-list>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="text-secondary">
+    <div>
+      <mat-icon inline class="small" svgIcon="locationRegular"></mat-icon>
+      {{ task.device }}
+    </div>
+    <div>
+      <mat-icon inline class="small" svgIcon="userRegular"></mat-icon>
+      {{ task.assignee ? task.assignee : "Unassigned" }}
+    </div>
+    <div *ngIf="task.comments.length">
+      <mat-icon inline class="small" svgIcon="messageRegular"></mat-icon>
+      {{ task.comments.length }} comments
+    </div>
+  </mat-card-content>
+</mat-card>
