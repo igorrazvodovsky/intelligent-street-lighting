@@ -1,1 +1,12 @@
-<p>device-history works!</p>
+<mat-selection-list [multiple]="false">
+  <mat-list-option class="entry" *ngFor="let activity of activities">
+    <!-- <img matListAvatar [src]="activity.avatar" [alt]="activity.subject" /> -->
+    <div matLine>
+      <h3>{{ activity.subject }}</h3>
+      <small class="text-secondary">{{
+        activity.created | date: "short"
+      }}</small>
+    </div>
+    <p matLine>{{ activity.details }}</p>
+  </mat-list-option>
+</mat-selection-list>

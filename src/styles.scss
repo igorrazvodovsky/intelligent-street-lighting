@@ -256,3 +256,12 @@ button {
 .mat-slider {
   width: 100%;
 }
+
+.mat-form-field.no-label .mat-form-field-infix {
+  padding-top: 0;
+}
+
+// Aligning icons in input fields
+.mat-form-field-flex {
+  align-items: center !important;
+}

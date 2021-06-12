@@ -1,0 +1,13 @@
+mat-icon.mat-list-avatar {
+  background-color: hsla(0, 0%, 0%, 0.1) !important;
+  text-align: center;
+}
+
+.entry div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  h3 {
+    margin-bottom: 0;
+  }
+}

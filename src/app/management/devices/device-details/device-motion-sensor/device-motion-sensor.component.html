@@ -18,7 +18,7 @@
 <mat-divider></mat-divider>
 <h3>Friends</h3>
 <small class="text-secondary">Maximum 10</small>
-<mat-list>
+<mat-list dense>
   <mat-list-item>
     <p matLine>7611</p>
     <button mat-icon-button aria-label="Remove friend">
@@ -42,11 +42,10 @@
   <mat-divider></mat-divider>
 </mat-list>
 
-<mat-form-field appearance="standard">
-  <mat-label>Add friend</mat-label>
+<mat-form-field class="no-label" appearance="standard">
   <input
     type="text"
-    placeholder="Pick one"
+    placeholder="Add friend"
     aria-label="Number"
     matInput
     [matAutocomplete]="auto"
