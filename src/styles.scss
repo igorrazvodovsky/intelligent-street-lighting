@@ -120,10 +120,14 @@ button {
   }
 }
 
-.small svg {
+.mat-icon.small {
   height: 1rem;
   width: 1rem;
-  transform: scale(1);
+  svg {
+    height: 1rem;
+    width: 1rem;
+    transform: scale(1);
+  }
 }
 
 .mat-chip.mat-standard-chip.outlined {
@@ -299,6 +303,23 @@ input.time {
   }
 }
 
-.mat-expansion-panel {
+.mat-expansion-panel:not(.mat-expanded) {
   background-color: transparent !important;
+}
+
+.mat-standard-chip {
+  gap: 0.25rem;
+}
+
+.empty {
+  padding: 2rem;
+  h3,
+  p {
+    color: hsla(0, 0%, 0%, 0.3);
+    text-align: center;
+    margin: 0;
+  }
+  h3 {
+    color: hsla(0, 0%, 0%, 0.6);
+  }
 }

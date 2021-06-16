@@ -19,8 +19,14 @@ export class DeviceService {
 
   getGroup(id: number | string) {
     return this.getGroups().pipe(
-      // (+) before `id` turns the string into a number
+      // TODO: (+) before `id` turns the string into a number
       map((groups: DeviceGroup[]) => groups.find(group => group.id === +id)!)
+    );
+  }
+
+  getGroupsByProfile(id: number | string) {
+    return this.getGroups().pipe(
+      map((groups: DeviceGroup[]) => groups.filter(group => group.profileId === +id)!)
     );
   }
 

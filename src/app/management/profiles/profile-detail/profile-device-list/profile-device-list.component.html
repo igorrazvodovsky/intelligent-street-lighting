@@ -1,0 +1,25 @@
+<!-- TODO: Loading -->
+
+<mat-selection-list
+  *ngIf="(groups$ | async)?.length > 0; else empty"
+  role="list"
+  [multiple]="false"
+>
+  <mat-list-option
+    [routerLink]="'../../devices/' + [group.id]"
+    class="list-item-icon-right"
+    role="listitem"
+    *ngFor="let group of groups$ | async"
+  >
+    <mat-icon matListIcon svgIcon="chevronRightRegular"></mat-icon>
+    <div matLine>{{ group.name }}</div>
+    <span matLine>{{ group.lamps }} lamps, {{ group.profile }} profile</span>
+  </mat-list-option>
+</mat-selection-list>
+
+<ng-template #empty>
+  <div class="empty">
+    <h3>No groups</h3>
+    <p>The profile hasn't been applied to anything yet.</p>
+  </div>
+</ng-template>

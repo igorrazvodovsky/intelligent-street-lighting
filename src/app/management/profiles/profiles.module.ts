@@ -7,13 +7,15 @@ import { ProfilesComponent } from './profiles.component';
 import { ProfileDetailComponent } from './profile-detail/profile-detail.component';
 import { ProfileListComponent } from './profile-list/profile-list.component';
 import { ProfileScheduleComponent } from './profile-detail/profile-schedule/profile-schedule.component';
+import { ProfileDeviceListComponent } from './profile-detail/profile-device-list/profile-device-list.component';
 
 @NgModule({
   declarations: [
     ProfilesComponent,
     ProfileDetailComponent,
     ProfileListComponent,
-    ProfileScheduleComponent
+    ProfileScheduleComponent,
+    ProfileDeviceListComponent
   ],
   imports: [
     CommonModule,

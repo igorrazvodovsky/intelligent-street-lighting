@@ -8,24 +8,30 @@
   </mat-menu>
   → <span>Group name</span>
 </div>
-
 <mat-chip-list aria-label="Fish selection">
   <mat-chip>Property</mat-chip>
   <mat-chip>Another property</mat-chip>
   <mat-chip color="primary" selected>Primary property</mat-chip>
   <mat-chip color="accent" selected>Accent property</mat-chip>
 </mat-chip-list>
-
-<!-- [class.selected]="device.id === selectedId" -->
+<h1>Group name</h1>
 
 <mat-selection-list role="list" [multiple]="false">
+  <h2 matSubheader>Profile</h2>
+  <mat-list-option role="listitem">
+    <div matLine>Default</div>
+    <span matLine>Profile description</span>
+  </mat-list-option>
+  <h2 matSubheader>Devices</h2>
   <mat-list-option
     [routerLink]="[device.id]"
     role="listitem"
     *ngFor="let device of devices$ | async"
   >
-    <!-- <mat-icon matListIcon svgIcon="chevronRightRegular"></mat-icon> -->
     <div matLine>{{ device.name }}</div>
     <span matLine>1 luminaire, surge protector, motion sensor</span>
+  </mat-list-option>
+  <mat-list-option role="listitem">
+    <div class="text-secondary" matLine>Add</div>
   </mat-list-option>
 </mat-selection-list>

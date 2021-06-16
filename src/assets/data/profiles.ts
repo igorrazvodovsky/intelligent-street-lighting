@@ -4,7 +4,7 @@ export const PROFILES: Profile[] = [
   {
   id: 1,
   name: 'Default',
-  description: 'Default. 80% on weekdays from 6:30 to 23:00, on weekends from 8:00 to 22:00. 30% the rest of the time. Accounts for traffic & natural light.',
+  description: '80% throughout the day. Accounts for traffic & natural light where applicable.',
   summary:
   [
     {

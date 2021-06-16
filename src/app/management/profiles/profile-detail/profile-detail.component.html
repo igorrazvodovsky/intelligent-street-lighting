@@ -2,7 +2,7 @@
 <!-- TBD: Deletion disabled if in use? -->
 <!-- TBD: Parent? -->
 
-<div *ngIf="profile$ | async as profile">
+<ng-container *ngIf="profile$ | async as profile">
   <h1>
     <span matTooltip="Edit profile name" matTooltipPosition="right">{{
       profile.name
@@ -12,11 +12,9 @@
   <section>
     <div>
       <h2>Schedule</h2>
-      <aside class="text-secondary">
-        <small
-          >Default profile will be applied to the time periods not covered by
-          the schedule.</small
-        >
+      <aside class="mat-caption text-secondary">
+        Default profile will be applied to the time periods not covered by
+        the&nbsp;schedule.
       </aside>
     </div>
 
@@ -35,12 +33,18 @@
     <h2>Settings</h2>
     <mat-selection-list role="list">
       <mat-list-option role="listitem">
-        <div matLine>Account for trafic</div>
-        <span class="text-secondary" matLine>Requires the motion sensor</span>
+        <div matLine>Account for 🚗 traffic</div>
+        <span class="text-secondary" matLine
+          >Sets brightness to 100% in the presence of vehicles or people.
+          Requires the motion&nbsp;sensor.</span
+        >
       </mat-list-option>
       <mat-list-option role="listitem">
-        <div matLine>Account for natural light</div>
-        <span class="text-secondary" matLine>Requires the lux meter</span>
+        <div matLine>Account for ☀️ natural light</div>
+        <span class="text-secondary" matLine
+          >Ammount of ambient light will be taken into account in the
+          calculation of brightness. Requires the light&nbsp;sensor.</span
+        >
       </mat-list-option>
     </mat-selection-list>
   </section>
@@ -48,29 +52,11 @@
   <section>
     <div>
       <h2>Devices</h2>
-      <aside class="text-secondary">
-        <small>Sensor-related settings are applied when possible.</small>
+      <aside class="mat-caption text-secondary">
+        Sensor-dependent settings are applied when&nbsp;possible.
       </aside>
     </div>
-    <mat-selection-list role="list" [multiple]="false">
-      <mat-list-option class="list-item-icon-right" role="listitem">
-        <mat-icon matListIcon svgIcon="chevronRightRegular"></mat-icon>
-        <div matLine>Group A</div>
-        <span class="text-secondary" matLine>92 lamps</span>
-      </mat-list-option>
-      <mat-list-option class="list-item-icon-right" role="listitem">
-        <mat-icon matListIcon svgIcon="chevronRightRegular"></mat-icon>
-        <div matLine>Group B</div>
-        <span class="text-secondary" matLine
-          >16 lamps. No natural light adjustment.</span
-        >
-      </mat-list-option>
-      <mat-list-option class="list-item-icon-right" role="listitem">
-        <mat-icon matListIcon svgIcon="chevronRightRegular"></mat-icon>
-        <div matLine>Group C</div>
-        <span class="text-secondary" matLine>24 lamps. No motion sensor.</span>
-      </mat-list-option>
-    </mat-selection-list>
+    <profile-device-list></profile-device-list>
   </section>
   <mat-divider></mat-divider>
   <mat-selection-list role="list" [multiple]="false">
@@ -79,4 +65,4 @@
       <div matLine>Delete</div>
     </mat-list-option>
   </mat-selection-list>
-</div>
+</ng-container>

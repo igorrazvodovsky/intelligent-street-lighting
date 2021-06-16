@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Profile } from '../../../types'
+import { Profile, DeviceGroup } from '../../../types'
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ProfileService } from '../../../services/profile.service'
+import { DeviceService } from '../../../services/device.service'
 
 @Component({
   selector: 'app-profile-detail',
@@ -12,20 +13,25 @@ import { ProfileService } from '../../../services/profile.service'
 })
 export class ProfileDetailComponent implements OnInit {
   profile$!: Observable<Profile>;
+  groups$!: Observable<DeviceGroup[]>;
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
-    private service: ProfileService
+    private profileService: ProfileService,
+    private deviceService: DeviceService,
   ) {}
 
   ngOnInit() {
     this.profile$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
-        this.service.getProfile(params.get('id')!))
+        this.profileService.getProfile(params.get('id')!))
+    );
+    this.groups$ = this.route.paramMap.pipe(
+      switchMap(params => {
+        return this.deviceService.getGroupsByProfile(params.get('id')!);
+      })
     );
   }
-
 }
 
 

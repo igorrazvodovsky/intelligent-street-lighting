@@ -34,7 +34,8 @@ export enum Medium {
   Trash = 'trash',
   Chart = 'chart',
   Alert = 'alert',
-  History = 'history'
+  History = 'history',
+  Profile = 'profile',
 }
 
 export enum Regular {

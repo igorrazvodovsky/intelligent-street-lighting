@@ -24,13 +24,13 @@ export const GROUPS: DeviceGroup[] = [
       id: 2,
       name: 'Cietoksnis',
       lamps: 12,
-      profileId: 1
+      profileId: 2
     },
     {
       id: 3,
       name: 'Autoosta',
       lamps: 5,
-      profileId: 1
+      profileId: 2
   },
   {
     id: 4,
@@ -42,13 +42,13 @@ export const GROUPS: DeviceGroup[] = [
     id: 5,
     name: 'Lokomotīve',
     lamps: 25,
-    profileId: 1
+    profileId: 3
   },
   {
     id:  6,
     name: 'Dzelzceļnieks',
     lamps: 67,
-    profileId: 1
+    profileId: 2
   },
   {
     id: 7,
