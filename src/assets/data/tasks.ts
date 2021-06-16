@@ -1,7 +1,6 @@
 
 import { Task } from '../../app/types';
 
-
 export const TASKS: Task[] = [
   {
     id: 1,

@@ -1,0 +1,16 @@
+<app-page-actions>
+  <div></div>
+  <button mat-flat-button type="submit">Create profile</button>
+</app-page-actions>
+
+<mat-selection-list role="list" [multiple]="false">
+  <mat-list-option
+    [routerLink]="[profile.id]"
+    role="listitem"
+    *ngFor="let profile of profiles$ | async"
+  >
+    <mat-icon matListIcon svgIcon="chevronRightRegular"></mat-icon>
+    <div matLine>{{ profile.name }}</div>
+    <span matLine>{{ profile.description }}</span>
+  </mat-list-option>
+</mat-selection-list>

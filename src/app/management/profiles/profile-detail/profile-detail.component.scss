@@ -1,0 +1,21 @@
+h1,
+h2 {
+  margin: 0 1rem;
+}
+
+.mat-divider {
+  margin: 2rem 0;
+}
+
+section {
+  // width: 70vw;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 3fr 1fr;
+}
+
+.behaviour {
+  & > * + * {
+    margin-top: 2rem;
+  }
+}

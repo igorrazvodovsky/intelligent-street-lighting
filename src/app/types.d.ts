@@ -45,7 +45,7 @@ export interface DeviceGroup {
   id: number,
   name: string;
   lamps: number;
-  profile: string;
+  profileId: number;
 }
 
 export interface Activity {
@@ -80,4 +80,34 @@ export interface Measurement {
     min?: number,
     max?: number
   }
+}
+
+export interface Profile {
+  id: number,
+  name: string,
+  description: string,
+  summary:
+    {
+      day: string,
+      schedule: {
+        brightness: number,
+        time: string
+      }[]
+    }[],
+  settings:
+    {
+      name: string,
+      brightness: number,
+      schedule: {
+        day: string,
+        time: {
+          start: string,
+          end: string
+        }[]
+      }[]
+    }[],
+  naturalLight: boolean,
+  sun: boolean,
+  motionSensor: boolean,
+  parentId: number | null
 }

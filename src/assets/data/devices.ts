@@ -18,60 +18,60 @@ export const GROUPS: DeviceGroup[] = [
       id: 1,
       name: 'Dzelzceļnieks',
       lamps: 67,
-      profile: 'Default'
+      profileId: 1
     },
     {
       id: 2,
       name: 'Cietoksnis',
       lamps: 12,
-      profile: 'Default'
+      profileId: 1
     },
     {
       id: 3,
       name: 'Autoosta',
       lamps: 5,
-      profile: 'Default'
+      profileId: 1
   },
   {
     id: 4,
     name: 'Group 3',
     lamps: 18,
-    profile: 'Default'
+    profileId: 1
   },
   {
     id: 5,
     name: 'Lokomotīve',
     lamps: 25,
-    profile: 'Default'
+    profileId: 1
   },
   {
     id:  6,
     name: 'Dzelzceļnieks',
     lamps: 67,
-    profile: 'Default'
+    profileId: 1
   },
   {
     id: 7,
     name: 'Cietoksnis',
     lamps: 12,
-    profile: 'Default'
+    profileId: 1
   },
   {
     id: 8,
     name: 'Autoosta',
     lamps: 5,
-    profile: 'Default'
+    profileId: 1
   },
   {
     id: 9,
     name: 'Group 3',
     lamps: 18,
-    profile: 'Default'
+    profileId: 1
   },
   {
     id: 10,
     name: 'Lokomotīve',
     lamps: 25,
-    profile: 'Default'
+    profileId: 1
   }
   ];

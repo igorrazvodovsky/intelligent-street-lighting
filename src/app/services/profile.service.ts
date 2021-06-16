@@ -1,0 +1,26 @@
+import { Injectable } from '@angular/core';
+import { Profile } from '../types';
+import { PROFILES } from '../../assets/data/profiles';
+import { MessageService } from './message.service';
+import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ProfileService {
+  constructor(private messageService: MessageService) { }
+
+  getProfiles(): Observable<Profile[]> {
+    const profiles = of(PROFILES);
+    this.messageService.add('ProfileService: fetched profiles');
+    return profiles;
+  }
+
+  getProfile(id: number | string) {
+    return this.getProfiles().pipe(
+      // (+) before `id` turns the string into a number
+      map((profiles: Profile[]) => profiles.find(profile => profile.id === +id)!)
+    );
+  }
+}

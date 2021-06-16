@@ -51,7 +51,8 @@ export enum Regular {
   Delete = 'delete',
   Firmware = 'firmware',
   Sun = 'sun',
-  Enter = 'enter'
+  Enter = 'enter',
+  Edit = 'edit'
 }
 
 @Injectable({

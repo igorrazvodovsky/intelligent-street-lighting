@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { NavigationComponent } from './navigation/navigation.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ProfilesComponent } from './profiles/profiles.component';
 import { ManagementRoutingModule } from './management-routing.module';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -31,7 +30,6 @@ import { DevicesModule } from './devices/devices.module';
   declarations: [
     NavigationComponent,
     DashboardComponent,
-    ProfilesComponent,
     UserProfileComponent,
     TasksComponent,
     ActivityComponent,
