@@ -3,8 +3,10 @@
   <button mat-flat-button type="submit">Create profile</button>
 </app-page-actions>
 
+<h1>Profiles</h1>
 <mat-selection-list role="list" [multiple]="false">
   <mat-list-option
+    class="list-item-icon-right"
     [routerLink]="[profile.id]"
     role="listitem"
     *ngFor="let profile of profiles$ | async"

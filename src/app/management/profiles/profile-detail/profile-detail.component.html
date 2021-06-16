@@ -10,33 +10,24 @@
   </h1>
   <mat-divider></mat-divider>
   <section>
-    <h2>Behaviour</h2>
+    <div>
+      <h2>Schedule</h2>
+      <aside class="text-secondary">
+        <small
+          >Default profile will be applied to the time periods not covered by
+          the schedule.</small
+        >
+      </aside>
+    </div>
 
     <div class="behaviour">
-      <div>
-        <div>70%. Active always.</div>
-        <mat-slider value="70" aria-label="brightness"></mat-slider>
-        <div>
-          <button mat-button>Specify days</button>
-          <button mat-button>Specify time</button>
-        </div>
-      </div>
-      <mat-divider></mat-divider>
-      <div>
-        <div>30%. Active always.</div>
-        <mat-slider value="30" aria-label="brightness"></mat-slider>
-        <div>
-          <button mat-button>Specify days</button>
-          <button mat-button>Specify time</button>
-        </div>
-      </div>
-      <button mat-stroked-button>Add behaviour</button>
-      <p>
-        <small class="text-secondary"
-          >Default profile will be applied to the time periods excluded from the
-          schedule.</small
-        >
-      </p>
+      <mat-accordion>
+        <profile-schedule></profile-schedule>
+        <profile-schedule></profile-schedule>
+      </mat-accordion>
+      <mat-selection-list [multiple]="false">
+        <mat-list-option> Add schedule </mat-list-option>
+      </mat-selection-list>
     </div>
   </section>
   <mat-divider></mat-divider>
@@ -55,7 +46,12 @@
   </section>
   <mat-divider></mat-divider>
   <section>
-    <h2>Device groups using this&nbsp;profile</h2>
+    <div>
+      <h2>Devices</h2>
+      <aside class="text-secondary">
+        <small>Sensor-related settings are applied when possible.</small>
+      </aside>
+    </div>
     <mat-selection-list role="list" [multiple]="false">
       <mat-list-option class="list-item-icon-right" role="listitem">
         <mat-icon matListIcon svgIcon="chevronRightRegular"></mat-icon>
@@ -78,10 +74,6 @@
   </section>
   <mat-divider></mat-divider>
   <mat-selection-list role="list" [multiple]="false">
-    <mat-list-option role="listitem">
-      <mat-icon matListIcon svgIcon="editRegular"></mat-icon>
-      <div matLine>Rename</div>
-    </mat-list-option>
     <mat-list-option role="listitem">
       <mat-icon matListIcon svgIcon="deleteRegular"></mat-icon>
       <div matLine>Delete</div>

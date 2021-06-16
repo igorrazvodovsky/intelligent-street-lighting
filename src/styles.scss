@@ -64,6 +64,11 @@ body {
   // margin-left: 0 !important;
 }
 
+// TODO: Better scroll fix?
+.main-content {
+  overflow-y: scroll !important;
+}
+
 .text-primary {
   color: hsla(0, 0%, 0%, 0.9);
 }
@@ -264,4 +269,36 @@ button {
 // Aligning icons in input fields
 .mat-form-field-flex {
   align-items: center !important;
+}
+
+// For resizing inputs
+.mat-form-field-flex,
+.mat-form-field-infix {
+  width: auto !important;
+}
+
+.mat-form-field-infix {
+  border-top: 0 solid transparent;
+  padding: 1em 0 0.75em 0 !important;
+}
+
+input.time {
+  width: 4.5ch;
+}
+
+.no-hint .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+.mat-slider {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  .mat-slider-wrapper {
+    left: 0 !important;
+    right: 0 !important;
+  }
+}
+
+.mat-expansion-panel {
+  background-color: transparent !important;
 }

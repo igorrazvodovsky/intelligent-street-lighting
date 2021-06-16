@@ -52,7 +52,7 @@ export interface Activity {
   type: string;
   subject: string;
   details: string;
-  object: {};
+  object: object;
   avatar?: string;
   created: Date;
 }

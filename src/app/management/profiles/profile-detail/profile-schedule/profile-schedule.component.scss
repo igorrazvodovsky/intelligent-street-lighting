@@ -1,0 +1,18 @@
+form div {
+  min-height: 3rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  & > *:first-child {
+    width: 6ch;
+  }
+}
+
+.mat-expansion-panel-header {
+  height: auto;
+  padding: 1rem;
+}
+
+.mat-expansion-panel-header-title {
+  max-width: 70ch;
+}

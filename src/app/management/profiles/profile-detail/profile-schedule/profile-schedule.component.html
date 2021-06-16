@@ -1,0 +1,100 @@
+<mat-expansion-panel class="mat-elevation-z0">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      70% on weekdays from 6:30 to 23:00, on weekends from 8:00 to 22:00.
+    </mat-panel-title>
+    <!-- <mat-panel-description>
+        This is a summary of the content
+      </mat-panel-description> -->
+  </mat-expansion-panel-header>
+  <mat-slider value="70" aria-label="brightness"></mat-slider>
+  <form>
+    <div>
+      <span>Active</span>
+      <mat-form-field class="no-hint">
+        <input class="time" matInput placeholder="6:00" value="6:30" />
+      </mat-form-field>
+      <span>&mdash;</span>
+      <mat-form-field class="no-hint">
+        <input class="time" matInput placeholder="22:00" value="22:00" />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-checkbox color="primary" checked="true" class="example-margin"
+        >Mon</mat-checkbox
+      >
+      <mat-form-field class="no-hint">
+        <input class="time" matInput placeholder="6:30" />
+      </mat-form-field>
+      <span>&mdash;</span>
+      <mat-form-field class="no-hint">
+        <input class="time" matInput placeholder="22:00" />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-checkbox color="primary" checked="true" class="example-margin"
+        >Tue</mat-checkbox
+      >
+      <mat-form-field disabled class="no-hint">
+        <input class="time" matInput placeholder="6:30" />
+      </mat-form-field>
+      <span>&mdash;</span>
+      <mat-form-field class="no-hint">
+        <input class="time" matInput placeholder="22:00" />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-checkbox color="primary" checked="true" class="example-margin"
+        >Wed</mat-checkbox
+      >
+      <mat-form-field disabled class="no-hint">
+        <input class="time" matInput placeholder="6:30" />
+      </mat-form-field>
+      <span>&mdash;</span>
+      <mat-form-field class="no-hint">
+        <input class="time" matInput placeholder="22:00" />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-checkbox color="primary" checked="true" class="example-margin"
+        >Thu</mat-checkbox
+      >
+      <mat-form-field disabled class="no-hint">
+        <input class="time" matInput placeholder="6:30" />
+      </mat-form-field>
+      <span>&mdash;</span>
+      <mat-form-field class="no-hint">
+        <input class="time" matInput placeholder="22:00" />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-checkbox color="primary" checked="true" class="example-margin"
+        >Fri</mat-checkbox
+      >
+      <mat-form-field disabled class="no-hint">
+        <input class="time" matInput placeholder="6:30" />
+      </mat-form-field>
+      <span>&mdash;</span>
+      <mat-form-field class="no-hint">
+        <input class="time" matInput placeholder="22:00" />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-checkbox color="primary" class="example-margin">Sat</mat-checkbox>
+    </div>
+    <div>
+      <mat-checkbox color="primary" class="example-margin">Sun</mat-checkbox>
+    </div>
+  </form>
+</mat-expansion-panel>
+
+<!--
+<article>
+  <div>30%. Active always.</div>
+  <mat-slider value="30" aria-label="brightness"></mat-slider>
+  <div>
+    <button mat-button>Specify days</button>
+    <button mat-button>Specify time</button>
+  </div>
+</article>
+-->
