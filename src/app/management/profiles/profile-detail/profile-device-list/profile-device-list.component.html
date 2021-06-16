@@ -1,4 +1,5 @@
 <!-- TODO: Loading -->
+<!-- TODO: List settings/sensors conflicts -->
 
 <mat-selection-list
   *ngIf="(groups$ | async)?.length > 0; else empty"
@@ -13,7 +14,7 @@
   >
     <mat-icon matListIcon svgIcon="chevronRightRegular"></mat-icon>
     <div matLine>{{ group.name }}</div>
-    <span matLine>{{ group.lamps }} lamps, {{ group.profile }} profile</span>
+    <span matLine>{{ group.lamps }} lamps</span>
   </mat-list-option>
 </mat-selection-list>
 

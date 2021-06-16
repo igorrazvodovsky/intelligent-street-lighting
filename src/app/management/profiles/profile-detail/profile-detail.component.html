@@ -1,13 +1,16 @@
 <!-- TODO: Something about 'default' -->
 <!-- TBD: Deletion disabled if in use? -->
 <!-- TBD: Parent? -->
-
 <ng-container *ngIf="profile$ | async as profile">
-  <h1>
-    <span matTooltip="Edit profile name" matTooltipPosition="right">{{
-      profile.name
-    }}</span>
-  </h1>
+  <app-page-actions>
+    <div
+      class="page-title"
+      matTooltip="Edit profile name"
+      matTooltipPosition="right"
+    >
+      <span>Profiles → </span> {{ profile.name }}
+    </div>
+  </app-page-actions>
   <mat-divider></mat-divider>
   <section>
     <div>
@@ -24,7 +27,9 @@
         <profile-schedule></profile-schedule>
       </mat-accordion>
       <mat-selection-list [multiple]="false">
-        <mat-list-option> Add schedule </mat-list-option>
+        <mat-list-option>
+          <div class="text-secondary" matLine>Add schedule</div>
+        </mat-list-option>
       </mat-selection-list>
     </div>
   </section>
