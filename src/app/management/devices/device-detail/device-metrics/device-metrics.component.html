@@ -10,7 +10,10 @@
 >
   <mat-icon svgIcon="chartMedium" aria-label="List toggle icon"></mat-icon>
 </button> -->
-<mat-slide-toggle [checked]="chart" (toggleChange)="toggleChart()"
+<mat-slide-toggle
+  color="primary"
+  [checked]="chart"
+  (toggleChange)="toggleChart()"
   >History data & comparison</mat-slide-toggle
 >
 

@@ -21,6 +21,7 @@ import { DeviceMotionSensorComponent } from './device-detail/device-motion-senso
 import { DeviceMetricsComponent } from './device-detail/device-metrics/device-metrics.component';
 import { DeviceInfoComponent } from './device-detail/device-info/device-info.component';
 import { DeviceHistoryComponent } from './device-detail/device-history/device-history.component';
+import { DeviceFriendsListComponent } from './device-detail/device-motion-sensor/device-friends-list/device-friends-list.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { DeviceHistoryComponent } from './device-detail/device-history/device-hi
     DeviceMotionSensorComponent,
     DeviceMetricsComponent,
     DeviceInfoComponent,
-    DeviceHistoryComponent
+    DeviceHistoryComponent,
+    DeviceFriendsListComponent
   ],
   imports: [
     CommonModule,

@@ -19,44 +19,7 @@
 </mat-accordion>
 <mat-divider></mat-divider>
 <h3>Friends</h3>
-<small class="text-secondary">Maximum 10</small>
-<mat-list dense>
-  <mat-list-item>
-    <p matLine>7611</p>
-    <button mat-icon-button aria-label="Remove friend">
-      <mat-icon svgIcon="deleteRegular"></mat-icon>
-    </button>
-  </mat-list-item>
-  <mat-divider></mat-divider>
-  <mat-list-item>
-    <p matLine>7612</p>
-    <button mat-icon-button aria-label="Remove friend">
-      <mat-icon svgIcon="deleteRegular"></mat-icon>
-    </button>
-  </mat-list-item>
-  <mat-divider></mat-divider>
-  <mat-list-item>
-    <p matLine>7613</p>
-    <button mat-icon-button aria-label="Remove friend">
-      <mat-icon svgIcon="deleteRegular"></mat-icon>
-    </button>
-  </mat-list-item>
-  <mat-divider></mat-divider>
-</mat-list>
-
-<mat-form-field class="no-label" appearance="standard">
-  <input
-    type="text"
-    placeholder="Add friend"
-    aria-label="Number"
-    matInput
-    [matAutocomplete]="auto"
-  />
-  <mat-icon matSuffix svgIcon="enterRegular"></mat-icon>
-
-  <mat-autocomplete #auto="matAutocomplete">
-    <mat-option *ngFor="let option of options" [value]="option">
-      {{ option }}
-    </mat-option>
-  </mat-autocomplete>
-</mat-form-field>
+<small class="text-secondary"
+  >Sensor will inform friends about everuthing it detects.</small
+>
+<device-friends-list></device-friends-list>

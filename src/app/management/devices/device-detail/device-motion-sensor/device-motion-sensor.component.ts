@@ -7,7 +7,6 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./device-motion-sensor.component.scss']
 })
 export class DeviceMotionSensorComponent {
-  options: string[] = ['6715', '6716', '6717'];
 
   constructor() { }
 
