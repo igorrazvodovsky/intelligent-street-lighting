@@ -1,4 +1,4 @@
-<div class="breadcrumbs mat-body-2">
+<!-- <div class="breadcrumbs mat-body-2">
   <button class="btn-link mat-body-2" [matMenuTriggerFor]="menu">
     Daugavpils
   </button>
@@ -7,10 +7,14 @@
     <button disabled mat-menu-item>Valka</button>
   </mat-menu>
   → <a routerLink="../">Group name</a> → <span>Upes iela</span>
-</div>
+</div> -->
 
 <div *ngIf="device$ | async as device">
-  <h1>Lamp {{ device.name }}</h1>
+  <app-page-actions>
+    <div class="page-title">
+      <span>Daugavpils → Group name → </span> Lamp {{ device.name }}
+    </div></app-page-actions
+  >
   <mat-tab-group id="device" animationDuration="0ms">
     <mat-tab label="Overview">
       <device-overview></device-overview>

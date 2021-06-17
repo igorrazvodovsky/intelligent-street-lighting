@@ -276,15 +276,18 @@ button {
   align-items: center !important;
 }
 
-// For resizing inputs
-.mat-form-field-flex,
-.mat-form-field-infix {
-  width: auto !important;
+.no-label {
+  .mat-form-field-infix {
+    border-top: 0 solid transparent;
+    padding: 1em 0 0.75em 0 !important;
+  }
 }
 
-.mat-form-field-infix {
-  border-top: 0 solid transparent;
-  padding: 1em 0 0.75em 0 !important;
+.input-auto-width {
+  .mat-form-field-flex,
+  .mat-form-field-infix {
+    width: auto !important;
+  }
 }
 
 input.time {
@@ -353,4 +356,34 @@ input.time {
 
 .mat-accent .mat-checkbox-checkmark-path {
   stroke: hsla(0, 0%, 0%, 0.9) !important;
+}
+
+.mat-expansion-panel-header-description,
+.mat-expansion-indicator::after {
+  color: hsla(0, 0%, 0%, 0.9);
+}
+
+.mat-toolbar {
+  .mat-form-field-suffix {
+    top: 0 !important;
+    .mat-icon {
+      line-height: 1;
+    }
+  }
+}
+
+.list-max-toggle {
+  // position: absolute !important;
+  // right: 0.5rem;
+  // top: 0.75rem;
+  // z-index: 500;
+  order: 3;
+}
+
+.page-title {
+  margin-left: 1rem;
+  z-index: 500;
+  span {
+    color: hsla(0, 0%, 0%, 0.3);
+  }
 }

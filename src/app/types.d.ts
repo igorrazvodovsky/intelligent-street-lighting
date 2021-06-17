@@ -62,6 +62,13 @@ export interface Device {
   name: string;
 }
 
+export interface MotionSensor {
+  id: number,
+  status: boolean,
+  sensitivity: number,
+  friends: []
+}
+
 export interface MeasurementGroup {
   name: string,
   measurements: Measurement[]

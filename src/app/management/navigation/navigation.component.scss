@@ -21,8 +21,11 @@
   background: transparent;
   pointer-events: none;
   line-height: normal;
+  gap: 0.5rem;
 
-  & button {
+  & button,
+  & input,
+  & .mat-icon {
     pointer-events: initial;
   }
 
@@ -46,4 +49,8 @@ main {
 
 .main-content {
   margin-left: 0 !important;
+}
+
+.mat-card-title {
+  font-size: 1rem;
 }

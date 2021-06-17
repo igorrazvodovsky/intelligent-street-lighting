@@ -1,20 +1,24 @@
-<div class="breadcrumbs mat-body-2">
-  <button class="btn-link mat-body-2" [matMenuTriggerFor]="menu">
-    Daugavpils
-  </button>
-  <mat-menu #menu="matMenu">
-    <button routerLink="../" mat-menu-item>Daugavpils</button>
-    <button disabled mat-menu-item>Valka</button>
-  </mat-menu>
-  → <span>Group name</span>
-</div>
+<app-page-actions>
+  <div class="page-title"><span>Daugavpils → </span>Group name</div>
+
+  <!-- <div>
+    <button class="btn-link mat-body-2" [matMenuTriggerFor]="menu">
+      Daugavpils
+    </button>
+    <mat-menu #menu="matMenu">
+      <button routerLink="../" mat-menu-item>Daugavpils</button>
+      <button disabled mat-menu-item>Valka</button>
+    </mat-menu>
+    → <span>Group name</span>
+  </div> -->
+</app-page-actions>
+
 <mat-chip-list aria-label="Fish selection">
   <mat-chip>Property</mat-chip>
   <mat-chip>Another property</mat-chip>
   <mat-chip color="primary" selected>Primary property</mat-chip>
   <mat-chip color="accent" selected>Accent property</mat-chip>
 </mat-chip-list>
-<h1>Group name</h1>
 
 <mat-selection-list role="list" [multiple]="false">
   <h2 matSubheader>Profile</h2>
