@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { DeviceGroup } from '../../../types'
 import { ActivatedRoute } from '@angular/router';
 import { DeviceService } from '../../../services/device.service';
+import { ProfileService } from '../../../services/profile.service';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
@@ -16,16 +17,21 @@ export class GroupListComponent implements OnInit {
   groups$!: Observable<DeviceGroup[]>;
 
   constructor(
-    private service: DeviceService,
+    private deviceService: DeviceService,
+    private profileService: ProfileService,
     private route: ActivatedRoute
   ) {}
 
+  getDeviceNumber(groupId) {
+    return this.deviceService.getDevicesByGroup(groupId);
+  }
+
+  getProfile(groupId) {
+    return this.profileService.getProfile(groupId);
+  }
+
   ngOnInit() {
-    this.groups$ = this.route.paramMap.pipe(
-      switchMap(params => {
-        return this.service.getGroups();
-      })
-    );
+    this.groups$ = this.deviceService.getGroups();
   }
 
 }

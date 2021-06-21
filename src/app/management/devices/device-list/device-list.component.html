@@ -1,5 +1,7 @@
 <app-page-actions>
-  <div class="page-title"><span>Daugavpils → </span>Group name</div>
+  <div class="page-title">
+    <span>Daugavpils → </span>{{ (group$ | async)?.name }}
+  </div>
 
   <!-- <div>
     <button class="btn-link mat-body-2" [matMenuTriggerFor]="menu">
@@ -22,10 +24,23 @@
 
 <mat-selection-list role="list" [multiple]="false">
   <h2 matSubheader>Profile</h2>
-  <mat-list-option role="listitem">
-    <div matLine>Default</div>
+  <mat-list-option
+    class="list-item-icon-right"
+    role="listitem"
+    [routerLink]="'../../profiles/' + [(group$ | async)?.profileId]"
+  >
+    <div matLine>Profile name</div>
     <span matLine>Profile description</span>
+    <mat-icon
+      [matMenuTriggerFor]="profileMenu"
+      matListIcon
+      svgIcon="editRegular"
+    ></mat-icon>
   </mat-list-option>
+  <mat-menu #profileMenu="matMenu">
+    <button mat-menu-item>Profile 1</button>
+    <button mat-menu-item>Profile 2</button>
+  </mat-menu>
   <h2 matSubheader>Devices</h2>
   <mat-list-option
     [routerLink]="[device.id]"

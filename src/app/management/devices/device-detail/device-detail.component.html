@@ -12,7 +12,8 @@
 <div *ngIf="device$ | async as device">
   <app-page-actions>
     <div class="page-title">
-      <span>Daugavpils → Group name → </span> Lamp {{ device.name }}
+      <span>Daugavpils → {{ (group$ | async)?.name }} →</span> Lamp
+      {{ device.name }}
     </div></app-page-actions
   >
   <mat-tab-group id="device" animationDuration="0ms">

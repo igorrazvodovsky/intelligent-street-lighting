@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Device } from '../../../types'
+import { Device, DeviceGroup } from '../../../types'
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
@@ -12,6 +12,7 @@ import { DeviceService } from '../../../services/device.service'
 })
 export class DeviceDetailComponent implements OnInit {
   device$!: Observable<Device>;
+  group$!: Observable<DeviceGroup>;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,7 +23,11 @@ export class DeviceDetailComponent implements OnInit {
   ngOnInit() {
     this.device$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
-        this.service.getDevice(params.get('id')!))
+        this.service.getDevice(params.get('deviceId')!))
+    );
+    this.group$ = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) =>
+        this.service.getGroup(params.get('groupId')!))
     );
   }
 

@@ -1,3 +1,6 @@
+<!-- TODO: Don't show the group if empty? -->
+<!-- TODO: Group creation through assignemt?-->
+
 <!-- <div class="breadcrumbs">
   <mat-menu #menu="matMenu">
     <button mat-menu-item>Daugavpils</button>
@@ -20,15 +23,19 @@
 </mat-chip-list>
 
 <mat-selection-list role="list" [multiple]="false">
-  <mat-list-option
-    [routerLink]="[group.id]"
-    role="listitem"
-    *ngFor="let group of groups$ | async"
-  >
-    <!-- <mat-icon matListIcon svgIcon="chevronRightRegular"></mat-icon> -->
-    <div matLine>{{ group.name }}</div>
-    <span matLine>{{ group.lamps }} lamps, {{ group.profile }} profile</span>
-  </mat-list-option>
+  <ng-container *ngFor="let group of groups$ | async">
+    <!-- *ngIf="(getDeviceNumber(group.id) | async)?.length > 0" -->
+    <mat-list-option [routerLink]="[group.id]" role="listitem">
+      <!-- <mat-icon matListIcon svgIcon="chevronRightRegular"></mat-icon> -->
+      <div matLine>{{ group.name }}</div>
+      <span matLine
+        >{{ (getDeviceNumber(group.id) | async)?.length }}
+        <span class="text-secondary">lamps</span>,
+        {{ (getProfile(group.profileId) | async)?.name }}
+        <span class="text-secondary">profile</span></span
+      >
+    </mat-list-option>
+  </ng-container>
   <mat-list-option role="listitem">
     <div class="text-secondary" matLine>Unassigned</div>
     <span matLine>78 lamps</span>

@@ -58,8 +58,16 @@ export interface Activity {
 }
 
 export interface Device {
-  id: number;
-  name: string;
+  id: number,
+  name: string,
+  groupId: number,
+  profileId?: number,
+  alerts?: Alert[],
+  events?: [],
+  tasks?: Task[],
+  properties?: object,
+  motionSensor?: object,
+  metrics?: object;
 }
 
 export interface MotionSensor {

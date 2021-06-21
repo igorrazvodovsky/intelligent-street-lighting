@@ -14,8 +14,8 @@ const devicesRoutes: Routes = [
       {
         path: '',
         children: [
-          { path: ':id/:id', component: DeviceDetailComponent, data: { animation: 'device' } },
-          { path: ':id', component: DeviceListComponent, data: { animation: 'device' } },
+          { path: ':groupId/:deviceId', component: DeviceDetailComponent, data: { animation: 'device' } },
+          { path: ':groupId', component: DeviceListComponent, data: { animation: 'device' } },
           { path: '',
             component: GroupListComponent,
             data: { animation: 'devices' },

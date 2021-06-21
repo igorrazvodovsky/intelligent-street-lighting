@@ -42,4 +42,11 @@ export class DeviceService {
       map((devices: Device[]) => devices.find(device => device.id === +id)!)
     );
   }
+
+  getDevicesByGroup(id: number | string) {
+    return this.getDevices().pipe(
+      map((devices: Device[]) => devices.filter(device => device.groupId === +id)!)
+    );
+  }
+
 }

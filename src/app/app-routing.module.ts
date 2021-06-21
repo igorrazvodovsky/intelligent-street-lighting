@@ -10,7 +10,7 @@ const appRoutes: Routes = [
   {
     path: 'management',
     loadChildren: () => import('./management/management.module').then(m => m.ManagementModule),
-    // canLoad: [AuthGuard]
+    canLoad: [AuthGuard]
   },
   { path: '',   redirectTo: '/management', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }

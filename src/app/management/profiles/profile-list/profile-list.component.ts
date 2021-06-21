@@ -12,7 +12,6 @@ import { ProfileService } from '../../../services/profile.service';
 })
 export class ProfileListComponent implements OnInit {
   profiles$!: Observable<Profile[]>;
-  selectedId = 0;
 
   constructor(
     private service: ProfileService,
@@ -20,12 +19,7 @@ export class ProfileListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.profiles$ = this.route.paramMap.pipe(
-      switchMap(params => {
-        this.selectedId = parseInt(params.get('id')!, 10);
-        return this.service.getProfiles();
-      })
-    );
+    this.profiles$ = this.service.getProfiles();
   }
 
 }
