@@ -1,7 +1,7 @@
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { Observable, pipe } from 'rxjs';
+import { switchMap, tap } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
-import { Device, DeviceGroup } from '../../../types'
+import { Device, DeviceGroup, Profile } from '../../../types'
 import { ActivatedRoute } from '@angular/router';
 import { DeviceService } from '../../../services/device.service';
 import { ProfileService } from '../../../services/profile.service';
@@ -14,6 +14,7 @@ import { ProfileService } from '../../../services/profile.service';
 export class DeviceListComponent implements OnInit {
   group$!: Observable<DeviceGroup>;
   devices$!: Observable<Device[]>;
+  profile$!: Observable<Profile>;
 
   constructor(
     private deviceService: DeviceService,
@@ -24,7 +25,8 @@ export class DeviceListComponent implements OnInit {
   ngOnInit() {
     this.group$ = this.route.paramMap.pipe(
       switchMap((params) =>
-        this.deviceService.getGroup(params.get('groupId')!))
+        this.deviceService.getGroup(params.get('groupId')!)),
+      tap(group => { this.profile$ = this.profileService.getProfile(group.profileId) })
     );
     this.devices$ = this.route.paramMap.pipe(
       switchMap(params => {

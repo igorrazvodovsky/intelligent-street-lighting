@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 import { Profile } from '../../../types'
 import { ActivatedRoute } from '@angular/router';
 import { ProfileService } from '../../../services/profile.service';

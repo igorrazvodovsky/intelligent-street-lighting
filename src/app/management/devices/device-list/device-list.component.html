@@ -1,3 +1,5 @@
+<!-- TODO: Loading: devices, group, profile -->
+
 <app-page-actions>
   <div class="page-title">
     <span>Daugavpils → </span>{{ (group$ | async)?.name }}
@@ -25,12 +27,13 @@
 <mat-selection-list role="list" [multiple]="false">
   <h2 matSubheader>Profile</h2>
   <mat-list-option
+    *ngIf="profile$ | async as profile"
     class="list-item-icon-right"
     role="listitem"
     [routerLink]="'../../profiles/' + [(group$ | async)?.profileId]"
   >
-    <div matLine>Profile name</div>
-    <span matLine>Profile description</span>
+    <div matLine>{{ profile.name }}</div>
+    <span matLine>{{ profile.description }}</span>
     <mat-icon
       [matMenuTriggerFor]="profileMenu"
       matListIcon
