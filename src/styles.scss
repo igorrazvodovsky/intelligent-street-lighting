@@ -209,7 +209,8 @@ button {
   }
 }
 
-#device {
+#device,
+#permissions {
   .mat-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -410,4 +411,11 @@ input.time {
 
 .mat-list-base .mat-list-option .mat-line {
   white-space: normal;
+}
+
+#permissions {
+  .mat-expansion-panel-body {
+    padding-right: 0;
+    padding-left: 0;
+  }
 }

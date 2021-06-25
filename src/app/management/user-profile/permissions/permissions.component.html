@@ -9,7 +9,6 @@
         <ng-container *ngFor="let permisssion of permissionGroup.permissions">
           {{ permisssion.enabled ? permisssion.name : "" }}
         </ng-container>
-        <!-- {{ permissionGroup.permissions | pluck: "enabled" | json }} -->
       </mat-panel-description>
     </mat-expansion-panel-header>
     <mat-selection-list

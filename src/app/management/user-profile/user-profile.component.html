@@ -1,66 +1,59 @@
 <app-page-actions>
-  User profile
-  <!-- <button mat-flat-button color="primary" type="submit">Save</button> -->
+  <div class="page-title">User profile</div>
 </app-page-actions>
-
-<mat-card class="mat-elevation-z0">
+<mat-divider></mat-divider>
+<section>
+  <h2>Personal information</h2>
   <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
-    <mat-card-header>
-      <mat-card-title>Personal information</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-form-field class="full-width">
-        <mat-label>Email</mat-label>
-        <input matInput formControlName="email" />
-      </mat-form-field>
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <mat-label>First name</mat-label>
-            <input matInput formControlName="firstName" />
-            <mat-error
-              *ngIf="addressForm.controls['firstName'].hasError('required')"
-            >
-              First name is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="col">
-          <mat-form-field class="full-width">
-            <mat-label>Last name</mat-label>
-            <input matInput formControlName="lastName" />
-            <mat-error
-              *ngIf="addressForm.controls['lastName'].hasError('required')"
-            >
-              Last name is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-        </div>
+    <mat-form-field class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+    </mat-form-field>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+          <mat-label>First name</mat-label>
+          <input matInput formControlName="firstName" />
+          <mat-error
+            *ngIf="addressForm.controls['firstName'].hasError('required')"
+          >
+            First name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
       </div>
+      <div class="col">
+        <mat-form-field class="full-width">
+          <mat-label>Last name</mat-label>
+          <input matInput formControlName="lastName" />
+          <mat-error
+            *ngIf="addressForm.controls['lastName'].hasError('required')"
+          >
+            Last name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
 
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <mat-label>Phone</mat-label>
-            <input matInput type="tel" formControlName="phone" />
-          </mat-form-field>
-        </div>
-        <div class="col">
-          <mat-form-field class="full-width">
-            <mat-label>Time zone</mat-label>
-            <input matInput formControlName="timezone" />
-          </mat-form-field>
-        </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+          <mat-label>Phone</mat-label>
+          <input matInput type="tel" formControlName="phone" />
+        </mat-form-field>
       </div>
-    </mat-card-content>
+      <div class="col">
+        <mat-form-field class="full-width">
+          <mat-label>Time zone</mat-label>
+          <input matInput formControlName="timezone" />
+        </mat-form-field>
+      </div>
+    </div>
   </form>
-</mat-card>
-
-<mat-card class="mat-elevation-z0">
-  <mat-card-header>
-    <mat-card-title>Change password</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
+</section>
+<mat-divider></mat-divider>
+<section>
+  <h2>Change password</h2>
+  <div>
     <div class="row">
       <div class="col">
         <mat-form-field class="full-width">
@@ -76,39 +69,34 @@
       </div>
     </div>
     <button mat-stroked-button>Change</button>
-  </mat-card-content>
-</mat-card>
+  </div>
+</section>
+<mat-divider></mat-divider>
+<section>
+  <h2>Role</h2>
 
-<mat-card class="mat-elevation-z0">
-  <mat-card-header>
-    <mat-card-title>Organisations</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <mat-selection-list [multiple]="false">
-      <mat-list-option class="org__list-item list-item-icon-right">
-        <mat-icon mat-list-icon svgIcon="trashMedium"></mat-icon>
-        <div mat-line>
-          Daugavpils
-          <button mat-button [matMenuTriggerFor]="menu">
-            Fitter<mat-icon svgIcon="dropdownMedium"></mat-icon>
-          </button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item>Organisation administrator</button>
-            <button mat-menu-item>City administrator</button>
-            <button mat-menu-item>Fitter</button>
-          </mat-menu>
-        </div>
-      </mat-list-option>
-      <mat-list-option> Add </mat-list-option>
-    </mat-selection-list>
-  </mat-card-content>
-</mat-card>
-
-<mat-card class="mat-elevation-z0">
-  <mat-card-header>
-    <mat-card-title>Notifications</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
+  <mat-selection-list [multiple]="false">
+    <mat-list-option class="org__list-item list-item-icon-right">
+      <mat-icon mat-list-icon svgIcon="deleteRegular"></mat-icon>
+      <div mat-line>
+        Fitter
+        <!-- <button mat-button [matMenuTriggerFor]="menu">
+          Fitter<mat-icon svgIcon="dropdownMedium"></mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Organisation administrator</button>
+          <button mat-menu-item>City administrator</button>
+          <button mat-menu-item>Fitter</button>
+        </mat-menu> -->
+      </div>
+    </mat-list-option>
+    <mat-list-option> Add </mat-list-option>
+  </mat-selection-list>
+</section>
+<mat-divider></mat-divider>
+<section>
+  <h2>Notifications</h2>
+  <div>
     <mat-list role="list">
       <mat-list-item role="listitem">The voltage is too low</mat-list-item>
       <mat-list-item role="listitem">Power is too low</mat-list-item>
@@ -117,9 +105,10 @@
     <mat-selection-list [multiple]="false">
       <mat-list-option> Edit </mat-list-option>
     </mat-selection-list>
-  </mat-card-content>
-</mat-card>
-
-<h2>Permissions</h2>
-
-<permissions></permissions>
+  </div>
+</section>
+<mat-divider></mat-divider>
+<section #permissions>
+  <h2>Permissions</h2>
+  <permissions></permissions>
+</section>

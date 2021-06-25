@@ -1,6 +1,7 @@
 h2 {
   margin: 1rem 1rem 0 1rem;
 }
+
 aside {
   margin: 0 1rem;
 }
@@ -9,7 +10,6 @@ aside {
 }
 
 section {
-  // width: 70vw;
   display: grid;
   gap: 5rem;
   grid-template-columns: 1fr 3fr 1fr;
