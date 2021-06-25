@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Task } from '../../../../types'
+import { Component, OnInit, Input } from '@angular/core';
+import { Task, Device } from '../../../../types'
 import { TaskService } from '../../../../services/task.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { TaskService } from '../../../../services/task.service';
   styleUrls: ['./device-overview.component.scss']
 })
 export class DeviceOverviewComponent implements OnInit {
+  @Input() device!: Device;
   tasks: Task[] = [];
 
   constructor(private taskService: TaskService) {}

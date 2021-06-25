@@ -18,7 +18,7 @@
   >
   <mat-tab-group id="device" animationDuration="0ms">
     <mat-tab label="Overview">
-      <device-overview></device-overview>
+      <device-overview [device]="device"></device-overview>
     </mat-tab>
     <mat-tab label="Motion sensor">
       <device-motion-sensor></device-motion-sensor>

@@ -1,4 +1,5 @@
 <!-- TODO: Loading: devices, group, profile -->
+<!-- TODO: Error handling -->
 
 <app-page-actions>
   <div class="page-title">
@@ -28,23 +29,32 @@
   <h2 matSubheader>Profile</h2>
   <mat-list-option
     *ngIf="profile$ | async as profile"
-    class="list-item-icon-right"
+    class="list-item-icon-right list-item-with-btn"
     role="listitem"
-    [routerLink]="'../../profiles/' + [(group$ | async)?.profileId]"
+    [routerLink]="'../../profiles/' + [profile.id]"
   >
     <div matLine>{{ profile.name }}</div>
     <span matLine>{{ profile.description }}</span>
-    <mat-icon
-      [matMenuTriggerFor]="profileMenu"
-      matListIcon
-      svgIcon="editRegular"
-    ></mat-icon>
+    <div matListIcon>
+      <button
+        (click)="onProfileSelectClick($event)"
+        mat-icon-button
+        [matMenuTriggerFor]="profileMenu"
+      >
+        <mat-icon svgIcon="editRegular"></mat-icon>
+      </button>
+    </div>
   </mat-list-option>
   <mat-menu #profileMenu="matMenu">
-    <button mat-menu-item>Profile 1</button>
-    <button mat-menu-item>Profile 2</button>
+    <button
+      [disabled]="profile.id === (profile$ | async)?.id"
+      *ngFor="let profile of profiles$ | async"
+      mat-menu-item
+    >
+      {{ profile.name }}
+    </button>
   </mat-menu>
-  <h2 matSubheader>Devices</h2>
+  <h2 matSubheader>Lamps</h2>
   <mat-list-option
     [routerLink]="[device.id]"
     role="listitem"
@@ -55,5 +65,20 @@
   </mat-list-option>
   <mat-list-option role="listitem">
     <div class="text-secondary" matLine>Add</div>
+  </mat-list-option>
+  <h2 matSubheader>Segment controllers</h2>
+  <mat-list-option>
+    <div matLine>SC11</div>
+    <span matLine class="text-secondary text-caps"
+      >SC3M24UL8-868-44, 355855056225996,
+      TB1caf0d2cb6cb4db88087730cd2db0fb1</span
+    >
+  </mat-list-option>
+  <mat-list-option>
+    <div matLine>SC6</div>
+    <span matLine class="text-secondary text-caps"
+      >SC3M24UL8-868-44, 355855056091604,
+      TBe43d2685265f49a796b541de06c6205f</span
+    >
   </mat-list-option>
 </mat-selection-list>

@@ -77,6 +77,10 @@ body {
   color: hsla(0, 0%, 0%, 0.6);
 }
 
+.text-caps {
+  text-transform: uppercase;
+}
+
 // svg,
 // path {
 //   fill: currentColor;
@@ -190,7 +194,8 @@ button {
 }
 
 .mat-list-item.list-item-icon-right {
-  .mat-icon {
+  .mat-icon,
+  .mat-list-icon {
     order: -1;
   }
   .mat-list-text {
@@ -217,9 +222,6 @@ button {
   }
   .mat-expansion-panel.mat-expanded {
     background: hsla(0, 0%, 0%, 0.05);
-  }
-  .mat-expansion-panel-header.mat-expanded {
-    height: 48px;
   }
   // :nth-last-child(-n + 2)
   .mat-tab-label {
@@ -386,4 +388,26 @@ input.time {
   span {
     color: hsla(0, 0%, 0%, 0.3);
   }
+}
+
+// Disable fixed icon size in list items
+.mat-list-item.list-item-with-btn {
+  .mat-list-icon {
+    width: auto !important;
+    height: auto !important;
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+  }
+}
+
+.mat-expansion-panel-header {
+  height: auto;
+  padding: 1rem !important;
+  &.mat-expanded {
+    height: auto;
+  }
+}
+
+.mat-list-base .mat-list-option .mat-line {
+  white-space: normal;
 }

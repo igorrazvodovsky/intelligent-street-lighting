@@ -1,4 +1,6 @@
-import { Observable, pipe } from 'rxjs';
+// TODO: No sense in using Obseravle for things that won't change (group)
+
+import { Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { Device, DeviceGroup, Profile } from '../../../types'
@@ -15,6 +17,7 @@ export class DeviceListComponent implements OnInit {
   group$!: Observable<DeviceGroup>;
   devices$!: Observable<Device[]>;
   profile$!: Observable<Profile>;
+  profiles$!: Observable<Profile[]>;
 
   constructor(
     private deviceService: DeviceService,
@@ -22,9 +25,14 @@ export class DeviceListComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
+  onProfileSelectClick(event) {
+   event.stopPropagation();
+}
+
   ngOnInit() {
+    this.profiles$ = this.profileService.getProfiles();
     this.group$ = this.route.paramMap.pipe(
-      switchMap((params) =>
+      switchMap(params =>
         this.deviceService.getGroup(params.get('groupId')!)),
       tap(group => { this.profile$ = this.profileService.getProfile(group.profileId) })
     );

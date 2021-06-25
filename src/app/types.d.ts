@@ -28,46 +28,61 @@ export interface Comment {
 }
 
 export interface Alert {
-  id: number;
-  title: string;
-  description?: string;
-  status: string;
-  priority: string;
-  device: string;
-  eventId: number;
-  assignee: string;
-  created: Date;
-  updated: Date;
-  comments: any;
+  id: number,
+  title: string,
+  description?: string,
+  status: string,
+  priority: string,
+  device: string,
+  eventId: number,
+  assignee: string,
+  created: Date,
+  updated: Date,
+  comments: any
 }
 
 export interface DeviceGroup {
   id: number,
-  name: string;
-  lamps: number;
-  profileId: number;
+  name: string,
+  profileId: number,
+  parent: number
 }
 
 export interface Activity {
-  type: string;
-  subject: string;
-  details: string;
-  object: object;
-  avatar?: string;
-  created: Date;
+  type: string,
+  subject: string,
+  details: string,
+  object: object,
+  avatar?: string,
+  created: Date
+}
+
+export enum SensorType {
+  Motion,
+  Wifi,
+  Traffic
+}
+
+export enum DeviceType {
+  Lamp,
+  SegmentController,
 }
 
 export interface Device {
   id: number,
   name: string,
+  model: string,
   groupId: number,
   profileId?: number,
   alerts?: Alert[],
   events?: [],
   tasks?: Task[],
   properties?: object,
-  motionSensor?: object,
-  metrics?: object;
+  sensors?: [],
+  metrics?: object,
+  surgeProtector: boolean,
+  orientation: number,
+  firmware: string
 }
 
 export interface MotionSensor {
