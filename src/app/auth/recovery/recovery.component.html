@@ -1,0 +1,29 @@
+<mat-card class="mat-elevation-z0" *ngIf="!sent; else feedbackMsg">
+  <mat-card-header>
+    <mat-card-title>Forgot your password?</mat-card-title>
+    <mat-card-subtitle>
+      We’ll send instructions for setting a new password to your email address.
+    </mat-card-subtitle>
+  </mat-card-header>
+  <form>
+    <mat-form-field dense>
+      <mat-label>Email</mat-label>
+      <input autofocus type="email" matInput />
+      <mat-error>Please provide a valid email address</mat-error>
+    </mat-form-field>
+    <button (click)="sent = true" mat-flat-button color="accent">
+      Send password reset email
+    </button>
+  </form>
+</mat-card>
+<ng-template #feedbackMsg>
+  <mat-card class="mat-elevation-z0">
+    <mat-card-header>
+      <mat-card-title>Sent!</mat-card-title>
+      <mat-card-subtitle>
+        A message with the link to password reset was sent to your email
+        address.
+      </mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+</ng-template>

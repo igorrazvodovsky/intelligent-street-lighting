@@ -53,7 +53,9 @@ export enum Regular {
   Firmware = 'firmware',
   Sun = 'sun',
   Enter = 'enter',
-  Edit = 'edit'
+  Edit = 'edit',
+  CheckCircle = 'checkCircle'
+
 }
 
 @Injectable({
@@ -75,7 +77,7 @@ export class IconService {
 
   private loadIcons(iconSet: string, iconKeys: string[], iconUrl: string): void {
     iconKeys.forEach(key => {
-      this.matIconRegistry.addSvgIcon(key+iconSet, this.domSanitizer.bypassSecurityTrustResourceUrl(`${iconUrl}/${key}.svg`));
+      this.matIconRegistry.addSvgIcon(key + iconSet, this.domSanitizer.bypassSecurityTrustResourceUrl(`${iconUrl}/${key}.svg`));
     });
   }
 }

@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { MaterialModule } from '.././material-module';
+import { RecoveryComponent } from './recovery/recovery.component';
+import { NewPasswordComponent } from './new-password/new-password.component';
 
 @NgModule({
   imports: [
@@ -13,7 +15,9 @@ import { MaterialModule } from '.././material-module';
     MaterialModule
   ],
   declarations: [
-    LoginComponent
+    LoginComponent,
+    RecoveryComponent,
+    NewPasswordComponent
   ]
 })
 export class AuthModule {}
