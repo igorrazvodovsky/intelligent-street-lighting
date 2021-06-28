@@ -284,12 +284,21 @@ button {
     border-top: 0 solid transparent;
     padding: 1em 0 0.75em 0 !important;
   }
+  &.mat-form-field-appearance-outline .mat-select-arrow-wrapper {
+    transform: translateY(0);
+  }
 }
 
 .input-auto-width {
   .mat-form-field-flex,
   .mat-form-field-infix {
     width: auto !important;
+  }
+  &.time {
+    .mat-form-field-flex,
+    .mat-form-field-infix {
+      min-width: 11ch !important;
+    }
   }
 }
 

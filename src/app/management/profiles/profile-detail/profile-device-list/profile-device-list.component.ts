@@ -18,6 +18,10 @@ export class ProfileDeviceListComponent implements OnInit {
     private deviceService: DeviceService,
   ) {}
 
+  getDevices(groupId) {
+    return this.deviceService.getDevicesByGroup(groupId);
+  }
+
   ngOnInit() {
     this.groups$ = this.route.paramMap.pipe(
       switchMap(params => {

@@ -1,3 +1,5 @@
+// import { WeekDay } from '@angular/common';
+
 export interface User {
   name: string;
   id: number;
@@ -112,30 +114,50 @@ export interface Measurement {
   }
 }
 
+// TODO: Sunday or Monday?
+export enum WeekDay {
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday,
+  Sunday,
+}
+
+export interface Schedule {
+  name?: string,
+  brightness: number,
+  time: {
+    start: Date,
+    end: Date,
+    week: {
+      enabled?: boolean,
+      start?: Date,
+      end?: Date
+    }[]
+  }
+}
+
+export interface TimeGroup {
+  days: number[],
+  start: Date,
+  end: Date
+}
+
 export interface Profile {
   id: number,
   name: string,
-  description: string,
+  description?: string,
   summary:
-    {
-      day: string,
-      schedule: {
-        brightness: number,
-        time: string
-      }[]
-    }[],
-  settings:
-    {
-      name: string,
+  {
+    day: string,
+    schedule: {
       brightness: number,
-      schedule: {
-        day: string,
-        time: {
-          start: string,
-          end: string
-        }[]
-      }[]
+      time: string
     }[],
+  }[],
+  schedules: Schedule[],
   naturalLight: boolean,
   sun: boolean,
   motionSensor: boolean,

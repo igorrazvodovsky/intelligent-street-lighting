@@ -22,7 +22,7 @@ export class GroupListComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
-  getDeviceNumber(groupId) {
+  getDevices(groupId) {
     return this.deviceService.getDevicesByGroup(groupId);
   }
 

@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../shared/shared.module';
-
 import { ProfilesRoutingModule } from './profiles-routing.module';
 import { ProfilesComponent } from './profiles.component';
 import { ProfileDetailComponent } from './profile-detail/profile-detail.component';
 import { ProfileListComponent } from './profile-list/profile-list.component';
 import { ProfileScheduleComponent } from './profile-detail/profile-schedule/profile-schedule.component';
 import { ProfileDeviceListComponent } from './profile-detail/profile-device-list/profile-device-list.component';
+import { ConversationalTimeGroupPipe } from '../../pipes/conversational-time-group.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,8 @@ import { ProfileDeviceListComponent } from './profile-detail/profile-device-list
     ProfileDetailComponent,
     ProfileListComponent,
     ProfileScheduleComponent,
-    ProfileDeviceListComponent
+    ProfileDeviceListComponent,
+    ConversationalTimeGroupPipe
   ],
   imports: [
     CommonModule,

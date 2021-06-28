@@ -30,7 +30,7 @@
       <!-- <mat-icon matListIcon svgIcon="chevronRightRegular"></mat-icon> -->
       <div matLine>{{ group.name }}</div>
       <span matLine
-        >{{ (getDeviceNumber(group.id) | async)?.length }}
+        >{{ (getDevices(group.id) | async)?.length }}
         <span class="text-secondary">lamps</span>,
         {{ (getProfile(group.profileId) | async)?.name }}
         <span class="text-secondary">profile</span></span

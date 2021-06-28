@@ -16,21 +16,24 @@
     <div>
       <h2>Schedule</h2>
       <aside class="mat-caption text-secondary">
-        Default profile will be applied to the time periods not covered by
-        the&nbsp;schedule.
+        Schedules are superimposed and combined. Item order determines the
+        priority.
       </aside>
     </div>
 
     <div class="behaviour">
-      <mat-accordion>
-        <profile-schedule></profile-schedule>
-        <profile-schedule></profile-schedule>
-      </mat-accordion>
       <mat-selection-list [multiple]="false">
         <mat-list-option>
           <div class="text-secondary" matLine>Add schedule</div>
         </mat-list-option>
       </mat-selection-list>
+      <mat-accordion>
+        <profile-schedule
+          *ngFor="let schedule of profile.schedules; let last = last"
+          [schedule]="schedule"
+          [last]="last"
+        ></profile-schedule>
+      </mat-accordion>
     </div>
   </section>
   <mat-divider></mat-divider>
@@ -52,6 +55,22 @@
         >
       </mat-list-option>
     </mat-selection-list>
+  </section>
+  <mat-divider></mat-divider>
+  <section>
+    <h2>Validity</h2>
+    <div>
+      <mat-form-field>
+        <mat-label>Period of validity</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Start date" />
+          <input matEndDate placeholder="End date" />
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+        <mat-hint>Optional</mat-hint>
+      </mat-form-field>
+    </div>
   </section>
   <mat-divider></mat-divider>
   <section>

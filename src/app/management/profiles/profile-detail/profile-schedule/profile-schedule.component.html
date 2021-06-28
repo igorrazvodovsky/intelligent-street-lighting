@@ -1,80 +1,93 @@
 <mat-expansion-panel class="mat-elevation-z0">
   <mat-expansion-panel-header>
     <mat-panel-title class="mat-subheading-2">
-      70% on weekdays from 6:30 to 23:00, on weekends from 8:00 to 22:00.
+      <strong>{{ schedule.brightness | percent }}</strong
+      >&nbsp;
+      <ng-container *ngFor="let group of timeGroups">
+        {{
+          last
+            ? (group | conversationalTimeGroup: "last")
+            : (group | conversationalTimeGroup)
+        }}
+        <!-- {{ group.days | dayRange }} from {{ group.start | date: "HH:mm" }} to
+        {{ group.end | date: "HH:mm" }} -->
+      </ng-container>
+      <!-- weekdays from 6:30 to 23:00, on weekends from 8:00 to 22:00. -->
     </mat-panel-title>
-    <!-- <mat-panel-description>
-        This is a summary of the content
-      </mat-panel-description> -->
   </mat-expansion-panel-header>
-  <mat-slider value="70" aria-label="brightness"></mat-slider>
+  <!-- TODO: Add hint item if schedule doesn't cover 24/7.  -->
+  <!-- Default profile will be applied to the time periods not covered by the schedule. -->
+  <!-- TODO: Describe prioritisation? -->
+  <mat-slider
+    [value]="schedule.brightness"
+    aria-label="brightness"
+    min="0"
+    max="1"
+  ></mat-slider>
   <form>
     <div>
       <span>Active</span>
-      <mat-form-field class="no-label no-hint input-auto-width">
-        <input class="time" matInput placeholder="6:00" value="6:30" />
+
+      <mat-form-field class="no-label no-hint input-auto-width time">
+        <mat-select>
+          <mat-option *ngFor="let option of timeOptions" [value]="option.value">
+            {{ option.viewValue }}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
-      <span>&mdash;</span>
+
       <mat-form-field class="no-label no-hint input-auto-width">
-        <input class="time" matInput placeholder="22:00" value="22:00" />
+        <input
+          class="time"
+          matInput
+          placeholder="6:00"
+          [value]="schedule.time.start | date: 'HH:mm'"
+        />
       </mat-form-field>
-    </div>
-    <div>
-      <mat-checkbox checked="true">Mon</mat-checkbox>
+      <span class="text-secondary">&mdash;</span>
       <mat-form-field class="no-label no-hint input-auto-width">
-        <input class="time" matInput placeholder="6:30" />
-      </mat-form-field>
-      <span>&mdash;</span>
-      <mat-form-field class="no-label no-hint input-auto-width">
-        <input class="time" matInput placeholder="22:00" />
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-checkbox checked="true">Tue</mat-checkbox>
-      <mat-form-field class="no-label no-hint input-auto-width">
-        <input class="time" matInput placeholder="6:30" />
-      </mat-form-field>
-      <span>&mdash;</span>
-      <mat-form-field class="no-label no-hint input-auto-width">
-        <input class="time" matInput placeholder="22:00" />
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-checkbox checked="true">Wed</mat-checkbox>
-      <mat-form-field class="no-label no-hint input-auto-width">
-        <input class="time" matInput placeholder="6:30" />
-      </mat-form-field>
-      <span>&mdash;</span>
-      <mat-form-field class="no-label no-hint input-auto-width">
-        <input class="time" matInput placeholder="22:00" />
+        <input
+          class="time"
+          matInput
+          placeholder="22:00"
+          [value]="schedule.time.end | date: 'HH:mm'"
+        />
       </mat-form-field>
     </div>
-    <div>
-      <mat-checkbox checked="true">Thu</mat-checkbox>
-      <mat-form-field class="no-label no-hint input-auto-width">
-        <input class="time" matInput placeholder="6:30" />
-      </mat-form-field>
-      <span>&mdash;</span>
-      <mat-form-field class="no-label no-hint input-auto-width">
-        <input class="time" matInput placeholder="22:00" />
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-checkbox checked="true">Fri</mat-checkbox>
-      <mat-form-field class="no-label no-hint input-auto-width">
-        <input class="time" matInput placeholder="6:30" />
-      </mat-form-field>
-      <span>&mdash;</span>
-      <mat-form-field class="no-label no-hint input-auto-width">
-        <input class="time" matInput placeholder="22:00" />
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-checkbox>Sat</mat-checkbox>
-    </div>
-    <div>
-      <mat-checkbox>Sun</mat-checkbox>
-    </div>
+    <ng-container *ngFor="let day of week; let i = index">
+      <div>
+        <mat-checkbox [checked]="schedule.time.week[i].enabled">{{
+          week[i]
+        }}</mat-checkbox>
+        <mat-form-field class="no-label no-hint input-auto-width">
+          <input
+            [disabled]="!schedule.time.week[i].enabled"
+            class="time"
+            matInput
+            [placeholder]="schedule.time.week[i].enabled ? '06:30' : null"
+            [value]="
+              schedule.time.week[i].start
+                ? (schedule.time.week[i].start | date: 'HH:mm')
+                : null
+            "
+          />
+        </mat-form-field>
+        <span class="text-secondary">&mdash;</span>
+        <mat-form-field class="no-label no-hint input-auto-width">
+          <input
+            [disabled]="!schedule.time.week[i].enabled"
+            class="time"
+            matInput
+            [placeholder]="schedule.time.week[i].enabled ? '22:00' : null"
+            [value]="
+              schedule.time.week[i].end
+                ? (schedule.time.week[i].end | date: 'HH:mm')
+                : null
+            "
+          />
+        </mat-form-field>
+      </div>
+    </ng-container>
   </form>
 </mat-expansion-panel>
 
