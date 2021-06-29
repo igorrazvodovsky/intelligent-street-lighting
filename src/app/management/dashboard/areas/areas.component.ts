@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AREA } from '../../../../assets/data/areas';
 
 @Component({
   selector: 'areas',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./areas.component.scss']
 })
 export class AreasComponent implements OnInit {
+  data = AREA
   areas = [
     {
       name: "Ventas",
