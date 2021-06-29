@@ -1,0 +1,37 @@
+<header>
+  <h2 class="text-heading">Areas</h2>
+  <button mat-button [matMenuTriggerFor]="menu">
+    Traffic<mat-icon svgIcon="dropdownMedium"></mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>All</button>
+    <button mat-menu-item>Unassigned</button>
+    <button mat-menu-item>...</button>
+  </mat-menu>
+</header>
+<div id="areas">
+  <mat-card *ngFor="let area of areas" class="mat-elevation-z0">
+    <mat-card-header>
+      <mat-card-title>{{ area.name }}</mat-card-title>
+      <mat-card-subtitle>6 groups, 17 lamps, Default profile</mat-card-subtitle>
+    </mat-card-header>
+    <svg
+      mat-card-image
+      height="49"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M0 47.461L24.778 30.3 49.556.473l24.777 1.184L99.111 0l24.778 43.97 24.778-15.032 24.777 18.05 24.778-34.62L223 8.226V49H0v-1.539z"
+        fill="#000"
+        fill-opacity=".2"
+      />
+    </svg>
+  </mat-card>
+  <mat-card class="mat-elevation-z0">
+    <mat-card-header>
+      <mat-card-title>Unregistered</mat-card-title>
+      <mat-card-subtitle>27 lamps</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+</div>

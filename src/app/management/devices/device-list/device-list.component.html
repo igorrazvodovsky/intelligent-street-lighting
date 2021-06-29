@@ -61,7 +61,13 @@
     *ngFor="let device of devices$ | async"
   >
     <div matLine>{{ device.name }}</div>
-    <span matLine>1 luminaire, surge protector, motion sensor</span>
+    <span matLine
+      >1 luminaire{{ device.surgeProtector ? ", surge protector" : null
+      }}{{ device.sensors ? ", " + device.sensors.join(", ") : null }}
+      <!-- <ng-container *ngFor="let sensor of device.sensors">
+        {{ sensor }}</ng-container
+      > -->
+    </span>
   </mat-list-option>
   <mat-list-option role="listitem">
     <div class="text-secondary" matLine>Add</div>

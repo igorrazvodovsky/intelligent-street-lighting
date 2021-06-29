@@ -1,0 +1,38 @@
+:host {
+  display: block;
+}
+
+header {
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  margin: 0 1rem;
+}
+
+#areas {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.mat-card {
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  cursor: pointer;
+  border: 1px solid transparent;
+  &:hover {
+    background: transparent;
+    border: 1px solid hsla(0, 0%, 0%, 0.1);
+  }
+}
+
+svg {
+  display: block;
+}
+
+.mat-card {
+}

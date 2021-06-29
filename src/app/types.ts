@@ -60,9 +60,9 @@ export interface Activity {
 }
 
 export enum SensorType {
-  Motion,
-  Wifi,
-  Traffic
+  Motion = "motion sensor",
+  Wifi = 'wifi senspor',
+  Traffic = 'trafic sensor'
 }
 
 export enum DeviceType {
@@ -80,7 +80,7 @@ export interface Device {
   events?: [],
   tasks?: Task[],
   properties?: object,
-  sensors?: [],
+  sensors?: SensorType[],
   metrics?: object,
   surgeProtector: boolean,
   orientation: number,

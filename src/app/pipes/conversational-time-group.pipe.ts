@@ -37,7 +37,7 @@ export class ConversationalTimeGroupPipe implements PipeTransform {
     else if (JSON.stringify(group.days) === JSON.stringify(this.weekend)) this.days = 'on weekends'
     else this.days = 'on ' + this.weekDays.filter((weekDay, i) => group.days.includes(i)).join(', ');
 
-    return this.days + (this.time ? ' ' + this.time : '') + '; '
+    return this.days + (this.time ? ' ' + this.time : '') + ('last' ? '' : '; ')
     // TODO: 'rest of the time' depending on the number of schedules
 
   }

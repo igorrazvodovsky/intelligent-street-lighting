@@ -1,4 +1,4 @@
-import { Device, DeviceGroup } from '../../app/types';
+import { Device, DeviceGroup, SensorType } from '../../app/types';
 
 export const DEVICES: Device[] = [
   {
@@ -8,7 +8,8 @@ export const DEVICES: Device[] = [
     model: 'LC2M2305R',
     orientation: 90,
     firmware: '0.1.0',
-    surgeProtector: false
+    surgeProtector: false,
+    sensors: [SensorType.Motion, SensorType.Traffic]
   },
   {
     id: 12,
@@ -17,7 +18,8 @@ export const DEVICES: Device[] = [
     model: 'MSLC205RL',
     orientation: 90,
     firmware: '0.1.0',
-    surgeProtector: true
+    surgeProtector: true,
+    sensors: [SensorType.Motion]
   },
   {
     id: 13,
@@ -35,7 +37,8 @@ export const DEVICES: Device[] = [
     model: 'NLC2M1205R',
     orientation: 90,
     firmware: '0.1.0',
-    surgeProtector: false
+    surgeProtector: false,
+    sensors: [SensorType.Traffic]
   },
   {
     id: 15,
@@ -71,7 +74,8 @@ export const DEVICES: Device[] = [
     model: 'LC2M2305R',
     orientation: 90,
     firmware: '0.1.0',
-    surgeProtector: false
+    surgeProtector: false,
+    sensors: [SensorType.Wifi]
   },
   {
     id: 19,
@@ -251,7 +255,7 @@ export const GROUPS: DeviceGroup[] = [
     parent: null
   },
   {
-    id:  6,
+    id: 6,
     name: 'Mark Rothko Center',
     profileId: 2,
     parent: null
@@ -280,4 +284,4 @@ export const GROUPS: DeviceGroup[] = [
     profileId: 1,
     parent: null
   }
-  ];
+];

@@ -14,6 +14,7 @@ import { ActivityComponent } from './dashboard/activity/activity.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { PermissionsComponent } from './user-profile/permissions/permissions.component';
 import { DevicesModule } from './devices/devices.module';
+import { AreasComponent } from './dashboard/areas/areas.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { DevicesModule } from './devices/devices.module';
     UserProfileComponent,
     TasksComponent,
     ActivityComponent,
-    PermissionsComponent
+    PermissionsComponent,
+    AreasComponent
   ]
 })
 export class ManagementModule {}

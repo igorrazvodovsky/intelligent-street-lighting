@@ -81,6 +81,14 @@ body {
   text-transform: uppercase;
 }
 
+.text-heading {
+  font-size: 0.875rem !important;
+  text-transform: uppercase;
+  color: hsla(0, 0%, 0%, 0.6);
+  letter-spacing: 0.18em !important;
+  font-weight: normal !important;
+}
+
 // svg,
 // path {
 //   fill: currentColor;
