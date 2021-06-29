@@ -19,11 +19,8 @@ export class AreaChartComponent implements OnChanges {
   private margin = 0;
 
   public svg;
-  public svgInner;
-  public yScale;
-  public xScale;
-  public xAxis;
-  public yAxis;
+  public y;
+  public x;
   public lineGroup;
 
   constructor(public chartElem: ElementRef) {
@@ -44,51 +41,37 @@ export class AreaChartComponent implements OnChanges {
       .select(this.chartElem.nativeElement)
       .append('svg')
       .attr('height', this.height);
-    this.svgInner = this.svg
-      .append('g')
-      .style('transform', 'translate(' + this.margin + 'px, ' + this.margin + 'px)');
 
-    this.yScale = d3Scale
+    this.y = d3Scale
       .scaleLinear()
       .domain([d3Array.max(this.data, d => d.value) + 1, d3Array.min(this.data, d => d.value) - 1])
       .range([0, this.height - 2 * this.margin]);
 
-    this.yAxis = this.svgInner
-      .append('g')
-      .attr('id', 'y-axis')
-      .style('transform', 'translate(' + this.margin + 'px,  0)');
+    this.x = d3Scale.scaleTime().domain(d3Array.extent(this.data, d => new Date(d.date)));
 
-    this.xScale = d3Scale.scaleTime().domain(d3Array.extent(this.data, d => new Date(d.date)));
-
-    this.xAxis = this.svgInner
-      .append('g')
-      .attr('id', 'x-axis')
-      .style('transform', 'translate(0, ' + (this.height - 2 * this.margin) + 'px)');
-
-    this.lineGroup = this.svgInner
+    this.lineGroup = this.svg
       .append('g')
       .append('path')
       .attr('id', 'line')
-      .style('fill', 'none')
-      .style('stroke', 'red')
-      .style('stroke-width', '2px')
+      .style('fill', 'hsla(0, 0%, 0%, 0.2)')
   }
 
   private drawChart(): void {
     this.width = this.chartElem.nativeElement.getBoundingClientRect().width;
     this.svg.attr('width', this.width);
 
-    this.xScale.range([this.margin, this.width - 2 * this.margin]);
+    this.x.range([this.margin, this.width - 2 * this.margin]);
 
     const line = d3Shape
-      .line()
+      .area()
       .x(d => d[0])
-      .y(d => d[1])
-      .curve(d3Shape.curveMonotoneX);
+      .y0(100)
+      .y1(d => d[1])
+      .curve(d3Shape.curveNatural);
 
     const points: [number, number][] = this.data.map(d => [
-      this.xScale(new Date(d.date)),
-      this.yScale(d.value),
+      this.x(new Date(d.date)),
+      this.y(d.value),
     ]);
 
     this.lineGroup.attr('d', line(points));
