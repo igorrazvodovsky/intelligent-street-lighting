@@ -10,7 +10,7 @@
   </mat-menu>
 </header>
 <div id="areas">
-  <mat-card *ngFor="let area of areas" class="mat-elevation-z0">
+  <mat-card *ngFor="let area of areas">
     <mat-card-header>
       <mat-card-title>{{ area.name }}</mat-card-title>
       <mat-card-subtitle>6 groups, 17 lamps, Default profile</mat-card-subtitle>
@@ -28,7 +28,7 @@
       />
     </svg>
   </mat-card>
-  <mat-card class="mat-elevation-z0">
+  <mat-card>
     <mat-card-header>
       <mat-card-title>Unregistered</mat-card-title>
       <mat-card-subtitle>27 lamps</mat-card-subtitle>

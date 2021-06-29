@@ -1,4 +1,4 @@
-<mat-card class="mat-elevation-z0" *ngIf="!sent; else feedbackMsg">
+<mat-card *ngIf="!sent; else feedbackMsg">
   <mat-card-header>
     <mat-card-title>Forgot your password?</mat-card-title>
     <mat-card-subtitle>
@@ -17,7 +17,7 @@
   </form>
 </mat-card>
 <ng-template #feedbackMsg>
-  <mat-card class="mat-elevation-z0">
+  <mat-card>
     <mat-card-header>
       <mat-card-title>Sent!</mat-card-title>
       <mat-card-subtitle>

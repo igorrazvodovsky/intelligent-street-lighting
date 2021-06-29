@@ -1,8 +1,5 @@
 <mat-accordion id="permissions">
-  <mat-expansion-panel
-    *ngFor="let permissionGroup of permissions"
-    class="mat-elevation-z0"
-  >
+  <mat-expansion-panel *ngFor="let permissionGroup of permissions">
     <mat-expansion-panel-header>
       <mat-panel-title>{{ permissionGroup.name }}</mat-panel-title>
       <mat-panel-description>
