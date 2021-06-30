@@ -1,6 +1,8 @@
 :host {
   display: grid;
-  grid-template-columns: repeat(3, minmax(240px, 1fr));
+  // grid-template-columns: repeat(3, minmax(240px, 1fr));
+  grid-template-columns: minmax(40vw, 1fr) minmax(240px, 1fr) minmax(240px, 1fr);
+
   padding: 0 0 0 4.5rem;
   height: 100%;
 
@@ -15,6 +17,11 @@
       padding-right: 0;
     }
   }
+}
+
+h2 {
+  margin-left: 1rem;
+  margin-bottom: 0;
 }
 
 section#tasks {
@@ -38,6 +45,7 @@ section#main {
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(14ch, 1fr));
+
   gap: 0.5rem;
 
   .mat-card {

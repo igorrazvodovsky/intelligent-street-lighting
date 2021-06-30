@@ -89,7 +89,10 @@
       <div id="page-actions-container">
         <!-- content will be placed dynamically via Cdk Portal -->
       </div>
-      <mat-form-field class="no-hint" *ngIf="search; else searchButton">
+      <mat-form-field
+        class="no-hint no-label"
+        *ngIf="search; else searchButton"
+      >
         <input matInput placeholder="Search" />
         <mat-icon
           (click)="search = !search"

@@ -1,21 +1,35 @@
 <header>
   <h2 class="text-heading">Areas</h2>
-  <button mat-button [matMenuTriggerFor]="menu">
+  <button mat-button [matMenuTriggerFor]="areaMenu">
     Traffic<mat-icon svgIcon="dropdownMedium"></mat-icon>
   </button>
-  <mat-menu #menu="matMenu">
+  <mat-menu #areaMenu="matMenu">
     <button mat-menu-item>All</button>
     <button mat-menu-item>Unassigned</button>
     <button mat-menu-item>...</button>
   </mat-menu>
+  <button mat-button [matMenuTriggerFor]="areaTimeMenu">
+    Today<mat-icon svgIcon="dropdownMedium"></mat-icon>
+  </button>
+  <mat-menu #areaTimeMenu="matMenu">
+    <button mat-menu-item>Today</button>
+    <button mat-menu-item>Yesterday</button>
+    <button mat-menu-item>Last 7 days</button>
+    <button mat-menu-item>Custom</button>
+  </mat-menu>
 </header>
 <div id="areas">
-  <mat-card *ngFor="let area of areas">
+  <mat-card *ngFor="let area of areas; let i = index">
     <mat-card-header>
-      <mat-card-title>{{ area.name }}</mat-card-title>
-      <mat-card-subtitle>6 groups, 17 lamps, Default profile</mat-card-subtitle>
+      <mat-card-title
+        ><span class="dot" matTooltip="Connection stability: 97%"></span>
+        {{ area.name }}</mat-card-title
+      >
+      <mat-card-subtitle
+        >6 groups, 3&nbsp;profiles, 27&nbsp;lamps</mat-card-subtitle
+      >
     </mat-card-header>
-    <area-chart class="card-chart" mat-card-image [data]="data"></area-chart>
+    <area-chart class="card-chart" mat-card-image [data]="data[i]"></area-chart>
   </mat-card>
   <mat-card>
     <mat-card-header>

@@ -12,7 +12,7 @@ h2 {
 
 #areas {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15ch, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(20ch, 1fr));
   gap: 1rem;
 }
 
@@ -28,4 +28,23 @@ h2 {
     background: transparent;
     border: 1px solid hsla(0, 0%, 0%, 0.1);
   }
+}
+
+.mat-button {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.mat-button:first-of-type {
+  margin-left: 0.5rem;
+}
+
+.dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 0.5rem;
+  background: #10b981;
+  display: inline-flex;
+  position: relative;
+  vertical-align: middle;
 }
