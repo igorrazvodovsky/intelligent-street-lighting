@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-
 import { NavigationComponent } from './navigation/navigation.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ManagementRoutingModule } from './management-routing.module';
@@ -16,7 +15,7 @@ import { PermissionsComponent } from './user-profile/permissions/permissions.com
 import { DevicesModule } from './devices/devices.module';
 import { AreasComponent } from './dashboard/areas/areas.component';
 import { AreaChartComponent } from './dashboard/areas/area-chart/area-chart.component';
-
+import { DateFnsModule } from 'ngx-date-fns';
 
 @NgModule({
   imports: [
@@ -27,7 +26,8 @@ import { AreaChartComponent } from './dashboard/areas/area-chart/area-chart.comp
     SharedModule,
     HttpClientModule,
     LayoutModule,
-    DevicesModule
+    DevicesModule,
+    DateFnsModule.forRoot()
   ],
   declarations: [
     NavigationComponent,
@@ -40,4 +40,4 @@ import { AreaChartComponent } from './dashboard/areas/area-chart/area-chart.comp
     AreaChartComponent
   ]
 })
-export class ManagementModule {}
+export class ManagementModule { }

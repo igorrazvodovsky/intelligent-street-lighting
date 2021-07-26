@@ -33,7 +33,7 @@ export class DeviceHistoryComponent implements OnInit {
       created: new Date(Date.now() - 56100000),
     },
     {
-      type: 'system',
+      type: 'device',
       subject: 'System',
       details: 'Installed',
       object: {},

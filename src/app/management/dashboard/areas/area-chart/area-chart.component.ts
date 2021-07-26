@@ -28,7 +28,6 @@ export class AreaChartComponent implements OnChanges {
 
   public ngOnChanges(changes): void {
     if (changes.hasOwnProperty('data') && this.data) {
-      console.log(this.data)
       this.initializeChart();
       this.drawChart();
 

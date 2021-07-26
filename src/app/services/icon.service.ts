@@ -4,7 +4,8 @@ import { DomSanitizer } from "@angular/platform-browser";
 
 export enum Fill {
   Alarm = 'lightning',
-  Cancel = 'cancel'
+  Cancel = 'cancel',
+  User = 'user'
 }
 
 export enum Bold {
@@ -36,6 +37,7 @@ export enum Medium {
   Alert = 'alert',
   History = 'history',
   Profile = 'profile',
+  Warning = 'warning'
 }
 
 export enum Regular {
@@ -54,8 +56,8 @@ export enum Regular {
   Sun = 'sun',
   Enter = 'enter',
   Edit = 'edit',
-  CheckCircle = 'checkCircle'
-
+  CheckCircle = 'checkCircle',
+  CancelCircle = 'cancelCircle'
 }
 
 @Injectable({

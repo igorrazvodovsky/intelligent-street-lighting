@@ -4,31 +4,10 @@ import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 import { User } from '../../../types'
-
+import { USERS } from '../../../../assets/data/users'
 
 // TODO: replace this with real data from your application
-const EXAMPLE_DATA: User[] = [
-  {id: 1, name: 'Noah Pierre', status: '—', enabled: true, locked: false},
-  {id: 2, name: 'Jahlil Kyle', status: '—', enabled: true, locked: true},
-  {id: 3, name: 'Ava Wright', status: 'trial', enabled: true, locked: true},
-  {id: 4, name: 'Kate Morrison', status: 'trial', enabled: true, locked: false},
-  {id: 5, name: 'Makiyah Yeager', status: 'trial', enabled: true, locked: false},
-  {id: 6, name: 'Tripp Mckay', status: 'member', enabled: false, locked: true},
-  {id: 7, name: 'Amilia Luna', status: 'member', enabled: true, locked: false},
-  {id: 8, name: 'Lori Bryson', status: 'member', enabled: true, locked: false},
-  {id: 9, name: 'Macie Naquin', status: 'member', enabled: true, locked: true},
-  {id: 10, name: 'Lilja Peltola', status: 'member', enabled: true, locked: false},
-  {id: 11, name: 'Anne Mcfadden', status: 'member', enabled: false, locked: false},
-  {id: 12, name: 'Olivia Jacobs', status: 'member', enabled: true, locked: false},
-  {id: 13, name: 'Kaya Pryor', status: 'member', enabled: true, locked: true},
-  {id: 14, name: 'Reina Brooks', status: 'member', enabled: true, locked: false},
-  {id: 15, name: 'Lester Houser', status: 'member', enabled: true, locked: false},
-  {id: 16, name: 'Aila Wiseman', status: 'member', enabled: true, locked: false},
-  {id: 17, name: 'Dustin Mock', status: 'member', enabled: true, locked: false},
-  {id: 18, name: 'Sophia Perez', status: 'member', enabled: true, locked: false},
-  {id: 19, name: 'Candice Wu', status: 'member', enabled: true, locked: false},
-  {id: 20, name: 'Dorian Cordova', status: 'member', enabled: true, locked: false},
-];
+
 
 /**
  * Data source for the Users view. This class should
@@ -36,7 +15,7 @@ const EXAMPLE_DATA: User[] = [
  * (including sorting, pagination, and filtering).
  */
 export class UsersDataSource extends DataSource<User> {
-  data: User[] = EXAMPLE_DATA;
+  data: User[] = USERS;
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
@@ -55,7 +34,7 @@ export class UsersDataSource extends DataSource<User> {
       // stream for the data-table to consume.
       return merge(observableOf(this.data), this.paginator.page, this.sort.sortChange)
         .pipe(map(() => {
-          return this.getPagedData(this.getSortedData([...this.data ]));
+          return this.getPagedData(this.getSortedData([...this.data]));
         }));
     } else {
       throw Error('Please set the paginator and sort on the data source before connecting.');
@@ -66,7 +45,7 @@ export class UsersDataSource extends DataSource<User> {
    *  Called when the table is being destroyed. Use this function, to clean up
    * any open connections or free any held resources that were set up during connect.
    */
-  disconnect(): void {}
+  disconnect(): void { }
 
   /**
    * Paginate the data (client-side). If you're using server-side pagination,

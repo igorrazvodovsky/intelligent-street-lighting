@@ -28,7 +28,7 @@ const globalRippleConfig: RippleGlobalOptions = {
     AuthModule,
     AppRoutingModule,
     MaterialModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent,

@@ -19,7 +19,7 @@ export class ConversationalTimeGroupPipe implements PipeTransform {
 
   constructor(@Inject(LOCALE_ID) private locale: string) { }
 
-  transform(group: TimeGroup, position: string): any {
+  transform(group: TimeGroup, position: string = 'first'): any {
     const entireWeek = JSON.stringify(group.days) == JSON.stringify(this.entireWeek)
     const fullDay = (group.start.getHours() + group.start.getMinutes() == 0 && group.end.getHours() + group.end.getMinutes() == 0)
 

@@ -26,12 +26,19 @@
     </mat-expansion-panel-header>
     <mat-slider aria-label="unit(s)"></mat-slider>
   </mat-expansion-panel>
-  <!-- <mat-list-item role="listitem">{{ device.orientation }}°</mat-list-item> -->
   <h3 matSubheader>Surge protector</h3>
+  <!-- TODO: On, off, no monitoring? -->
   <mat-list-item role="listitem">None</mat-list-item>
 </mat-list>
 
 <mat-selection-list role="list" [multiple]="false">
+  <mat-list-option role="listitem" (click)="on = !on">
+    <mat-icon
+      matListIcon
+      [svgIcon]="on ? 'cancelCircleRegular' : 'checkCircleRegular'"
+    ></mat-icon>
+    <div matLine>Turn {{ on ? "off" : "on" }}</div>
+  </mat-list-option>
   <mat-list-option role="listitem">
     <mat-icon matListIcon svgIcon="moveRegular"></mat-icon>
     <div matLine>Move</div>

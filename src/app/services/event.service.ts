@@ -1,0 +1,25 @@
+import { Injectable } from '@angular/core';
+import { DEVICE_EVENTS, USER_EVENTS } from '../../assets/data/events';
+import { Observable, of, zip } from 'rxjs';
+import { map } from 'rxjs/operators'
+
+@Injectable({
+  providedIn: 'root'
+})
+export class EventService {
+  constructor() { }
+
+  getEvents(): Observable<any[]> {
+    const events = zip(
+      of(DEVICE_EVENTS),
+      of(USER_EVENTS)
+    ).pipe(map(x => x.flat())).pipe(map((data) => {
+      data.sort((a, b) => {
+        return a.created > b.created ? -1 : 1;
+      });
+      return data;
+    }))
+
+    return events;
+  }
+}

@@ -3,26 +3,70 @@
   All<mat-icon svgIcon="dropdownMedium"></mat-icon>
 </button>
 <mat-menu #menu="matMenu">
-  <button mat-menu-item>All</button>
-  <button mat-menu-item>User actions</button>
-  <button mat-menu-item>Device events</button>
-  <button mat-menu-item>...</button>
+  <!-- <button mat-menu-item>All</button> -->
+  <!-- <button mat-menu-item>User actions</button>
+  <button mat-menu-item>Device events</button> -->
+  <mat-selection-list>
+    <mat-list-option> User actions </mat-list-option>
+    <div mat-subheader>Device events</div>
+    <mat-list-option> Critical </mat-list-option>
+    <mat-list-option> Non-critial </mat-list-option>
+    <mat-list-option> Info messages </mat-list-option>
+  </mat-selection-list>
+  <!-- TODO: Sorting? By date, type, device group -->
+  <!-- <div mat-subheader>Sort</div> -->
+  <!-- <button mat-menu-item [matMenuTriggerFor]="sortOptions">Newest first</button> -->
+</mat-menu>
+
+<mat-menu #sortOptions="matMenu">
+  <button mat-menu-item>Newest first</button>
+  <button mat-menu-item>By type</button>
 </mat-menu>
 
 <mat-selection-list [multiple]="false">
-  <mat-list-option class="entry" *ngFor="let activity of activities">
-    <img matListAvatar [src]="activity.avatar" [alt]="activity.subject" />
-    <div matLine>
-      <h3>{{ activity.subject }}</h3>
-      <small class="text-secondary">{{
-        activity.created | date: "shortTime"
-      }}</small>
-    </div>
-    <p matLine>{{ activity.details }}</p>
-  </mat-list-option>
-  <mat-list-option>
-    <mat-icon svgIcon="lightningFill" matListAvatar></mat-icon>
-    <h3 matLine>Power is too high</h3>
-    <p matLine>Lamp 01/09 ← Arhipišķi ← Tabore</p>
-  </mat-list-option>
+  <ng-container *ngFor="let event of events">
+    <mat-list-option
+      [class]="'entry ' + 'entry-' + event.level"
+      *ngIf="event.type == 'device'; else userEventBlock"
+    >
+      <mat-icon
+        *ngIf="event.level == 'info'"
+        svgIcon="infoMedium"
+        matListAvatar
+      ></mat-icon>
+      <mat-icon
+        *ngIf="event.level == 'warning'"
+        svgIcon="alertMedium"
+        matListAvatar
+      ></mat-icon>
+      <mat-icon
+        *ngIf="event.level == 'critical'"
+        svgIcon="warningMedium"
+        matListAvatar
+      ></mat-icon>
+      <div matLine>
+        <h3>{{ event.title }}</h3>
+        <small class="text-secondary">{{
+          event.created | dfnsFormatRelative: now
+        }}</small>
+      </div>
+      <!-- TODO: Lamp 01/09 ← Arhipišķi ← Tabore -->
+      <p matLine>{{ (getDevice(event.deviceId) | async)?.name }}</p>
+    </mat-list-option>
+    <ng-template #userEventBlock>
+      <mat-list-option class="entry">
+        <mat-icon svgIcon="userFill" matListAvatar></mat-icon>
+        <div matLine>
+          <h3>
+            {{ (getUser(event.userId) | async)?.name }} 🛠️
+            {{ (getDevice(event.deviceId) | async)?.name }}
+          </h3>
+          <small class="text-secondary">{{
+            event.created | dfnsFormatRelative: now
+          }}</small>
+        </div>
+        <p matLine>Changed {{ event.property }} to {{ event.to }}</p>
+      </mat-list-option>
+    </ng-template>
+  </ng-container>
 </mat-selection-list>

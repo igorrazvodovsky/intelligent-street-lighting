@@ -19,6 +19,12 @@ $primary: mat-palette($mat-light-blue);
 $accent: mat-palette($mat-amber, A200, A100, A400);
 $warn: mat-palette($mat-red);
 
+:root {
+  --error: 0, 72%, 51%;
+  --warning: 38, 92%, 50%;
+  --info: 217, 91%, 60%;
+}
+
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
 $theme: mat-light-theme(
@@ -282,8 +288,8 @@ button {
 }
 
 .alert {
-  color: hsla(0, 72%, 51%, 0.9);
-  background: hsla(0, 72%, 51%, 0.1);
+  color: hsla(var(--error), 0.9);
+  background: hsla(var(--error), 0.1);
   padding: 0.75rem 1rem;
 }
 
@@ -452,4 +458,14 @@ input.time {
 
 .card-chart svg {
   display: block;
+}
+
+// TODO: Move
+.mat-list-base .mat-list-item.mat-2-line,
+.mat-list-base .mat-list-option.mat-2-line {
+  height: auto !important;
+}
+.mat-list-item-content {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
 }

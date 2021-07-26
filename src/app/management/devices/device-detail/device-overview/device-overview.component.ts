@@ -10,8 +10,9 @@ import { TaskService } from '../../../../services/task.service';
 export class DeviceOverviewComponent implements OnInit {
   @Input() device!: Device;
   tasks: Task[] = [];
+  on = true;
 
-  constructor(private taskService: TaskService) {}
+  constructor(private taskService: TaskService) { }
 
   ngOnInit() {
     this.getTasks();

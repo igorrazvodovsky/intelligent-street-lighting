@@ -29,6 +29,14 @@ export interface Comment {
   created: Date;
 }
 
+export interface DeviceGroup {
+  id: number,
+  name: string,
+  profileId: number,
+  parent: number
+}
+
+// TODO: REMOVE
 export interface Alert {
   id: number,
   title: string,
@@ -43,15 +51,33 @@ export interface Alert {
   comments: any
 }
 
-export interface DeviceGroup {
+export interface Event {
   id: number,
-  name: string,
-  profileId: number,
-  parent: number
+  created: Date,
+  type: 'device' | 'user',
 }
 
+export interface UserEvent extends Event {
+  userId: number,
+  deviceId: number,
+  action: 'update',
+  property: string,
+  from: any,
+  to: any
+}
+
+export interface DeviceEvent extends Event {
+  deviceId: number,
+  value: string,
+  title: string,
+  description?: string,
+  level: 'critical' | 'warning' | 'info' | 'success',
+  taskId?: number
+}
+
+// TODO: REMOVE
 export interface Activity {
-  type: string,
+  type: 'user' | 'device',
   subject: string,
   details: string,
   object: object,
