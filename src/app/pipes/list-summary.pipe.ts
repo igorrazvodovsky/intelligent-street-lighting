@@ -1,3 +1,5 @@
+// TODO: Event filter specifics: "user 'actions' AND 'critical' device 'events', etc."
+
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({

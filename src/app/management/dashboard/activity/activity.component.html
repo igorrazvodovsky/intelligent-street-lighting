@@ -46,7 +46,10 @@
   <button mat-menu-item>By type</button>
 </mat-menu>
 
-<mat-selection-list [multiple]="false">
+<mat-selection-list
+  [multiple]="false"
+  *ngIf="fileredEvents.length > 0; else empty"
+>
   <ng-container *ngFor="let event of fileredEvents">
     <mat-list-option
       [class]="'entry ' + 'entry-' + event.level"
@@ -93,3 +96,8 @@
     </ng-template>
   </ng-container>
 </mat-selection-list>
+
+<!-- TODO: no results for specifc filter -->
+<ng-template #empty>
+  <p class="empty">Strange, but no events of this kind happened yet.</p>
+</ng-template>

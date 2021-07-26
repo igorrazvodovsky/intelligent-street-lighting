@@ -19,7 +19,7 @@ export class ActivityComponent implements OnInit {
     user: true,
     critical: true,
     warning: true,
-    info: true
+    info: false
   };
   constructor(private eventService: EventService, private deviceService: DeviceService, private userService: UserService) { }
 
