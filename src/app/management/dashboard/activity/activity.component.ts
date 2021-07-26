@@ -16,7 +16,7 @@ export class ActivityComponent implements OnInit {
   fileredEvents: UserEvent[] | DeviceEvent[] = [];
   now = new Date();
   filter = {
-    user: false,
+    user: true,
     critical: true,
     warning: true,
     info: true

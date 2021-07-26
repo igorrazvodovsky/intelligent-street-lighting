@@ -1,8 +1,8 @@
 <h2 class="text-heading">Activity</h2>
 
 <button mat-button [matMenuTriggerFor]="menu">
-  {{ filter }}
-  All
+  {{ filter | listSummary }}
+  <!-- All -->
   <mat-icon svgIcon="dropdownMedium"></mat-icon>
 </button>
 <mat-menu #menu="matMenu">
