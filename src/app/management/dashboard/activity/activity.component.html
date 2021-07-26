@@ -1,30 +1,53 @@
 <h2 class="text-heading">Activity</h2>
+
 <button mat-button [matMenuTriggerFor]="menu">
-  All<mat-icon svgIcon="dropdownMedium"></mat-icon>
+  {{ filter }}
+  All
+  <mat-icon svgIcon="dropdownMedium"></mat-icon>
 </button>
 <mat-menu #menu="matMenu">
   <!-- <button mat-menu-item>All</button> -->
   <!-- <button mat-menu-item>User actions</button>
   <button mat-menu-item>Device events</button> -->
-  <mat-selection-list>
-    <mat-list-option> User actions </mat-list-option>
+  <mat-selection-list #options>
+    <mat-list-option
+      (click)="handleFilterChange($event, 'user')"
+      [selected]="filter.user"
+    >
+      User actions
+    </mat-list-option>
     <div mat-subheader>Device events</div>
-    <mat-list-option> Critical </mat-list-option>
-    <mat-list-option> Non-critial </mat-list-option>
-    <mat-list-option> Info messages </mat-list-option>
+    <mat-list-option
+      (click)="handleFilterChange($event, 'critical')"
+      [selected]="filter.critical"
+    >
+      Critical
+    </mat-list-option>
+    <mat-list-option
+      (click)="handleFilterChange($event, 'warning')"
+      [selected]="filter.warning"
+    >
+      Non-critial
+    </mat-list-option>
+    <mat-list-option
+      (click)="handleFilterChange($event, 'info')"
+      [selected]="filter.info"
+    >
+      Info messages
+    </mat-list-option>
   </mat-selection-list>
-  <!-- TODO: Sorting? By date, type, device group -->
   <!-- <div mat-subheader>Sort</div> -->
   <!-- <button mat-menu-item [matMenuTriggerFor]="sortOptions">Newest first</button> -->
 </mat-menu>
 
+<!-- TODO: Sorting? By date, type, device group -->
 <mat-menu #sortOptions="matMenu">
   <button mat-menu-item>Newest first</button>
   <button mat-menu-item>By type</button>
 </mat-menu>
 
 <mat-selection-list [multiple]="false">
-  <ng-container *ngFor="let event of events">
+  <ng-container *ngFor="let event of fileredEvents">
     <mat-list-option
       [class]="'entry ' + 'entry-' + event.level"
       *ngIf="event.type == 'device'; else userEventBlock"

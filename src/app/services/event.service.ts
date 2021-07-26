@@ -13,12 +13,15 @@ export class EventService {
     const events = zip(
       of(DEVICE_EVENTS),
       of(USER_EVENTS)
-    ).pipe(map(x => x.flat())).pipe(map((data) => {
-      data.sort((a, b) => {
-        return a.created > b.created ? -1 : 1;
-      });
-      return data;
-    }))
+    ).pipe(
+      map(x => x.flat()),
+      map((data) => {
+        data.sort((a, b) => {
+          return a.created > b.created ? -1 : 1;
+        });
+        return data;
+      })
+    )
 
     return events;
   }
