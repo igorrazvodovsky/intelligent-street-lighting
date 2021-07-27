@@ -1,0 +1,24 @@
+mat-icon.mat-list-avatar {
+  // background-color: hsla(0, 0%, 0%, 0.1);
+  // border: 1px solid hsla(0, 0%, 0%, 0.1);
+  text-align: center;
+}
+
+.entry {
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    h3 {
+      margin-bottom: 0;
+    }
+  }
+  .mat-list-item,
+  .mat-list-option {
+    height: auto !important;
+    align-items: baseline !important;
+  }
+  &:not(&-warning, &-info, &-critical) mat-icon.mat-list-avatar {
+    border: 1px solid hsla(0, 0%, 0%, 0.1);
+  }
+}

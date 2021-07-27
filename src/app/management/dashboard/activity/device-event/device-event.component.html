@@ -1,0 +1,29 @@
+<mat-list-option
+  [class]="'entry ' + 'entry-' + event.level"
+  [routerLink]="'devices/' + [device.groupId] + '/' + [device.id]"
+>
+  <mat-icon
+    *ngIf="event.level == 'info'"
+    svgIcon="infoMedium"
+    matListAvatar
+  ></mat-icon>
+  <mat-icon
+    *ngIf="event.level == 'warning'"
+    svgIcon="alertMedium"
+    matListAvatar
+  ></mat-icon>
+  <mat-icon
+    *ngIf="event.level == 'critical'"
+    svgIcon="warningMedium"
+    matListAvatar
+  ></mat-icon>
+  <div matLine>
+    <h3>{{ event.title }}</h3>
+    <small class="text-secondary">{{
+      event.created | dfnsFormatRelative: now
+    }}</small>
+  </div>
+  <p matLine class="text-secondary">
+    {{ device.name }} &bull; {{ group.name }}
+  </p>
+</mat-list-option>

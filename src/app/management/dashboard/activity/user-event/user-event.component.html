@@ -1,0 +1,18 @@
+<mat-list-option
+  class="entry"
+  [routerLink]="'devices/' + [device.groupId] + '/' + [device.id]"
+>
+  <mat-icon svgIcon="userFill" matListAvatar></mat-icon>
+  <div matLine>
+    <h3>
+      {{ user.name }} &bull;
+      {{ device.name }}
+    </h3>
+    <small class="text-secondary">{{
+      event.created | dfnsFormatDistance: now
+    }}</small>
+  </div>
+  <p matLine class="text-secondary">
+    Changed {{ event.property }} to {{ event.to }}
+  </p>
+</mat-list-option>

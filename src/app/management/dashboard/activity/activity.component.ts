@@ -14,12 +14,11 @@ import { UserService } from '~local/services/user.service';
 export class ActivityComponent implements OnInit {
   events: UserEvent[] | DeviceEvent[] = [];
   fileredEvents: UserEvent[] | DeviceEvent[] = [];
-  now = new Date();
   filter = {
     user: true,
     critical: true,
     warning: true,
-    info: false
+    info: true
   };
   constructor(private eventService: EventService, private deviceService: DeviceService, private userService: UserService) { }
 

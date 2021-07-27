@@ -52,50 +52,9 @@
   *ngIf="fileredEvents.length > 0; else empty"
 >
   <ng-container *ngFor="let event of fileredEvents">
-    <mat-list-option
-      [class]="'entry ' + 'entry-' + event.level"
-      *ngIf="event.type == 'device'; else userEventBlock"
-      routerLink="devices/1/11"
-    >
-      <mat-icon
-        *ngIf="event.level == 'info'"
-        svgIcon="infoMedium"
-        matListAvatar
-      ></mat-icon>
-      <mat-icon
-        *ngIf="event.level == 'warning'"
-        svgIcon="alertMedium"
-        matListAvatar
-      ></mat-icon>
-      <mat-icon
-        *ngIf="event.level == 'critical'"
-        svgIcon="warningMedium"
-        matListAvatar
-      ></mat-icon>
-      <div matLine>
-        <h3>{{ event.title }}</h3>
-        <small class="text-secondary">{{
-          event.created | dfnsFormatRelative: now
-        }}</small>
-      </div>
-      <!-- TODO: Lamp 01/09 ← Arhipišķi ← Tabore -->
-      <p matLine>{{ (getDevice(event.deviceId) | async)?.name }}</p>
-    </mat-list-option>
-    <ng-template #userEventBlock>
-      <mat-list-option class="entry" routerLink="devices/1/11">
-        <mat-icon svgIcon="userFill" matListAvatar></mat-icon>
-        <div matLine>
-          <h3>
-            {{ (getUser(event.userId) | async)?.name }} 🛠️
-            {{ (getDevice(event.deviceId) | async)?.name }}
-          </h3>
-          <small class="text-secondary">{{
-            event.created | dfnsFormatRelative: now
-          }}</small>
-        </div>
-        <p matLine>Changed {{ event.property }} to {{ event.to }}</p>
-      </mat-list-option>
-    </ng-template>
+    <!-- TODO: ??? -->
+    <device-event [event]="event" *ngIf="event.type == 'device'"></device-event>
+    <user-event [event]="event" *ngIf="event.type == 'user'"></user-event>
   </ng-container>
 </mat-selection-list>
 

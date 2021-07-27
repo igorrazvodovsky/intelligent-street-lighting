@@ -17,6 +17,8 @@ import { AreasComponent } from './dashboard/areas/areas.component';
 import { AreaChartComponent } from './dashboard/areas/area-chart/area-chart.component';
 import { DateFnsModule } from 'ngx-date-fns';
 import { ListSummaryPipe } from '~local/pipes/list-summary.pipe';
+import { DeviceEventComponent } from './dashboard/activity/device-event/device-event.component';
+import { UserEventComponent } from './dashboard/activity/user-event/user-event.component';
 
 @NgModule({
   imports: [
@@ -39,7 +41,9 @@ import { ListSummaryPipe } from '~local/pipes/list-summary.pipe';
     PermissionsComponent,
     AreasComponent,
     AreaChartComponent,
-    ListSummaryPipe
+    ListSummaryPipe,
+    DeviceEventComponent,
+    UserEventComponent
   ]
 })
 export class ManagementModule { }

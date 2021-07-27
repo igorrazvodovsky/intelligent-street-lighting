@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { filter } from 'rxjs/operators';
-import { Route, Router, NavigationEnd, ActivatedRoute } from '@angular/router';@Component({
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';@Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
