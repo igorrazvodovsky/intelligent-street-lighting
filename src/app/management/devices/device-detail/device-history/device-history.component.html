@@ -1,12 +1,11 @@
-<mat-selection-list [multiple]="false">
-  <mat-list-option class="entry" *ngFor="let activity of activities">
-    <!-- <img matListAvatar [src]="activity.avatar" [alt]="activity.subject" /> -->
+<!-- TODO: link user profile -->
+
+<mat-selection-list>
+  <mat-list-item class="entry" *ngFor="let event of events">
     <div matLine>
-      <h3>{{ activity.subject }}</h3>
-      <small class="text-secondary">{{
-        activity.created | date: "short"
-      }}</small>
+      <h3>{{ (getUser(event.userId) | async)?.name }}</h3>
+      <small class="text-secondary">{{ event.created | date: "short" }}</small>
     </div>
-    <p matLine>{{ activity.details }}</p>
-  </mat-list-option>
+    <p matLine>Changed {{ event.property }} to {{ event.to }}</p>
+  </mat-list-item>
 </mat-selection-list>

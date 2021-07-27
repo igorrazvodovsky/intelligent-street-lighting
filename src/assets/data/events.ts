@@ -70,10 +70,21 @@ export const DEVICE_EVENTS: DeviceEvent[] = [
 
 export const USER_EVENTS: UserEvent[] = [
   {
-    id: 14,
-    created: getTime(),
+    id: 13,
+    created: new Date(),
     type: 'user',
-    deviceId: 21,
+    deviceId: 11,
+    userId: 17,
+    action: 'update',
+    property: 'location',
+    from: '55.903071794464, 26.525233983994',
+    to: '55.903071794464, 26.525233983994'
+  },
+  {
+    id: 14,
+    created: new Date(),
+    type: 'user',
+    deviceId: 11,
     userId: 6,
     action: 'update',
     property: 'profile',

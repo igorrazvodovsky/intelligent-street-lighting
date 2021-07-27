@@ -12,13 +12,14 @@ import { DeviceService } from '../../../services/device.service'
 })
 export class DeviceDetailComponent implements OnInit {
   device$!: Observable<Device>;
+  device: Device;
   group$!: Observable<DeviceGroup>;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private service: DeviceService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.device$ = this.route.paramMap.pipe(
@@ -28,6 +29,9 @@ export class DeviceDetailComponent implements OnInit {
     this.group$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
         this.service.getGroup(params.get('groupId')!))
+    );
+    this.device$.subscribe(device =>
+      this.device = device
     );
   }
 

@@ -1,3 +1,4 @@
+<!-- TODO: Link device -->
 <h2 class="text-heading">Activity</h2>
 
 <button mat-button [matMenuTriggerFor]="menu">
@@ -54,6 +55,7 @@
     <mat-list-option
       [class]="'entry ' + 'entry-' + event.level"
       *ngIf="event.type == 'device'; else userEventBlock"
+      routerLink="devices/1/11"
     >
       <mat-icon
         *ngIf="event.level == 'info'"
@@ -80,7 +82,7 @@
       <p matLine>{{ (getDevice(event.deviceId) | async)?.name }}</p>
     </mat-list-option>
     <ng-template #userEventBlock>
-      <mat-list-option class="entry">
+      <mat-list-option class="entry" routerLink="devices/1/11">
         <mat-icon svgIcon="userFill" matListAvatar></mat-icon>
         <div matLine>
           <h3>

@@ -36,6 +36,7 @@ export interface DeviceGroup {
   parent: number
 }
 
+// TODO: Alert → DeviceEvent +critical
 // TODO: REMOVE
 export interface Alert {
   id: number,
@@ -73,16 +74,6 @@ export interface DeviceEvent extends Event {
   description?: string,
   level: 'critical' | 'warning' | 'info' | 'success',
   taskId?: number
-}
-
-// TODO: REMOVE
-export interface Activity {
-  type: 'user' | 'device',
-  subject: string,
-  details: string,
-  object: object,
-  avatar?: string,
-  created: Date
 }
 
 export enum SensorType {
