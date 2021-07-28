@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-groups',
+  selector: 'groups',
   templateUrl: './groups.component.html',
   styleUrls: ['./groups.component.scss']
 })

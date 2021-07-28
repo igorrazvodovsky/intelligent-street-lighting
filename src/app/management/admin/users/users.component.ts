@@ -7,7 +7,7 @@ import { User } from '../../../types'
 
 
 @Component({
-  selector: 'app-users',
+  selector: 'users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })

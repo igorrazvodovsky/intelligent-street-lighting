@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProfileService } from '../../../services/profile.service';
 
 @Component({
-  selector: 'app-profile-list',
+  selector: 'profile-list',
   templateUrl: './profile-list.component.html',
   styleUrls: ['./profile-list.component.scss']
 })

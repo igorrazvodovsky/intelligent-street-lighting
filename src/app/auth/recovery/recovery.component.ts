@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-recovery',
+  selector: 'recovery',
   templateUrl: './recovery.component.html',
   styleUrls: ['./recovery.component.scss']
 })

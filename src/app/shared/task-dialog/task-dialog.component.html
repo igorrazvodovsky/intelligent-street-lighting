@@ -3,12 +3,25 @@
 <h2 mat-dialog-title>{{ data.task.title }}</h2>
 <mat-dialog-content>
   <mat-chip-list aria-label="Status and priority">
-    <mat-chip>New</mat-chip>
-    <mat-chip>Low priority</mat-chip>
-    <!-- <mat-chip>
-      <mat-icon svgIcon="userRegular"></mat-icon>
-      Unassigned
-    </mat-chip> -->
+    <mat-chip [matMenuTriggerFor]="statusMenu"
+      >{{ data.task.status }} <mat-icon svgIcon="dropdownMedium"></mat-icon
+    ></mat-chip>
+    <mat-chip [matMenuTriggerFor]="priorityMenu"
+      >{{ data.task.priority }} priority
+      <mat-icon svgIcon="dropdownMedium"></mat-icon
+    ></mat-chip>
+    <mat-menu #statusMenu="matMenu">
+      <button mat-menu-item>New</button>
+      <button mat-menu-item>In progress</button>
+      <button mat-menu-item>Resolved</button>
+      <button mat-menu-item>Closed</button>
+      <button mat-menu-item>Rejected</button>
+    </mat-menu>
+    <mat-menu #priorityMenu="matMenu">
+      <button mat-menu-item>Low</button>
+      <button mat-menu-item>Normal</button>
+      <button mat-menu-item>High</button>
+    </mat-menu>
   </mat-chip-list>
 
   <mat-card>
@@ -23,14 +36,14 @@
   </mat-card>
 </mat-dialog-content>
 
-<section *ngIf="data.task.description">
-  <label class="mat-body-2 text-secondary">Description</label>
-  <p>{{ data.task.description }}</p>
+<section>
+  <label class="mat-body-2 text-secondary">Assignee</label>
+  <autocomplete-user></autocomplete-user>
 </section>
 
 <section *ngIf="data.task.description">
-  <label class="mat-body-2 text-secondary">Assignee</label>
-  <p>Unassigned</p>
+  <label class="mat-body-2 text-secondary">Description</label>
+  <p>{{ data.task.description }}</p>
 </section>
 
 <mat-selection-list [multiple]="false">
@@ -59,7 +72,7 @@
     </p>
   </mat-list-item>
 </mat-list>
-<form class="new-comment">
+<form id="task__new-comment">
   <mat-form-field>
     <input matInput placeholder="Write a comment" />
   </mat-form-field>

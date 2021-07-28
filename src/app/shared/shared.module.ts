@@ -4,11 +4,13 @@ import { PageActionsComponent } from './page-actions/page-actions.component'
 import { MaterialModule } from '../material-module';
 import { TaskCardComponent } from './task-card/task-card.component';
 import { TaskDialogComponent } from './task-dialog/task-dialog.component';
+import { AutocompleteUserComponent } from './autocomplete-user/autocomplete-user.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [PageActionsComponent, TaskCardComponent, TaskDialogComponent],
+  declarations: [PageActionsComponent, TaskCardComponent, TaskDialogComponent, AutocompleteUserComponent],
   imports: [
-    CommonModule, MaterialModule
+    CommonModule, MaterialModule, FormsModule, ReactiveFormsModule
   ],
   exports: [PageActionsComponent, TaskCardComponent, MaterialModule]
 })

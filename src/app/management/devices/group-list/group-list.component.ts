@@ -9,7 +9,7 @@ import { ProfileService } from '../../../services/profile.service';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-group-list',
+  selector: 'group-list',
   templateUrl: './group-list.component.html',
   styleUrls: ['./group-list.component.scss']
 })

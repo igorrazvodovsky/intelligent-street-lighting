@@ -7,7 +7,7 @@ import { ProfileService } from '../../../services/profile.service'
 import { DeviceService } from '../../../services/device.service'
 
 @Component({
-  selector: 'app-profile-detail',
+  selector: 'profile-detail',
   templateUrl: './profile-detail.component.html',
   styleUrls: ['./profile-detail.component.scss']
 })

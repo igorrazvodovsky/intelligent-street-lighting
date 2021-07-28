@@ -5,7 +5,7 @@ import { LoadingService } from '../../services/loading.service';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-login',
+  selector: 'login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
