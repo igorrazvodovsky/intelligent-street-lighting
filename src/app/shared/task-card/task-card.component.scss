@@ -4,11 +4,12 @@
 
 .mat-card {
   border: 1px solid transparent;
+  transition-property: border;
 }
 
 .mat-card:hover {
-  background: transparent;
-  border: 1px solid hsla(0, 0%, 0%, 0.1);
+  // background: transparent;
+  border-color: hsla(0, 0%, 0%, 0.2);
 }
 
 h3,

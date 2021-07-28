@@ -2,11 +2,21 @@
 <!-- TODO: Event without task -->
 
 <section class="alert mat-body-2">
-  <mat-icon inline matListIcon svgIcon="alertMedium"></mat-icon>
-  Lamp failure
+  <div>
+    <mat-icon inline matListIcon svgIcon="alertMedium"></mat-icon>
+    Lamp failure
+  </div>
+  <div>
+    <button mat-button>Create task</button>
+    <button mat-button>Dismiss</button>
+  </div>
 </section>
 <section>
-  <task-card *ngFor="let task of tasks" [task]="task"></task-card>
+  <task-card
+    [deviceInfo]="false"
+    *ngFor="let task of tasks"
+    [task]="task"
+  ></task-card>
 </section>
 
 <mat-list role="list">

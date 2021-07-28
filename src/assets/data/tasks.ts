@@ -42,7 +42,7 @@ export const TASKS: Task[] = [
   {
     id: 3,
     title: 'Close the door',
-    status: 'New',
+    status: 'In progress',
     priority: 'Normal',
     device: 'Maļutki • Lamp 01-16/02',
     eventId: 3,
@@ -51,7 +51,7 @@ export const TASKS: Task[] = [
     updated: new Date('1/1/16'),
     comments: []
   },
-    {
+  {
     id: 4,
     title: 'Fix communication failure',
     status: 'Rejected',
@@ -66,7 +66,19 @@ export const TASKS: Task[] = [
   {
     id: 5,
     title: 'Close the door',
-    status: 'New',
+    status: 'Resolved',
+    priority: 'Normal',
+    device: 'Maļutki • Lamp 01-16/02',
+    eventId: 3,
+    assignee: '',
+    created: new Date('1/1/16'),
+    updated: new Date('1/1/16'),
+    comments: []
+  },
+  {
+    id: 6,
+    title: 'Power is too high',
+    status: 'Closed',
     priority: 'Normal',
     device: 'Maļutki • Lamp 01-16/02',
     eventId: 3,

@@ -12,10 +12,10 @@ export interface Task {
   id: number;
   title: string;
   description?: string;
-  status: string;
-  priority: string;
+  status: 'New' | 'In progress' | 'Resolved' | 'Rejected' | 'Closed';
+  priority: 'Low' | 'High' | 'Normal';
   device: string;
-  eventId: number;
+  eventId?: number;
   assignee: string;
   created: Date;
   updated: Date;

@@ -10,8 +10,8 @@ import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
 })
 export class TaskCardComponent {
   @Input() task!: Task;
-
-  constructor(public dialog: MatDialog) {}
+  @Input() deviceInfo: boolean = true;
+  constructor(public dialog: MatDialog) { }
 
   openDialog(task) {
     const dialogRef = this.dialog.open(TaskDialogComponent, {

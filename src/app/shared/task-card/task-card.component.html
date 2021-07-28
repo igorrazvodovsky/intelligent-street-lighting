@@ -2,14 +2,28 @@
   <mat-card-header>
     <mat-card-title>{{ task.title }}</mat-card-title>
     <mat-card-subtitle>
-      <mat-chip-list aria-label="Status and priority">
-        <mat-chip>{{ task.status }}</mat-chip>
-        <mat-chip>{{ task.priority }} priority</mat-chip>
-      </mat-chip-list>
+      <div class="badge-list" aria-label="Status and priority">
+        <div
+          class="badge"
+          [ngClass]="{
+            success: task.status == 'New',
+            warning: task.status == 'Rejected'
+          }"
+        >
+          {{ task.status }}
+        </div>
+        <div
+          *ngIf="task.priority !== 'Normal' && task.status !== 'Rejected'"
+          class="badge"
+          [ngClass]="{ warning: task.priority == 'High' }"
+        >
+          {{ task.priority }} priority
+        </div>
+      </div>
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content class="text-secondary">
-    <div>
+    <div *ngIf="deviceInfo">
       <mat-icon inline class="small" svgIcon="locationRegular"></mat-icon>
       {{ task.device }}
     </div>
