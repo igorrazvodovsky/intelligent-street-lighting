@@ -23,7 +23,7 @@ export const DEVICE_EVENTS: DeviceEvent[] = [
     id: 2,
     created: getTime(),
     type: 'device',
-    deviceId: 16,
+    deviceId: 11,
     value: 'powerFactorTooLow',
     title: 'Power is too low',
     level: 'critical'

@@ -28,6 +28,11 @@
   <p>{{ data.task.description }}</p>
 </section>
 
+<section *ngIf="data.task.description">
+  <label class="mat-body-2 text-secondary">Assignee</label>
+  <p>Unassigned</p>
+</section>
+
 <mat-selection-list [multiple]="false">
   <h3 matSubheader>Event</h3>
   <mat-list-option class="list-item-icon-right">
