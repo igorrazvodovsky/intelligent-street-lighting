@@ -24,4 +24,10 @@ export class TaskService {
       map((tasks: Task[]) => tasks.find(task => task.id === +id)!)
     );
   }
+
+  getTasksByDevice(id: number | string) {
+    return this.getTasks().pipe(
+      map((tasks: Task[]) => tasks.filter(task => task.deviceId === +id)!)
+    );
+  }
 }

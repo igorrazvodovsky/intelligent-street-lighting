@@ -7,6 +7,17 @@
   padding-bottom: 0;
 }
 
+section {
+  margin: 1rem 1.5rem;
+  label {
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+  p {
+    max-width: 70ch;
+  }
+}
+
 form.new-comment {
   padding: 1rem 1.5rem 0 1.5rem;
   .mat-form-field {

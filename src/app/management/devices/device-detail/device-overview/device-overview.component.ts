@@ -19,8 +19,8 @@ export class DeviceOverviewComponent implements OnInit {
   }
 
   getTasks(): void {
-    this.taskService.getTask(1)
-      .subscribe(task => this.tasks[0] = task);
+    this.taskService.getTasksByDevice(this.device.id)
+      .subscribe(tasks => this.tasks = tasks);
   }
 
 }

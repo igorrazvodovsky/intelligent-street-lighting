@@ -1,6 +1,7 @@
 <!-- TODO: Event with task -->
 <!-- TODO: Event without task -->
 
+<!-- TODO: Filter out alerts with tasks -->
 <section class="alert mat-body-2">
   <div>
     <mat-icon inline matListIcon svgIcon="alertMedium"></mat-icon>
@@ -11,7 +12,9 @@
     <button mat-button>Dismiss</button>
   </div>
 </section>
-<section>
+
+<!-- Filter out completed tasks -->
+<section id="device-tasks">
   <task-card
     [deviceInfo]="false"
     *ngFor="let task of tasks"

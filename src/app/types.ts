@@ -8,13 +8,14 @@ export interface User {
   locked: boolean;
 }
 
+// TODO: Assignee → userId
 export interface Task {
   id: number;
   title: string;
   description?: string;
   status: 'New' | 'In progress' | 'Resolved' | 'Rejected' | 'Closed';
   priority: 'Low' | 'High' | 'Normal';
-  device: string;
+  deviceId: number;
   eventId?: number;
   assignee: string;
   created: Date;

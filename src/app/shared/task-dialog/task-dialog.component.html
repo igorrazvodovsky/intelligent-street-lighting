@@ -23,12 +23,18 @@
   </mat-card>
 </mat-dialog-content>
 
+<section *ngIf="data.task.description">
+  <label class="mat-body-2 text-secondary">Description</label>
+  <p>{{ data.task.description }}</p>
+</section>
+
 <mat-selection-list [multiple]="false">
   <h3 matSubheader>Event</h3>
   <mat-list-option class="list-item-icon-right">
     <mat-icon svgIcon="chevronRightRegular" matListIcon></mat-icon>
+    <!-- TODO: Get event data -->
     <h4 matLine>Lamp failure</h4>
-    <p matLine>12:36</p>
+    <p matLine class="text-secondary">12:36</p>
   </mat-list-option>
 </mat-selection-list>
 

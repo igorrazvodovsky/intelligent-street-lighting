@@ -488,6 +488,7 @@ input.time {
 }
 
 .badge-list {
+  display: inline-flex;
   & > * + * {
     margin-left: 0.25rem;
   }
@@ -498,6 +499,7 @@ input.time {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     background: hsla(0, 0%, 0%, 0.1);
+    color: hsla(0, 0%, 0%, 0.6);
     border-radius: 1rem;
     display: inline-flex;
 

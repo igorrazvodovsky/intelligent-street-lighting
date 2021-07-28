@@ -1,7 +1,7 @@
 <mat-card (click)="openDialog(task)">
   <mat-card-header>
-    <mat-card-title>{{ task.title }}</mat-card-title>
-    <mat-card-subtitle>
+    <mat-card-title>
+      {{ task.title }}
       <div class="badge-list" aria-label="Status and priority">
         <div
           class="badge"
@@ -20,12 +20,12 @@
           {{ task.priority }} priority
         </div>
       </div>
-    </mat-card-subtitle>
+    </mat-card-title>
   </mat-card-header>
   <mat-card-content class="text-secondary">
     <div *ngIf="deviceInfo">
       <mat-icon inline class="small" svgIcon="locationRegular"></mat-icon>
-      {{ task.device }}
+      {{ task.deviceId }}
     </div>
     <div>
       <mat-icon inline class="small" svgIcon="userRegular"></mat-icon>
