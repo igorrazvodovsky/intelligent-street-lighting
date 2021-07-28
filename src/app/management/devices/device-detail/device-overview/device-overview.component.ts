@@ -10,6 +10,7 @@ import { TaskService } from '../../../../services/task.service';
 export class DeviceOverviewComponent implements OnInit {
   @Input() device!: Device;
   tasks: Task[] = [];
+  activeTasks: Task[] = [];
   on = true;
 
   constructor(private taskService: TaskService) { }
@@ -20,7 +21,11 @@ export class DeviceOverviewComponent implements OnInit {
 
   getTasks(): void {
     this.taskService.getTasksByDevice(this.device.id)
-      .subscribe(tasks => this.tasks = tasks);
+      .subscribe(tasks => {
+        this.tasks = tasks;
+        this.activeTasks = tasks.filter(task => task.status !== 'Closed')
+      }
+      );
   }
 
 }

@@ -17,7 +17,7 @@
 <section id="device-tasks">
   <task-card
     [deviceInfo]="false"
-    *ngFor="let task of tasks"
+    *ngFor="let task of activeTasks"
     [task]="task"
   ></task-card>
 </section>
@@ -37,7 +37,12 @@
     <mat-expansion-panel-header>
       <mat-panel-title>{{ device.orientation }}°</mat-panel-title>
     </mat-expansion-panel-header>
-    <mat-slider aria-label="unit(s)"></mat-slider>
+    <mat-slider
+      [value]="device.orientation"
+      min="0"
+      max="360"
+      aria-label="unit(s)"
+    ></mat-slider>
   </mat-expansion-panel>
   <h3 matSubheader>Surge protector</h3>
   <!-- TODO: On, off, no monitoring? -->
