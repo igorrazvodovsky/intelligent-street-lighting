@@ -1,7 +1,7 @@
 <!-- TODO: Status chip is clickable and shows status options -->
 
 <h2 mat-dialog-title>{{ data.task.title }}</h2>
-<mat-dialog-content>
+<section>
   <mat-chip-list aria-label="Status and priority">
     <mat-chip [matMenuTriggerFor]="statusMenu"
       >{{ data.task.status }} <mat-icon svgIcon="dropdownMedium"></mat-icon
@@ -23,7 +23,8 @@
       <button mat-menu-item>High</button>
     </mat-menu>
   </mat-chip-list>
-
+</section>
+<mat-dialog-content>
   <mat-card>
     <mat-card-header>
       <mat-card-title>LC-01-03-D02</mat-card-title>
@@ -55,7 +56,8 @@
     <p matLine class="text-secondary">12:36</p>
   </mat-list-option>
 </mat-selection-list>
-
+<!-- TODO: iterate over comments -->
+<mat-divider></mat-divider>
 <mat-list>
   <h3 matSubheader>Comments</h3>
   <mat-list-item>

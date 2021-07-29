@@ -37,7 +37,8 @@ export enum Medium {
   Alert = 'alert',
   History = 'history',
   Profile = 'profile',
-  Warning = 'warning'
+  Warning = 'warning',
+  Ticket = 'ticket'
 }
 
 export enum Regular {

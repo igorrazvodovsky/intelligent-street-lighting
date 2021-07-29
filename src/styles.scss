@@ -299,10 +299,13 @@ button {
 }
 
 .alert {
+  font-size: 1rem;
+  font-weight: 500;
+
   min-height: 2.25rem;
   color: hsla(var(--error), 0.9);
-  // background: hsla(var(--error), 0.1);
-  border: 1px solid hsla(var(--error), 0.3);
+  background: white;
+  // border: 1px solid hsla(var(--error), 0.3);
   padding: 0.75rem 1rem;
 
   display: flex;
