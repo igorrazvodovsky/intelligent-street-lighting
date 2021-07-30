@@ -58,7 +58,8 @@ export enum Regular {
   Enter = 'enter',
   Edit = 'edit',
   CheckCircle = 'checkCircle',
-  CancelCircle = 'cancelCircle'
+  CancelCircle = 'cancelCircle',
+  Ticket = 'ticket'
 }
 
 @Injectable({

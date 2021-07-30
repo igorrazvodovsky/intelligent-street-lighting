@@ -50,6 +50,10 @@
 </mat-list>
 
 <mat-selection-list role="list" [multiple]="false">
+  <mat-list-option role="listitem">
+    <mat-icon matListIcon svgIcon="ticketRegular"></mat-icon>
+    <div matLine>Create task</div>
+  </mat-list-option>
   <mat-list-option role="listitem" (click)="on = !on">
     <mat-icon
       matListIcon

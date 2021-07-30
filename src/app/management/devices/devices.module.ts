@@ -6,14 +6,11 @@ import { DevicesComponent } from './devices.component';
 import { DeviceListComponent } from './device-list/device-list.component';
 import { DeviceDetailComponent } from './device-detail/device-detail.component';
 import { MapComponent } from './map/map.component';
-
 import { ChartComponent } from './device-detail/chart/chart.component'
 import { ChartModule } from 'angular-highcharts';
-
 import { MarkerService } from '../../services/marker.service';
 import { PopupService } from '../../services/popup.service';
 import { ShapeService } from '../../services/shape.service';
-
 import { DevicesRoutingModule } from './devices-routing.module';
 import { GroupListComponent } from './group-list/group-list.component';
 import { DeviceOverviewComponent } from './device-detail/device-overview/device-overview.component';
