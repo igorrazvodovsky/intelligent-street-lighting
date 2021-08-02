@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MeasurementGroup } from '../../../../types'
+import { MeasurementGroup } from '~local/types'
 
 @Component({
   selector: 'device-metrics',

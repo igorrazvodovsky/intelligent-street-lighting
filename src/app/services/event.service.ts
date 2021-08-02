@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DEVICE_EVENTS, USER_EVENTS } from '../../assets/data/events';
+import { DEVICE_EVENTS, USER_EVENTS } from '~local/../assets/data/events';
 import { Observable, of, zip } from 'rxjs';
 import { map } from 'rxjs/operators'
 import { UserEvent, DeviceEvent } from '~local/types'

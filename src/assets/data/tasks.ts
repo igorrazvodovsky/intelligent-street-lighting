@@ -1,5 +1,5 @@
 
-import { Task } from '../../app/types';
+import { Task } from '~local/types';
 
 export const TASKS: Task[] = [
   {

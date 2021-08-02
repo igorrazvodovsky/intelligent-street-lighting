@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Profile, DeviceGroup } from '../../../types'
+import { Profile, DeviceGroup } from '~local/types'
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { ProfileService } from '../../../services/profile.service'
-import { DeviceService } from '../../../services/device.service'
+import { ProfileService } from '~local/services/profile.service'
+import { DeviceService } from '~local/services/device.service'
 
 @Component({
   selector: 'profile-detail',

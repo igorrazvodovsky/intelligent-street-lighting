@@ -5,7 +5,7 @@ import { AdminComponent } from './admin/admin.component';
 import { UsersComponent } from './users/users.component';
 import { GroupsComponent } from './groups/groups.component';
 import { OrgsComponent } from './orgs/orgs.component';
-import { SharedModule } from '../../shared/shared.module';
+import { SharedModule } from '~local/shared/shared.module';
 
 @NgModule({
   declarations: [

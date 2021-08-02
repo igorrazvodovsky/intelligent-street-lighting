@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AREA } from '../../../../assets/data/areas';
+import { AREA } from '~local/../assets/data/areas';
 
 @Component({
   selector: 'areas',

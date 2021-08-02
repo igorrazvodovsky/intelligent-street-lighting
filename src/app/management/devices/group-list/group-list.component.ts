@@ -2,10 +2,10 @@
 
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { DeviceGroup } from '../../../types'
+import { DeviceGroup } from '~local/types'
 import { ActivatedRoute } from '@angular/router';
-import { DeviceService } from '../../../services/device.service';
-import { ProfileService } from '../../../services/profile.service';
+import { DeviceService } from '~local/services/device.service';
+import { ProfileService } from '~local/services/profile.service';
 import { switchMap } from 'rxjs/operators';
 
 @Component({

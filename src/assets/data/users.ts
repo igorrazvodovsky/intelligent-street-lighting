@@ -1,4 +1,4 @@
-import { User } from '../../app/types';
+import { User } from '~local/types';
 
 export const USERS: User[] = [
   { id: 1, name: 'Noah Pierre', status: '—', enabled: true, locked: false },

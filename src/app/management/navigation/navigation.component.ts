@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { AuthService } from '../../auth/auth.service';
+import { AuthService } from '~local/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,20 +12,27 @@ import { Router } from '@angular/router';
 })
 export class NavigationComponent {
   search = false;
+  isHandset: boolean;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-  .pipe(
-    map(result => result.matches),
-    shareReplay()
-  );
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
 
   constructor(
     public router: Router,
     public authService: AuthService,
     private breakpointObserver: BreakpointObserver
-  ) {};
+  ) { };
 
   logout() {
     this.authService.logout();
     this.router.navigate(['/']);
+  }
+
+  ngOnInit() {
+    this.isHandset$.subscribe(value =>
+      this.isHandset = value
+    );
   }
 }

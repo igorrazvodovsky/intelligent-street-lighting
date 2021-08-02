@@ -16,6 +16,7 @@ export class DevicesComponent implements OnInit {
 
   opened: boolean;
   maximized: boolean = false;
+  isHandset: boolean;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -35,11 +36,9 @@ export class DevicesComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.route.paramMap.subscribe((params: ParamMap) => {
-    //   this.deviceId = params.get('deviceId');
-    //   this.groupId = params.get('groupId');
-    //   console.log(params.get('deviceId'), params.get('groupId'))
-    // });
+    this.isHandset$.subscribe(value =>
+      this.isHandset = value
+    );
   }
 
   public toggleMaximize() {

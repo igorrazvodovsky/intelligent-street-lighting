@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { LoadingService } from '../../services/loading.service';
+import { LoadingService } from '~local/services/loading.service';
 import { HttpClient } from '@angular/common/http';
 
 @Component({

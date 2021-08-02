@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Schedule, TimeGroup } from '../../../../types'
-import { TIME_OPTIONS } from '../../../../../assets/data/profiles'
+import { Schedule, TimeGroup } from '~local/types'
+import { TIME_OPTIONS } from '~local/../assets/data/profiles'
 
 // import { WeekDay } from '@angular/common';
 

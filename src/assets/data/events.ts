@@ -1,4 +1,4 @@
-import { UserEvent, DeviceEvent } from '../../app/types';
+import { UserEvent, DeviceEvent } from '~local/types';
 
 function getTime() {
   const from: Date = new Date();

@@ -1,4 +1,4 @@
-import { Device, DeviceGroup, SensorType } from '../../app/types';
+import { Device, DeviceGroup, SensorType } from '~local/types';
 
 export const DEVICES: Device[] = [
   {

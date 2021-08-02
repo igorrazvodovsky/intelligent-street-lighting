@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import { SelectivePreloadingStrategyService } from '../../selective-preloading-strategy.service';
+import { SelectivePreloadingStrategyService } from '~local/selective-preloading-strategy.service';
 
 @Component({
   selector: 'app-dashboard',

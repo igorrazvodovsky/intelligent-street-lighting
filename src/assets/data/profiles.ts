@@ -1,4 +1,4 @@
-import { Profile, WeekDay } from '../../app/types';
+import { Profile, WeekDay } from '~local/types';
 // import { WeekDay } from '@angular/common';
 
 export const TIME_OPTIONS = [

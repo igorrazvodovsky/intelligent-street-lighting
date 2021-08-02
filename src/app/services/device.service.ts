@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Device, DeviceGroup } from '../types';
-import { DEVICES, GROUPS } from '../../assets/data/devices';
+import { DEVICES, GROUPS } from '~local/../assets/data/devices';
 import { MessageService } from './message.service';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Profile } from '../../../types'
+import { Profile } from '~local/types'
 import { ActivatedRoute } from '@angular/router';
-import { ProfileService } from '../../../services/profile.service';
+import { ProfileService } from '~local/services/profile.service';
 
 @Component({
   selector: 'profile-list',

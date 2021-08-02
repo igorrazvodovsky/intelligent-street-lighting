@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../types';
-import { TASKS } from '../../assets/data/tasks';
+import { TASKS } from '~local/../assets/data/tasks';
 import { MessageService } from './message.service';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';

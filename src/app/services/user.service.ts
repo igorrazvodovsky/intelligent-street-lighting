@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../types';
-import { USERS } from '../../assets/data/users';
+import { USERS } from '~local/../assets/data/users';
 import { MessageService } from './message.service';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
