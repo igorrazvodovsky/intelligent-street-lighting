@@ -18,7 +18,7 @@ body {
   --nav-gap: 1ch;
   display: flex;
   align-items: center;
-  overflow-x: auto;
+  // overflow-x: auto;
   overscroll-behavior-x: contain;
   -ms-scroll-snap-type: x proximity;
   scroll-snap-type: x proximity;

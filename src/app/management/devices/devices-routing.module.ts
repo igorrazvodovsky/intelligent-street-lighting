@@ -10,20 +10,18 @@ const devicesRoutes: Routes = [
   {
     path: '',
     component: DevicesComponent,
+
     children: [
+      { path: ':groupId/:deviceId', component: DeviceDetailComponent, data: { animation: 'device' } },
+      { path: ':groupId', component: DeviceListComponent, data: { animation: 'device' } },
       {
         path: '',
-        children: [
-          { path: ':groupId/:deviceId', component: DeviceDetailComponent, data: { animation: 'device' } },
-          { path: ':groupId', component: DeviceListComponent, data: { animation: 'device' } },
-          { path: '',
-            component: GroupListComponent,
-            data: { animation: 'devices' },
-            pathMatch: 'full'
-          }
-        ]
+        component: GroupListComponent,
+        data: { animation: 'devices' },
+        pathMatch: 'full'
       }
     ]
+
   }
 ];
 

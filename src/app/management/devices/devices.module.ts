@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../shared/shared.module';
-
 import { DevicesComponent } from './devices.component';
 import { DeviceListComponent } from './device-list/device-list.component';
 import { DeviceDetailComponent } from './device-detail/device-detail.component';

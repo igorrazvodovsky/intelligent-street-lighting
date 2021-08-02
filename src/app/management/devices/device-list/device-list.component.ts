@@ -3,10 +3,10 @@
 import { Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
-import { Device, DeviceGroup, Profile } from '../../../types'
+import { Device, DeviceGroup, Profile } from '~local/types'
 import { ActivatedRoute } from '@angular/router';
-import { DeviceService } from '../../../services/device.service';
-import { ProfileService } from '../../../services/profile.service';
+import { DeviceService } from '~local/services/device.service';
+import { ProfileService } from '~local/services/profile.service';
 
 @Component({
   selector: 'device-list',
@@ -23,11 +23,11 @@ export class DeviceListComponent implements OnInit {
     private deviceService: DeviceService,
     private profileService: ProfileService,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   onProfileSelectClick(event) {
-   event.stopPropagation();
-}
+    event.stopPropagation();
+  }
 
   ngOnInit() {
     this.profiles$ = this.profileService.getProfiles();

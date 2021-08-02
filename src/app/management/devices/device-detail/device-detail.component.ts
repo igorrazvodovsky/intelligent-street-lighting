@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Device, DeviceGroup } from '../../../types'
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { DeviceService } from '../../../services/device.service'
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { DeviceService } from '~local/services/device.service'
 
 @Component({
   selector: 'device-detail',
@@ -17,7 +17,6 @@ export class DeviceDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private service: DeviceService
   ) { }
 
@@ -33,6 +32,9 @@ export class DeviceDetailComponent implements OnInit {
     this.device$.subscribe(device =>
       this.device = device
     );
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      console.log(params.get('deviceId'), params.get('groupId'))
+    });
   }
 
 }

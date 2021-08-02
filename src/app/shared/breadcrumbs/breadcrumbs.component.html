@@ -1,6 +1,6 @@
 <nav class="breadcrumbs mat-h2" role="navigation">
   <a href="./home/">
-    <span class="home-label">City</span>
+    <span class="home-label">Daugavpils</span>
   </a>
 
   <span class="crumb-separator" aria-hidden="true">·</span>
@@ -30,13 +30,16 @@
   </span>
 
   <span class="crumb">
-    <a aria-current="page">Lamp B1-3</a>
+    <a aria-current="page"> {{ currentDevice.name }}</a>
     <span class="crumbicon">
       <mat-icon svgIcon="dropdownMedium"></mat-icon>
       <select class="disguised-select" title="Navigate to another device">
-        <option>Lamp 1-1</option>
-        <option>Lamp 1-2</option>
-        <option selected="">Lamp 1-3</option>
+        <option
+          [selected]="device.id == deviceId"
+          *ngFor="let device of devices"
+        >
+          {{ device.name }}
+        </option>
       </select>
     </span>
   </span>
