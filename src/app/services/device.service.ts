@@ -30,6 +30,12 @@ export class DeviceService {
     );
   }
 
+  getGroupsByParent(id: number | string) {
+    return this.getGroups().pipe(
+      map((groups: DeviceGroup[]) => groups.filter(group => group.parentId == id)!)
+    );
+  }
+
   getDevices(): Observable<Device[]> {
     const devices = of(DEVICES);
     this.messageService.add('DeviceService: fetched devices');

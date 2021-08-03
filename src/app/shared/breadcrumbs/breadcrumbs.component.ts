@@ -1,7 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DeviceService } from '~local/services/device.service'
 import { Observable } from 'rxjs';
-import { Device, DeviceGroup, Profile } from '~local/types'
+import { Device } from '~local/types'
+import { Router, ActivatedRoute } from '@angular/router';
+
+interface Crumb { name: string, id: number };
 
 @Component({
   selector: 'breadcrumbs',
@@ -13,127 +16,22 @@ export class BreadcrumbsComponent implements OnInit {
   @Input() groupId: number;
   @Input() deviceId: number;
 
+  currentGroup: any[] = [];
+  groupSiblings: Crumb[][] = []
   deviceSiblings$: Observable<Device[]>;
-  devices: { name: string, id: number }[];
-  currentDevice: { name: string, id: number };
-
-  list = [
-    {
-      title: "Section 1",
-      children: []
-    },
-    {
-      title: "Section 2",
-      children: [
-        {
-          title: "Section 2.1",
-          children: []
-        },
-        {
-          title: "Section 2.2",
-          children: []
-        },
-        {
-          title: "Section 2.3",
-          children: []
-        }
-      ]
-    },
-    {
-      title: "Section 3",
-      children: [
-        { title: "Section 3.1", children: [] },
-        {
-          title: "Section 3.2",
-          children: [
-            {
-              title: "Section 3.2.1",
-              children: []
-            },
-            {
-              title: "Section 3.2.2",
-              children: []
-            },
-            {
-              title: "Section 3.2.3",
-              children: [
-                {
-                  title: "Section 3.2.3.1",
-                  children: []
-                },
-                {
-                  title: "Section 3.2.3.2",
-                  children: []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          title: "Section 3.3",
-          children: [
-            {
-              title: "Section 3.3.1",
-              children: []
-            },
-            {
-              title: "Section 3.3.2",
-              children: []
-            }
-          ]
-        }
-      ]
-    }
-  ];
-
-  selectedBranch = [
-    {
-      id: 2,
-      name: "Group B",
-    },
-    {
-      id: 4,
-      name: "Group B1",
-    },
-  ];
-
-  tree = [
-    [
-      {
-        id: 1,
-        name: 'Group A',
-      },
-      {
-        id: 2,
-        name: 'Group B',
-      },
-      {
-        id: 3,
-        name: 'Group C',
-      },
-    ],
-    [
-      {
-        id: 4,
-        name: 'Child group B1',
-      },
-      {
-        id: 5,
-        name: 'Child group B2',
-      },
-      {
-        id: 6,
-        name: 'Child group B3',
-      },
-    ]
-  ]
+  devices: Crumb[];
+  currentDevice: Crumb;
 
   constructor(
-    private service: DeviceService
+    private service: DeviceService,
+    public router: Router,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.deviceSiblings$ = this.service.getDevicesByGroup(this.groupId);
+
+    this.getSelectedGroup(this.groupId);
 
     this.deviceSiblings$.subscribe(devices => {
       this.devices = devices.map(device => ({ name: device.name, id: device.id }));
@@ -141,6 +39,22 @@ export class BreadcrumbsComponent implements OnInit {
     });
   }
 
+  getSelectedGroup(id) {
+    this.service.getGroup(id).subscribe(group => {
+      this.currentGroup.unshift({ id: group.id, name: group.name })
+      this.service.getGroupsByParent(group.parentId).subscribe(groups => this.groupSiblings.unshift(groups))
 
+      if (group.parentId) this.getSelectedGroup(group.parentId);
+    })
+  }
 
+  onGroupChange(value) {
+    let id = this.groupSiblings.flat().find(group => group.name == value).id
+    this.router.navigate(['/management/devices/' + id]);
+  }
+
+  onDeviceChange(value) {
+    let id = this.devices.find(device => device.name == value).id
+    this.router.navigate([this.groupId + '/' + id], { relativeTo: this.activatedRoute });
+  }
 }

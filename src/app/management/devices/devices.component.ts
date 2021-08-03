@@ -15,7 +15,7 @@ export class DevicesComponent implements OnInit {
   private childParamSubscription: Subscription;
 
   opened: boolean;
-  maximized: boolean = false;
+  maximized: boolean = true;
   isHandset: boolean;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(

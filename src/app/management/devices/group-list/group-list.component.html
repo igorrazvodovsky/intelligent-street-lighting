@@ -2,21 +2,19 @@
 <!-- TODO: Group creation through assignemt?-->
 <!-- TODO: Grouping into districts -->
 
-<!-- <div class="breadcrumbs">
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item>Daugavpils</button>
-    <button mat-menu-item>Valka</button>
-  </mat-menu>
-  <button class="btn-link mat-body-2" [matMenuTriggerFor]="menu">
-    Daugavpils
-  </button>
-</div> -->
-
 <mat-chip-list aria-label="Filters">
-  <mat-chip>Property</mat-chip>
-  <mat-chip>Another property</mat-chip>
-  <mat-chip color="primary" selected>Primary property</mat-chip>
-  <mat-chip color="accent" selected>Accent property</mat-chip>
+  <mat-chip>Type</mat-chip>
+  <!-- all, lamps, SCs, etc. -->
+  <mat-chip>Status</mat-chip>
+  <!-- all, online, not responding, offline, new??? -->
+  <mat-chip
+    ><mat-icon class="small" matListIcon svgIcon="filterBold"></mat-icon>
+    Filters</mat-chip
+  >
+  <!-- model, with active events of specific type,  -->
+
+  <!-- <mat-chip color="primary" selected>Primary property</mat-chip> -->
+  <!-- <mat-chip color="accent" selected>Accent property</mat-chip> -->
 </mat-chip-list>
 
 <mat-selection-list role="list" [multiple]="false">
@@ -35,6 +33,6 @@
   </ng-container>
   <mat-list-option role="listitem">
     <div class="text-secondary" matLine>Unassigned</div>
-    <span matLine>78 lamps</span>
+    <span matLine>78 lamps, 3 segment controllers</span>
   </mat-list-option>
 </mat-selection-list>

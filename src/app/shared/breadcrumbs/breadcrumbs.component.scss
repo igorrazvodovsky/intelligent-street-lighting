@@ -65,7 +65,7 @@ body {
   display: none;
 }
 .crumb-separator {
-  color: hsla(0, 0%, 0%, 0.3);
+  color: hsla(0, 0%, 0%, 0.3) !important;
 }
 .disguised-select {
   inline-size: 100%;

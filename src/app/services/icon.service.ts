@@ -38,7 +38,8 @@ export enum Medium {
   History = 'history',
   Profile = 'profile',
   Warning = 'warning',
-  Ticket = 'ticket'
+  Ticket = 'ticket',
+  Filter = 'filter'
 }
 
 export enum Regular {
