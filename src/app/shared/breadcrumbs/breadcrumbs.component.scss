@@ -40,13 +40,7 @@ body {
   text-underline-offset: 0.25em;
   outline-offset: 3px;
 }
-@media (prefers-color-scheme: dark) {
-  @supports (-webkit-hyphens: none) {
-    .breadcrumbs a[href] {
-      color: #9e9eff;
-    }
-  }
-}
+
 .breadcrumbs > .crumb:last-of-type {
   scroll-snap-align: end;
 }

@@ -3,33 +3,28 @@
     <span class="home-label">Daugavpils</span>
   </a>
 
-  <span class="crumb-separator" aria-hidden="true">·</span>
+  <span *ngIf="groupId || deviceId" class="crumb-separator" aria-hidden="true"
+    >·</span
+  >
 
-  <span class="crumb">
-    <a href="./home/blog/">Group B</a>
-    <span class="crumbicon">
-      <mat-icon svgIcon="dropdownMedium"></mat-icon>
-      <select class="disguised-select" title="Navigate to another group">
-        <option>Group A</option>
-        <option selected="">Group B</option>
-        <option>Group C</option>
-        <option>Group D</option>
-      </select>
+  <ng-container *ngIf="groupId">
+    <span class="crumb" *ngFor="let level of tree; let i = index">
+      <a href="./home/blog/front-end/">{{ selectedBranch[i].name }}</a>
+      <span class="crumbicon">
+        <mat-icon svgIcon="dropdownMedium"></mat-icon>
+        <select class="disguised-select" title="Navigate to another group">
+          <option
+            *ngFor="let group of level"
+            [selected]="group.id == selectedBranch[i].id"
+          >
+            {{ group.name }}
+          </option>
+        </select>
+      </span>
     </span>
-  </span>
+  </ng-container>
 
-  <span class="crumb">
-    <a href="./home/blog/front-end/">Child group B1</a>
-    <span class="crumbicon">
-      <mat-icon svgIcon="dropdownMedium"></mat-icon>
-      <select class="disguised-select" title="Navigate to another group">
-        <option selected="">Child group B1</option>
-        <option>Child group B2</option>
-      </select>
-    </span>
-  </span>
-
-  <span class="crumb">
+  <span *ngIf="deviceId" class="crumb">
     <a aria-current="page"> {{ currentDevice.name }}</a>
     <span class="crumbicon">
       <mat-icon svgIcon="dropdownMedium"></mat-icon>
@@ -44,3 +39,20 @@
     </span>
   </span>
 </nav>
+
+<!-- <ul>
+  <ng-container
+    *ngTemplateOutlet="recursiveListTmpl; context: { list: list }"
+  ></ng-container>
+</ul>
+
+<ng-template #recursiveListTmpl let-list="list">
+  <li *ngFor="let item of list">
+    {{ item.title }}
+    <ul *ngIf="item.children.length > 0">
+      <ng-container
+        *ngTemplateOutlet="recursiveListTmpl; context: { list: item.children }"
+      ></ng-container>
+    </ul>
+  </li>
+</ng-template> -->

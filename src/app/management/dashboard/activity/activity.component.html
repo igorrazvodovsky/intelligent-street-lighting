@@ -1,4 +1,6 @@
 <!-- TODO: Link device -->
+<!-- TODO: Sorting: by date, type, device type and group, specific event types (e.g. voltage, temp, ...) -->
+
 <h2 class="text-heading">Activity</h2>
 
 <button mat-button [matMenuTriggerFor]="menu">
@@ -41,7 +43,6 @@
   <!-- <button mat-menu-item [matMenuTriggerFor]="sortOptions">Newest first</button> -->
 </mat-menu>
 
-<!-- TODO: Sorting? By date, type, device group -->
 <mat-menu #sortOptions="matMenu">
   <button mat-menu-item>Newest first</button>
   <button mat-menu-item>By type</button>

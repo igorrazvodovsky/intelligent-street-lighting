@@ -33,13 +33,15 @@ export class DeviceListComponent implements OnInit {
     this.profiles$ = this.profileService.getProfiles();
     this.group$ = this.route.paramMap.pipe(
       switchMap(params =>
-        this.deviceService.getGroup(params.get('groupId')!)),
-      tap(group => { this.profile$ = this.profileService.getProfile(group.profileId) })
+        this.deviceService.getGroup(params.get('groupId')!))
     );
     this.devices$ = this.route.paramMap.pipe(
       switchMap(params => {
         return this.deviceService.getDevicesByGroup(params.get('groupId')!);
       })
+    );
+    this.group$.subscribe(group =>
+      this.profile$ = this.profileService.getProfile(group.profileId)
     );
   }
 }

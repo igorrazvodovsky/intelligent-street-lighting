@@ -466,8 +466,14 @@ input.time {
   }
 }
 
-.mat-list-base .mat-list-option .mat-line {
-  white-space: normal;
+.mat-list-base {
+  // Overrading MD styles
+  &:focus {
+    outline: none;
+  }
+  .mat-list-option .mat-line {
+    white-space: normal;
+  }
 }
 
 #permissions {

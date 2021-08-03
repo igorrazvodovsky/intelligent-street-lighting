@@ -27,6 +27,7 @@ export class DevicesComponent implements OnInit {
     private breakpointObserver: BreakpointObserver,
     private route: ActivatedRoute,
   ) {
+    // TODO: Not updated on route change
     this.childParamSubscription = route.firstChild.paramMap.subscribe(
       (params: ParamMap): void => {
         this.deviceId = params.get("deviceId");
@@ -39,6 +40,11 @@ export class DevicesComponent implements OnInit {
     this.isHandset$.subscribe(value =>
       this.isHandset = value
     );
+  }
+
+  // TODO: Unsubscribe in other places too
+  public ngOnDestroy(): void {
+    this.childParamSubscription.unsubscribe();
   }
 
   public toggleMaximize() {

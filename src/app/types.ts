@@ -37,22 +37,6 @@ export interface DeviceGroup {
   parent: number
 }
 
-// TODO: Alert → DeviceEvent +critical
-// TODO: REMOVE
-export interface Alert {
-  id: number,
-  title: string,
-  description?: string,
-  status: string,
-  priority: string,
-  device: string,
-  eventId: number,
-  assignee: string,
-  created: Date,
-  updated: Date,
-  comments: any
-}
-
 export interface Event {
   id: number,
   created: Date,
@@ -94,7 +78,8 @@ export interface Device {
   model: string,
   groupId: number,
   profileId?: number,
-  alerts?: Alert[],
+  // TODO: Narrow the type to 'level'='critical'
+  alerts?: DeviceEvent[],
   events?: [],
   tasks?: Task[],
   properties?: object,
