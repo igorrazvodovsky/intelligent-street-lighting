@@ -1,19 +1,7 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
+:host {
+  float: left;
 }
-html {
-  block-size: 100%;
-}
-body {
-  min-block-size: 100%;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
-    Noto Sans, sans-serif;
-  display: grid;
-  gap: 1ch;
-  padding-block: 0.5ch;
-  align-content: start;
-}
+
 .breadcrumbs {
   --nav-gap: 1ch;
   display: flex;
@@ -23,7 +11,7 @@ body {
   -ms-scroll-snap-type: x proximity;
   scroll-snap-type: x proximity;
   gap: var(--nav-gap);
-  padding: calc(var(--nav-gap) / 2);
+  // padding: calc(var(--nav-gap) / 2);
   scroll-padding-inline: calc(var(--nav-gap) / 2);
 }
 .breadcrumbs > a:first-of-type:not(.crumb) {

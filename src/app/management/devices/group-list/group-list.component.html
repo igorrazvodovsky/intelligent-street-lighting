@@ -2,21 +2,6 @@
 <!-- TODO: Group creation through assignemt?-->
 <!-- TODO: Grouping into districts -->
 
-<mat-chip-list aria-label="Filters">
-  <mat-chip>Type</mat-chip>
-  <!-- all, lamps, SCs, etc. -->
-  <mat-chip>Status</mat-chip>
-  <!-- all, online, not responding, offline, new??? -->
-  <mat-chip
-    ><mat-icon class="small" matListIcon svgIcon="filterBold"></mat-icon>
-    Filters</mat-chip
-  >
-  <!-- model, with active events of specific type,  -->
-
-  <!-- <mat-chip color="primary" selected>Primary property</mat-chip> -->
-  <!-- <mat-chip color="accent" selected>Accent property</mat-chip> -->
-</mat-chip-list>
-
 <mat-selection-list role="list" [multiple]="false">
   <ng-container *ngFor="let group of groups$ | async">
     <!-- *ngIf="(getDeviceNumber(group.id) | async)?.length > 0" -->

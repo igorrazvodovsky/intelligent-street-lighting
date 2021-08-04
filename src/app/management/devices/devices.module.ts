@@ -18,7 +18,7 @@ import { DeviceMetricsComponent } from './device-detail/device-metrics/device-me
 import { DeviceInfoComponent } from './device-detail/device-info/device-info.component';
 import { DeviceHistoryComponent } from './device-detail/device-history/device-history.component';
 import { DeviceFriendsListComponent } from './device-detail/device-motion-sensor/device-friends-list/device-friends-list.component';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,8 @@ import { DeviceFriendsListComponent } from './device-detail/device-motion-sensor
     CommonModule,
     SharedModule,
     DevicesRoutingModule,
-    ChartModule
+    ChartModule,
+    FormsModule
   ],
   providers: [
     MarkerService,

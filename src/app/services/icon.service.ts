@@ -22,7 +22,8 @@ export enum Bold {
   Layers = 'layers',
   ChevronLeft = 'chevronLeft',
   ChevronRight = 'chevronRight',
-  Map = 'map'
+  Map = 'map',
+  Edit = 'edit'
 }
 
 export enum Medium {

@@ -21,6 +21,7 @@ import {
   template: `
   <ng-template cdk-portal>
     <ng-content></ng-content>
+    <ng-content select="[right]"></ng-content>
   </ng-template>
   `,
   styles: []
@@ -33,9 +34,9 @@ export class PageActionsComponent implements OnInit, AfterViewInit, OnDestroy {
     private componentFactoryResolver: ComponentFactoryResolver,
     private injector: Injector,
     private appRef: ApplicationRef
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngAfterViewInit(): void {
     // Create a portalHost from a DOM element

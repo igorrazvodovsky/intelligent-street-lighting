@@ -2,10 +2,17 @@
 <!-- TODO: Error handling -->
 
 <mat-chip-list aria-label="Fish selection">
-  <mat-chip>Property</mat-chip>
-  <mat-chip>Another property</mat-chip>
-  <mat-chip color="primary" selected>Primary property</mat-chip>
-  <mat-chip color="accent" selected>Accent property</mat-chip>
+  <mat-chip>Type</mat-chip>
+  <!-- all, lamps, SCs, etc. -->
+  <mat-chip>Status</mat-chip>
+  <!-- all, online, not responding, offline, new??? -->
+  <mat-chip
+    ><mat-icon class="small" matListIcon svgIcon="filterBold"></mat-icon>
+    Filters</mat-chip
+  >
+  <!-- model, with active events of specific type,  -->
+  <!-- <mat-chip color="primary" selected>Primary property</mat-chip>
+  <mat-chip color="accent" selected>Accent property</mat-chip> -->
 </mat-chip-list>
 
 <mat-selection-list role="list" [multiple]="false">
@@ -37,7 +44,32 @@
       {{ profile.name }}
     </button>
   </mat-menu>
-  <h2 matSubheader>Lamps</h2>
+</mat-selection-list>
+<mat-divider></mat-divider>
+<div class="list-subheader mat-body-2 text-secondary">
+  Lamps
+  <div>
+    <ng-container *ngIf="isEditable && selectedDevices.length">
+      <button type="button" aria-label="Toggle edit mode" mat-button>
+        Update firmware
+      </button>
+      <button type="button" aria-label="Toggle edit mode" mat-button>
+        Move
+      </button>
+    </ng-container>
+    <button
+      type="button"
+      aria-label="Toggle edit mode"
+      (click)="isEditable = !isEditable"
+      mat-button
+    >
+      {{ isEditable ? "Done" : "Edit" }}
+    </button>
+  </div>
+</div>
+
+<!-- https://material.angular.io/components/select/overview#error-cannot-change-multiple-mode-of-select-after-initialization -->
+<mat-selection-list *ngIf="!isEditable" role="list" [multiple]="false">
   <mat-list-option
     [routerLink]="[device.id]"
     role="listitem"
@@ -55,6 +87,22 @@
   <mat-list-option role="listitem">
     <div class="text-secondary" matLine>Add</div>
   </mat-list-option>
+</mat-selection-list>
+<mat-selection-list
+  [(ngModel)]="selectedDevices"
+  *ngIf="isEditable"
+  role="list"
+>
+  <mat-list-option role="listitem" *ngFor="let device of devices$ | async">
+    <div matLine>{{ device.name }}</div>
+    <span matLine
+      >1 luminaire{{ device.surgeProtector ? ", surge protector" : null
+      }}{{ device.sensors ? ", " + device.sensors.join(", ") : null }}
+    </span>
+  </mat-list-option>
+</mat-selection-list>
+
+<mat-selection-list role="list" [multiple]="false">
   <h2 matSubheader>Segment controllers</h2>
   <mat-list-option>
     <div matLine>SC11</div>

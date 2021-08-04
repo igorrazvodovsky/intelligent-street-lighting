@@ -19,6 +19,9 @@ export class DeviceListComponent implements OnInit {
   profile$!: Observable<Profile>;
   profiles$!: Observable<Profile[]>;
 
+  isEditable: boolean = false;
+  selectedDevices: string[] = [];
+
   constructor(
     private deviceService: DeviceService,
     private profileService: ProfileService,
