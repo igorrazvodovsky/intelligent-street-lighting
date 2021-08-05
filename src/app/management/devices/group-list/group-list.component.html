@@ -8,11 +8,15 @@
     <mat-list-option [routerLink]="[group.id]" role="listitem">
       <!-- <mat-icon matListIcon svgIcon="chevronRightRegular"></mat-icon> -->
       <div matLine>{{ group.name }}</div>
-      <span matLine
-        >{{ (getDevices(group.id) | async)?.length }}
-        <span class="text-secondary">lamps</span>,
+      <span matLine class="details text-secondary"
+        ><span *ngIf="group.children.length > 0"
+          >{{ group.children.length | i18nPlural: childGroupsMapping }}
+        </span>
+        <!-- TODO: Count in child group devices too -->
+        {{ (getDevices(group.id) | async)?.length | i18nPlural: lampMapping }}
+        <!-- TODO: if > 1 → 'N profiles' + popover with details -->
         {{ (getProfile(group.profileId) | async)?.name }}
-        <span class="text-secondary">profile</span></span
+        profile</span
       >
     </mat-list-option>
   </ng-container>

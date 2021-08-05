@@ -228,66 +228,84 @@ export const GROUPS: DeviceGroup[] = [
     id: 1,
     name: 'Dzelzceļnieks',
     profileId: 1,
-    parentId: null
+    parentId: null,
+    children: []
   },
   {
     id: 2,
     name: 'Cietoksnis',
     profileId: 2,
-    parentId: null
+    parentId: null,
+    children: []
   },
   {
     id: 3,
     name: 'Autoosta',
     profileId: 2,
-    parentId: null
+    parentId: null,
+    children: []
   },
   {
     id: 4,
     name: 'Čerepova',
     profileId: 1,
-    parentId: null
+    parentId: null,
+    children: []
   },
   {
     id: 5,
     name: 'Lokomotīve',
     profileId: 3,
-    parentId: null
+    parentId: null,
+    children: []
   },
   {
     id: 6,
     name: 'Mark Rothko Center',
     profileId: 2,
-    parentId: null
+    parentId: null,
+    children: []
   },
   {
     id: 7,
     name: 'Svēto mocekļu Borisa un Gļeba pareizticīgo katedrāle',
     profileId: 1,
-    parentId: null
+    parentId: null,
+    children: []
   },
   {
     id: 8,
     name: 'Liginiški',
     profileId: 1,
-    parentId: null
+    parentId: null,
+    children: []
   },
   {
     id: 9,
     name: 'Skate park',
     profileId: 1,
-    parentId: null
+    parentId: null,
+    children: []
   },
   {
     id: 10,
     name: 'Kārklu iela',
     profileId: 1,
-    parentId: null
+    parentId: null,
+    children: [11, 12]
   },
   {
     id: 11,
+    name: 'Kārklu ielas pirma daļa',
+    profileId: 1,
+    parentId: 10,
+    children: []
+  },
+  {
+    id: 12,
     name: 'Kārklu ielas otra daļa',
     profileId: 1,
-    parentId: 10
+    parentId: 10,
+    children: []
   }
 ];

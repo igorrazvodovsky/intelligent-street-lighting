@@ -35,6 +35,7 @@ export interface DeviceGroup {
   name: string,
   profileId: number,
   parentId: number
+  children: number[]
 }
 
 export interface Event {

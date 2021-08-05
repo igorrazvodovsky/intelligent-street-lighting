@@ -1,3 +1,5 @@
+// TODO: Map shows only currently selected (in the list) groups/devices
+
 import { Component, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
 import { MarkerService } from '~local/services/marker.service';
@@ -27,7 +29,7 @@ export class MapComponent implements AfterViewInit {
 
   private initMap(): void {
     this.map = L.map('map', {
-      center: [ 55.8747, 26.5362 ],
+      center: [55.8747, 26.5362],
       zoom: 12,
       zoomControl: false
     });
