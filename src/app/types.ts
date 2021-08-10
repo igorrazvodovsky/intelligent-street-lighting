@@ -79,6 +79,7 @@ export interface Device {
   model: string,
   groupId: number,
   profileId?: number,
+  type: 'lamp' | 'SC',
   // TODO: Narrow the type to 'level'='critical'
   alerts?: DeviceEvent[],
   events?: [],
@@ -87,7 +88,8 @@ export interface Device {
   sensors?: SensorType[],
   metrics?: object,
   surgeProtector: boolean,
-  orientation: number,
+  // TODO: lamps only
+  orientation?: number,
   firmware: string
 }
 

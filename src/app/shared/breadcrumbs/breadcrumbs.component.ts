@@ -21,6 +21,7 @@ export class BreadcrumbsComponent implements OnInit {
   deviceSiblings$: Observable<Device[]>;
   devices: Crumb[];
   currentDevice: Crumb;
+  city: string;
 
   constructor(
     private service: DeviceService,
@@ -29,10 +30,9 @@ export class BreadcrumbsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.city = this.service.city.name
     this.deviceSiblings$ = this.service.getDevicesByGroup(this.groupId);
-
     this.getSelectedGroup(this.groupId);
-
     this.deviceSiblings$.subscribe(devices => {
       this.devices = devices.map(device => ({ name: device.name, id: device.id }));
       this.currentDevice = this.devices.find(device => device.id == this.deviceId)

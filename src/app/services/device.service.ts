@@ -9,6 +9,10 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DeviceService {
+  city = {
+    name: "Daugavpils"
+  };
+
   constructor(private messageService: MessageService) { }
 
   getGroups(): Observable<DeviceGroup[]> {

@@ -4,13 +4,20 @@
 <mat-chip-list aria-label="Fish selection">
   <mat-chip>Type</mat-chip>
   <!-- all, lamps, SCs, etc. -->
-  <mat-chip>Status</mat-chip>
-  <!-- all, online, not responding, offline, new??? -->
+  <mat-chip [matMenuTriggerFor]="statusFilterMenu">Status</mat-chip>
+  <mat-menu #statusFilterMenu="matMenu">
+    <button mat-menu-item>All</button>
+    <button mat-menu-item>Not responsing</button>
+    <button mat-menu-item>Offline</button>
+    <!-- TBD: 'New' as 'added recently' -->
+    <button mat-menu-item>New</button>
+  </mat-menu>
+  <!-- specify model, filter for devices with active events of specific type... -->
   <mat-chip
     ><mat-icon class="small" matListIcon svgIcon="filterBold"></mat-icon>
     Filters</mat-chip
   >
-  <!-- model, with active events of specific type,  -->
+
   <!-- <mat-chip color="primary" selected>Primary property</mat-chip>
   <mat-chip color="accent" selected>Accent property</mat-chip> -->
 </mat-chip-list>
@@ -77,7 +84,7 @@
   >
     <div matLine>{{ device.name }}</div>
     <span matLine
-      >1 luminaire{{ device.surgeProtector ? ", surge protector" : null
+      >SC11, 1 luminaire{{ device.surgeProtector ? ", surge protector" : null
       }}{{ device.sensors ? ", " + device.sensors.join(", ") : null }}
       <!-- <ng-container *ngFor="let sensor of device.sensors">
         {{ sensor }}</ng-container
