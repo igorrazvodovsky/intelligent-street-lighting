@@ -1,5 +1,4 @@
-import { Profile, WeekDay } from '~local/types';
-// import { WeekDay } from '@angular/common';
+import { Profile } from '~local/types';
 
 export const TIME_OPTIONS = [
   { value: 'sunrise', viewValue: 'Sunrise' },

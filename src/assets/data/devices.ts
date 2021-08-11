@@ -10,7 +10,7 @@ export const DEVICES: Device[] = [
     orientation: 90,
     firmware: '0.1.0',
     surgeProtector: false,
-    sensors: [SensorType.Motion, SensorType.Traffic]
+    sensors: ['motion', 'traffic']
   },
   {
     id: 12,
@@ -21,7 +21,7 @@ export const DEVICES: Device[] = [
     orientation: 90,
     firmware: '0.1.0',
     surgeProtector: true,
-    sensors: [SensorType.Motion]
+    sensors: ['motion']
   },
   {
     id: 13,
@@ -42,7 +42,7 @@ export const DEVICES: Device[] = [
     orientation: 90,
     firmware: '0.1.0',
     surgeProtector: false,
-    sensors: [SensorType.Traffic]
+    sensors: ['traffic']
   },
   {
     id: 15,
@@ -83,7 +83,7 @@ export const DEVICES: Device[] = [
     orientation: 90,
     firmware: '0.1.0',
     surgeProtector: false,
-    sensors: [SensorType.Wifi]
+    sensors: ['wifi']
   },
   {
     id: 19,

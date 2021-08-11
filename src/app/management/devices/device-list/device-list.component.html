@@ -103,7 +103,7 @@
   <mat-list-option role="listitem" *ngFor="let device of devices$ | async">
     <div matLine>{{ device.name }}</div>
     <span matLine
-      >1 luminaire{{ device.surgeProtector ? ", surge protector" : null
+      >SC11, 1 luminaire{{ device.surgeProtector ? ", surge protector" : null
       }}{{ device.sensors ? ", " + device.sensors.join(", ") : null }}
     </span>
   </mat-list-option>

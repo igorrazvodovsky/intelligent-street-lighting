@@ -38,6 +38,12 @@
         aria-label="List toggle icon"
       ></mat-icon>
     </button>
-    <devices-map></devices-map>
+    <!-- <devices-map></devices-map> -->
+    <mgl-map
+      [style]="'mapbox://styles/igorrazvodovsky/cks5ww8yk0kxm17p4t4lcftfr'"
+      [zoom]="[15]"
+      [center]="[26.5362, 55.8747]"
+    >
+    </mgl-map>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -1,5 +1,3 @@
-// import { WeekDay } from '@angular/common';
-
 export interface User {
   name: string;
   id: number;
@@ -62,16 +60,9 @@ export interface DeviceEvent extends Event {
   taskId?: number
 }
 
-export enum SensorType {
-  Motion = "motion sensor",
-  Wifi = 'wifi senspor',
-  Traffic = 'trafic sensor'
-}
+export type SensorType = "motion" | 'wifi' | 'traffic'
 
-export enum DeviceType {
-  Lamp,
-  SegmentController,
-}
+type DeviceType = "Lamp" | "SegmentController"
 
 export interface Device {
   id: number,
@@ -118,17 +109,6 @@ export interface Measurement {
     min?: number,
     max?: number
   }
-}
-
-// TODO: Sunday or Monday?
-export enum WeekDay {
-  Monday,
-  Tuesday,
-  Wednesday,
-  Thursday,
-  Friday,
-  Saturday,
-  Sunday,
 }
 
 export interface Schedule {

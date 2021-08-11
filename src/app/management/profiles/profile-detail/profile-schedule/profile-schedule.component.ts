@@ -2,8 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Schedule, TimeGroup } from '~local/types'
 import { TIME_OPTIONS } from '~local/../assets/data/profiles'
 
-// import { WeekDay } from '@angular/common';
-
 @Component({
   selector: 'profile-schedule',
   templateUrl: './profile-schedule.component.html',
