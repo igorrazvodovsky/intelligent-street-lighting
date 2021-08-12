@@ -1,5 +1,5 @@
 <app-page-actions>
-  <div>
+  <div class="page-title">
     Reports
     <span class="text-secondary mat-body-2">for </span>
     <button mat-button [matMenuTriggerFor]="menu">
@@ -22,31 +22,52 @@
     <mat-icon svgIcon="downloadBold"></mat-icon>
   </button>
 </app-page-actions>
-<div id="configuration">
-  <mat-form-field>
-    <mat-label>Expected economy</mat-label>
-    <input matInput value="30" />
-    <span matSuffix>%</span>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Nominal energy per lamp</mat-label>
-    <input matInput [formControl]="nominalDefaultFormControl" />
-    <mat-hint>Typically between 0.035 and 0.25 kWh. </mat-hint>
-    <span matSuffix>kWh</span>
-  </mat-form-field>
-  <mat-form-field *ngIf="period == 'custom'">
-    <mat-label>Period</mat-label>
-    <!-- TODO: Limit to months? -->
-    <mat-date-range-input [formGroup]="periodRange" [rangePicker]="picker">
-      <input matStartDate formControlName="start" placeholder="Start date" />
-      <input matEndDate formControlName="end" placeholder="End date" />
-    </mat-date-range-input>
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-date-range-picker #picker></mat-date-range-picker>
-  </mat-form-field>
-</div>
-<mat-divider></mat-divider>
-
+<header>
+  <section class="stats">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-subtitle>Worked</mat-card-subtitle>
+        <mat-card-title>1 261 h</mat-card-title>
+      </mat-card-header>
+    </mat-card>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-subtitle>Energy consumption</mat-card-subtitle>
+        <mat-card-title>6 761 kWh</mat-card-title>
+      </mat-card-header>
+    </mat-card>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-subtitle>Economy</mat-card-subtitle>
+        <mat-card-title>32%</mat-card-title>
+        <mat-card-subtitle class="text-success">▲ 4%</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+  </section>
+  <section class="configuration">
+    <mat-form-field *ngIf="period == 'custom'">
+      <mat-label>Period</mat-label>
+      <!-- TODO: Limit to months? -->
+      <mat-date-range-input [formGroup]="periodRange" [rangePicker]="picker">
+        <input matStartDate formControlName="start" placeholder="Start date" />
+        <input matEndDate formControlName="end" placeholder="End date" />
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Expected economy</mat-label>
+      <input matInput value="30" />
+      <span matSuffix>%</span>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Nominal energy per lamp</mat-label>
+      <input matInput [formControl]="nominalDefaultFormControl" />
+      <mat-hint>Typically between 0.035 and 0.25 kWh. </mat-hint>
+      <span matSuffix>kWh</span>
+    </mat-form-field>
+  </section>
+</header>
 <!-- TODO: total total and total by month -->
 <table class="report" mat-table>
   <ng-container matColumnDef="property">
@@ -81,6 +102,20 @@
       <th class="mat-header-cell">May</th>
     </tr>
   </thead>
+  <tbody>
+    <tr class="mat-row">
+      <th class="mat-header-cell">Worked, h</th>
+      <td class="mat-cell">6 788</td>
+    </tr>
+    <tr class="mat-row">
+      <th class="mat-header-cell">Energy consumtion, kWh</th>
+      <td class="mat-cell">781 237</td>
+    </tr>
+    <tr class="mat-row">
+      <th class="mat-header-cell">Economy, %</th>
+      <td class="mat-cell">31%</td>
+    </tr>
+  </tbody>
 </table> -->
 
 <ng-container *ngFor="let group of reports2">
@@ -94,12 +129,14 @@
           <span class="text-secondary">{{ group.lamps }} lamps</span>
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <mat-form-field>
-        <mat-label>Nominal energy per lamp</mat-label>
-        <input matInput [formControl]="nominalDefaultFormControl" />
-        <mat-hint>Typically between 0.035 and 0.25 kWh. </mat-hint>
-        <span matSuffix>kWh</span>
-      </mat-form-field>
+      <div class="configuration">
+        <mat-form-field>
+          <mat-label>Nominal energy per lamp</mat-label>
+          <input matInput [formControl]="nominalDefaultFormControl" />
+          <mat-hint>Typically between 0.035 and 0.25 kWh. </mat-hint>
+          <span matSuffix>kWh</span>
+        </mat-form-field>
+      </div>
     </mat-expansion-panel>
 
     <table class="mat-table report">
@@ -111,6 +148,18 @@
         <tr class="mat-row">
           <th class="mat-header-cell">Nominal energy, kWh</th>
           <td class="mat-cell" *ngFor="let i of group.data.nominal">
+            {{ i }}
+          </td>
+        </tr>
+        <tr class="mat-row">
+          <th class="mat-header-cell">Real energy, kWh</th>
+          <td class="mat-cell" *ngFor="let i of group.data.real">
+            {{ i }}
+          </td>
+        </tr>
+        <tr class="mat-row">
+          <th class="mat-header-cell">Economy, %</th>
+          <td class="mat-cell" *ngFor="let i of group.data.economy">
             {{ i }}
           </td>
         </tr>

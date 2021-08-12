@@ -3,6 +3,9 @@
   padding: 5rem 0 5rem 4.5rem;
   height: 100%;
   width: 100%;
+  & > .configuration {
+    margin-right: 1rem;
+  }
 }
 
 h2 {
@@ -54,6 +57,29 @@ td.mat-cell:first-of-type {
   font-weight: 500;
 }
 
-#configuration {
+th.mat-header-cell:first-of-type {
+  padding-left: 1rem;
+}
+
+.configuration {
   display: flex;
+  justify-content: space-between;
+}
+
+header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  .stats {
+    display: flex;
+    flex-wrap: nowrap;
+    // display: grid;
+    // grid-template-columns: repeat(auto-fit, minmax(14ch, 1fr));
+    gap: 0.5rem;
+
+    .mat-card {
+      padding-top: 0;
+      background: transparent;
+    }
+  }
 }
