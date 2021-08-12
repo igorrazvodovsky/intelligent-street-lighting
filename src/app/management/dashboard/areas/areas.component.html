@@ -1,7 +1,7 @@
 <header>
   <h2 class="text-heading">Areas</h2>
   <button mat-button [matMenuTriggerFor]="areaMenu">
-    Traffic<mat-icon svgIcon="dropdownMedium"></mat-icon>
+    Energy consumption<mat-icon svgIcon="dropdownMedium"></mat-icon>
   </button>
   <mat-menu #areaMenu="matMenu">
     <button mat-menu-item>Traffic</button>
@@ -30,6 +30,7 @@
         >6 groups, 3&nbsp;profiles, 27&nbsp;lamps</mat-card-subtitle
       >
     </mat-card-header>
+    <!-- TODO: Add nominal energy level -->
     <area-chart class="card-chart" mat-card-image [data]="data[i]"></area-chart>
   </mat-card>
   <mat-card>

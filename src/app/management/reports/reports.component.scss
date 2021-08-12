@@ -1,0 +1,59 @@
+:host {
+  display: block;
+  padding: 5rem 0 5rem 4.5rem;
+  height: 100%;
+  width: 100%;
+}
+
+h2 {
+  display: inline;
+  margin-right: 0.5rem;
+  margin-bottom: 0;
+}
+
+mat-panel-title {
+  align-items: baseline;
+}
+
+table {
+  width: 100%;
+  background: transparent;
+  margin-bottom: 2rem;
+}
+
+.report {
+  th,
+  td {
+    width: 20vmax;
+    &:first-child {
+      border: none;
+    }
+  }
+}
+
+.mat-button {
+  transform: translateX(-1rem);
+}
+
+.right {
+  float: right;
+  margin: 0 1rem;
+}
+
+mat-form-field + mat-form-field {
+  margin-left: 1rem;
+}
+
+mat-divider {
+  margin-top: 2rem;
+}
+
+td.mat-cell:first-of-type {
+  // Overrading default behaviour to work with horizontal table
+  padding-left: 0;
+  font-weight: 500;
+}
+
+#configuration {
+  display: flex;
+}

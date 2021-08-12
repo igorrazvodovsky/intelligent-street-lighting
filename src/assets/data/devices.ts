@@ -262,83 +262,95 @@ export const GROUPS: DeviceGroup[] = [
     name: 'Dzelzceļnieks',
     profileId: 1,
     parentId: null,
-    children: []
+    children: [],
+    created: new Date(2021, 1)
   },
   {
     id: 2,
     name: 'Cietoksnis',
     profileId: 2,
     parentId: null,
-    children: []
+    children: [],
+    created: new Date(2021, 1)
   },
   {
     id: 3,
     name: 'Autoosta',
     profileId: 2,
     parentId: null,
-    children: []
+    children: [],
+    created: new Date(2021, 1)
   },
   {
     id: 4,
     name: 'Čerepova',
     profileId: 1,
     parentId: null,
-    children: []
+    children: [],
+    created: new Date(2021, 1)
   },
   {
     id: 5,
     name: 'Lokomotīve',
     profileId: 3,
     parentId: null,
-    children: []
+    children: [],
+    created: new Date(2021, 1)
   },
   {
     id: 6,
     name: 'Mark Rothko Center',
     profileId: 2,
     parentId: null,
-    children: []
+    children: [],
+    created: new Date(2021, 1)
   },
   {
     id: 7,
     name: 'Svēto mocekļu Borisa un Gļeba pareizticīgo katedrāle',
     profileId: 1,
     parentId: null,
-    children: []
+    children: [],
+    created: new Date(2021, 1)
   },
   {
     id: 8,
     name: 'Liginiški',
     profileId: 1,
     parentId: null,
-    children: []
+    children: [],
+    created: new Date(2021, 1)
   },
   {
     id: 9,
     name: 'Skate park',
     profileId: 1,
     parentId: null,
-    children: []
+    children: [],
+    created: new Date(2021, 1)
   },
   {
     id: 10,
     name: 'Kārklu iela',
     profileId: 1,
     parentId: null,
-    children: [11, 12]
+    children: [11, 12],
+    created: new Date(2021, 1)
   },
   {
     id: 11,
     name: 'Kārklu ielas pirma daļa',
     profileId: 1,
     parentId: 10,
-    children: []
+    children: [],
+    created: new Date(2021, 1)
   },
   {
     id: 12,
     name: 'Kārklu ielas otra daļa',
     profileId: 1,
     parentId: 10,
-    children: []
+    children: [],
+    created: new Date(2021, 1)
   }
 ];

@@ -19,6 +19,7 @@ import { DateFnsModule } from 'ngx-date-fns';
 import { ListSummaryPipe } from '~local/pipes/list-summary.pipe';
 import { DeviceEventComponent } from './dashboard/activity/device-event/device-event.component';
 import { UserEventComponent } from './dashboard/activity/user-event/user-event.component';
+import { ReportsComponent } from './reports/reports.component';
 
 @NgModule({
   imports: [
@@ -43,7 +44,8 @@ import { UserEventComponent } from './dashboard/activity/user-event/user-event.c
     AreaChartComponent,
     ListSummaryPipe,
     DeviceEventComponent,
-    UserEventComponent
+    UserEventComponent,
+    ReportsComponent
   ]
 })
 export class ManagementModule { }

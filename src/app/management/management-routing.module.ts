@@ -4,6 +4,7 @@ import { AuthGuard } from '../auth/auth.guard';
 import { NavigationComponent } from './navigation/navigation.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ReportsComponent } from './reports/reports.component';
 import { AdminAuthGuard } from './admin/auth.guard';
 
 const managementRoutes: Routes = [
@@ -21,7 +22,8 @@ const managementRoutes: Routes = [
             loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
             // canLoad: [AdminAuthGuard]
           },
-          { path: 'devices',
+          {
+            path: 'devices',
             loadChildren: () => import('./devices/devices.module').then(m => m.DevicesModule),
           },
           {
@@ -29,6 +31,7 @@ const managementRoutes: Routes = [
             loadChildren: () => import('./profiles/profiles.module').then(m => m.ProfilesModule)
           },
           { path: 'user-profile', component: UserProfileComponent },
+          { path: 'reports', component: ReportsComponent },
           { path: '', component: DashboardComponent }
         ]
       }
@@ -44,4 +47,4 @@ const managementRoutes: Routes = [
     RouterModule
   ]
 })
-export class ManagementRoutingModule {}
+export class ManagementRoutingModule { }

@@ -8,7 +8,10 @@
       matTooltip="Edit profile name"
       matTooltipPosition="right"
     >
-      <span>Profiles → </span> {{ profile.name }}
+      <span
+        >Profiles <span class="text-secondary" aria-hidden="true">·</span>
+      </span>
+      {{ profile.name }}
     </div>
   </app-page-actions>
   <mat-divider></mat-divider>

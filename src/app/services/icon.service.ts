@@ -23,7 +23,8 @@ export enum Bold {
   ChevronLeft = 'chevronLeft',
   ChevronRight = 'chevronRight',
   Map = 'map',
-  Edit = 'edit'
+  Edit = 'edit',
+  Download = 'download'
 }
 
 export enum Medium {
