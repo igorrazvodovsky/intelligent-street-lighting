@@ -27,13 +27,14 @@
     <mat-card>
       <mat-card-header>
         <mat-card-subtitle>Worked</mat-card-subtitle>
-        <mat-card-title>1 261 h</mat-card-title>
+        <!-- TODO: locale thousand separator -->
+        <mat-card-title>31 261 h</mat-card-title>
       </mat-card-header>
     </mat-card>
     <mat-card>
       <mat-card-header>
         <mat-card-subtitle>Energy consumption</mat-card-subtitle>
-        <mat-card-title>6 761 kWh</mat-card-title>
+        <mat-card-title>56 761 kWh</mat-card-title>
       </mat-card-header>
     </mat-card>
     <mat-card>
@@ -68,7 +69,6 @@
     </mat-form-field>
   </section>
 </header>
-<!-- TODO: total total and total by month -->
 <table class="report" mat-table>
   <ng-container matColumnDef="property">
     <th mat-header-cell *matHeaderCellDef></th>
@@ -133,7 +133,6 @@
         <mat-form-field>
           <mat-label>Nominal energy per lamp</mat-label>
           <input matInput [formControl]="nominalDefaultFormControl" />
-          <mat-hint>Typically between 0.035 and 0.25 kWh. </mat-hint>
           <span matSuffix>kWh</span>
         </mat-form-field>
       </div>

@@ -556,3 +556,10 @@ input.time {
   align-items: center;
   margin: 1rem 1rem 0 1rem;
 }
+
+// TEMP
+a.mapboxgl-ctrl-logo,
+.mapboxgl-ctrl-attrib.mapboxgl-compact,
+.mapboxgl-ctrl-attrib-inner[role="list"] {
+  display: none !important;
+}
