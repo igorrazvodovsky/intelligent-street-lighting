@@ -20,6 +20,9 @@ import { ListSummaryPipe } from '~local/pipes/list-summary.pipe';
 import { DeviceEventComponent } from './dashboard/activity/device-event/device-event.component';
 import { UserEventComponent } from './dashboard/activity/user-event/user-event.component';
 import { ReportsComponent } from './reports/reports.component';
+import { InitialisationComponent } from './initialisation/initialisation.component';
+import { InitialisationLampComponent } from './initialisation/initialisation-lamp/initialisation-lamp.component';
+import { InitialisationScComponent } from './initialisation/initialisation-sc/initialisation-sc.component';
 
 @NgModule({
   imports: [
@@ -45,7 +48,10 @@ import { ReportsComponent } from './reports/reports.component';
     ListSummaryPipe,
     DeviceEventComponent,
     UserEventComponent,
-    ReportsComponent
+    ReportsComponent,
+    InitialisationComponent,
+    InitialisationLampComponent,
+    InitialisationScComponent
   ]
 })
 export class ManagementModule { }

@@ -24,7 +24,8 @@ export enum Bold {
   ChevronRight = 'chevronRight',
   Map = 'map',
   Edit = 'edit',
-  Download = 'download'
+  Download = 'download',
+  QR = 'qr'
 }
 
 export enum Medium {
@@ -41,7 +42,9 @@ export enum Medium {
   Profile = 'profile',
   Warning = 'warning',
   Ticket = 'ticket',
-  Filter = 'filter'
+  Filter = 'filter',
+  QR = 'qr',
+  Plus = 'plus'
 }
 
 export enum Regular {

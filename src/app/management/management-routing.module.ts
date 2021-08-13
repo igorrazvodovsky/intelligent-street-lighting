@@ -5,6 +5,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ReportsComponent } from './reports/reports.component';
+import { InitialisationComponent } from './initialisation/initialisation.component'
 import { AdminAuthGuard } from './admin/auth.guard';
 
 const managementRoutes: Routes = [
@@ -32,6 +33,7 @@ const managementRoutes: Routes = [
           },
           { path: 'user-profile', component: UserProfileComponent },
           { path: 'reports', component: ReportsComponent },
+          { path: 'initialise', component: InitialisationComponent },
           { path: '', component: DashboardComponent }
         ]
       }

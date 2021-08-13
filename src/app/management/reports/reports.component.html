@@ -26,13 +26,6 @@
   <section class="stats">
     <mat-card>
       <mat-card-header>
-        <mat-card-subtitle>Worked</mat-card-subtitle>
-        <!-- TODO: locale thousand separator -->
-        <mat-card-title>31 261 h</mat-card-title>
-      </mat-card-header>
-    </mat-card>
-    <mat-card>
-      <mat-card-header>
         <mat-card-subtitle>Energy consumption</mat-card-subtitle>
         <mat-card-title>56 761 kWh</mat-card-title>
       </mat-card-header>
@@ -42,6 +35,13 @@
         <mat-card-subtitle>Economy</mat-card-subtitle>
         <mat-card-title>32%</mat-card-title>
         <mat-card-subtitle class="text-success">▲ 4%</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-subtitle>Worked</mat-card-subtitle>
+        <!-- TODO: locale thousand separator -->
+        <mat-card-title>31 261 h</mat-card-title>
       </mat-card-header>
     </mat-card>
   </section>
@@ -69,7 +69,9 @@
     </mat-form-field>
   </section>
 </header>
-<table class="report" mat-table>
+
+<!-- TODO: Load mat-table styles without the table -->
+<table style="display: none" class="report" mat-table>
   <ng-container matColumnDef="property">
     <th mat-header-cell *matHeaderCellDef></th>
   </ng-container>
@@ -77,21 +79,21 @@
     <th mat-header-cell *matHeaderCellDef>Total</th>
   </ng-container>
   <ng-container matColumnDef="1">
-    <th mat-header-cell *matHeaderCellDef>Dec</th>
+    <th mat-header-cell *matHeaderCellDef>Aug</th>
   </ng-container>
   <ng-container matColumnDef="2">
-    <th mat-header-cell *matHeaderCellDef>Nov</th>
+    <th mat-header-cell *matHeaderCellDef>Jul</th>
   </ng-container>
   <ng-container matColumnDef="3">
-    <th mat-header-cell *matHeaderCellDef>Dec</th>
+    <th mat-header-cell *matHeaderCellDef>Jun</th>
   </ng-container>
   <ng-container matColumnDef="4">
-    <th mat-header-cell *matHeaderCellDef>Nov</th>
+    <th mat-header-cell *matHeaderCellDef>May</th>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 </table>
 
-<!-- <table class="mat-table report">
+<table class="mat-table report">
   <thead>
     <tr class="mat-row">
       <th class="mat-header-cell"></th>
@@ -102,21 +104,7 @@
       <th class="mat-header-cell">May</th>
     </tr>
   </thead>
-  <tbody>
-    <tr class="mat-row">
-      <th class="mat-header-cell">Worked, h</th>
-      <td class="mat-cell">6 788</td>
-    </tr>
-    <tr class="mat-row">
-      <th class="mat-header-cell">Energy consumtion, kWh</th>
-      <td class="mat-cell">781 237</td>
-    </tr>
-    <tr class="mat-row">
-      <th class="mat-header-cell">Economy, %</th>
-      <td class="mat-cell">31%</td>
-    </tr>
-  </tbody>
-</table> -->
+</table>
 
 <ng-container *ngFor="let group of reports2">
   <article>

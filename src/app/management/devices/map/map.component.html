@@ -1,6 +1,6 @@
 <div id="map-controls">
   <div id="map-controls__layers">
-    <!-- Legend -->
+    <!-- TODO: Legend (inline and in popover for longer lists) -->
     <button
       [matMenuTriggerFor]="menuLayers"
       type="button"
@@ -9,6 +9,7 @@
     >
       <mat-icon svgIcon="layersBold" aria-label="Layer toggle icon"></mat-icon>
     </button>
+
     <mat-menu #menuLayers="matMenu">
       <!-- <button mat-menu-item>All</button>
       <button mat-menu-item>Alarm</button>

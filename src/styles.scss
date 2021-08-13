@@ -548,6 +548,21 @@ input.time {
   //   float: right;
   //   margin-left: 1ch;
   // }
+
+  & > div {
+    * + * {
+      margin-left: 1rem;
+    }
+  }
+
+  a.page-nav {
+    display: inline-flex;
+    align-items: center;
+    &:hover {
+      color: hsla(0, 0%, 0%, 0.6);
+      fill: hsla(0, 0%, 0%, 0.6);
+    }
+  }
 }
 
 .list-subheader {

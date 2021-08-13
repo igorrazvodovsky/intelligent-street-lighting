@@ -1,11 +1,10 @@
+@import "~@angular/material/table/_table-theme";
+
 :host {
   display: block;
   padding: 5rem 0 5rem 4.5rem;
   height: 100%;
   width: 100%;
-  & > .configuration {
-    margin-right: 1rem;
-  }
 }
 
 h2 {
@@ -21,13 +20,16 @@ mat-panel-title {
 table {
   width: 100%;
   background: transparent;
-  margin-bottom: 2rem;
+  &:first-of-type {
+    margin-bottom: 2rem;
+  }
 }
 
 .report {
   th,
   td {
     width: 20vmax;
+    min-width: 20vmax;
     &:first-child {
       border: none;
     }
@@ -59,6 +61,11 @@ td.mat-cell:first-of-type {
 
 th.mat-header-cell:first-of-type {
   padding-left: 1rem;
+  padding-right: 0 !important;
+}
+
+th.mat-header-cell:last-of-type {
+  padding-right: 0 !important;
 }
 
 .configuration {
@@ -70,6 +77,7 @@ header {
   display: flex;
   width: 100%;
   justify-content: space-between;
+  padding-right: 1rem;
   .stats {
     display: flex;
     flex-wrap: nowrap;
@@ -80,6 +88,7 @@ header {
     .mat-card {
       padding-top: 0;
       background: transparent;
+      // width: calc(20vmax - 5rem);
     }
   }
 }

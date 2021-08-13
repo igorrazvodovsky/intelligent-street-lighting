@@ -46,7 +46,7 @@ section#main {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(14ch, 1fr));
   gap: 0.5rem;
-  
+
   .mat-card {
     background: hsla(0, 0%, 0%, 0.1);
   }
