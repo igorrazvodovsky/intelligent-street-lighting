@@ -1,6 +1,7 @@
 // TODO: Map shows only currently selected (in the list) groups/devices
 
 import { Component, AfterViewInit } from '@angular/core';
+
 import * as L from 'leaflet';
 import { MarkerService } from '~local/services/marker.service';
 import { ShapeService } from '~local/services/shape.service';
@@ -18,6 +19,7 @@ const iconDefault = L.icon({
   tooltipAnchor: [16, -28],
   shadowSize: [41, 41]
 });
+
 @Component({
   selector: 'devices-map',
   templateUrl: './map.component.html',
@@ -25,23 +27,22 @@ const iconDefault = L.icon({
 })
 export class MapComponent implements AfterViewInit {
   private map;
-  private areas;
+  // private areas;
+  devices: any;
 
   accessToken = 'pk.eyJ1IjoiaWdvcnJhenZvZG92c2t5IiwiYSI6ImNrczV3dHI3ODA1YTQycnF5bnV4N2xjcm0ifQ.1b4VIA7aqOZc_oiiTyNl-w';
 
   private initMap(): void {
     this.map = L.map('map', {
       center: [55.8747, 26.5362],
-      zoom: 12,
+      zoom: 13,
       zoomControl: false
     });
 
     new L.Control.Zoom({ position: 'bottomright' }).addTo(this.map);
-
-    const tiles = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=' + this.accessToken, {
+    const tiles = L.tileLayer('https://api.mapbox.com/styles/v1/igorrazvodovsky/cks5ww8yk0kxm17p4t4lcftfr/tiles/{z}/{x}/{y}?access_token=' + this.accessToken, {
       maxZoom: 18,
       minZoom: 3,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
 
     tiles.addTo(this.map);
@@ -49,7 +50,7 @@ export class MapComponent implements AfterViewInit {
 
   constructor(
     private markerService: MarkerService,
-    private shapeService: ShapeService
+    private shapeService: ShapeService,
   ) { }
 
   private highlightFeature(e) {
@@ -71,33 +72,34 @@ export class MapComponent implements AfterViewInit {
     });
   }
 
-  private initAreasLayer() {
-    const areaLayer = L.geoJSON(this.areas, {
-      style: (feature) => ({
-        opacity: 0.5,
-        color: '#008f68',
-        fill: true
-      }),
-      onEachFeature: (feature, layer) => (
-        layer.on({
-          mouseover: (e) => (this.highlightFeature(e)),
-          mouseout: (e) => (this.resetFeature(e)),
-        })
-      )
-    });
+  // private initAreasLayer() {
+  //   const areaLayer = L.geoJSON(this.areas, {
+  //     style: (feature) => ({
+  //       opacity: 0.5,
+  //       color: '#008f68',
+  //       fill: true
+  //     }),
+  //     onEachFeature: (feature, layer) => (
+  //       layer.on({
+  //         mouseover: (e) => (this.highlightFeature(e)),
+  //         mouseout: (e) => (this.resetFeature(e)),
+  //       })
+  //     )
+  //   });
 
-    this.map.addLayer(areaLayer);
-    areaLayer.bringToBack();
-  }
+  //   this.map.addLayer(areaLayer);
+  //   areaLayer.bringToBack();
+  // }
 
   ngAfterViewInit(): void {
     this.initMap();
-    this.markerService.makeCapitalMarkers(this.map);
+    this.markerService.makeMarkers(this.map);
+
     // TODO: preload the data in a resolver
-    this.shapeService.getStateShapes().subscribe(areas => {
-      this.areas = areas;
-      this.initAreasLayer();
-    });
+    // this.shapeService.getStateShapes().subscribe(areas => {
+    //   this.areas = areas;
+    //   this.initAreasLayer();
+    // });
   }
 
 }

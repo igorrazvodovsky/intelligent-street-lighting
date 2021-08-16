@@ -4,71 +4,352 @@
     {
       "type": "Feature",
       "properties": {
-        "lamps": 12
+        "id": 11,
+        "status": "Active",
+        "profile": 1,
+        "SC": 1
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.522369384765625, 55.87454041761713]
+        "coordinates": [26.523120403289795, 55.90654803560104]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "lamps": 81
+        "id": 12,
+        "status": "Active",
+        "profile": 1,
+        "SC": 1
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.524686813354492, 55.866979879265514]
+        "coordinates": [26.523538827896118, 55.90650593765867]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "lamps": 45
+        "id": 13,
+        "status": "Active",
+        "profile": 1,
+        "SC": 1
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.54125213623047, 55.87242168907772]
+        "coordinates": [26.52417182922363, 55.90645181166562]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "lamps": 12
+        "id": 14,
+        "status": "Active",
+        "profile": 1,
+        "SC": 1
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.508636474609375, 55.885517432209845]
+        "coordinates": [26.524740457534786, 55.906403699608404]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "lamps": 21
+        "id": 15,
+        "status": "Active",
+        "profile": 1,
+        "SC": 1
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.540050506591797, 55.87887382047872]
+        "coordinates": [26.525126695632935, 55.90637362954232]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "lamps": 12
+        "id": 16,
+        "status": "Active",
+        "profile": 1,
+        "SC": 1
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.554641723632812, 55.865727673523686]
+        "coordinates": [26.52750849723816, 55.906169152474696]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "lamps": 17
+        "id": 17,
+        "status": "Active",
+        "profile": 1,
+        "SC": 1
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.534042358398438, 55.88710595351588]
+        "coordinates": [26.52619957923889, 55.90628943323327]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 18,
+        "status": "Active",
+        "profile": 1,
+        "SC": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [26.52565240859985, 55.90633153141064]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 19,
+        "status": "Active",
+        "profile": 1,
+        "SC": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [26.52677893638611, 55.90624132097461]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 20,
+        "status": "Active",
+        "profile": 1,
+        "SC": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [26.528055667877197, 55.90611502601163]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 21,
+        "status": "Active",
+        "profile": 1,
+        "SC": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [26.528677940368652, 55.90604285727672]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 22,
+        "status": "Active",
+        "profile": 1,
+        "SC": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [26.529150009155273, 55.90598271656169]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 23,
+        "status": "Active",
+        "profile": 1,
+        "SC": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [26.529386043548584, 55.90595866024957]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 24,
+        "status": "Active",
+        "profile": 1,
+        "SC": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [26.533033847808838, 55.905549700660515]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 25,
+        "status": "Active",
+        "profile": 1,
+        "SC": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [26.5312260389328, 55.90575418099408]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 26,
+        "status": "Active",
+        "profile": 1,
+        "SC": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [26.532095074653625, 55.90565494802567]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 27,
+        "status": "Active",
+        "profile": 1,
+        "SC": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [26.530244350433346, 55.905868448946215]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 28,
+        "status": "Active",
+        "profile": 1,
+        "SC": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [26.53323233127594, 55.90552263700616]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 29,
+        "status": "Active",
+        "profile": 1,
+        "SC": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [26.534643173217773, 55.90536326176972]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 30,
+        "status": "Active",
+        "profile": 1,
+        "SC": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [26.533897519111633, 55.90545347424815]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 31,
+        "status": "Active",
+        "profile": 1,
+        "SC": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [26.534895300865173, 55.90543242468861]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 32,
+        "status": "Active",
+        "profile": 1,
+        "SC": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [26.53647243976593, 55.90524297813878]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 33,
+        "status": "Active",
+        "profile": 1,
+        "SC": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [26.535635590553284, 55.90533619798527]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 34,
+        "status": "Active",
+        "profile": 1,
+        "SC": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [26.53599500656128, 55.90529109163592]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 35,
+        "status": "Active",
+        "profile": 1,
+        "SC": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [26.53523325920105, 55.90539032553529]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 36,
+        "status": "Active",
+        "profile": 1,
+        "SC": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [26.537062525749207, 55.90517982908316]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 37,
+        "status": "Active",
+        "profile": 1,
+        "SC": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [26.53793692588806, 55.90496632437185]
       }
     }
   ]

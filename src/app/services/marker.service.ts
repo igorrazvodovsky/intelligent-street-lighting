@@ -12,13 +12,13 @@ export class MarkerService {
   constructor(
     private http: HttpClient,
     private popupService: PopupService
-) { }
+  ) { }
 
   static scaledRadius(val: number, maxVal: number): number {
     return 5 + 10 * (val / maxVal);
   }
 
-  makeCapitalMarkers(map: L.map): void {
+  makeMarkers(map: L.map): void {
     this.http.get(this.devices).subscribe((res: any) => {
 
       const maxLamps = Math.max(...res.features.map(x => x.properties.lamps), 0);
@@ -26,7 +26,7 @@ export class MarkerService {
       for (const c of res.features) {
         const lon = c.geometry.coordinates[0];
         const lat = c.geometry.coordinates[1];
-        const circle = L.circleMarker([lat, lon], { radius: MarkerService.scaledRadius(c.properties.lamps, maxLamps) });
+        const circle = L.circleMarker([lat, lon], { radius: 5 });
 
         circle.bindPopup(this.popupService.makeDevicePopup(c.properties));
         circle.addTo(map);

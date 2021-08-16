@@ -1,1 +1,212 @@
-<p>initialisation-lamp works!</p>
+<form>
+  <section>
+    <h2>General</h2>
+    <div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Installed</mat-label>
+            <input matInput [formControl]="date" [matDatepicker]="picker" />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Serial number</mat-label>
+            <input matInput value="FF03272641202020514E5341FC25E9FD" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Model</mat-label>
+            <mat-select [(value)]="lampModel">
+              <mat-option *ngFor="let model of lampModels" [value]="model">
+                {{ model }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Firmware</mat-label>
+            <input matInput value="1.0.0" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <mat-label>U nom, V</mat-label>
+            <input matInput value="220" />
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field>
+            <mat-label>P nom, W</mat-label>
+            <input matInput value="3" />
+          </mat-form-field>
+        </div>
+      </div>
+      <p>
+        <mat-checkbox checked="true" formControlName="surgeProtection"
+          >Surge protection</mat-checkbox
+        >
+      </p>
+      <p>
+        <mat-checkbox formControlName="decorativeLighting"
+          >Decorative lighting</mat-checkbox
+        >
+      </p>
+    </div>
+  </section>
+
+  <mat-divider></mat-divider>
+
+  <section>
+    <h2>Location</h2>
+
+    <div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Latitude</mat-label>
+            <input matInput value="48.875417" />
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Longitude</mat-label>
+            <input matInput value="2.212076" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input matInput value="37 Rue Voltaire 92500 Rueil-Malmaison, France" />
+      </mat-form-field>
+      <button mat-stroked-button>Show on map</button>
+
+      <!-- TODO: Group autocomplete -->
+      <!-- Set default if coordinates match -->
+    </div>
+  </section>
+
+  <mat-divider></mat-divider>
+
+  <section>
+    <!-- TODO: number if >1 -->
+    <h2>Luminaire</h2>
+    <div>
+      <mat-form-field>
+        <mat-label>Model</mat-label>
+        <mat-select [(value)]="luminaireModel">
+          <mat-option *ngFor="let model of luminaireModels" [value]="model">
+            {{ model }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Lens</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Insulation class</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Dimming</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Colour temperature</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Colour rendering index</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field>
+            <mat-label>LED quantity</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </div>
+      </div>
+      <button mat-stroked-button>Add luminaire</button>
+    </div>
+  </section>
+
+  <mat-divider></mat-divider>
+
+  <section>
+    <h2>Pole</h2>
+    <!-- Type, height, number,  -->
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <mat-label>Type</mat-label>
+          <mat-select [(value)]="poleType">
+            <mat-option *ngFor="let type of poleTypes" [value]="type">
+              {{ type }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <mat-label>Height, m</mat-label>
+          <mat-select [(value)]="poleHeight">
+            <mat-option *ngFor="let height of poleHeights" [value]="height">
+              {{ height }}
+            </mat-option>
+          </mat-select>
+          <span matSuffix></span>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <mat-label>Number</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </div>
+    </div>
+    <div></div>
+  </section>
+
+  <mat-divider></mat-divider>
+
+  <section>
+    <h2>Sensors</h2>
+    <div>
+      <mat-chip-list cdkDropList cdkDropListOrientation="horizontal">
+        <mat-chip removable="true" *ngFor="let sensor of sensors">
+          {{ sensor }}
+          <mat-icon matChipRemove svgIcon="closeMedium"></mat-icon>
+        </mat-chip>
+        <mat-chip> Add sensor</mat-chip>
+      </mat-chip-list>
+    </div>
+  </section>
+</form>

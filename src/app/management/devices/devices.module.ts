@@ -19,7 +19,6 @@ import { DeviceInfoComponent } from './device-detail/device-info/device-info.com
 import { DeviceHistoryComponent } from './device-detail/device-history/device-history.component';
 import { DeviceFriendsListComponent } from './device-detail/device-motion-sensor/device-friends-list/device-friends-list.component';
 import { FormsModule } from '@angular/forms';
-import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
 
 @NgModule({
   declarations: [
@@ -41,10 +40,7 @@ import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
     SharedModule,
     DevicesRoutingModule,
     ChartModule,
-    FormsModule,
-    NgxMapboxGLModule.withConfig({
-      accessToken: 'pk.eyJ1IjoiaWdvcnJhenZvZG92c2t5IiwiYSI6ImNrczV3dHI3ODA1YTQycnF5bnV4N2xjcm0ifQ.1b4VIA7aqOZc_oiiTyNl-w'
-    })
+    FormsModule
   ],
   providers: [
     MarkerService,

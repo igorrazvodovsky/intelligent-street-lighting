@@ -6,9 +6,6 @@
 }
 
 @import "highcharts";
-// @import "~mapbox-gl/dist/mapbox-gl.css";
-// @import "~@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css";
-
 // https://material.angular.io/guide/theming
 @import "~@angular/material/theming";
 
@@ -556,6 +553,7 @@ input.time {
   }
 
   a.page-nav {
+    cursor: pointer;
     display: inline-flex;
     align-items: center;
     &:hover {
@@ -570,11 +568,4 @@ input.time {
   justify-content: space-between;
   align-items: center;
   margin: 1rem 1rem 0 1rem;
-}
-
-// TEMP
-a.mapboxgl-ctrl-logo,
-.mapboxgl-ctrl-attrib.mapboxgl-compact,
-.mapboxgl-ctrl-attrib-inner[role="list"] {
-  display: none !important;
 }
