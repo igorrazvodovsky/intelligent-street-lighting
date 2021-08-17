@@ -586,8 +586,8 @@ input.time {
   &.warning {
     background: hsl(var(--yellow-400));
   }
-  &.danger {
-    background: hsl(var(--green-500));
+  &.error {
+    background: hsl(var(--red-500));
   }
 }
 
@@ -638,9 +638,29 @@ input.time {
       transform: translate(-50%, -50%);
       padding: 0.5rem;
     }
+    &.warning figure {
+      background: hsl(var(--yellow-400));
+      fill: white;
+    }
+    &.error figure {
+      background: hsl(var(--red-500));
+      fill: white;
+    }
+    &.off figure {
+      background: gray;
+    }
   }
   .marker--lamp {
     background: black;
+    &.warning {
+      background: hsl(var(--yellow-400));
+    }
+    &.error {
+      background: hsl(var(--red-500));
+    }
+    &.off {
+      background: gray;
+    }
     border-radius: 2rem;
     border: 2px solid white;
     position: relative;

@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 })
 
 export class MapComponent implements AfterViewInit, OnInit {
-  private map;
+  map;
   devices: any;
   markersGeoJsonData: any;
   accessToken = 'pk.eyJ1IjoiaWdvcnJhenZvZG92c2t5IiwiYSI6ImNrczV3dHI3ODA1YTQycnF5bnV4N2xjcm0ifQ.1b4VIA7aqOZc_oiiTyNl-w';
@@ -31,12 +31,12 @@ export class MapComponent implements AfterViewInit, OnInit {
       zoomControl: false
     });
 
-    new L.Control.Zoom({ position: 'bottomright' }).addTo(this.map);
+    // new L.Control.Zoom({ position: 'bottomright' }).addTo(this.map);
+
     const tiles = L.tileLayer('https://api.mapbox.com/styles/v1/igorrazvodovsky/cks5ww8yk0kxm17p4t4lcftfr/tiles/{z}/{x}/{y}?access_token=' + this.accessToken, {
       maxZoom: 18,
-      minZoom: 3,
+      minZoom: 1,
     });
-
     tiles.addTo(this.map);
   }
 
@@ -85,7 +85,7 @@ export class MapComponent implements AfterViewInit, OnInit {
 
 
         layer.setIcon(L.divIcon({
-          className: 'marker--' + feature.properties.type,
+          className: `marker--${feature.properties.type} ${feature.properties.status}`,
           html: pointer + `<figure>${icon}</figure><label>${feature.properties.id}</label>`
         }))
 

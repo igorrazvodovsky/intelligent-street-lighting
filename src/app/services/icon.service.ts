@@ -25,7 +25,9 @@ export enum Bold {
   Map = 'map',
   Edit = 'edit',
   Download = 'download',
-  QR = 'qr'
+  QR = 'qr',
+  Plus = 'plus',
+  Minus = 'minus'
 }
 
 export enum Medium {

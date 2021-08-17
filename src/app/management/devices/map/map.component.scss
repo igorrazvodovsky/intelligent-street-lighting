@@ -45,10 +45,17 @@ mgl-map {
 }
 
 #map-controls {
+  pointer-events: none;
   height: 100%;
   width: 100%;
   position: relative;
-  z-index: 1;
+  // > leaflet pane (400)
+  z-index: 500;
+
+  * {
+    pointer-events: initial;
+  }
+
   #map-controls__layers {
     position: absolute;
     right: 1rem;

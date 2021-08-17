@@ -4,12 +4,10 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 11,
-        "type": "lamp",
-        "status": "active",
-        "profile": 1,
-        "SC": 1,
-        "orientation": 0
+        "id": 1,
+        "type": "sc",
+        "status": "error",
+        "profile": 1
       },
       "geometry": {
         "type": "Point",

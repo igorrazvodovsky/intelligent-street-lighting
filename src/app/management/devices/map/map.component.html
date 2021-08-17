@@ -2,6 +2,22 @@
   <div id="map-controls__layers">
     <!-- TODO: Legend (inline and in popover for longer lists) -->
     <button
+      (click)="map.zoomIn(1)"
+      type="button"
+      aria-label="Zoom in"
+      mat-icon-button
+    >
+      <mat-icon svgIcon="plusBold" aria-hidden="true"></mat-icon>
+    </button>
+    <button
+      (click)="map.zoomOut(1)"
+      type="button"
+      aria-label="Zoom out"
+      mat-icon-button
+    >
+      <mat-icon svgIcon="minusBold" aria-hidden="true"></mat-icon>
+    </button>
+    <button
       [matMenuTriggerFor]="menuLayers"
       type="button"
       aria-label="Toggle layers menu"
