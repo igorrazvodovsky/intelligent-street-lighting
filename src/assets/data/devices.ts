@@ -247,7 +247,7 @@ export const DEVICES: Device[] = [
   },
   {
     id: 100,
-    type: 'SC',
+    type: 'sc',
     name: 'SC1',
     groupId: 1,
     model: 'CSC220734DA14',

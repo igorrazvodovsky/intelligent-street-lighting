@@ -5,9 +5,11 @@
       "type": "Feature",
       "properties": {
         "id": 11,
-        "status": "Active",
+        "type": "lamp",
+        "status": "active",
         "profile": 1,
-        "SC": 1
+        "SC": 1,
+        "orientation": 0
       },
       "geometry": {
         "type": "Point",
@@ -18,9 +20,11 @@
       "type": "Feature",
       "properties": {
         "id": 12,
-        "status": "Active",
+        "type": "lamp",
+        "status": "active",
         "profile": 1,
-        "SC": 1
+        "SC": 1,
+        "orientation": 0
       },
       "geometry": {
         "type": "Point",
@@ -31,9 +35,11 @@
       "type": "Feature",
       "properties": {
         "id": 13,
-        "status": "Active",
+        "type": "lamp",
+        "status": "warning",
         "profile": 1,
-        "SC": 1
+        "SC": 1,
+        "orientation": 0
       },
       "geometry": {
         "type": "Point",
@@ -44,9 +50,11 @@
       "type": "Feature",
       "properties": {
         "id": 14,
-        "status": "Active",
+        "type": "lamp",
+        "status": "active",
         "profile": 1,
-        "SC": 1
+        "SC": 1,
+        "orientation": 0
       },
       "geometry": {
         "type": "Point",
@@ -57,9 +65,11 @@
       "type": "Feature",
       "properties": {
         "id": 15,
-        "status": "Active",
+        "type": "lamp",
+        "status": "active",
         "profile": 1,
-        "SC": 1
+        "SC": 1,
+        "orientation": 0
       },
       "geometry": {
         "type": "Point",
@@ -70,9 +80,11 @@
       "type": "Feature",
       "properties": {
         "id": 16,
-        "status": "Active",
+        "type": "lamp",
+        "status": "active",
         "profile": 1,
-        "SC": 1
+        "SC": 1,
+        "orientation": 0
       },
       "geometry": {
         "type": "Point",
@@ -83,9 +95,11 @@
       "type": "Feature",
       "properties": {
         "id": 17,
-        "status": "Active",
+        "type": "lamp",
+        "status": "active",
         "profile": 1,
-        "SC": 1
+        "SC": 1,
+        "orientation": 0
       },
       "geometry": {
         "type": "Point",
@@ -96,9 +110,11 @@
       "type": "Feature",
       "properties": {
         "id": 18,
-        "status": "Active",
+        "type": "lamp",
+        "status": "active",
         "profile": 1,
-        "SC": 1
+        "SC": 1,
+        "orientation": 0
       },
       "geometry": {
         "type": "Point",
@@ -109,9 +125,11 @@
       "type": "Feature",
       "properties": {
         "id": 19,
-        "status": "Active",
+        "type": "lamp",
+        "status": "active",
         "profile": 1,
-        "SC": 1
+        "SC": 1,
+        "orientation": 0
       },
       "geometry": {
         "type": "Point",
@@ -122,9 +140,11 @@
       "type": "Feature",
       "properties": {
         "id": 20,
-        "status": "Active",
+        "type": "lamp",
+        "status": "active",
         "profile": 1,
-        "SC": 1
+        "SC": 1,
+        "orientation": 0
       },
       "geometry": {
         "type": "Point",
@@ -135,9 +155,11 @@
       "type": "Feature",
       "properties": {
         "id": 21,
-        "status": "Active",
+        "type": "lamp",
+        "status": "active",
         "profile": 1,
-        "SC": 1
+        "SC": 1,
+        "orientation": 0
       },
       "geometry": {
         "type": "Point",
@@ -148,9 +170,11 @@
       "type": "Feature",
       "properties": {
         "id": 22,
-        "status": "Active",
+        "type": "lamp",
+        "status": "active",
         "profile": 1,
-        "SC": 1
+        "SC": 1,
+        "orientation": 0
       },
       "geometry": {
         "type": "Point",
@@ -161,22 +185,27 @@
       "type": "Feature",
       "properties": {
         "id": 23,
-        "status": "Active",
+        "type": "lamp",
+        "status": "active",
         "profile": 1,
-        "SC": 1
+        "SC": 1,
+        "orientation": 0
       },
       "geometry": {
         "type": "Point",
         "coordinates": [26.529386043548584, 55.90595866024957]
-      }
+      },
+      "orientation": 0
     },
     {
       "type": "Feature",
       "properties": {
         "id": 24,
-        "status": "Active",
+        "type": "lamp",
+        "status": "active",
         "profile": 1,
-        "SC": 1
+        "SC": 1,
+        "orientation": 0
       },
       "geometry": {
         "type": "Point",
@@ -187,9 +216,11 @@
       "type": "Feature",
       "properties": {
         "id": 25,
-        "status": "Active",
+        "type": "lamp",
+        "status": "active",
         "profile": 1,
-        "SC": 1
+        "SC": 1,
+        "orientation": 0
       },
       "geometry": {
         "type": "Point",
@@ -200,9 +231,11 @@
       "type": "Feature",
       "properties": {
         "id": 26,
-        "status": "Active",
+        "type": "lamp",
+        "status": "active",
         "profile": 1,
-        "SC": 1
+        "SC": 1,
+        "orientation": 0
       },
       "geometry": {
         "type": "Point",
@@ -213,9 +246,11 @@
       "type": "Feature",
       "properties": {
         "id": 27,
-        "status": "Active",
+        "type": "lamp",
+        "status": "active",
         "profile": 1,
-        "SC": 1
+        "SC": 1,
+        "orientation": 0
       },
       "geometry": {
         "type": "Point",
@@ -226,9 +261,11 @@
       "type": "Feature",
       "properties": {
         "id": 28,
-        "status": "Active",
+        "type": "lamp",
+        "status": "active",
         "profile": 1,
-        "SC": 1
+        "SC": 1,
+        "orientation": 0
       },
       "geometry": {
         "type": "Point",
@@ -239,9 +276,11 @@
       "type": "Feature",
       "properties": {
         "id": 29,
-        "status": "Active",
+        "type": "lamp",
+        "status": "active",
         "profile": 1,
-        "SC": 1
+        "SC": 1,
+        "orientation": 0
       },
       "geometry": {
         "type": "Point",
@@ -252,9 +291,11 @@
       "type": "Feature",
       "properties": {
         "id": 30,
-        "status": "Active",
+        "type": "lamp",
+        "status": "active",
         "profile": 1,
-        "SC": 1
+        "SC": 1,
+        "orientation": 0
       },
       "geometry": {
         "type": "Point",
@@ -265,9 +306,11 @@
       "type": "Feature",
       "properties": {
         "id": 31,
-        "status": "Active",
+        "type": "lamp",
+        "status": "active",
         "profile": 1,
-        "SC": 1
+        "SC": 1,
+        "orientation": 0
       },
       "geometry": {
         "type": "Point",
@@ -278,9 +321,11 @@
       "type": "Feature",
       "properties": {
         "id": 32,
-        "status": "Active",
+        "type": "lamp",
+        "status": "active",
         "profile": 1,
-        "SC": 1
+        "SC": 1,
+        "orientation": 0
       },
       "geometry": {
         "type": "Point",
@@ -291,9 +336,11 @@
       "type": "Feature",
       "properties": {
         "id": 33,
-        "status": "Active",
+        "type": "lamp",
+        "status": "active",
         "profile": 1,
-        "SC": 1
+        "SC": 1,
+        "orientation": 0
       },
       "geometry": {
         "type": "Point",
@@ -304,9 +351,11 @@
       "type": "Feature",
       "properties": {
         "id": 34,
-        "status": "Active",
+        "type": "lamp",
+        "status": "active",
         "profile": 1,
-        "SC": 1
+        "SC": 1,
+        "orientation": 0
       },
       "geometry": {
         "type": "Point",
@@ -317,9 +366,11 @@
       "type": "Feature",
       "properties": {
         "id": 35,
-        "status": "Active",
+        "type": "lamp",
+        "status": "active",
         "profile": 1,
-        "SC": 1
+        "SC": 1,
+        "orientation": 0
       },
       "geometry": {
         "type": "Point",
@@ -330,9 +381,11 @@
       "type": "Feature",
       "properties": {
         "id": 36,
-        "status": "Active",
+        "type": "lamp",
+        "status": "active",
         "profile": 1,
-        "SC": 1
+        "SC": 1,
+        "orientation": 32
       },
       "geometry": {
         "type": "Point",
@@ -343,9 +396,9 @@
       "type": "Feature",
       "properties": {
         "id": 37,
-        "status": "Active",
-        "profile": 1,
-        "SC": 1
+        "type": "sc",
+        "status": "active",
+        "profile": 1
       },
       "geometry": {
         "type": "Point",

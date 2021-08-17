@@ -65,16 +65,21 @@ export type SensorType = "motion" | 'wifi' | 'traffic'
 
 type DeviceType = "Lamp" | "SegmentController"
 
+// TBD: Status of a response can be calculated from latest response date
+// 'status' is (temp.) summary of all other statuses
 export interface Device {
   id: number
+  status?: 'active' | 'warning' | 'danger' | 'off'
+  statusOn?: boolean
+  statusActive?: boolean
+  statusResponding?: boolean
   name: string
   model: string
   groupId: number
   profileId?: number
-  type: 'lamp' | 'SC'
+  type: 'lamp' | 'sc'
   // TODO: Narrow the type to 'level'='critical'
-  alerts?: DeviceEvent[]
-  events?: []
+  events?: DeviceEvent[]
   tasks?: Task[]
   properties?: object
   sensors?: SensorType[]

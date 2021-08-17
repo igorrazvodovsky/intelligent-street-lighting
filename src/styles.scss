@@ -570,7 +570,29 @@ input.time {
   margin: 1rem 1rem 0 1rem;
 }
 
+// Shared
+
+.dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 0.5rem;
+  background: hsla(0, 0%, 0%, 0.6);
+  display: inline-flex;
+  position: relative;
+  vertical-align: middle;
+  &.active {
+    background: hsl(var(--green-500));
+  }
+  &.warning {
+    background: hsl(var(--yellow-400));
+  }
+  &.danger {
+    background: hsl(var(--green-500));
+  }
+}
+
 // Map
+
 #map {
   .leaflet-tooltip {
     background-color: transparent;
@@ -583,24 +605,67 @@ input.time {
   .marker--cluster {
     position: relative;
     width: auto !important;
+    font-size: 0.875rem;
     & > div {
       background: hsla(0, 0%, 0%, 0.6);
-      border-radius: 1rem;
-      padding: 0.25rem 0.5rem;
+      &:hover {
+        background: hsla(0, 0%, 0%, 0.9);
+      }
+      border-radius: 2rem;
+      padding: 0.5rem 0.75rem;
       color: white;
       transform: translate(-0%, -25%);
+      display: inline-flex;
+      align-items: center;
+      & > .dot {
+        margin-right: 1ch;
+      }
     }
   }
-  .marker--device {
-    background: hsla(0, 0%, 0%, 0.6);
-    border-radius: 1rem;
+  .marker--sc {
+    position: relative;
+    label {
+      position: absolute;
+      left: 2rem;
+      top: -0.125rem;
+      line-height: 100%;
+    }
+    figure {
+      background: white;
+      border-radius: 2rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      transform: translate(-50%, -50%);
+      padding: 0.5rem;
+    }
+  }
+  .marker--lamp {
+    background: black;
+    border-radius: 2rem;
     border: 2px solid white;
     position: relative;
-    & > div {
+    transform: rotate(45deg);
+    .pointer {
+      background: black;
+      content: "";
+      width: 2px;
+      height: 0.75rem;
+      display: block;
+      position: absolute;
+      bottom: 2px;
+      left: 2px;
+      transform-origin: bottom;
+    }
+    label {
       position: absolute;
       left: 1rem;
       top: -0.125rem;
       line-height: 100%;
+    }
+    @include transition;
+    box-shadow: hsla(0, 0%, 0%, 0.3) 0px 0px 0px 0rem;
+    &:hover {
+      box-shadow: hsla(0, 0%, 0%, 0.3) 0px 0px 0px 1rem;
     }
   }
 }

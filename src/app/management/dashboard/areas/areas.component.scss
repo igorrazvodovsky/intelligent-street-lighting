@@ -38,13 +38,3 @@ h2 {
 .mat-button:first-of-type {
   margin-left: 0.5rem;
 }
-
-.dot {
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 0.5rem;
-  background: hsl(var(--green-500));
-  display: inline-flex;
-  position: relative;
-  vertical-align: middle;
-}
