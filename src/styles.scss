@@ -589,6 +589,9 @@ input.time {
   &.error {
     background: hsl(var(--red-500));
   }
+  &.off {
+    background: hsla(0, 0%, 0%, 0.3);
+  }
 }
 
 // Map
@@ -620,6 +623,10 @@ input.time {
       & > .dot {
         margin-right: 1ch;
       }
+    }
+    &.off > div {
+      color: hsla(0, 0%, 0%, 0.9);
+      background: white;
     }
   }
   .marker--sc {
