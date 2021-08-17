@@ -597,6 +597,9 @@ input.time {
 // Map
 
 #map {
+  &.leaflet-container {
+    font-family: inherit;
+  }
   .leaflet-tooltip {
     background-color: transparent;
     border: none;
@@ -620,13 +623,22 @@ input.time {
       transform: translate(-0%, -25%);
       display: inline-flex;
       align-items: center;
-      & > .dot {
+      & > svg {
         margin-right: 1ch;
+        // align icon with container's shape
+        margin-left: -0.25rem;
       }
     }
     &.off > div {
-      color: hsla(0, 0%, 0%, 0.9);
-      background: white;
+      // color: hsla(0, 0%, 0%, 0.9);
+      fill: hsla(0, 0%, 100%, 0.6);
+      // background: white;
+    }
+    &.warning > div {
+      fill: hsl(var(--yellow-400));
+    }
+    &.error > div {
+      fill: hsl(var(--red-500));
     }
   }
   .marker--sc {
