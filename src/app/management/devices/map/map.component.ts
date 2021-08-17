@@ -1,35 +1,23 @@
 // TODO: Map shows only currently selected (in the list) groups/devices
 
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
 
 import * as L from 'leaflet';
+import 'leaflet.markercluster';
 import { MarkerService } from '~local/services/marker.service';
 import { ShapeService } from '~local/services/shape.service';
-
-const iconRetinaUrl = 'assets/marker-icon-2x.png';
-const iconUrl = 'assets/marker-icon.png';
-const shadowUrl = 'assets/marker-shadow.png';
-const iconDefault = L.icon({
-  iconRetinaUrl,
-  iconUrl,
-  shadowUrl,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  tooltipAnchor: [16, -28],
-  shadowSize: [41, 41]
-});
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'devices-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements AfterViewInit {
-  private map;
-  // private areas;
-  devices: any;
 
+export class MapComponent implements AfterViewInit, OnInit {
+  private map;
+  devices: any;
+  markersGeoJsonData: any;
   accessToken = 'pk.eyJ1IjoiaWdvcnJhenZvZG92c2t5IiwiYSI6ImNrczV3dHI3ODA1YTQycnF5bnV4N2xjcm0ifQ.1b4VIA7aqOZc_oiiTyNl-w';
 
   private initMap(): void {
@@ -51,55 +39,53 @@ export class MapComponent implements AfterViewInit {
   constructor(
     private markerService: MarkerService,
     private shapeService: ShapeService,
+    public router: Router
   ) { }
 
-  private highlightFeature(e) {
-    const layer = e.target;
-
-    layer.setStyle({
-      opacity: 1.0,
-      color: '#DFA612',
-      fill: true
-    });
-  }
-
-  private resetFeature(e) {
-    const layer = e.target;
-
-    layer.setStyle({
-      opacity: 0.5,
-      color: '#008f68'
-    });
-  }
-
-  // private initAreasLayer() {
-  //   const areaLayer = L.geoJSON(this.areas, {
-  //     style: (feature) => ({
-  //       opacity: 0.5,
-  //       color: '#008f68',
-  //       fill: true
-  //     }),
-  //     onEachFeature: (feature, layer) => (
-  //       layer.on({
-  //         mouseover: (e) => (this.highlightFeature(e)),
-  //         mouseout: (e) => (this.resetFeature(e)),
-  //       })
-  //     )
+  // private highlightFeature(e) {
+  //   const layer = e.target;
+  //   layer.setStyle({
   //   });
-
-  //   this.map.addLayer(areaLayer);
-  //   areaLayer.bringToBack();
   // }
+
+  initGroupsLayer() {
+
+    let markers = L.markerClusterGroup({
+      iconCreateFunction: function (cluster) {
+        return L.divIcon({ className: 'marker--cluster', html: '<div>' + cluster.getChildCount() + '</div>' });
+      }
+    });
+
+    let geoJsonLayer = L.geoJson(this.markersGeoJsonData, {
+      onEachFeature: (feature, layer) => {
+        // layer.bindPopup(feature.properties.id);
+        // Popover: two lamps in one spot?
+        // Tooltip: quick status summary: on / off, active / inactive, errors, responding + date
+        // layer.bindTooltip("Test", { permanent: true }).openTooltip();
+
+        // IF SC, IF Lamp, IF Traffic, etc.
+        layer.setIcon(L.divIcon({
+          className: 'marker--device', html: '<div>' + feature.properties.id + '</div>'
+        }))
+
+        layer.on('click', () => this.router.navigate(['/management/devices/' + feature.properties.id]));
+      }
+    });
+
+    markers.addLayer(geoJsonLayer);
+    this.map.addLayer(markers);
+    this.map.fitBounds(markers.getBounds());
+  }
+
+  ngOnInit(): void {
+    this.markerService.getMarkers().subscribe(markers => {
+      this.markersGeoJsonData = markers;
+      this.initGroupsLayer();
+    });
+  }
 
   ngAfterViewInit(): void {
     this.initMap();
-    this.markerService.makeMarkers(this.map);
-
-    // TODO: preload the data in a resolver
-    // this.shapeService.getStateShapes().subscribe(areas => {
-    //   this.areas = areas;
-    //   this.initAreasLayer();
-    // });
   }
 
 }

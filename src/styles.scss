@@ -569,3 +569,38 @@ input.time {
   align-items: center;
   margin: 1rem 1rem 0 1rem;
 }
+
+// Map
+#map {
+  .leaflet-tooltip {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    &:before {
+      display: none;
+    }
+  }
+  .marker--cluster {
+    position: relative;
+    width: auto !important;
+    & > div {
+      background: hsla(0, 0%, 0%, 0.6);
+      border-radius: 1rem;
+      padding: 0.25rem 0.5rem;
+      color: white;
+      transform: translate(-0%, -25%);
+    }
+  }
+  .marker--device {
+    background: hsla(0, 0%, 0%, 0.6);
+    border-radius: 1rem;
+    border: 2px solid white;
+    position: relative;
+    & > div {
+      position: absolute;
+      left: 1rem;
+      top: -0.125rem;
+      line-height: 100%;
+    }
+  }
+}

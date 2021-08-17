@@ -18,19 +18,21 @@ export class MarkerService {
     return 5 + 10 * (val / maxVal);
   }
 
-  makeMarkers(map: L.map): void {
-    this.http.get(this.devices).subscribe((res: any) => {
-
-      const maxLamps = Math.max(...res.features.map(x => x.properties.lamps), 0);
-
-      for (const c of res.features) {
-        const lon = c.geometry.coordinates[0];
-        const lat = c.geometry.coordinates[1];
-        const circle = L.circleMarker([lat, lon], { radius: 5 });
-
-        circle.bindPopup(this.popupService.makeDevicePopup(c.properties));
-        circle.addTo(map);
-      }
-    });
+  getMarkers() {
+    return this.http.get(this.devices)
   }
+
+  // makeMarkers() {
+  //   this.http.get(this.devices).subscribe((res: any) => {
+  //     let markers = []
+  //     for (const c of res.features) {
+  //       const lon = c.geometry.coordinates[0];
+  //       const lat = c.geometry.coordinates[1];
+  //       const circle = L.circleMarker([lat, lon], { radius: 5 });
+  //       circle.bindPopup(this.popupService.makeDevicePopup(c.properties));
+  //       markers.push(circle);
+  //     }
+  //     return markers
+  //   });
+  // }
 }

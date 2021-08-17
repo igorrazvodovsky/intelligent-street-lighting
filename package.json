@@ -26,6 +26,7 @@
     "date-fns": "^2.21.3",
     "highcharts": "^9.1.0",
     "leaflet": "^1.7.1",
+    "leaflet.markercluster": "^1.5.0",
     "ngx-date-fns": "^8.1.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
