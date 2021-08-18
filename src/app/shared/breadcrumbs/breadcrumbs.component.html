@@ -9,7 +9,7 @@
     >·</span
   >
 
-  <ng-container *ngIf="groupId">
+  <ng-container *ngIf="currentGroup">
     <span class="crumb" *ngFor="let level of currentGroup; let i = index">
       <a [routerLink]="currentGroup[i].id">{{ currentGroup[i].name }}</a>
       <span *ngIf="groupSiblings[i].length > 1" class="crumbicon">
@@ -30,7 +30,7 @@
     </span>
   </ng-container>
 
-  <span *ngIf="deviceId" class="crumb">
+  <span *ngIf="currentDevice" class="crumb">
     <a aria-current="page"> {{ currentDevice.name }}</a>
     <span class="crumbicon">
       <mat-icon svgIcon="dropdownMedium"></mat-icon>
