@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Device, DeviceGroup } from '../types';
-import { DEVICES, GROUPS } from '~local/../assets/data/devices';
+import { GROUPS } from '~local/../assets/data/devices';
 import { MessageService } from './message.service';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,9 @@ export class DeviceService {
   city = {
     name: "Daugavpils"
   };
+  devicesUrl: string = '/assets/data/devices.geojson'
 
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService, private http: HttpClient,) { }
 
   getGroups(): Observable<DeviceGroup[]> {
     const groups = of(GROUPS);
@@ -23,7 +25,6 @@ export class DeviceService {
 
   getGroup(id: number | string) {
     return this.getGroups().pipe(
-      // TODO: (+) before `id` turns the string into a number
       map((groups: DeviceGroup[]) => groups.find(group => group.id === +id)!)
     );
   }
@@ -41,7 +42,11 @@ export class DeviceService {
   }
 
   getDevices(): Observable<Device[]> {
-    const devices = of(DEVICES);
+    const devices = this.http
+      .get(this.devicesUrl)
+      .pipe(
+        map((data: any) => data.features.map(e => e.properties))
+      )
     this.messageService.add('DeviceService: fetched devices');
     return devices;
   }

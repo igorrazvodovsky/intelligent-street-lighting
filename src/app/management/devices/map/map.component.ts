@@ -53,17 +53,15 @@ export class MapComponent implements AfterViewInit, OnInit {
 
   initGroupsLayer() {
 
+    // Markers for "device status" layer
     let markers = L.markerClusterGroup({
       iconCreateFunction: (cluster) => {
-        // TBD: Other statuses?
         let status = "active"
         let icon = ""
 
         const clusterMarkers = cluster.getAllChildMarkers()
-        // Group has devices with issues
         const warning = clusterMarkers.filter(e => e.feature.properties.status === 'warning').length > 0
         const danger = clusterMarkers.filter(e => e.feature.properties.status === 'danger').length > 0
-        // All off
         const offline = clusterMarkers.filter(e => e.feature.properties.status === 'off').length == clusterMarkers.length
 
         if (warning || danger) icon = this.iconAlert
@@ -85,8 +83,6 @@ export class MapComponent implements AfterViewInit, OnInit {
         // Popover: two lamps in one spot?
         // Tooltip: quick status summary: on / off, active / inactive, errors, responding + date
         // layer.bindTooltip("Test", { permanent: true }).openTooltip();
-
-        // IF SC, IF Lamp, IF Traffic, etc.
 
         let pointer = ''
         let icon = ''

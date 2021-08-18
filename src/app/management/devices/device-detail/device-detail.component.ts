@@ -25,12 +25,11 @@ export class DeviceDetailComponent implements OnInit {
       switchMap((params: ParamMap) =>
         this.service.getDevice(params.get('deviceId')!))
     );
-    this.group$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-        this.service.getGroup(params.get('groupId')!))
-    );
-    this.device$.subscribe(device =>
-      this.device = device
+
+    this.device$.subscribe(device => {
+      this.device = device;
+      this.group$ = this.service.getGroup(device.groupId)
+    }
     );
   }
 

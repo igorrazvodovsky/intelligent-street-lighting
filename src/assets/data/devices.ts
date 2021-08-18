@@ -1,3 +1,5 @@
+// TODO: REMOVE
+
 import { Device, DeviceGroup, SensorType } from '~local/types';
 
 export const DEVICES: Device[] = [
@@ -250,7 +252,7 @@ export const DEVICES: Device[] = [
     type: 'sc',
     name: 'SC1',
     groupId: 1,
-    model: 'CSC220734DA14',
+    model: 'SCM24UL8-868-44',
     firmware: '0.1.0',
     surgeProtector: false
   },

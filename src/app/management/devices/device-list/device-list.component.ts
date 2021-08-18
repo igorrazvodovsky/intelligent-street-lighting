@@ -43,6 +43,7 @@ export class DeviceListComponent implements OnInit {
         return this.deviceService.getDevicesByGroup(params.get('groupId')!);
       })
     );
+
     this.group$.subscribe(group =>
       this.profile$ = this.profileService.getProfile(group.profileId)
     );
