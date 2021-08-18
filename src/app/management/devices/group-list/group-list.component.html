@@ -2,10 +2,10 @@
 <!-- TODO: Group creation through assignemt?-->
 <!-- TODO: Grouping into districts -->
 
-<mat-selection-list role="list" [multiple]="false">
-  <ng-container *ngFor="let group of groups$ | async">
+<mat-selection-list *ngIf="groups" role="list" [multiple]="false">
+  <ng-container *ngFor="let group of groups">
     <!-- *ngIf="(getDeviceNumber(group.id) | async)?.length > 0" -->
-    <mat-list-option [routerLink]="[group.id]" role="listitem">
+    <mat-list-option [routerLink]="'group/' + [group.id]" role="listitem">
       <!-- <mat-icon matListIcon svgIcon="chevronRightRegular"></mat-icon> -->
       <div matLine>{{ group.name }}</div>
       <span matLine class="details text-secondary"

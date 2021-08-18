@@ -97,7 +97,7 @@ export class MapComponent implements AfterViewInit, OnInit {
           html: pointer + `<figure>${icon}</figure><label>${feature.properties.id}</label>`
         }))
 
-        layer.on('click', () => this.router.navigate(['/management/devices/' + feature.properties.id]));
+        layer.on('click', () => this.router.navigate(['/management/devices/device/' + feature.properties.id]));
       }
     });
 

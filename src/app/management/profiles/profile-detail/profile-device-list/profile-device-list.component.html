@@ -7,7 +7,7 @@
   [multiple]="false"
 >
   <mat-list-option
-    [routerLink]="'../../devices/' + [group.id]"
+    [routerLink]="'../../devices/group/' + [group.id]"
     class="list-item-icon-right"
     role="listitem"
     *ngFor="let group of groups$ | async"

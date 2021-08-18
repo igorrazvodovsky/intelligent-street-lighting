@@ -13,7 +13,8 @@ import { ProfileService } from '~local/services/profile.service';
   styleUrls: ['./group-list.component.scss']
 })
 export class GroupListComponent implements OnInit {
-  groups$!: Observable<DeviceGroup[]>;
+  groups$!: Observable<DeviceGroup[]>
+  groups!: DeviceGroup[]
 
   childGroupsMapping:
     { [k: string]: string } = { '=1': '# group, ', 'other': '# groups,' };
@@ -36,6 +37,9 @@ export class GroupListComponent implements OnInit {
 
   ngOnInit() {
     this.groups$ = this.deviceService.getGroupsByParent(null);
+    this.groups$.subscribe(groups => this.groups = groups)
+
   }
+
 
 }

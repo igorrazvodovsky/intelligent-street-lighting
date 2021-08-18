@@ -1,6 +1,6 @@
 <mat-list-option
   [class]="'entry ' + 'entry-' + event.level"
-  [routerLink]="'devices/' + [device.groupId] + '/' + [device.id]"
+  [routerLink]="'devices/device/' + [device.id]"
 >
   <mat-icon
     *ngIf="event.level == 'info'"

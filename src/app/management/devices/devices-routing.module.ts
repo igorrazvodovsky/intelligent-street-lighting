@@ -12,8 +12,8 @@ const devicesRoutes: Routes = [
     component: DevicesComponent,
 
     children: [
-      { path: ':groupId/:deviceId', component: DeviceDetailComponent, data: { animation: 'device' } },
-      { path: ':groupId', component: DeviceListComponent, data: { animation: 'device' } },
+      { path: 'device/:deviceId', component: DeviceDetailComponent, data: { animation: 'device' } },
+      { path: 'group/:groupId', component: DeviceListComponent, data: { animation: 'device' } },
       {
         path: '',
         component: GroupListComponent,
@@ -21,7 +21,6 @@ const devicesRoutes: Routes = [
         pathMatch: 'full'
       }
     ]
-
   }
 ];
 

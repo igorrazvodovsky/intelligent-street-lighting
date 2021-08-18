@@ -708,9 +708,10 @@ input.time {
       height: 1rem;
       display: block;
       position: absolute;
-      bottom: 2px;
-      left: 2px;
+      bottom: 11px;
+      left: 11px;
       transform-origin: bottom;
+      z-index: 1;
     }
     label {
       position: absolute;
