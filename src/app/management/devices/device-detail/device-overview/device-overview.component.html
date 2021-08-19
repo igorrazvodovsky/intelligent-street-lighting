@@ -4,7 +4,12 @@
 <!-- TODO: Filter out alerts with tasks -->
 <section *ngFor="let alert of alerts" class="alert">
   <div>
-    <mat-icon inline matListIcon svgIcon="alertMedium"></mat-icon>
+    <mat-icon
+      inline
+      matListIcon
+      svgIcon="alertMedium"
+      aria-hidden="true"
+    ></mat-icon>
     {{ alert.title }}
   </div>
   <div>
@@ -26,7 +31,9 @@
   <h3 matSubheader>Profile</h3>
   <mat-list-item role="listitem">
     <div matLine>
-      Default <mat-icon inline svgIcon="sunRegular"></mat-icon> 65% until 22:00
+      Default
+      <mat-icon inline svgIcon="sunRegular" aria-hidden="true"></mat-icon> 65%
+      until 22:00
     </div>
     <span matLine class="text-secondary"
       >Inherited. Overrides disabled for this group.</span
@@ -51,18 +58,19 @@
 
 <mat-selection-list role="list" [multiple]="false">
   <mat-list-option role="listitem">
-    <mat-icon matListIcon svgIcon="ticketRegular"></mat-icon>
+    <mat-icon matListIcon svgIcon="ticketRegular" aria-hidden="true"></mat-icon>
     <div matLine>Create task</div>
   </mat-list-option>
   <mat-list-option role="listitem" (click)="on = !on">
     <mat-icon
       matListIcon
       [svgIcon]="on ? 'cancelCircleRegular' : 'checkCircleRegular'"
+      aria-hidden="true"
     ></mat-icon>
     <div matLine>Turn {{ on ? "off" : "on" }}</div>
   </mat-list-option>
   <mat-list-option role="listitem">
-    <mat-icon matListIcon svgIcon="moveRegular"></mat-icon>
+    <mat-icon matListIcon svgIcon="moveRegular" aria-hidden="true"></mat-icon>
     <div matLine>Move</div>
   </mat-list-option>
   <mat-list-option disabled role="listitem">

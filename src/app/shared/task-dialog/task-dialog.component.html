@@ -4,7 +4,8 @@
 <section>
   <mat-chip-list aria-label="Status and priority">
     <mat-chip [matMenuTriggerFor]="statusMenu"
-      >{{ data.task.status }} <mat-icon svgIcon="dropdownMedium"></mat-icon
+      >{{ data.task.status }}
+      <mat-icon svgIcon="dropdownMedium" aria-hidden="true"></mat-icon
     ></mat-chip>
     <mat-chip [matMenuTriggerFor]="priorityMenu"
       >{{ data.task.priority }} priority
@@ -50,7 +51,11 @@
 <mat-selection-list [multiple]="false">
   <h3 matSubheader>Event</h3>
   <mat-list-option class="list-item-icon-right">
-    <mat-icon svgIcon="chevronRightRegular" matListIcon></mat-icon>
+    <mat-icon
+      svgIcon="chevronRightRegular"
+      matListIcon
+      aria-hidden="true"
+    ></mat-icon>
     <!-- TODO: Get event data -->
     <h4 matLine>Lamp failure</h4>
     <p matLine class="text-secondary">12:36</p>

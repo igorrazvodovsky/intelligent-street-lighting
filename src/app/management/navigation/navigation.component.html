@@ -14,7 +14,7 @@
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
       >
-        <mat-icon svgIcon="dashboardBold"></mat-icon>
+        <mat-icon svgIcon="dashboardBold" aria-hidden="true"></mat-icon>
       </button>
       <button
         mat-icon-button
@@ -22,7 +22,7 @@
         routerLink="./devices"
         routerLinkActive="active"
       >
-        <mat-icon svgIcon="planetBold"></mat-icon>
+        <mat-icon svgIcon="planetBold" aria-hidden="true"></mat-icon>
       </button>
       <button
         mat-icon-button
@@ -30,7 +30,7 @@
         routerLink="./profiles"
         routerLinkActive="active"
       >
-        <mat-icon svgIcon="profileBold"></mat-icon>
+        <mat-icon svgIcon="profileBold" aria-hidden="true"></mat-icon>
       </button>
       <button
         mat-icon-button
@@ -38,7 +38,7 @@
         routerLink="./reports"
         routerLinkActive="active"
       >
-        <mat-icon svgIcon="chartBold"></mat-icon>
+        <mat-icon svgIcon="chartBold" aria-hidden="true"></mat-icon>
       </button>
     </div>
     <div class="text-secondary">
@@ -48,7 +48,7 @@
         routerLink="./admin"
         routerLinkActive="active"
       >
-        <mat-icon svgIcon="gearBold"></mat-icon>
+        <mat-icon svgIcon="gearBold" aria-hidden="true"></mat-icon>
       </button>
       <button
         mat-icon-button
@@ -56,7 +56,7 @@
         routerLinkActive="active"
         [matMenuTriggerFor]="userMenu"
       >
-        <mat-icon svgIcon="userBold"></mat-icon>
+        <mat-icon svgIcon="userBold" aria-hidden="true"></mat-icon>
       </button>
       <mat-menu #userMenu="matMenu">
         <button mat-menu-item [matMenuTriggerFor]="languages">Language</button>
@@ -80,10 +80,7 @@
         (click)="drawer.toggle()"
         *ngIf="isHandset$ | async"
       >
-        <mat-icon
-          svgIcon="menuBold"
-          aria-label="Side nav toggle icon"
-        ></mat-icon>
+        <mat-icon svgIcon="menuBold" aria-hidden="true"></mat-icon>
       </button>
       <div id="page-actions-container">
         <!-- content will be placed dynamically via Cdk Portal -->
@@ -97,6 +94,7 @@
           (click)="search = !search"
           matSuffix
           svgIcon="closeMedium"
+          aria-hidden="true"
         ></mat-icon>
       </mat-form-field>
       <ng-template #searchButton>
@@ -106,7 +104,7 @@
           mat-icon-button
           aria-label="Search"
         >
-          <mat-icon svgIcon="searchBold"></mat-icon>
+          <mat-icon svgIcon="searchBold" aria-hidden="true"></mat-icon>
           <span class="cdk-visually-hidden">Search button</span>
         </button>
       </ng-template>
@@ -157,6 +155,7 @@
           matBadge="2"
           matBadgeColor="warn"
           svgIcon="notificationBold"
+          aria-hidden="true"
         ></mat-icon>
         <span class="cdk-visually-hidden">15 notifications</span>
       </button>

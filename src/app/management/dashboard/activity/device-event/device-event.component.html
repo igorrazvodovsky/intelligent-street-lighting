@@ -7,16 +7,19 @@
     *ngIf="event.level == 'info'"
     svgIcon="infoMedium"
     matListAvatar
+    aria-hidden="true"
   ></mat-icon>
   <mat-icon
     *ngIf="event.level == 'warning'"
     svgIcon="alertMedium"
     matListAvatar
+    aria-hidden="true"
   ></mat-icon>
   <mat-icon
     *ngIf="event.level == 'critical'"
     svgIcon="warningMedium"
     matListAvatar
+    aria-hidden="true"
   ></mat-icon>
   <div matLine>
     <h3>{{ event.title }}</h3>

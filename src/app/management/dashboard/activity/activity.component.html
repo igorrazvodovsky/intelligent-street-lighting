@@ -6,7 +6,7 @@
 <button mat-button [matMenuTriggerFor]="menu">
   {{ filter | listSummary }}
   <!-- All -->
-  <mat-icon svgIcon="dropdownMedium"></mat-icon>
+  <mat-icon svgIcon="dropdownMedium" aria-hidden="true"></mat-icon>
 </button>
 <mat-menu #menu="matMenu">
   <!-- <button mat-menu-item>All</button> -->

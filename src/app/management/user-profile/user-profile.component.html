@@ -77,7 +77,11 @@
 
   <mat-selection-list [multiple]="false">
     <mat-list-option class="org__list-item list-item-icon-right">
-      <mat-icon mat-list-icon svgIcon="deleteRegular"></mat-icon>
+      <mat-icon
+        mat-list-icon
+        svgIcon="deleteRegular"
+        aria-hidden="true"
+      ></mat-icon>
       <div mat-line>
         Fitter
         <!-- <button mat-button [matMenuTriggerFor]="menu">

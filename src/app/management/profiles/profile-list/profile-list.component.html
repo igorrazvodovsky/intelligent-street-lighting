@@ -13,7 +13,11 @@
     role="listitem"
     *ngFor="let profile of profiles"
   >
-    <mat-icon matListIcon svgIcon="chevronRightRegular"></mat-icon>
+    <mat-icon
+      matListIcon
+      svgIcon="chevronRightRegular"
+      aria-hidden="true"
+    ></mat-icon>
     <div matLine>{{ profile.name }}</div>
     <span matLine>{{ profile.description }}</span>
   </mat-list-option>

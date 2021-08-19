@@ -9,7 +9,7 @@
     mat-mini-fab
     (click)="toggleMaximize()"
   >
-    <mat-icon svgIcon="mapBold" aria-label="List toggle icon"></mat-icon>
+    <mat-icon svgIcon="mapBold" aria-hidden="true"></mat-icon>
   </button>
 </app-page-actions>
 
@@ -35,7 +35,7 @@
     >
       <mat-icon
         [svgIcon]="opened ? 'chevronLeftBold' : 'chevronRightBold'"
-        aria-label="List toggle icon"
+        aria-hidden="true"
       ></mat-icon>
     </button>
     <devices-map></devices-map>

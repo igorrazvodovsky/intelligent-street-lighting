@@ -7,7 +7,7 @@
         mat-icon-button
         aria-label="Remove friend"
       >
-        <mat-icon svgIcon="deleteRegular"></mat-icon>
+        <mat-icon svgIcon="deleteRegular" aria-hidden="true"></mat-icon>
       </button>
     </mat-list-item>
     <mat-divider></mat-divider>
@@ -24,7 +24,7 @@
     #newFriend
     (keyup.enter)="addFriend(newFriend.value); newFriend.value = ''"
   />
-  <mat-icon matSuffix svgIcon="enterRegular"></mat-icon>
+  <mat-icon matSuffix svgIcon="enterRegular" aria-hidden="true"></mat-icon>
 
   <mat-autocomplete #auto="matAutocomplete">
     <mat-option *ngFor="let option of newFriendOptions" [value]="option">

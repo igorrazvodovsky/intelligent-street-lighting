@@ -12,7 +12,11 @@
     role="listitem"
     *ngFor="let group of groups$ | async"
   >
-    <mat-icon matListIcon svgIcon="chevronRightRegular"></mat-icon>
+    <mat-icon
+      matListIcon
+      svgIcon="chevronRightRegular"
+      aria-hidden="true"
+    ></mat-icon>
     <div matLine>{{ group.name }}</div>
     <span matLine>{{ (getDevices(group.id) | async)?.length }} lamps</span>
   </mat-list-option>

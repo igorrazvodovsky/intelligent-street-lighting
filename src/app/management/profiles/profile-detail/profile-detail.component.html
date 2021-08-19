@@ -88,7 +88,11 @@
   <mat-divider></mat-divider>
   <mat-selection-list role="list" [multiple]="false">
     <mat-list-option role="listitem">
-      <mat-icon matListIcon svgIcon="deleteRegular"></mat-icon>
+      <mat-icon
+        matListIcon
+        svgIcon="deleteRegular"
+        aria-hidden="true"
+      ></mat-icon>
       <div matLine>Delete</div>
     </mat-list-option>
   </mat-selection-list>

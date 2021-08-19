@@ -495,9 +495,13 @@ input.time {
 .mat-list-base .mat-list-option.mat-2-line {
   height: auto !important;
 }
+.mat-list-item.mat-2-line,
+.mat-list-option.mat-2-line {
+  min-height: 72px;
+}
 .mat-list-item-content {
-  padding-top: 0.5rem !important;
-  padding-bottom: 0.5rem !important;
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
 }
 
 .badge-list {

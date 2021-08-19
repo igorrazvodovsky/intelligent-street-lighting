@@ -6,6 +6,7 @@
         inline
         matListIcon
         svgIcon="ticketMedium"
+        aria-hidden="true"
       ></mat-icon>
 
       {{ task.title }}
@@ -31,15 +32,30 @@
   </mat-card-header>
   <mat-card-content class="text-secondary">
     <div *ngIf="deviceInfo">
-      <mat-icon inline class="small" svgIcon="locationRegular"></mat-icon>
+      <mat-icon
+        inline
+        class="small"
+        svgIcon="locationRegular"
+        aria-hidden="true"
+      ></mat-icon>
       {{ task.deviceId }}
     </div>
     <div>
-      <mat-icon inline class="small" svgIcon="userRegular"></mat-icon>
+      <mat-icon
+        inline
+        class="small"
+        svgIcon="userRegular"
+        aria-hidden="true"
+      ></mat-icon>
       {{ task.assignee ? task.assignee : "Unassigned" }}
     </div>
     <div *ngIf="task.comments.length">
-      <mat-icon inline class="small" svgIcon="messageRegular"></mat-icon>
+      <mat-icon
+        inline
+        class="small"
+        svgIcon="messageRegular"
+        aria-hidden="true"
+      ></mat-icon>
       {{ task.comments.length }} comments
     </div>
   </mat-card-content>
