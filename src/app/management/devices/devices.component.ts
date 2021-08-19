@@ -3,6 +3,8 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable, Subscription } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { GroupDialogComponent } from './group-dialog/group-dialog.component'
 
 @Component({
   selector: 'devices',
@@ -26,6 +28,7 @@ export class DevicesComponent implements OnInit {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private route: ActivatedRoute,
+    public dialog: MatDialog
   ) {
     // TODO: Not updated on route change
     this.childParamSubscription = route.firstChild.paramMap.subscribe(
@@ -34,6 +37,17 @@ export class DevicesComponent implements OnInit {
         this.groupId = params.get('groupId');
       }
     );
+  }
+
+
+  openDialog() {
+    const dialogRef = this.dialog.open(GroupDialogComponent, {
+      id: 'group-dialog'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   ngOnInit() {

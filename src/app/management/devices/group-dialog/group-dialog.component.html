@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Add group</h2>
+<mat-form-field>
+  <mat-label>Group name</mat-label>
+  <input cdkFocusInitial matInput />
+</mat-form-field>
+<mat-form-field>
+  <mat-label>Subgroup of</mat-label>
+  <mat-select [(value)]="parent">
+    <mat-option value="root">Daugavpils</mat-option>
+    <mat-option value="one">First option</mat-option>
+    <mat-option value="two">Second option</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="true">Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Add</button>
+</mat-dialog-actions>

@@ -540,7 +540,7 @@ input.time {
   flex: 1 0 auto;
   display: flex;
   justify-content: space-between;
-  padding: 0 1rem;
+  padding: 0 0 0 1rem;
   align-items: center;
   // button {
   //   float: right;
@@ -549,7 +549,7 @@ input.time {
 
   & > div {
     * + * {
-      margin-left: 1rem;
+      margin-left: 0.5rem;
     }
   }
 

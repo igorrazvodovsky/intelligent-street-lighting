@@ -1,16 +1,29 @@
 <app-page-actions>
-  <!-- TODO: Make props reactive -->
   <breadcrumbs></breadcrumbs>
-  <button
-    [color]="maximized ? '' : 'accent'"
-    class="list-max-toggle mat-elevation-z0"
-    type="button"
-    aria-label="Toggle sidenav"
-    mat-mini-fab
-    (click)="toggleMaximize()"
-  >
-    <mat-icon svgIcon="mapBold" aria-hidden="true"></mat-icon>
-  </button>
+  <div>
+    <button
+      [matMenuTriggerFor]="addMenu"
+      type="button"
+      aria-label="Add"
+      mat-icon-button
+    >
+      <mat-icon svgIcon="plusBold" aria-hidden="true"></mat-icon>
+    </button>
+    <mat-menu #addMenu="matMenu">
+      <button routerLink="/management/initialise" mat-menu-item>Device</button>
+      <button (click)="openDialog()" mat-menu-item>Device group</button>
+    </mat-menu>
+    <button
+      [color]="maximized ? '' : 'accent'"
+      class="list-max-toggle mat-elevation-z0"
+      type="button"
+      aria-label="Toggle device list"
+      mat-mini-fab
+      (click)="toggleMaximize()"
+    >
+      <mat-icon svgIcon="mapBold" aria-hidden="true"></mat-icon>
+    </button>
+  </div>
 </app-page-actions>
 
 <mat-sidenav-container class="sidenav-container">

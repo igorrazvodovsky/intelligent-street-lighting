@@ -3,7 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AuthService } from '~local/auth/auth.service';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd, Event } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent {
+  modalMode = false;
+  modalModeRoutes = ["/management/initialise"]
   search = false;
   isHandset: boolean;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -30,7 +32,21 @@ export class NavigationComponent {
     this.router.navigate(['/']);
   }
 
+  checkRoute() {
+    const url = this.router.routerState.snapshot.url
+    if (this.modalModeRoutes.includes(url)) this.modalMode = true
+    else this.modalMode = false
+  }
+
   ngOnInit() {
+
+    // Part of common toolbar items should be hidden in some views
+    // TODO: Replace with something appropriate
+    this.checkRoute()
+    this.router.events.subscribe((event: Event) => {
+      this.checkRoute()
+    });
+
     this.isHandset$.subscribe(value =>
       this.isHandset = value
     );

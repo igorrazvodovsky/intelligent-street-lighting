@@ -85,80 +85,82 @@
       <div id="page-actions-container">
         <!-- content will be placed dynamically via Cdk Portal -->
       </div>
-      <mat-form-field
-        class="no-hint no-label"
-        *ngIf="search; else searchButton"
-      >
-        <input matInput placeholder="Search" />
-        <mat-icon
-          (click)="search = !search"
-          matSuffix
-          svgIcon="closeMedium"
-          aria-hidden="true"
-        ></mat-icon>
-      </mat-form-field>
-      <ng-template #searchButton>
+      <ng-container *ngIf="!modalMode">
+        <mat-form-field
+          class="no-hint no-label"
+          *ngIf="search; else searchButton"
+        >
+          <input matInput placeholder="Search" />
+          <mat-icon
+            (click)="search = !search"
+            matSuffix
+            svgIcon="closeMedium"
+            aria-hidden="true"
+          ></mat-icon>
+        </mat-form-field>
+        <ng-template #searchButton>
+          <button
+            (click)="search = !search"
+            id="notifications"
+            mat-icon-button
+            aria-label="Search"
+          >
+            <mat-icon svgIcon="searchBold" aria-hidden="true"></mat-icon>
+            <span class="cdk-visually-hidden">Search button</span>
+          </button>
+        </ng-template>
+        <mat-menu #notificationsMenu="matMenu">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>John</mat-card-title>
+              <mat-card-subtitle>5 min ago</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>
+                Notifications from the system, assignements, etc. Aligned with
+                profile settings.
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button>Action</button>
+              <button mat-button>Dismiss</button>
+            </mat-card-actions>
+          </mat-card>
+          <mat-divider></mat-divider>
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title class="mat-subheader-1">Mary</mat-card-title>
+              <mat-card-subtitle>Yesterday</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>
+                Notifications from the system, assignements, etc. Aligned with
+                profile settings.
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button>Action</button>
+              <button mat-button>Dismiss</button>
+            </mat-card-actions>
+          </mat-card>
+          <!-- <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button> -->
+        </mat-menu>
         <button
-          (click)="search = !search"
+          [matMenuTriggerFor]="notificationsMenu"
           id="notifications"
           mat-icon-button
-          aria-label="Search"
+          aria-label="Notifications"
         >
-          <mat-icon svgIcon="searchBold" aria-hidden="true"></mat-icon>
-          <span class="cdk-visually-hidden">Search button</span>
+          <mat-icon
+            matBadge="2"
+            matBadgeColor="warn"
+            svgIcon="notificationBold"
+            aria-hidden="true"
+          ></mat-icon>
+          <span class="cdk-visually-hidden">15 notifications</span>
         </button>
-      </ng-template>
-      <mat-menu #notificationsMenu="matMenu">
-        <mat-card>
-          <mat-card-header>
-            <mat-card-title>John</mat-card-title>
-            <mat-card-subtitle>5 min ago</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            <p>
-              Notifications from the system, assignements, etc. Aligned with
-              profile settings.
-            </p>
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-button>Action</button>
-            <button mat-button>Dismiss</button>
-          </mat-card-actions>
-        </mat-card>
-        <mat-divider></mat-divider>
-        <mat-card>
-          <mat-card-header>
-            <mat-card-title class="mat-subheader-1">Mary</mat-card-title>
-            <mat-card-subtitle>Yesterday</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            <p>
-              Notifications from the system, assignements, etc. Aligned with
-              profile settings.
-            </p>
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-button>Action</button>
-            <button mat-button>Dismiss</button>
-          </mat-card-actions>
-        </mat-card>
-        <!-- <button mat-menu-item>Item 1</button>
-        <button mat-menu-item>Item 2</button> -->
-      </mat-menu>
-      <button
-        [matMenuTriggerFor]="notificationsMenu"
-        id="notifications"
-        mat-icon-button
-        aria-label="Notifications"
-      >
-        <mat-icon
-          matBadge="2"
-          matBadgeColor="warn"
-          svgIcon="notificationBold"
-          aria-hidden="true"
-        ></mat-icon>
-        <span class="cdk-visually-hidden">15 notifications</span>
-      </button>
+      </ng-container>
     </mat-toolbar>
     <main>
       <router-outlet></router-outlet>

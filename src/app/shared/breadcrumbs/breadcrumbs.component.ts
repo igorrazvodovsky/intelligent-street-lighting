@@ -57,7 +57,6 @@ export class BreadcrumbsComponent implements OnInit {
 
     this.groupId$.pipe(distinctUntilChanged()).subscribe((id: number) => {
       this.groupId = id
-      console.log(id)
       if (id) {
         this.getSelectedGroup(id)
       }
