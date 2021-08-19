@@ -27,7 +27,7 @@ export class ProfileDeviceListComponent implements OnInit {
       switchMap(params => {
         return this.deviceService.getGroupsByProfile(params.get('id')!);
       })
-    );
+    )
   }
 
 }

@@ -10,15 +10,17 @@ import { ProfileService } from '~local/services/profile.service';
   styleUrls: ['./profile-list.component.scss']
 })
 export class ProfileListComponent implements OnInit {
-  profiles$!: Observable<Profile[]>;
+  profiles!: Profile[];
 
   constructor(
     private service: ProfileService,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit() {
-    this.profiles$ = this.service.getProfiles();
+    this.service.Profiles.subscribe(profiles => {
+      this.profiles = profiles
+    });
   }
 
 }

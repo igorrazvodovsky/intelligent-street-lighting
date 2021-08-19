@@ -45,7 +45,7 @@
   <mat-menu #profileMenu="matMenu">
     <button
       [disabled]="profile.id === (profile$ | async)?.id"
-      *ngFor="let profile of profiles$ | async"
+      *ngFor="let profile of profiles"
       mat-menu-item
     >
       {{ profile.name }}

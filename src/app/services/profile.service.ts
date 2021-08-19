@@ -9,17 +9,23 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ProfileService {
-  constructor(private messageService: MessageService) { }
 
-  getProfiles(): Observable<Profile[]> {
-    const profiles = of(PROFILES);
-    this.messageService.add('ProfileService: fetched profiles');
-    return profiles;
+  private _profiles = of(PROFILES)
+
+  public get Profiles(): Observable<Profile[]> {
+    return this._profiles
   }
 
+  constructor(private messageService: MessageService) { }
+
+  // getProfiles(): Observable<Profile[]> {
+  //   const profiles = of(PROFILES);
+  //   this.messageService.add('ProfileService: fetched profiles');
+  //   return profiles;
+  // }
+
   getProfile(id: number | string) {
-    return this.getProfiles().pipe(
-      // (+) before `id` turns the string into a number
+    return this._profiles.pipe(
       map((profiles: Profile[]) => profiles.find(profile => profile.id === +id)!)
     );
   }

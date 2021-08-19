@@ -17,7 +17,7 @@ export class DeviceListComponent implements OnInit {
   group$!: Observable<DeviceGroup>;
   devices$!: Observable<Device[]>;
   profile$!: Observable<Profile>;
-  profiles$!: Observable<Profile[]>;
+  profiles!: Profile[];
 
   isEditable: boolean = false;
   selectedDevices: string[] = [];
@@ -33,7 +33,8 @@ export class DeviceListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.profiles$ = this.profileService.getProfiles();
+    this.profileService.Profiles.subscribe(profiles => this.profiles = profiles);
+    
     this.group$ = this.route.paramMap.pipe(
       switchMap(params =>
         this.deviceService.getGroup(params.get('groupId')!))

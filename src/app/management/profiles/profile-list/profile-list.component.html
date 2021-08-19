@@ -11,7 +11,7 @@
     class="list-item-icon-right"
     [routerLink]="[profile.id]"
     role="listitem"
-    *ngFor="let profile of profiles$ | async"
+    *ngFor="let profile of profiles"
   >
     <mat-icon matListIcon svgIcon="chevronRightRegular"></mat-icon>
     <div matLine>{{ profile.name }}</div>

@@ -16,29 +16,17 @@ export class GroupListComponent implements OnInit {
   groups$!: Observable<DeviceGroup[]>
   groups!: DeviceGroup[]
 
-  childGroupsMapping:
-    { [k: string]: string } = { '=1': '# group, ', 'other': '# groups,' };
-
-  lampMapping:
-    { [k: string]: string } = { '=0': 'empty, ', '=1': '# lamp, ', 'other': '# lamps,' };
-
   constructor(
     private deviceService: DeviceService,
     private profileService: ProfileService,
   ) { }
 
-  getDevices(groupId) {
-    return this.deviceService.getDevicesByGroup(groupId);
-  }
-
-  getProfile(groupId) {
-    return this.profileService.getProfile(groupId);
-  }
-
   ngOnInit() {
     this.groups$ = this.deviceService.getGroupsByParent(null);
     this.groups$.subscribe(groups => this.groups = groups)
-
+    // this.deviceService.groups.subscribe(groups => {
+    //   this.groups = groups;
+    // });
   }
 
 

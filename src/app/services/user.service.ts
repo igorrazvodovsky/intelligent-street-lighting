@@ -10,16 +10,17 @@ import { map } from 'rxjs/operators';
 })
 export class UserService {
 
-  constructor(private messageService: MessageService) { }
+  private _users = of(USERS)
 
-  getUsers(): Observable<User[]> {
-    const users = of(USERS);
-    this.messageService.add('User service: fetched users');
-    return users;
+  public get Users(): Observable<User[]> {
+    return this._users
   }
 
+  constructor(private messageService: MessageService) { }
+
   getUser(id: number | string) {
-    return this.getUsers().pipe(
+    this.messageService.add('User service: fetched user ' + id);
+    return this._users.pipe(
       map((users: User[]) => users.find(user => user.id === +id)!)
     );
   }

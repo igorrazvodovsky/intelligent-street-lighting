@@ -1,4 +1,8 @@
-<mat-list-option class="entry" [routerLink]="'devices/device/' + [device.id]">
+<mat-list-option
+  *ngIf="device"
+  class="entry"
+  [routerLink]="'devices/device/' + [device.id]"
+>
   <mat-icon svgIcon="userFill" matListAvatar></mat-icon>
   <div matLine>
     <h3>

@@ -19,6 +19,7 @@ import { DeviceInfoComponent } from './device-detail/device-info/device-info.com
 import { DeviceHistoryComponent } from './device-detail/device-history/device-history.component';
 import { DeviceFriendsListComponent } from './device-detail/device-motion-sensor/device-friends-list/device-friends-list.component';
 import { FormsModule } from '@angular/forms';
+import { GroupListItemComponent } from './group-list/group-list-item/group-list-item.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { FormsModule } from '@angular/forms';
     DeviceMetricsComponent,
     DeviceInfoComponent,
     DeviceHistoryComponent,
-    DeviceFriendsListComponent
+    DeviceFriendsListComponent,
+    GroupListItemComponent
   ],
   imports: [
     CommonModule,

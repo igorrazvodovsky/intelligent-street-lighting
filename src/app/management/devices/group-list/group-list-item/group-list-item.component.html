@@ -1,0 +1,14 @@
+<mat-list-option [routerLink]="'group/' + [group.id]" role="listitem">
+  <!-- <mat-icon matListIcon svgIcon="chevronRightRegular"></mat-icon> -->
+  <div matLine>{{ group.name }}</div>
+  <span *ngIf="profile && devices" matLine class="details text-secondary"
+    ><span *ngIf="group.children.length > 0"
+      >{{ group.children.length | i18nPlural: childGroupsMapping }}
+    </span>
+    <!-- TODO: Count in child group devices too -->
+    {{ devices.length | i18nPlural: lampMapping }}
+    <!-- TODO: if > 1 → 'N profiles' + popover with details -->
+    {{ profile.name }}
+    profile</span
+  >
+</mat-list-option>

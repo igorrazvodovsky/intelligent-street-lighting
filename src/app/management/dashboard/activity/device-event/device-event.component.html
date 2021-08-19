@@ -1,4 +1,5 @@
 <mat-list-option
+  *ngIf="device"
   [class]="'entry ' + 'entry-' + event.level"
   [routerLink]="'devices/device/' + [device.id]"
 >

@@ -15,51 +15,62 @@ export class DeviceService {
   };
   devicesUrl: string = '/assets/data/devices.geojson'
 
-  constructor(private messageService: MessageService, private http: HttpClient,) { }
+  private _devices = this.http
+    .get(this.devicesUrl)
+    .pipe(
+      map((data: any) => data.features.map(e => e.properties))
+    )
 
-  getGroups(): Observable<DeviceGroup[]> {
-    const groups = of(GROUPS);
-    this.messageService.add('DeviceService: fetched groups');
-    return groups;
+  private _groups = of(GROUPS)
+
+  public get Devices(): Observable<Device[]> {
+    return this._devices
   }
 
+  public get Groups(): Observable<DeviceGroup[]> {
+    return this._groups
+  }
+
+  constructor(private messageService: MessageService, private http: HttpClient,) { }
+
+  // getGroups(): Observable<DeviceGroup[]> {
+  //   const groups = of(GROUPS);
+  //   this.messageService.add('DeviceService: fetched groups')
+  //   return groups;
+  // }
+
   getGroup(id: number | string) {
-    return this.getGroups().pipe(
+    return this._groups.pipe(
       map((groups: DeviceGroup[]) => groups.find(group => group.id === +id)!)
     );
   }
 
   getGroupsByProfile(id: number | string) {
-    return this.getGroups().pipe(
+    return this._groups.pipe(
       map((groups: DeviceGroup[]) => groups.filter(group => group.profileId === +id)!)
     );
   }
 
   getGroupsByParent(id: number | string) {
-    return this.getGroups().pipe(
+    return this._groups.pipe(
       map((groups: DeviceGroup[]) => groups.filter(group => group.parentId == id)!)
     );
   }
 
-  getDevices(): Observable<Device[]> {
-    const devices = this.http
-      .get(this.devicesUrl)
-      .pipe(
-        map((data: any) => data.features.map(e => e.properties))
-      )
-    this.messageService.add('DeviceService: fetched devices');
-    return devices;
-  }
+  // getDevices(): Observable<Device[]> {
+  //   this.messageService.add('DeviceService: fetched devices')
+  //   return this.devices
+  // }
 
   getDevice(id: number | string) {
-    return this.getDevices().pipe(
-      // (+) before `id` turns the string into a number
+    this.messageService.add('DeviceService: fetched device ' + id)
+    return this._devices.pipe(
       map((devices: Device[]) => devices.find(device => device.id === +id)!)
     );
   }
 
   getDevicesByGroup(id: number | string) {
-    return this.getDevices().pipe(
+    return this._devices.pipe(
       map((devices: Device[]) => devices.filter(device => device.groupId === +id)!)
     );
   }
