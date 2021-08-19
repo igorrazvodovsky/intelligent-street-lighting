@@ -57,12 +57,9 @@
   Lamps
   <div>
     <ng-container *ngIf="isEditable && selectedDevices.length">
-      <button type="button" aria-label="Toggle edit mode" mat-button>
-        Update firmware
-      </button>
-      <button type="button" aria-label="Toggle edit mode" mat-button>
-        Move
-      </button>
+      <button type="button" mat-button>Change status</button>
+      <button type="button" mat-button>Update firmware</button>
+      <button type="button" mat-button>Move</button>
     </ng-container>
     <button
       type="button"

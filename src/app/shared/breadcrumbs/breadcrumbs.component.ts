@@ -1,3 +1,5 @@
+// TODO: Empty current group on change
+
 import { Component, OnInit, Input } from '@angular/core';
 import { DeviceService } from '~local/services/device.service'
 import { Observable, BehaviorSubject } from 'rxjs';
@@ -53,7 +55,9 @@ export class BreadcrumbsComponent implements OnInit {
 
     this.groupId$.pipe(distinctUntilChanged()).subscribe((id: number) => {
       this.groupId = id
-      if (id) this.getSelectedGroup(id)
+      if (id) {
+        this.getSelectedGroup(id)
+      }
     });
 
     this.deviceId$.pipe(distinctUntilChanged()).subscribe((id: number) => {
@@ -62,7 +66,9 @@ export class BreadcrumbsComponent implements OnInit {
         this.service.getDevice(id).subscribe(device => {
           this.currentDevice = device
           this.deviceSiblings$ = this.service.getDevicesByGroup(device.groupId)
-          if (this.groupId !== device.groupId) this.getSelectedGroup(id)
+          if (this.groupId !== device.groupId) {
+            this.getSelectedGroup(id)
+          }
         })
       }
     });
@@ -74,8 +80,6 @@ export class BreadcrumbsComponent implements OnInit {
     });
 
     this.city = this.service.city.name
-
-    // if (this.groupId) this.getSelectedGroup(this.groupId)
 
     this.deviceSiblings$.subscribe(devices => {
       this.devices = devices.map(device => ({ name: device.name, id: device.id }))
@@ -93,6 +97,7 @@ export class BreadcrumbsComponent implements OnInit {
   }
 
   onGroupChange(value) {
+
     let id = this.groupSiblings.flat().find(group => group.name == value).id
     this.router.navigate(['/management/devices/group/' + id]);
   }

@@ -26,6 +26,8 @@ export class MapComponent implements AfterViewInit, OnInit {
   iconOff = '<svg width="24" height="24" fill="inherit" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 18.5a8.5 8.5 0 118.5-8.5 8.51 8.51 0 01-8.5 8.5zm1.942-11.433L12 11.01l-1.942-1.943-.99.99L11.01 12l-1.943 1.942.99.99L12 12.99l1.942 1.942.99-.99L12.99 12l1.942-1.942-.99-.99z" fill="inherit"/></svg>'
   iconAlert = '<svg width="24" height="24" fill="inherit" xmlns="http://www.w3.org/2000/svg"><path d="M11.41 13.5h1.18l.36-6.5h-1.9l.36 6.5zM12 2a10 10 0 100 20 10 10 0 000-20zm0 18.5a8.5 8.5 0 118.5-8.5 8.51 8.51 0 01-8.5 8.5zm0-5.307a.917.917 0 100 1.834.917.917 0 000-1.834z" fill="inherit"/></svg>'
 
+  showNames: boolean = true
+
   private initMap(): void {
     this.map = L.map('map', {
       center: [55.8747, 26.5362],
@@ -86,6 +88,7 @@ export class MapComponent implements AfterViewInit, OnInit {
 
         let pointer = ''
         let icon = ''
+        let label = this.showNames ? feature.properties.name : ''
         if (feature.properties.type == "sc") icon = this.iconSC
         if (feature.properties.type == "traffic") icon = this.iconSensorTraffic
 
@@ -94,7 +97,7 @@ export class MapComponent implements AfterViewInit, OnInit {
 
         layer.setIcon(L.divIcon({
           className: `marker--${feature.properties.type} ${feature.properties.status}`,
-          html: pointer + `<figure>${icon}</figure><label>${feature.properties.id}</label>`
+          html: pointer + `<figure>${icon}</figure><label>${label}</label>`
         }))
 
         layer.on('click', () => this.router.navigate(['/management/devices/device/' + feature.properties.id]));

@@ -72,7 +72,6 @@ body {
 }
 
 body {
-  padding-block: 0.5ch;
   align-content: start;
   font-family: "General Sans", "Helvetica Neue", sans-serif;
 }
@@ -270,7 +269,6 @@ button {
   .mat-expansion-panel.mat-expanded {
     background: hsla(0, 0%, 0%, 0.05);
   }
-  // :nth-last-child(-n + 2)
   .mat-tab-label {
     min-width: auto;
   }
@@ -288,8 +286,6 @@ button {
 
 .breadcrumbs {
   color: hsla(0, 0%, 0%, 0.6);
-  margin-left: 1rem;
-  margin-bottom: 1rem;
   a {
     text-decoration: none;
   }
@@ -718,6 +714,7 @@ input.time {
       left: 2rem;
       top: 0.375rem;
       line-height: 100%;
+      white-space: nowrap;
     }
     @include transition;
     transition-delay: 100ms;
