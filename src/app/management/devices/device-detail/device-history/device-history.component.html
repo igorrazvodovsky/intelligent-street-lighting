@@ -3,7 +3,7 @@
 <mat-selection-list>
   <mat-list-item class="entry" *ngFor="let event of events">
     <div matLine>
-      <h3>{{ (getUser(event.userId) | async)?.name }}</h3>
+      <h3>John Smith</h3>
       <small class="text-secondary">{{ event.created | date: "short" }}</small>
     </div>
     <p matLine>Changed {{ event.property }} to {{ event.to }}</p>

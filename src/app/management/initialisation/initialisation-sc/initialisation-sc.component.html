@@ -83,11 +83,27 @@
       <mat-form-field>
         <mat-label>Address</mat-label>
         <input matInput value="37 Rue Voltaire 92500 Rueil-Malmaison, France" />
+        <button
+          mat-icon-button
+          matSuffix
+          matTooltip="Show on map"
+          aria-label="Button that shows selected location on a map"
+        >
+          <mat-icon svgIcon="locationRegular" aria-hidden="true"></mat-icon>
+        </button>
       </mat-form-field>
-      <button mat-stroked-button>Show on map</button>
 
-      <!-- TODO: Group autocomplete -->
-      <!-- Set default if coordinates match -->
+      <!-- Nearest group (distance < N) is set as a default -->
+      <mat-form-field>
+        <mat-label>Group</mat-label>
+        <mat-select [(value)]="group">
+          <mat-option value="option1"> Some existing group nearby </mat-option>
+          <mat-option value="option2">
+            Another existing group nearby
+          </mat-option>
+          <mat-option value="new"> Create new group </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
   </section>
 </form>

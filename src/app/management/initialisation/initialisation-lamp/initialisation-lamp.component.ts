@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'initialisation-lamp',
@@ -7,7 +7,13 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./initialisation-lamp.component.scss']
 })
 export class InitialisationLampComponent implements OnInit {
-  date = new FormControl(new Date());
+
+  firstName = new FormControl()
+  group = "option1"
+  date = new FormControl(new Date())
+  surgeProtection = new FormControl()
+  decorativeLighting = new FormControl()
+
   lampModel = 'MSLC205RL'
   luminaireModel = 'SRL 068757 L11B032 SNMG1'
   lampModels = [

@@ -42,10 +42,12 @@ export class BreadcrumbsComponent implements OnInit {
         this.deviceId$.next(+objectId)
         break;
       case 'group':
+        this.deviceId$.next(null)
         this.groupId$.next(+objectId)
         break;
       default:
-      // ???
+        this.groupId$.next(null)
+        this.deviceId$.next(null)
     }
   }
 
@@ -55,34 +57,36 @@ export class BreadcrumbsComponent implements OnInit {
 
     this.groupId$.pipe(distinctUntilChanged()).subscribe((id: number) => {
       this.groupId = id
+      console.log(id)
       if (id) {
         this.getSelectedGroup(id)
       }
+      else this.currentGroup = []
     });
 
     this.deviceId$.pipe(distinctUntilChanged()).subscribe((id: number) => {
       this.deviceId = id
       if (id) {
-        // Get device and its siblings
+        // Get device...
         this.service.getDevice(id).subscribe(device => {
           this.currentDevice = device
-          this.deviceSiblings$ = this.service.getDevicesByGroup(device.groupId)
-          // Get group if it changed
+          // ...siblings
+          this.service.getDevicesByGroup(device.groupId).subscribe(devices => {
+            this.devices = devices.map(device => ({ name: device.name, id: device.id }))
+          });
+          // group
           if (this.groupId !== device.groupId) {
-            this.getSelectedGroup(id)
+            this.groupId$.next(device.groupId)
           }
         })
       }
+      else this.currentDevice = null
     });
 
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         this.getRouteInfo()
       }
-    });
-
-    this.deviceSiblings$.subscribe(devices => {
-      this.devices = devices.map(device => ({ name: device.name, id: device.id }))
     });
 
   }

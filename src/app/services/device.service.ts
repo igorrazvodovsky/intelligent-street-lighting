@@ -41,13 +41,13 @@ export class DeviceService {
 
   getGroup(id: number | string) {
     return this._groups.pipe(
-      map((groups: DeviceGroup[]) => groups.find(group => group.id === +id)!)
+      map((groups: DeviceGroup[]) => groups.find(group => group.id == +id)!)
     );
   }
 
   getGroupsByProfile(id: number | string) {
     return this._groups.pipe(
-      map((groups: DeviceGroup[]) => groups.filter(group => group.profileId === +id)!)
+      map((groups: DeviceGroup[]) => groups.filter(group => group.profileId == +id)!)
     );
   }
 
@@ -65,13 +65,13 @@ export class DeviceService {
   getDevice(id: number | string) {
     this.messageService.add('DeviceService: fetched device ' + id)
     return this._devices.pipe(
-      map((devices: Device[]) => devices.find(device => device.id === +id)!)
+      map((devices: Device[]) => devices.find(device => device.id == +id)!)
     );
   }
 
   getDevicesByGroup(id: number | string) {
     return this._devices.pipe(
-      map((devices: Device[]) => devices.filter(device => device.groupId === +id)!)
+      map((devices: Device[]) => devices.filter(device => device.groupId == +id)!)
     );
   }
 

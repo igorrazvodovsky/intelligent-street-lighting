@@ -1,3 +1,5 @@
+// TODO: Get user name
+
 import { Component, OnInit, Input } from '@angular/core';
 import { UserEvent } from '~local/types'
 import { EventService } from '~local/services/event.service';
@@ -19,10 +21,6 @@ export class DeviceHistoryComponent implements OnInit {
       .subscribe(events => {
         this.events = events
       });
-  }
-
-  getUser(id) {
-    return this.userService.getUser(id)
   }
 
   ngOnInit() {

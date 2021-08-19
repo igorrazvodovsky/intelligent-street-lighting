@@ -1,3 +1,5 @@
+// TODO: Get number of lamps
+
 import { Component, OnInit } from '@angular/core';
 import { DeviceGroup } from '~local/types'
 import { Observable } from 'rxjs';
@@ -16,11 +18,7 @@ export class ProfileDeviceListComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private deviceService: DeviceService,
-  ) {}
-
-  getDevices(groupId) {
-    return this.deviceService.getDevicesByGroup(groupId);
-  }
+  ) { }
 
   ngOnInit() {
     this.groups$ = this.route.paramMap.pipe(
@@ -29,7 +27,6 @@ export class ProfileDeviceListComponent implements OnInit {
       })
     )
   }
-
 }
 
 
