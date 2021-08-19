@@ -23,6 +23,7 @@ import { ReportsComponent } from './reports/reports.component';
 import { InitialisationComponent } from './initialisation/initialisation.component';
 import { InitialisationLampComponent } from './initialisation/initialisation-lamp/initialisation-lamp.component';
 import { InitialisationScComponent } from './initialisation/initialisation-sc/initialisation-sc.component';
+import { ScannerDialogComponent } from './initialisation/scanner-dialog/scanner-dialog.component';
 
 @NgModule({
   imports: [
@@ -51,7 +52,8 @@ import { InitialisationScComponent } from './initialisation/initialisation-sc/in
     ReportsComponent,
     InitialisationComponent,
     InitialisationLampComponent,
-    InitialisationScComponent
+    InitialisationScComponent,
+    ScannerDialogComponent
   ]
 })
 export class ManagementModule { }

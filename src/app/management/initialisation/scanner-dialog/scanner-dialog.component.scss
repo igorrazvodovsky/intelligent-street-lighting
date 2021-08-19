@@ -1,0 +1,19 @@
+:host {
+  color: white;
+  fill: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+::ng-deep .cdk-overlay-container {
+  // background: hsla(0, 0%, 0%, 0.9);
+}
+
+.mat-icon-button.close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}

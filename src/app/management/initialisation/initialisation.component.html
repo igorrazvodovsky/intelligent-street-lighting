@@ -15,7 +15,13 @@
     </button>
   </mat-menu>
   <div>
-    <button mat-icon-button aria-label="Scan QR code">
+    <button
+      cdkOverlayOrigin
+      (click)="isScannerOpen = !isScannerOpen"
+      #trigger="cdkOverlayOrigin"
+      mat-icon-button
+      aria-label="Scan QR code"
+    >
       <mat-icon svgIcon="qrBold"></mat-icon>
     </button>
     <button mat-flat-button color="accent" type="submit">Save</button>
@@ -25,6 +31,18 @@
 <!-- QR scanner starts automatically and runs until successful detection -->
 <!-- + SKIP button -->
 <!-- https://material.angular.io/cdk/overlay/overview#full-screen-overlays -->
+<ng-template
+  #connectedOverlay="cdkConnectedOverlay"
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOpen]="isScannerOpen"
+  [cdkConnectedOverlayHasBackdrop]="overlayOptions.hasBackdrop"
+  [cdkConnectedOverlayPositions]="overlayOptions.positions"
+  (backdropClick)="hideOverlay()"
+  (detach)="hideOverlay()"
+>
+  <scanner-dialog [connectedOverlay]="connectedOverlay"></scanner-dialog>
+</ng-template>
 
 <initialisation-lamp *ngIf="type == 'lamp'"></initialisation-lamp>
 <initialisation-sc *ngIf="type == 'segment controller'"></initialisation-sc>

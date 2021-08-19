@@ -27,7 +27,8 @@ export enum Bold {
   Download = 'download',
   QR = 'qr',
   Plus = 'plus',
-  Minus = 'minus'
+  Minus = 'minus',
+  Close = 'close'
 }
 
 export enum Medium {
