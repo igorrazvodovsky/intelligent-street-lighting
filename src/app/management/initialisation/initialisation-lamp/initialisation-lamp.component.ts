@@ -9,7 +9,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class InitialisationLampComponent implements OnInit {
 
   firstName = new FormControl()
-  group = "option1"
   date = new FormControl(new Date())
   surgeProtection = new FormControl()
   decorativeLighting = new FormControl()

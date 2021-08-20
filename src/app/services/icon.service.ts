@@ -28,7 +28,9 @@ export enum Bold {
   QR = 'qr',
   Plus = 'plus',
   Minus = 'minus',
-  Close = 'close'
+  Close = 'close',
+  ZoomIn = 'zoomIn',
+  ZoomOut = 'zoomOut'
 }
 
 export enum Medium {

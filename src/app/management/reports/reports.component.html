@@ -10,6 +10,7 @@
             "&ndash;" +
             (periodRange.value.end | date: "MMM, y")
       }}
+      <mat-icon svgIcon="dropdownMedium" aria-hidden="true"></mat-icon>
     </button>
     <mat-menu #menu="matMenu">
       <button (click)="period = 'month'" mat-menu-item>Last month</button>

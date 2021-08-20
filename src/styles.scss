@@ -162,6 +162,13 @@ button {
   }
 }
 
+// Vertical compensation for custom icon set
+.mat-icon-button i,
+.mat-icon-button .mat-icon,
+.mat-mini-fab .mat-icon {
+  transform: translateY(-1px);
+}
+
 .mat-icon.small {
   height: 1rem;
   width: 1rem;

@@ -69,51 +69,7 @@
 
   <mat-divider></mat-divider>
 
-  <section>
-    <h2>Location</h2>
-
-    <div>
-      <div class="row">
-        <div class="col">
-          <mat-form-field>
-            <mat-label>Latitude</mat-label>
-            <input matInput value="48.875417" />
-          </mat-form-field>
-        </div>
-        <div class="col">
-          <mat-form-field>
-            <mat-label>Longitude</mat-label>
-            <input matInput value="2.212076" />
-          </mat-form-field>
-        </div>
-      </div>
-
-      <mat-form-field>
-        <mat-label>Address</mat-label>
-        <input matInput value="37 Rue Voltaire 92500 Rueil-Malmaison, France" />
-        <button
-          mat-icon-button
-          matSuffix
-          matTooltip="Show on map"
-          aria-label="Button that shows selected location on a map"
-        >
-          <mat-icon svgIcon="locationRegular" aria-hidden="true"></mat-icon>
-        </button>
-      </mat-form-field>
-
-      <!-- Nearest group (distance < N) is set as a default -->
-      <mat-form-field>
-        <mat-label>Group</mat-label>
-        <mat-select [(value)]="group">
-          <mat-option value="option1"> Some existing group nearby </mat-option>
-          <mat-option value="option2">
-            Another existing group nearby
-          </mat-option>
-          <mat-option value="new"> Create new group </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-  </section>
+  <initialisation-location></initialisation-location>
 
   <mat-divider></mat-divider>
 

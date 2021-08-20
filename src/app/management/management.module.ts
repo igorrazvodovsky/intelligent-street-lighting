@@ -24,6 +24,7 @@ import { InitialisationComponent } from './initialisation/initialisation.compone
 import { InitialisationLampComponent } from './initialisation/initialisation-lamp/initialisation-lamp.component';
 import { InitialisationScComponent } from './initialisation/initialisation-sc/initialisation-sc.component';
 import { ScannerDialogComponent } from './initialisation/scanner-dialog/scanner-dialog.component';
+import { InitialisationLocationComponent } from './initialisation/initialisation-location/initialisation-location.component';
 
 @NgModule({
   imports: [
@@ -53,7 +54,8 @@ import { ScannerDialogComponent } from './initialisation/scanner-dialog/scanner-
     InitialisationComponent,
     InitialisationLampComponent,
     InitialisationScComponent,
-    ScannerDialogComponent
+    ScannerDialogComponent,
+    InitialisationLocationComponent
   ]
 })
 export class ManagementModule { }

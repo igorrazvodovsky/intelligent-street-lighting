@@ -1,10 +1,15 @@
-<h2 mat-dialog-title>Add group</h2>
+<h2 mat-dialog-title>Add area</h2>
 <mat-form-field>
-  <mat-label>Group name</mat-label>
-  <input cdkFocusInitial matInput />
+  <mat-label>Name</mat-label>
+  <input
+    cdkFocusInitial
+    matInput
+    placeholder="District, street or some other area"
+  />
 </mat-form-field>
+<!-- TODO: Replace with autocomplete. Keep root as default -->
 <mat-form-field>
-  <mat-label>Subgroup of</mat-label>
+  <mat-label>Subarea of</mat-label>
   <mat-select [(value)]="parent">
     <mat-option value="root">Daugavpils</mat-option>
     <mat-option value="one">First option</mat-option>
@@ -13,5 +18,12 @@
 </mat-form-field>
 <mat-dialog-actions align="end">
   <button mat-button [mat-dialog-close]="true">Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Add</button>
+  <button
+    mat-flat-button
+    color="accent"
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+  >
+    Add
+  </button>
 </mat-dialog-actions>

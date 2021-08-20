@@ -7,7 +7,6 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./initialisation-sc.component.scss']
 })
 export class InitialisationScComponent implements OnInit {
-  group = "option1"
   date = new FormControl(new Date());
   SCModel = 'SCM24UL8-868-44'
   SCModels = [
