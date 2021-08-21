@@ -57,6 +57,7 @@
 }
 .crumb > a[aria-current="page"] {
   color: hsla(0, 0%, 0%, 0.9);
+  fill: hsla(0, 0%, 0%, 0.9);
 }
 .crumb.tree-changed ~ * {
   display: none;

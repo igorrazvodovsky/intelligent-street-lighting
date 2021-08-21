@@ -4,12 +4,12 @@
 
 <nav class="breadcrumbs mat-h2" role="navigation">
   <a routerLink="/management/devices">
-    <span class="home-label">{{ city }}</span>
+    <span *ngIf="!groupId && !deviceId" class="home-label">{{ city }}</span>
+    <ng-container *ngIf="groupId || deviceId">
+      <mat-icon svgIcon="cityBold" aria-hidden="true"></mat-icon>
+      <span class="crumb-separator" aria-hidden="true">·</span>
+    </ng-container>
   </a>
-
-  <span *ngIf="groupId || deviceId" class="crumb-separator" aria-hidden="true"
-    >·</span
-  >
 
   <ng-container *ngIf="currentGroup">
     <span class="crumb" *ngFor="let level of currentGroup; let i = index">

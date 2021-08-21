@@ -8,9 +8,11 @@
 .text {
   &-primary {
     color: hsla(0, 0%, 0%, 0.9);
+    fill: hsla(0, 0%, 0%, 0.9);
   }
   &-secondary {
     color: hsla(0, 0%, 0%, 0.6);
+    fill: hsla(0, 0%, 0%, 0.6);
   }
   &-caps {
     text-transform: uppercase;

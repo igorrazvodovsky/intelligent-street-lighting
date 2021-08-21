@@ -262,11 +262,13 @@ button {
   button {
     @include transition;
     color: hsla(0, 0%, 0%, 0.6);
+    fill: hsla(0, 0%, 0%, 0.6);
     &:hover {
       color: hsla(0, 0%, 0%, 0.9);
+      fill: hsla(0, 0%, 0%, 0.9);
     }
   }
-  & :last-child {
+  & > :last-child {
     color: hsla(0, 0%, 0%, 0.9) !important;
   }
 }
