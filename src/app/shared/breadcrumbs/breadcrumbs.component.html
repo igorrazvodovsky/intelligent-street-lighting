@@ -13,9 +13,11 @@
 
   <ng-container *ngIf="currentGroup">
     <span class="crumb" *ngFor="let level of currentGroup; let i = index">
-      <a [routerLink]="'group/' + currentGroup[i].id">{{
-        currentGroup[i].name
-      }}</a>
+      <a
+        [attr.aria-current]="!deviceId ? 'page' : 'false'"
+        [routerLink]="'group/' + currentGroup[i].id"
+        >{{ currentGroup[i].name }}</a
+      >
       <span *ngIf="groupSiblings[i].length > 1" class="crumbicon">
         <mat-icon svgIcon="dropdownMedium" aria-hidden="true"></mat-icon>
         <select

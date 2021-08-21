@@ -53,29 +53,31 @@ export class MapComponent implements AfterViewInit, OnInit {
   //   });
   // }
 
-  initGroupsLayer() {
+  makeStatusMarker(clusterMarkers, childCount) {
+    let status = "active"
+    let icon = ""
+    const warning = clusterMarkers.filter(e => e.feature.properties.status === 'warning').length > 0
+    const danger = clusterMarkers.filter(e => e.feature.properties.status === 'danger').length > 0
+    const offline = clusterMarkers.filter(e => e.feature.properties.status === 'off').length == clusterMarkers.length
 
+    if (warning || danger) icon = this.iconAlert
+    if (warning) status = "warning"
+    if (danger) status = "danger"
+    if (offline) {
+      status = "off"
+      icon = this.iconOff
+    }
+    return L.divIcon({
+      className: 'marker--cluster ' + status, html: `<div>${icon} ${childCount}</div>`
+    });
+  }
+
+  initGroupsLayer() {
     // Markers for "device status" layer
     let markers = L.markerClusterGroup({
       iconCreateFunction: (cluster) => {
-        let status = "active"
-        let icon = ""
-
         const clusterMarkers = cluster.getAllChildMarkers()
-        const warning = clusterMarkers.filter(e => e.feature.properties.status === 'warning').length > 0
-        const danger = clusterMarkers.filter(e => e.feature.properties.status === 'danger').length > 0
-        const offline = clusterMarkers.filter(e => e.feature.properties.status === 'off').length == clusterMarkers.length
-
-        if (warning || danger) icon = this.iconAlert
-        if (warning) status = "warning"
-        if (danger) status = "danger"
-        if (offline) {
-          status = "off"
-          icon = this.iconOff
-        }
-        return L.divIcon({
-          className: 'marker--cluster ' + status, html: `<div>${icon} ${cluster.getChildCount()}</div>`
-        });
+        return this.makeStatusMarker(clusterMarkers, cluster.getChildCount())
       }
     });
 

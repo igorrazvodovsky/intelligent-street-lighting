@@ -254,10 +254,6 @@ button {
 }
 
 .breadcrumbs {
-  color: hsla(0, 0%, 0%, 0.6);
-  a {
-    text-decoration: none;
-  }
   a,
   button {
     @include transition;
@@ -267,9 +263,6 @@ button {
       color: hsla(0, 0%, 0%, 0.9);
       fill: hsla(0, 0%, 0%, 0.9);
     }
-  }
-  & > :last-child {
-    color: hsla(0, 0%, 0%, 0.9) !important;
   }
 }
 
