@@ -17,6 +17,7 @@ h3,
   font-weight: 500;
 }
 
-.mat-card-content > * + * {
-  margin-top: 0.25rem;
+.mat-card-content {
+  display: flex;
+  gap: 1ch;
 }

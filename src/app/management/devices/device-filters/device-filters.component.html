@@ -1,0 +1,36 @@
+<!-- color="accent" when filter is selected -->
+
+<mat-chip-list aria-label="Fish selection">
+  <mat-chip [matMenuTriggerFor]="typeFilterMenu">Type</mat-chip>
+  <mat-menu #typeFilterMenu="matMenu">
+    <button disabled mat-menu-item>All</button>
+    <button mat-menu-item>Lamps</button>
+    <button mat-menu-item>Segment controllers</button>
+    <button mat-menu-item>...</button>
+  </mat-menu>
+  <!-- all, lamps, SCs, etc. -->
+  <mat-chip [matMenuTriggerFor]="statusFilterMenu">Status</mat-chip>
+  <mat-menu #statusFilterMenu="matMenu">
+    <button mat-menu-item disabled>All</button>
+    <button mat-menu-item>Not responsing</button>
+    <button mat-menu-item>Offline</button>
+    <!-- TBD: 'New' as 'added recently' -->
+    <button mat-menu-item>New</button>
+  </mat-menu>
+  <mat-chip [matMenuTriggerFor]="profileFilterMenu">
+    <!-- <mat-icon class="small" matListIcon svgIcon="profileBold"></mat-icon> -->
+    Profile</mat-chip
+  >
+  <mat-menu #profileFilterMenu="matMenu">
+    <button mat-menu-item disabled>All</button>
+    <button *ngFor="let profile of profiles" mat-menu-item>
+      {{ profile.name }}
+    </button>
+  </mat-menu>
+
+  <!-- specify model, filter for devices with active events of specific type... -->
+  <mat-chip selected>
+    <!-- <mat-icon class="small" matListIcon svgIcon="filterBold"></mat-icon> -->
+    More filters • 2</mat-chip
+  >
+</mat-chip-list>

@@ -21,6 +21,7 @@ import { DeviceFriendsListComponent } from './device-detail/device-motion-sensor
 import { FormsModule } from '@angular/forms';
 import { GroupListItemComponent } from './group-list/group-list-item/group-list-item.component';
 import { GroupDialogComponent } from './group-dialog/group-dialog.component';
+import { DeviceFiltersComponent } from './device-filters/device-filters.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { GroupDialogComponent } from './group-dialog/group-dialog.component';
     DeviceHistoryComponent,
     DeviceFriendsListComponent,
     GroupListItemComponent,
-    GroupDialogComponent
+    GroupDialogComponent,
+    DeviceFiltersComponent
   ],
   imports: [
     CommonModule,

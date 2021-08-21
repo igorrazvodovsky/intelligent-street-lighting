@@ -30,7 +30,10 @@ export enum Bold {
   Minus = 'minus',
   Close = 'close',
   ZoomIn = 'zoomIn',
-  ZoomOut = 'zoomOut'
+  ZoomOut = 'zoomOut',
+  More = 'more',
+  MoreCircle = 'moreCircle',
+  MoreVertical = 'moreVertical'
 }
 
 export enum Medium {

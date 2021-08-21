@@ -1,26 +1,7 @@
 <!-- TODO: Loading: devices, group, profile -->
 <!-- TODO: Error handling -->
 
-<mat-chip-list aria-label="Fish selection">
-  <mat-chip>Type</mat-chip>
-  <!-- all, lamps, SCs, etc. -->
-  <mat-chip [matMenuTriggerFor]="statusFilterMenu">Status</mat-chip>
-  <mat-menu #statusFilterMenu="matMenu">
-    <button mat-menu-item>All</button>
-    <button mat-menu-item>Not responsing</button>
-    <button mat-menu-item>Offline</button>
-    <!-- TBD: 'New' as 'added recently' -->
-    <button mat-menu-item>New</button>
-  </mat-menu>
-  <!-- specify model, filter for devices with active events of specific type... -->
-  <mat-chip
-    ><mat-icon class="small" matListIcon svgIcon="filterBold"></mat-icon>
-    Filters</mat-chip
-  >
-
-  <!-- <mat-chip color="primary" selected>Primary property</mat-chip>
-  <mat-chip color="accent" selected>Accent property</mat-chip> -->
-</mat-chip-list>
+<device-filters></device-filters>
 
 <mat-selection-list role="list" [multiple]="false">
   <h2 matSubheader>Profile</h2>
