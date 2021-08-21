@@ -10,7 +10,6 @@ import { EventService } from '~local/services/event.service';
 export class DeviceAlertsComponent implements OnInit {
   @Input() deviceId: number;
   alerts: DeviceEvent[] = [];
-  on = true;
 
   constructor(private service: EventService) { }
 
