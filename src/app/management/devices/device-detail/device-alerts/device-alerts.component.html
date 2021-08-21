@@ -1,0 +1,16 @@
+<!-- TODO: Filter out alerts with tasks -->
+<section *ngFor="let alert of alerts" class="alert">
+  <div>
+    <mat-icon
+      inline
+      matListIcon
+      svgIcon="alertMedium"
+      aria-hidden="true"
+    ></mat-icon>
+    {{ alert.title }}
+  </div>
+  <div>
+    <button mat-button>Create task</button>
+    <button mat-button>Dismiss</button>
+  </div>
+</section>

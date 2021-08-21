@@ -12,7 +12,7 @@ import { PopupService } from '~local/services/popup.service';
 import { ShapeService } from '~local/services/shape.service';
 import { DevicesRoutingModule } from './devices-routing.module';
 import { GroupListComponent } from './group-list/group-list.component';
-import { DeviceOverviewComponent } from './device-detail/device-overview/device-overview.component';
+import { DeviceLampComponent } from './device-detail/device-lamp/device-lamp.component';
 import { DeviceMotionSensorComponent } from './device-detail/device-motion-sensor/device-motion-sensor.component';
 import { DeviceMetricsComponent } from './device-detail/device-metrics/device-metrics.component';
 import { DeviceInfoComponent } from './device-detail/device-info/device-info.component';
@@ -22,6 +22,9 @@ import { FormsModule } from '@angular/forms';
 import { GroupListItemComponent } from './group-list/group-list-item/group-list-item.component';
 import { GroupDialogComponent } from './group-dialog/group-dialog.component';
 import { DeviceFiltersComponent } from './device-filters/device-filters.component';
+import { DeviceScComponent } from './device-detail/device-sc/device-sc.component';
+import { DeviceAlertsComponent } from './device-detail/device-alerts/device-alerts.component';
+import { DeviceTasksComponent } from './device-detail/device-tasks/device-tasks.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,7 @@ import { DeviceFiltersComponent } from './device-filters/device-filters.componen
     ChartComponent,
     MapComponent,
     GroupListComponent,
-    DeviceOverviewComponent,
+    DeviceLampComponent,
     DeviceMotionSensorComponent,
     DeviceMetricsComponent,
     DeviceInfoComponent,
@@ -39,7 +42,10 @@ import { DeviceFiltersComponent } from './device-filters/device-filters.componen
     DeviceFriendsListComponent,
     GroupListItemComponent,
     GroupDialogComponent,
-    DeviceFiltersComponent
+    DeviceFiltersComponent,
+    DeviceScComponent,
+    DeviceAlertsComponent,
+    DeviceTasksComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,55 @@
+<device-alerts [deviceId]="device.id"></device-alerts>
+<device-tasks [deviceId]="device.id"></device-tasks>
+
+<mat-selection-list role="list" [multiple]="false">
+  <h3 matSubheader>Connected devices</h3>
+  <mat-list-option role="listitem">
+    <div matLine>Dzelzceļnieks</div>
+    <span matLine class="text-secondary">26 lamps, default profile</span>
+  </mat-list-option>
+  <mat-list-option role="listitem">
+    <div matLine>Cietoksnis</div>
+    <span matLine class="text-secondary">139 lamps, 2 groups, 3 profiles</span>
+  </mat-list-option>
+  <mat-list-option role="listitem">
+    <div matLine>Unassigned</div>
+    <span matLine class="text-secondary">2 lamps</span>
+  </mat-list-option>
+</mat-selection-list>
+
+<!-- Properties -->
+<!-- TBD: Door status is irrelevant as long as it's closed -->
+
+<!-- Actions -->
+
+<mat-selection-list role="list" [multiple]="false">
+  <mat-list-option role="listitem">
+    <mat-icon matListIcon svgIcon="ticketRegular" aria-hidden="true"></mat-icon>
+    <div matLine>Create task</div>
+  </mat-list-option>
+  <mat-list-option role="listitem" (click)="on = !on">
+    <mat-icon
+      matListIcon
+      [svgIcon]="on ? 'cancelCircleRegular' : 'checkCircleRegular'"
+      aria-hidden="true"
+    ></mat-icon>
+    <div matLine>Turn {{ on ? "off" : "on" }}</div>
+  </mat-list-option>
+  <mat-list-option role="listitem" (click)="powerlines = !powerlines">
+    <mat-icon matListIcon svgIcon="powerRegular" aria-hidden="true"></mat-icon>
+    <div matLine>{{ powerlines ? "Import" : "Clear" }} powerlines</div>
+  </mat-list-option>
+  <mat-list-option role="listitem">
+    <mat-icon matListIcon svgIcon="moveRegular" aria-hidden="true"></mat-icon>
+    <div matLine>Move</div>
+  </mat-list-option>
+  <mat-list-option disabled role="listitem">
+    <mat-icon matListIcon svgIcon="firmwareRegular"></mat-icon>
+    <div matLine>Update firmware</div>
+    <span class="text-secondary" matLine>Up to date — 0.1.3.</span>
+  </mat-list-option>
+  <mat-list-option role="listitem">
+    <mat-icon matListIcon svgIcon="deleteRegular"></mat-icon>
+    <div matLine>Delete</div>
+  </mat-list-option>
+</mat-selection-list>

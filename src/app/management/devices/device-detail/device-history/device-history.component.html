@@ -6,6 +6,14 @@
       <h3>John Smith</h3>
       <small class="text-secondary">{{ event.created | date: "short" }}</small>
     </div>
-    <p matLine>Changed {{ event.property }} to {{ event.to }}</p>
+    <p matLine>Changed {{ event.property }} to {{ event.to }}.</p>
+  </mat-list-item>
+  <!-- Always has at least one event — installation/initialisation -->
+  <mat-list-item class="entry">
+    <div matLine>
+      <h3>Adam Smith</h3>
+      <small class="text-secondary">8/20/21</small>
+    </div>
+    <p matLine>Installed device.</p>
   </mat-list-item>
 </mat-selection-list>

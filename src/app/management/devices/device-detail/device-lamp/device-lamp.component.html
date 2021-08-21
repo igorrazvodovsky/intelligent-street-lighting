@@ -1,31 +1,8 @@
 <!-- TODO: Event with task -->
 <!-- TODO: Event without task -->
 
-<!-- TODO: Filter out alerts with tasks -->
-<section *ngFor="let alert of alerts" class="alert">
-  <div>
-    <mat-icon
-      inline
-      matListIcon
-      svgIcon="alertMedium"
-      aria-hidden="true"
-    ></mat-icon>
-    {{ alert.title }}
-  </div>
-  <div>
-    <button mat-button>Create task</button>
-    <button mat-button>Dismiss</button>
-  </div>
-</section>
-
-<!-- Filter out completed tasks -->
-<section id="device-tasks">
-  <task-card
-    [deviceInfo]="false"
-    *ngFor="let task of activeTasks"
-    [task]="task"
-  ></task-card>
-</section>
+<device-alerts [deviceId]="device.id"></device-alerts>
+<device-tasks [deviceId]="device.id"></device-tasks>
 
 <mat-list role="list">
   <h3 matSubheader>Profile</h3>

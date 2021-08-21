@@ -7,7 +7,7 @@ import { distinctUntilChanged } from 'rxjs/operators';
 import { Device } from '~local/types'
 import { Router, ActivatedRoute, Event, NavigationEnd } from '@angular/router';
 
-interface Crumb { name: string, id: number };
+interface Crumb { name: string, id: number, type?: string };
 
 @Component({
   selector: 'breadcrumbs',
@@ -71,7 +71,7 @@ export class BreadcrumbsComponent implements OnInit {
           this.currentDevice = device
           // ...siblings
           this.service.getDevicesByGroup(device.groupId).subscribe(devices => {
-            this.devices = devices.map(device => ({ name: device.name, id: device.id }))
+            this.devices = devices.map(device => ({ name: device.name, id: device.id, type: device.type }))
           });
           // group
           if (this.groupId !== device.groupId) {

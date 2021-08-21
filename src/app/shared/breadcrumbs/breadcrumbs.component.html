@@ -1,5 +1,6 @@
 <!-- TODO: Group of one → (separator!) → child groups -->
 <!-- TODO: Click on the last/current opens its renaming -->
+<!-- TODO: Replace selects with material menu -->
 
 <nav class="breadcrumbs mat-h2" role="navigation">
   <a routerLink="/management/devices">
@@ -34,7 +35,10 @@
   </ng-container>
 
   <span *ngIf="currentDevice" class="crumb">
-    <a aria-current="page"> {{ currentDevice.name }}</a>
+    <a aria-current="page"
+      >{{ currentDevice.type == "lamp" ? "Lamp" : "Segment controller" }}
+      {{ currentDevice.name }}</a
+    >
     <span *ngIf="devices.length > 1" class="crumbicon">
       <mat-icon svgIcon="dropdownMedium" aria-hidden="true"></mat-icon>
       <select

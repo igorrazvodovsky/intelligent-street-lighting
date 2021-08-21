@@ -6,7 +6,7 @@
       "properties": {
         "id": 11,
         "type": "sc",
-        "name": "SC11",
+        "name": "11",
         "groupId": 1,
         "status": "error",
         "model": "SCM24UL8-868-44",
@@ -549,7 +549,7 @@
         "id": 37,
         "type": "sc",
         "groupId": 1,
-        "name": "SC12",
+        "name": "12",
         "status": "active",
         "model": "SCM24UL8-868-44",
         "firmware": "0.1.0"

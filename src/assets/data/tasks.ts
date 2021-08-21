@@ -7,7 +7,7 @@ export const TASKS: Task[] = [
     title: 'Fix communication failure',
     status: 'New',
     priority: 'Low',
-    deviceId: 11,
+    deviceId: 12,
     eventId: 1,
     assignee: 'Niall Mercado',
     created: new Date('1/1/16'),

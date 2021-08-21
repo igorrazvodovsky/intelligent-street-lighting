@@ -457,6 +457,13 @@ input.time {
   }
 }
 
+// Override ma-list disabled styles
+.mat-list-item-disabled {
+  background: inherit;
+  color: hsla(0, 0%, 0%, 0.3) !important;
+  fill: hsla(0, 0%, 0%, 0.3);
+}
+
 // Disable fixed icon size in list items
 .mat-list-item.list-item-with-btn {
   .mat-list-icon {

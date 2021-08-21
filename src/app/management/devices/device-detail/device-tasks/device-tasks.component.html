@@ -1,0 +1,6 @@
+<!-- TODO: Filter out completed tasks but add a link to archive (filtered by device) -->
+<task-card
+  [deviceInfo]="false"
+  *ngFor="let task of activeTasks"
+  [task]="task"
+></task-card>
