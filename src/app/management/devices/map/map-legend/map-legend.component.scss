@@ -1,0 +1,52 @@
+label {
+  padding-inline-start: 1.5rem;
+}
+
+ul {
+  list-style: none;
+  margin: 1rem 1.5rem 1rem 0;
+  list-style-position: outside;
+  padding-inline-start: 1.5rem;
+}
+
+li {
+  &::before {
+    content: "";
+    background: lawngreen;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-margin-end: 0.5rem;
+    margin-inline-end: 0.5rem;
+  }
+  &.green::before,
+  &.color-1::before {
+    background: green;
+  }
+  &.yellow::before,
+  &.color-2::before {
+    background: gold;
+  }
+  &.red::before,
+  &.color-3::before {
+    background: red;
+  }
+  &.navy::before,
+  &.color-4::before {
+    background: navy;
+  }
+  &.orange::before,
+  &.color-5::before {
+    background: orange;
+  }
+  &.violet::before,
+  &.color-6::before {
+    background: violet;
+  }
+  &.grey::before,
+  &.color-7::before {
+    background: grey;
+  }
+}

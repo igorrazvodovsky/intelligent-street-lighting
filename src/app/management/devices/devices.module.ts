@@ -25,6 +25,8 @@ import { DeviceFiltersComponent } from './device-filters/device-filters.componen
 import { DeviceScComponent } from './device-detail/device-sc/device-sc.component';
 import { DeviceAlertsComponent } from './device-detail/device-alerts/device-alerts.component';
 import { DeviceTasksComponent } from './device-detail/device-tasks/device-tasks.component';
+import { MapLegendComponent } from './map/map-legend/map-legend.component';
+import { MapLayerMenuComponent } from './map/map-layer-menu/map-layer-menu.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { DeviceTasksComponent } from './device-detail/device-tasks/device-tasks.
     DeviceFiltersComponent,
     DeviceScComponent,
     DeviceAlertsComponent,
-    DeviceTasksComponent
+    DeviceTasksComponent,
+    MapLegendComponent,
+    MapLayerMenuComponent
   ],
   imports: [
     CommonModule,

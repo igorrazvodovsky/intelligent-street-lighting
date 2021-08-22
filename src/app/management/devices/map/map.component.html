@@ -9,6 +9,7 @@
     >
       <mat-icon svgIcon="zoomInBold" aria-hidden="true"></mat-icon>
     </button>
+
     <button
       (click)="map.zoomOut(1)"
       type="button"
@@ -17,41 +18,8 @@
     >
       <mat-icon svgIcon="zoomOutBold" aria-hidden="true"></mat-icon>
     </button>
-    <button
-      [matMenuTriggerFor]="menuLayers"
-      type="button"
-      aria-label="Toggle layers menu"
-      mat-icon-button
-    >
-      <mat-icon svgIcon="layersBold" aria-label="Layer toggle icon"></mat-icon>
-    </button>
-
-    <mat-menu #menuLayers="matMenu">
-      <!-- <button mat-menu-item>All</button>
-      <button mat-menu-item>Alarm</button>
-      <button mat-menu-item>No power</button>
-      <button mat-menu-item>Not responding</button>
-      <mat-divider></mat-divider>
-      <button mat-menu-item>Off</button>
-      <button mat-menu-item>Active</button>
-      <button mat-menu-item>Inactive</button>
-      <button mat-menu-item>Uninitialised</button>
-      <mat-divider></mat-divider> -->
-      <button mat-menu-item disabled>Status</button>
-      <button mat-menu-item>Profile</button>
-      <button mat-menu-item>Segment controllers</button>
-      <mat-divider></mat-divider>
-      <!-- TODO: check for a11y issues -->
-      <!-- https://github.com/angular/components/issues/9739-->
-      <button mat-menu-item>
-        Sensor icons
-        <mat-slide-toggle></mat-slide-toggle>
-      </button>
-      <button mat-menu-item>
-        Device names
-        <mat-slide-toggle [(ngModel)]="showNames"></mat-slide-toggle>
-      </button>
-    </mat-menu>
+    <map-legend></map-legend>
+    <map-layer-menu></map-layer-menu>
   </div>
 </div>
 

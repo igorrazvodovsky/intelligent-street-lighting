@@ -6,24 +6,30 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { GroupDialogComponent } from './group-dialog/group-dialog.component'
 
+type MapPosition = {
+  lat: number,
+  lng: number,
+  zoom: number
+}
+
 @Component({
   selector: 'devices',
   templateUrl: './devices.component.html',
   styleUrls: ['./devices.component.scss']
 })
 export class DevicesComponent implements OnInit {
-  deviceId: string;
-  groupId: string;
-  private childParamSubscription: Subscription;
-
-  opened: boolean;
-  maximized: boolean = false;
-  isHandset: boolean;
+  deviceId: string
+  groupId: string
+  private childParamSubscription: Subscription
+  mapPosition: MapPosition
+  opened: boolean
+  maximized: boolean = false
+  isHandset: boolean
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
       shareReplay()
-    );
+    )
 
   constructor(
     private breakpointObserver: BreakpointObserver,

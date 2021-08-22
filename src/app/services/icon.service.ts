@@ -34,7 +34,8 @@ export enum Bold {
   More = 'more',
   MoreCircle = 'moreCircle',
   MoreVertical = 'moreVertical',
-  City = 'city'
+  City = 'city',
+  Info = 'info'
 }
 
 export enum Medium {
