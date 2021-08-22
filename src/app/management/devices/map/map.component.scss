@@ -44,21 +44,30 @@ mgl-map {
   margin-right: 0;
 }
 
-#map-controls {
-  pointer-events: none;
-  height: 100%;
-  width: 100%;
-  position: relative;
-  // > leaflet pane (400)
-  z-index: 500;
+.map-controls {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
 
-  * {
-    pointer-events: initial;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: row-reverse;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
   }
 
-  #map-controls__layers {
-    position: absolute;
-    right: 1rem;
-    bottom: 1rem;
+  &__container {
+    pointer-events: none;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    // > leaflet pane (400)
+    z-index: 500;
+
+    * {
+      pointer-events: initial;
+    }
   }
 }

@@ -35,7 +35,8 @@ export class MapComponent implements AfterViewInit, OnInit {
     this.map = L.map('map', {
       center: [55.8747, 26.5362],
       zoom: 13,
-      zoomControl: false
+      zoomControl: false,
+      zoomSnap: 0.5
     });
     const tiles = L.tileLayer('https://api.mapbox.com/styles/v1/igorrazvodovsky/cks5ww8yk0kxm17p4t4lcftfr/tiles/{z}/{x}/{y}?access_token=' + this.accessToken, {
       maxZoom: 18,
@@ -127,7 +128,8 @@ export class MapComponent implements AfterViewInit, OnInit {
     // const latLngs = [ marker.getLatLng() ]
     // const markerBounds = L.latLngBounds(latLngs)
     // this.map.fitBounds(markerBounds)
-    this.map.fitBounds(markers.getBounds())
+    // https://leafletjs.com/reference-1.7.1.html#map-flyto
+    this.map.fitBounds(markers.getBounds(), {padding: [50, 50]})
   }
 
   ngOnInit(): void {

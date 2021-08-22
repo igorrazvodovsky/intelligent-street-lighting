@@ -1,3 +1,5 @@
+<span class="mat-body-2 text-secondary">Status</span>
+
 <button
   [matMenuTriggerFor]="menuLegend"
   type="button"
@@ -8,17 +10,17 @@
 </button>
 
 <mat-menu #menuLegend="matMenu">
-  <!-- <label class="text-secondary mat-body-2">Status</label>
+  <label class="text-secondary mat-body-2">Status</label>
   <ul role="list">
     <li [class]="status.color" *ngFor="let status of statuses">
       {{ status.name }}
     </li>
-  </ul> -->
+  </ul>
 
-  <label class="text-secondary mat-body-2">Profiles</label>
+  <!-- <label class="text-secondary mat-body-2">Profiles</label>
   <ul role="list">
     <li [class]="'color-' + profile.id" *ngFor="let profile of profiles">
       {{ profile.name }}
     </li>
-  </ul>
+  </ul> -->
 </mat-menu>
