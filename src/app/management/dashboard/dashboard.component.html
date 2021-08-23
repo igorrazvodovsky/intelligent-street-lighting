@@ -2,8 +2,7 @@
   <div class="page-title">{{ city }}</div>
 </app-page-actions>
 
-<section id="main">
-  <!-- <mat-card id="lucidus">
+<!-- <mat-card id="lucidus">
     <mat-card-header>
       <div mat-card-avatar>
         <mat-icon svgIcon="chartBold"></mat-icon>
@@ -15,8 +14,9 @@
       ></mat-card-subtitle>
     </mat-card-header>
   </mat-card> -->
-  <h2 class="text-heading">Stats</h2>
-  <section class="stats">
+
+<!-- <h2 class="text-heading">Stats</h2> -->
+<!-- <section class="stats">
     <mat-card>
       <mat-card-header>
         <mat-card-title>61</mat-card-title>
@@ -35,18 +35,33 @@
         <mat-card-subtitle>Something else</mat-card-subtitle>
       </mat-card-header>
     </mat-card>
+  </section> -->
+
+<ng-container *ngIf="isHandset; else desktop">
+  <!-- TODO: Remember selected tab -->
+  <mat-tab-group>
+    <mat-tab label="Areas"> <areas></areas> </mat-tab>
+    <mat-tab label="Tasks"> <tasks></tasks> </mat-tab>
+    <mat-tab label="Activity"> <activity></activity> </mat-tab>
+  </mat-tab-group>
+</ng-container>
+<ng-template #desktop>
+  <section id="main">
+    <h2 class="text-heading">Areas</h2>
+    <areas></areas>
+    <!-- Areas/groups status. e.g. traffic  -->
+    <!-- Pinned -->
+    <section class="empty">
+      <h3>Empty state</h3>
+      <p>Do stuff or wait for something to happen.</p>
+    </section>
   </section>
-  <areas></areas>
-  <!-- Areas/groups status. e.g. traffic  -->
-  <!-- Pinned -->
-  <section class="empty">
-    <h3>Empty state</h3>
-    <p>Do stuff or wait for something to happen.</p>
+  <section id="tasks">
+    <h2 class="text-heading">Tasks</h2>
+    <tasks></tasks>
   </section>
-</section>
-<section id="tasks">
-  <tasks></tasks>
-</section>
-<section id="activity">
-  <activity></activity>
-</section>
+  <section id="activity">
+    <h2 class="text-heading">Activity</h2>
+    <activity></activity>
+  </section>
+</ng-template>

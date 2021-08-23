@@ -1,6 +1,8 @@
 .mat-drawer {
-  background: transparent;
-  padding: 5rem 0.5rem 1rem 0.5rem;
+  @media (min-width: 600px) {
+    background: transparent;
+    padding: 5rem 0.5rem 1rem 0.5rem;
+  }
   pointer-events: none;
 }
 
@@ -9,12 +11,17 @@
 }
 
 .mat-drawer-side {
-  background: transparent;
+  @media (min-width: 600px) {
+    background: transparent;
+  }
   border-right: 0;
 }
 
 .mat-toolbar {
-  padding-left: 3.5rem;
+  @media (min-width: 600px) {
+    padding-left: 3.5rem;
+  }
+
   position: absolute;
   z-index: 500;
   flex: 1 0 64px;

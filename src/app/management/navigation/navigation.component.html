@@ -7,39 +7,33 @@
     [opened]="isHandset === false"
   >
     <div>
-      <button
-        mat-icon-button
-        aria-label="Dashboard"
-        routerLink="./"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        <mat-icon svgIcon="dashboardBold" aria-hidden="true"></mat-icon>
-      </button>
-      <button
-        mat-icon-button
-        aria-label="Devices"
-        routerLink="./devices"
-        routerLinkActive="active"
-      >
-        <mat-icon svgIcon="planetBold" aria-hidden="true"></mat-icon>
-      </button>
-      <button
-        mat-icon-button
-        aria-label="Profiles"
-        routerLink="./profiles"
-        routerLinkActive="active"
-      >
-        <mat-icon svgIcon="profileBold" aria-hidden="true"></mat-icon>
-      </button>
-      <button
-        mat-icon-button
-        aria-label="Reports"
-        routerLink="./reports"
-        routerLinkActive="active"
-      >
-        <mat-icon svgIcon="chartBold" aria-hidden="true"></mat-icon>
-      </button>
+      <mat-list *ngIf="isHandset; else desktopPrimaryNav">
+        <mat-list-item
+          *ngFor="let navItem of primaryNavItems"
+          [routerLink]="navItem.link"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <mat-icon
+            mat-list-icon
+            [svgIcon]="navItem.icon"
+            aria-hidden="true"
+          ></mat-icon>
+          <div mat-line>{{ navItem.label }}</div>
+        </mat-list-item>
+      </mat-list>
+      <ng-template #desktopPrimaryNav>
+        <button
+          *ngFor="let navItem of primaryNavItems"
+          mat-icon-button
+          [attr.aria-label]="navItem.label"
+          [routerLink]="navItem.route"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <mat-icon [svgIcon]="navItem.icon" aria-hidden="true"></mat-icon>
+        </button>
+      </ng-template>
     </div>
     <div class="text-secondary">
       <button

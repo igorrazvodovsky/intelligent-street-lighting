@@ -3,7 +3,10 @@
   // grid-template-columns: repeat(3, minmax(320px, 1fr));
   grid-template-columns: minmax(40vw, 1fr) minmax(320px, 1fr) minmax(320px, 1fr);
 
-  padding: 0 0 0 4.5rem;
+  @media (min-width: 600px) {
+    padding: 0 0 0 4.5rem;
+  }
+
   height: 100%;
 
   & > app-page-actions {
@@ -77,4 +80,12 @@ section#main {
 
 .empty {
   border: 1px dashed hsla(0, 0%, 0%, 0.1);
+}
+
+// Mobile
+// TODO: Move
+
+.mat-tab-group {
+  margin-top: 4rem;
+  width: 100vw;
 }

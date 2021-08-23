@@ -3,6 +3,9 @@
 :host {
   display: grid;
   gap: 0.5rem;
+  @media (max-width: 599px) {
+    padding: 0 1rem;
+  }
 }
 
 h2 {

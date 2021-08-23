@@ -12,7 +12,7 @@ import { Router, NavigationEnd, Event } from '@angular/router';
 })
 export class NavigationComponent {
   modalMode = false;
-  modalModeRoutes = ["/management/initialise"]
+  modalModeRoutes = ['/management/initialise']
   search = false;
   isHandset: boolean;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -20,7 +20,28 @@ export class NavigationComponent {
       map(result => result.matches),
       shareReplay()
     );
-
+  primaryNavItems = [
+    {
+      label: 'Dashboard',
+      route: './',
+      icon: 'dashboardBold'
+    },
+        {
+      label: 'Devices',
+      route: './devices',
+      icon: 'planetBold'
+    },
+    {
+      label: 'Profiles',
+      route: './profiles',
+      icon: 'profileBold'
+    },
+    {
+      label: 'Reports',
+      route: './reports',
+      icon: 'chartBold'
+    }
+  ]
   constructor(
     public router: Router,
     public authService: AuthService,
