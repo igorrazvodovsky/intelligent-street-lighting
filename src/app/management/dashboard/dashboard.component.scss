@@ -2,11 +2,12 @@
   display: grid;
   // grid-template-columns: repeat(3, minmax(320px, 1fr));
   grid-template-columns: minmax(40vw, 1fr) minmax(320px, 1fr) minmax(320px, 1fr);
-
   @media (min-width: 600px) {
-    padding: 0 0 0 4.5rem;
+    padding-left: 4.5rem;
   }
-
+  @media (max-width: 599px) {
+    padding-top: 3.5rem;
+  }
   height: 100%;
 
   & > app-page-actions {
@@ -37,9 +38,6 @@ section#activity {
 
 section#main {
   padding-left: 0rem;
-  & > * + * {
-    margin-top: 1.5rem;
-  }
   .mat-card-subtitle {
     margin-bottom: 0;
   }
@@ -86,6 +84,5 @@ section#main {
 // TODO: Move
 
 .mat-tab-group {
-  margin-top: 4rem;
   width: 100vw;
 }

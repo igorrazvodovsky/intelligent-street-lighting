@@ -10,7 +10,9 @@ aside {
 }
 
 section {
-  display: grid;
-  gap: 5rem;
-  grid-template-columns: 1fr 3fr 1fr;
+  @media (min-width: 600px) {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    gap: 5rem;
+  }
 }

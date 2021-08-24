@@ -1,24 +1,3 @@
-section {
-  margin: 2rem 1rem 2rem 0;
-  display: grid;
-  gap: 5rem;
-  grid-template-columns: 1fr 3fr 1fr;
-}
-
 .mat-form-field {
   width: 100%;
-}
-
-.row {
-  display: flex;
-  flex-direction: row;
-}
-
-.col {
-  flex: 1;
-  margin-right: 2rem;
-}
-
-.col:last-child {
-  margin-right: 0;
 }

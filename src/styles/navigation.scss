@@ -1,0 +1,36 @@
+// TODO: Move to component?
+
+#sidenav .mat-drawer-inner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  button {
+    display: block;
+  }
+}
+
+.mat-drawer-content {
+  display: flex !important;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.mat-toolbar {
+  .mat-form-field-suffix {
+    top: 0 !important;
+    .mat-icon {
+      line-height: 1;
+    }
+  }
+}
+
+// Click-through toolbar
+
+.mat-toolbar button,
+.mat-toolbar .mat-chip,
+.mat-drawer button,
+.page-title,
+.breadcrumbs,
+.mat-drawer {
+  pointer-events: initial !important;
+}

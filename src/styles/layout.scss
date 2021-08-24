@@ -1,0 +1,22 @@
+@media (min-width: 600px) {
+  .row {
+    display: flex;
+    flex-direction: row;
+  }
+  .col {
+    flex: 1;
+    margin-right: 2rem;
+  }
+  .col:last-child {
+    margin-right: 0;
+  }
+}
+
+section.grid {
+  padding: 2rem 1rem;
+  @media (min-width: 600px) {
+    display: grid;
+    gap: 5rem;
+    grid-template-columns: 1fr 3fr 1fr;
+  }
+}

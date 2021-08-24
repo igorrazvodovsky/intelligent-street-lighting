@@ -1,2 +1,48 @@
 // Angular Material customisation
 // TODO: Do this through theme customisation
+
+.mat-slider {
+  width: 100%;
+}
+
+.mat-form-field.no-label .mat-form-field-infix {
+  padding-top: 0;
+}
+
+.mat-tab-link {
+  min-width: 0 !important;
+}
+
+// Vertical compensation for custom icon set
+.mat-icon-button i,
+.mat-icon-button .mat-icon,
+.mat-mini-fab .mat-icon {
+  transform: translateY(-1px);
+}
+
+.mat-icon.small {
+  height: 1rem;
+  width: 1rem;
+  svg {
+    height: 1rem;
+    width: 1rem;
+    transform: scale(1);
+  }
+}
+
+.mat-chip.mat-standard-chip.outlined {
+  background-color: transparent;
+  border: 1px solid hsla(0, 0%, 0%, 0.1);
+  color: hsla(0, 0%, 0%, 0.6);
+  font-weight: normal;
+  & > .mat-icon {
+    transform: translateX(-0.25rem);
+    height: 1rem;
+  }
+}
+
+// .mat-card,
+// .mat-accordion .mat-expansion-panel,
+// .mat-form-field-appearance-fill .mat-form-field-flex {
+//   border-radius: 0 !important;
+// }

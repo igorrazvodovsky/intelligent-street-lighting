@@ -1,8 +1,11 @@
 @import "mixins";
 @import "map";
+@import "layout";
 @import "typography";
+@import "navigation";
 @import "highcharts";
 @import "mobile";
+@import "mat";
 // https://material.angular.io/guide/theming
 @import "~@angular/material/theming";
 
@@ -71,25 +74,6 @@ body {
   font-family: "General Sans", "Helvetica Neue", sans-serif;
 }
 
-// NAVIGATION
-// TODO: Move to component?
-
-#sidenav .mat-drawer-inner-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  button {
-    display: block;
-  }
-}
-
-.mat-drawer-content {
-  display: flex !important;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  // margin-left: 0 !important;
-}
-
 // TODO: Better scroll fix?
 .main-content {
   overflow-y: scroll !important;
@@ -107,10 +91,6 @@ button {
   @include transition;
 }
 
-.mat-tab-link {
-  min-width: 0 !important;
-}
-
 .mat-icon.mat-list-avatar svg {
   width: 1.5rem;
 }
@@ -125,34 +105,6 @@ button {
   }
 }
 
-// Vertical compensation for custom icon set
-.mat-icon-button i,
-.mat-icon-button .mat-icon,
-.mat-mini-fab .mat-icon {
-  transform: translateY(-1px);
-}
-
-.mat-icon.small {
-  height: 1rem;
-  width: 1rem;
-  svg {
-    height: 1rem;
-    width: 1rem;
-    transform: scale(1);
-  }
-}
-
-.mat-chip.mat-standard-chip.outlined {
-  background-color: transparent;
-  border: 1px solid hsla(0, 0%, 0%, 0.1);
-  color: hsla(0, 0%, 0%, 0.6);
-  font-weight: normal;
-  & > .mat-icon {
-    transform: translateX(-0.25rem);
-    height: 1rem;
-  }
-}
-
 .mat-card-header-text:first-child {
   margin: 0 !important;
 }
@@ -161,25 +113,10 @@ button {
   color: hsla(0, 0%, 0%, 0.3);
 }
 
-.mat-toolbar button,
-.mat-toolbar .mat-chip,
-.mat-drawer button,
-.page-title,
-.breadcrumbs {
-  pointer-events: initial;
-}
-
 .mat-card,
 .mat-expansion-panel {
   box-shadow: 0px 0px 0px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0px rgb(0 0 0 / 14%),
     0px 0px 0px 0px rgb(0 0 0 / 12%) !important;
-}
-
-// TODO: Move to theme
-.mat-card,
-.mat-accordion .mat-expansion-panel,
-.mat-form-field-appearance-fill .mat-form-field-flex {
-  border-radius: 0 !important;
 }
 
 .mat-form-field-underline {
@@ -254,6 +191,7 @@ button {
   }
 }
 
+// TODO: Move to component
 .breadcrumbs {
   a,
   button {
@@ -287,14 +225,6 @@ button {
     display: inline-flex;
     gap: 1ch;
   }
-}
-
-.mat-slider {
-  width: 100%;
-}
-
-.mat-form-field.no-label .mat-form-field-infix {
-  padding-top: 0;
 }
 
 // Aligning icons in input fields
@@ -398,20 +328,7 @@ input.time {
   color: hsla(0, 0%, 0%, 0.9);
 }
 
-.mat-toolbar {
-  .mat-form-field-suffix {
-    top: 0 !important;
-    .mat-icon {
-      line-height: 1;
-    }
-  }
-}
-
 .list-max-toggle {
-  // position: absolute !important;
-  // right: 0.5rem;
-  // top: 0.75rem;
-  // z-index: 500;
   order: 3;
 }
 

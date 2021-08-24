@@ -26,7 +26,7 @@ export class NavigationComponent {
       route: './',
       icon: 'dashboardBold'
     },
-        {
+    {
       label: 'Devices',
       route: './devices',
       icon: 'planetBold'
@@ -41,7 +41,8 @@ export class NavigationComponent {
       route: './reports',
       icon: 'chartBold'
     }
-  ]
+  ];
+
   constructor(
     public router: Router,
     public authService: AuthService,

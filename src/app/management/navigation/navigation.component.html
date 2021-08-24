@@ -1,3 +1,5 @@
+<!-- TODO: Fix item active state -->
+
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav
     #drawer
@@ -7,10 +9,14 @@
     [opened]="isHandset === false"
   >
     <div>
-      <mat-list *ngIf="isHandset; else desktopPrimaryNav">
-        <mat-list-item
+      <mat-selection-list
+        [multiple]="false"
+        *ngIf="isHandset; else desktopPrimaryNav"
+      >
+        <mat-list-option
+          (click)="drawer.close()"
           *ngFor="let navItem of primaryNavItems"
-          [routerLink]="navItem.link"
+          [routerLink]="navItem.route"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
         >
@@ -20,8 +26,8 @@
             aria-hidden="true"
           ></mat-icon>
           <div mat-line>{{ navItem.label }}</div>
-        </mat-list-item>
-      </mat-list>
+        </mat-list-option>
+      </mat-selection-list>
       <ng-template #desktopPrimaryNav>
         <button
           *ngFor="let navItem of primaryNavItems"
@@ -36,38 +42,73 @@
       </ng-template>
     </div>
     <div class="text-secondary">
-      <button
-        mat-icon-button
-        aria-label="Administration"
-        routerLink="./admin"
-        routerLinkActive="active"
+      <mat-selection-list
+        [multiple]="false"
+        *ngIf="isHandset; else desktopSecondaryNav"
       >
-        <mat-icon svgIcon="gearBold" aria-hidden="true"></mat-icon>
-      </button>
-      <button
-        mat-icon-button
-        aria-label="User profile"
-        routerLinkActive="active"
-        [matMenuTriggerFor]="userMenu"
-      >
-        <mat-icon svgIcon="userBold" aria-hidden="true"></mat-icon>
-      </button>
+        <mat-list-option
+          (click)="drawer.close()"
+          routerLink="./admin"
+          routerLinkActive="active"
+        >
+          <mat-icon
+            mat-list-icon
+            svgIcon="gearBold"
+            aria-hidden="true"
+          ></mat-icon>
+          <div mat-line>Administration</div>
+        </mat-list-option>
+        <mat-list-option [matMenuTriggerFor]="userMenu">
+          <mat-icon
+            mat-list-icon
+            svgIcon="userBold"
+            aria-hidden="true"
+          ></mat-icon>
+          <div mat-line>User profile</div>
+        </mat-list-option>
+      </mat-selection-list>
+      <ng-template #desktopSecondaryNav>
+        <button
+          mat-icon-button
+          aria-label="Administration"
+          routerLink="./admin"
+          routerLinkActive="active"
+        >
+          <mat-icon svgIcon="gearBold" aria-hidden="true"></mat-icon>
+        </button>
+        <button
+          (click)="drawer.close()"
+          mat-icon-button
+          aria-label="User profile"
+          routerLinkActive="active"
+          [matMenuTriggerFor]="userMenu"
+        >
+          <mat-icon svgIcon="userBold" aria-hidden="true"></mat-icon>
+        </button>
+      </ng-template>
       <mat-menu #userMenu="matMenu">
         <button mat-menu-item [matMenuTriggerFor]="languages">Language</button>
-        <button mat-menu-item routerLink="./user-profile">Profile</button>
+        <button
+          (click)="drawer.close()"
+          mat-menu-item
+          routerLink="./user-profile"
+        >
+          Profile
+        </button>
         <mat-divider></mat-divider>
         <button (click)="logout()" mat-menu-item>Log out</button>
       </mat-menu>
       <mat-menu #languages="matMenu">
-        <button mat-menu-item>English</button>
-        <button mat-menu-item>Latvian</button>
-        <button mat-menu-item>Estonian</button>
+        <button (click)="drawer.close()" mat-menu-item>English</button>
+        <button (click)="drawer.close()" mat-menu-item>Latvian</button>
+        <button (click)="drawer.close()" mat-menu-item>Estonian</button>
       </mat-menu>
     </div>
   </mat-sidenav>
   <mat-sidenav-content class="main-content">
     <mat-toolbar>
       <button
+        class="text-secondary"
         type="button"
         aria-label="Toggle sidenav"
         mat-icon-button

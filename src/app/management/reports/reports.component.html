@@ -1,3 +1,5 @@
+<!-- TODO: Page title on mobile -->
+
 <app-page-actions>
   <div class="page-title">
     Reports
@@ -23,8 +25,10 @@
     <mat-icon svgIcon="downloadBold" aria-hidden="true"></mat-icon>
   </button>
 </app-page-actions>
+
 <header>
   <section class="stats">
+    <!-- TODO: Replace cards with simple stuff -->
     <mat-card>
       <mat-card-header>
         <mat-card-subtitle>Energy consumption</mat-card-subtitle>
@@ -70,91 +74,91 @@
     </mat-form-field>
   </section>
 </header>
+<section class="data">
+  <!-- TODO: Load mat-table styles without the table and remove this -->
+  <table style="display: none" class="report" mat-table>
+    <ng-container matColumnDef="property">
+      <th mat-header-cell *matHeaderCellDef></th>
+    </ng-container>
+    <ng-container matColumnDef="total">
+      <th mat-header-cell *matHeaderCellDef>Total</th>
+    </ng-container>
+    <ng-container matColumnDef="1">
+      <th mat-header-cell *matHeaderCellDef>Aug</th>
+    </ng-container>
+    <ng-container matColumnDef="2">
+      <th mat-header-cell *matHeaderCellDef>Jul</th>
+    </ng-container>
+    <ng-container matColumnDef="3">
+      <th mat-header-cell *matHeaderCellDef>Jun</th>
+    </ng-container>
+    <ng-container matColumnDef="4">
+      <th mat-header-cell *matHeaderCellDef>May</th>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  </table>
 
-<!-- TODO: Load mat-table styles without the table and remove this -->
-<table style="display: none" class="report" mat-table>
-  <ng-container matColumnDef="property">
-    <th mat-header-cell *matHeaderCellDef></th>
-  </ng-container>
-  <ng-container matColumnDef="total">
-    <th mat-header-cell *matHeaderCellDef>Total</th>
-  </ng-container>
-  <ng-container matColumnDef="1">
-    <th mat-header-cell *matHeaderCellDef>Aug</th>
-  </ng-container>
-  <ng-container matColumnDef="2">
-    <th mat-header-cell *matHeaderCellDef>Jul</th>
-  </ng-container>
-  <ng-container matColumnDef="3">
-    <th mat-header-cell *matHeaderCellDef>Jun</th>
-  </ng-container>
-  <ng-container matColumnDef="4">
-    <th mat-header-cell *matHeaderCellDef>May</th>
-  </ng-container>
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-</table>
+  <table class="mat-table report">
+    <thead>
+      <tr class="mat-row">
+        <th class="mat-header-cell"></th>
+        <th class="mat-header-cell">Total</th>
+        <th class="mat-header-cell">Aug</th>
+        <th class="mat-header-cell">Jul</th>
+        <th class="mat-header-cell">Jun</th>
+        <th class="mat-header-cell">May</th>
+      </tr>
+    </thead>
+  </table>
 
-<table class="mat-table report">
-  <thead>
-    <tr class="mat-row">
-      <th class="mat-header-cell"></th>
-      <th class="mat-header-cell">Total</th>
-      <th class="mat-header-cell">Aug</th>
-      <th class="mat-header-cell">Jul</th>
-      <th class="mat-header-cell">Jun</th>
-      <th class="mat-header-cell">May</th>
-    </tr>
-  </thead>
-</table>
+  <ng-container *ngFor="let group of reports2">
+    <article>
+      <!-- TODO: Link to group -->
 
-<ng-container *ngFor="let group of reports2">
-  <article>
-    <!-- TODO: Link to group -->
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h2>{{ group.group }}</h2>
+            <span class="text-secondary">{{ group.lamps }} lamps</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="configuration">
+          <mat-form-field>
+            <mat-label>Nominal energy per lamp</mat-label>
+            <input matInput [formControl]="nominalDefaultFormControl" />
+            <span matSuffix>kWh</span>
+          </mat-form-field>
+        </div>
+      </mat-expansion-panel>
 
-    <mat-expansion-panel hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <h2>{{ group.group }}</h2>
-          <span class="text-secondary">{{ group.lamps }} lamps</span>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <div class="configuration">
-        <mat-form-field>
-          <mat-label>Nominal energy per lamp</mat-label>
-          <input matInput [formControl]="nominalDefaultFormControl" />
-          <span matSuffix>kWh</span>
-        </mat-form-field>
-      </div>
-    </mat-expansion-panel>
+      <table class="mat-table report">
+        <tbody>
+          <tr class="mat-row">
+            <th class="mat-header-cell">Worked, h</th>
+            <td class="mat-cell" *ngFor="let i of group.data.h">{{ i }}</td>
+          </tr>
+          <tr class="mat-row">
+            <th class="mat-header-cell">Nominal energy, kWh</th>
+            <td class="mat-cell" *ngFor="let i of group.data.nominal">
+              {{ i }}
+            </td>
+          </tr>
+          <tr class="mat-row">
+            <th class="mat-header-cell">Real energy, kWh</th>
+            <td class="mat-cell" *ngFor="let i of group.data.real">
+              {{ i }}
+            </td>
+          </tr>
+          <tr class="mat-row">
+            <th class="mat-header-cell">Economy, %</th>
+            <td class="mat-cell" *ngFor="let i of group.data.economy">
+              {{ i }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-    <table class="mat-table report">
-      <tbody>
-        <tr class="mat-row">
-          <th class="mat-header-cell">Worked, h</th>
-          <td class="mat-cell" *ngFor="let i of group.data.h">{{ i }}</td>
-        </tr>
-        <tr class="mat-row">
-          <th class="mat-header-cell">Nominal energy, kWh</th>
-          <td class="mat-cell" *ngFor="let i of group.data.nominal">
-            {{ i }}
-          </td>
-        </tr>
-        <tr class="mat-row">
-          <th class="mat-header-cell">Real energy, kWh</th>
-          <td class="mat-cell" *ngFor="let i of group.data.real">
-            {{ i }}
-          </td>
-        </tr>
-        <tr class="mat-row">
-          <th class="mat-header-cell">Economy, %</th>
-          <td class="mat-cell" *ngFor="let i of group.data.economy">
-            {{ i }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <!-- <table class="report" mat-table [dataSource]="dataSource">
+      <!-- <table class="report" mat-table [dataSource]="dataSource">
       <ng-container matColumnDef="property">
         <td class="text-secondary" mat-cell *matCellDef="let element">
           {{ element.property }}
@@ -179,5 +183,6 @@
       </ng-container>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table> -->
-  </article>
-</ng-container>
+    </article>
+  </ng-container>
+</section>

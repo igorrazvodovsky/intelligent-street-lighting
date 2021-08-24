@@ -2,9 +2,17 @@
 
 :host {
   display: block;
-  padding: 5rem 0 5rem 4.5rem;
+  padding-top: 4.5rem;
+  padding-bottom: 3rem;
+  @media (min-width: 600px) {
+    padding-left: 4.5rem;
+  }
   height: 100%;
   width: 100%;
+
+  & > button {
+    margin: 1rem;
+  }
 }
 
 h2 {
@@ -45,10 +53,6 @@ table {
   margin: 0 1rem;
 }
 
-mat-form-field + mat-form-field {
-  margin-left: 1rem;
-}
-
 mat-divider {
   margin-top: 2rem;
 }
@@ -69,20 +73,33 @@ th.mat-header-cell:last-of-type {
 }
 
 .configuration {
-  display: flex;
-  justify-content: space-between;
+  @media (min-width: 600px) {
+    display: flex;
+    justify-content: space-between;
+
+    .mat-form-field + .mat-form-field {
+      margin-left: 1rem;
+    }
+  }
+  @media (max-width: 599px) {
+    margin-left: 1rem;
+    .mat-form-field {
+      width: 100%;
+    }
+  }
 }
 
 header {
-  display: flex;
+  @media (min-width: 600px) {
+    display: flex;
+    justify-content: space-between;
+  }
+
   width: 100%;
-  justify-content: space-between;
   padding-right: 1rem;
   .stats {
     display: flex;
     flex-wrap: nowrap;
-    // display: grid;
-    // grid-template-columns: repeat(auto-fit, minmax(14ch, 1fr));
     gap: 0.5rem;
 
     .mat-card {
@@ -91,4 +108,9 @@ header {
       // width: calc(20vmax - 5rem);
     }
   }
+}
+
+section.data {
+  width: 100vw;
+  overflow-x: scroll;
 }
