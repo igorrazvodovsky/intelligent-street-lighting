@@ -1,0 +1,28 @@
+<!-- TODO: isMobile -->
+<!-- TODO: (click)="drawer.close()"  -->
+<mat-list-option *ngIf="isHandset" [matMenuTriggerFor]="userMenu">
+  <mat-icon mat-list-icon svgIcon="userBold" aria-hidden="true"></mat-icon>
+  <div mat-line>User profile</div>
+</mat-list-option>
+<button
+  *ngIf="!isHandset"
+  mat-icon-button
+  aria-label="User profile"
+  routerLinkActive="active"
+  [matMenuTriggerFor]="userMenu"
+>
+  <mat-icon svgIcon="userBold" aria-hidden="true"></mat-icon>
+</button>
+<mat-menu #userMenu="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="languages">Language</button>
+  <button (click)="closeNav()" mat-menu-item routerLink="./user-profile">
+    Profile
+  </button>
+  <mat-divider></mat-divider>
+  <button (click)="logout()" mat-menu-item>Log out</button>
+</mat-menu>
+<mat-menu #languages="matMenu">
+  <button mat-menu-item>English</button>
+  <button mat-menu-item>Latvian</button>
+  <button mat-menu-item>Estonian</button>
+</mat-menu>

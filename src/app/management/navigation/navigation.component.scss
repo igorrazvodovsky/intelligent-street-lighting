@@ -17,39 +17,10 @@
   border-right: 0;
 }
 
-.mat-toolbar {
-  @media (min-width: 600px) {
-    padding-left: 3.5rem;
-  }
-
-  position: absolute;
-  z-index: 500;
-  flex: 1 0 64px;
-  background: transparent;
-  pointer-events: none;
-  line-height: normal;
-  gap: 0.5rem;
-
-  & button,
-  & input,
-  & .mat-icon {
-    pointer-events: initial;
-  }
-
-  button#notifications {
-    margin-left: auto;
-  }
-}
-
 main {
-  // padding: 0 0 0 4.5rem;
   flex: 1 0 100%;
 }
 
 .main-content {
   margin-left: 0 !important;
-}
-
-.mat-card-title {
-  font-size: 1rem;
 }

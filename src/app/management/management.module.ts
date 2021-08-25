@@ -25,6 +25,9 @@ import { InitialisationLampComponent } from './initialisation/initialisation-lam
 import { InitialisationScComponent } from './initialisation/initialisation-sc/initialisation-sc.component';
 import { ScannerDialogComponent } from './initialisation/scanner-dialog/scanner-dialog.component';
 import { InitialisationLocationComponent } from './initialisation/initialisation-location/initialisation-location.component';
+import { NotificationsComponent } from './navigation/notifications/notifications.component';
+import { UserProfileMenuComponent } from './navigation/user-profile-menu/user-profile-menu.component';
+import { ToolbarComponent } from './navigation/toolbar/toolbar.component';
 
 @NgModule({
   imports: [
@@ -55,7 +58,10 @@ import { InitialisationLocationComponent } from './initialisation/initialisation
     InitialisationLampComponent,
     InitialisationScComponent,
     ScannerDialogComponent,
-    InitialisationLocationComponent
+    InitialisationLocationComponent,
+    NotificationsComponent,
+    UserProfileMenuComponent,
+    ToolbarComponent
   ]
 })
 export class ManagementModule { }

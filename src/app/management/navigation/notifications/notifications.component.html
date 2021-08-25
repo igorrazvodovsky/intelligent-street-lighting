@@ -1,0 +1,51 @@
+<button
+  class="text-secondary"
+  [matMenuTriggerFor]="notificationsMenu"
+  id="notifications"
+  mat-icon-button
+  aria-label="Notifications"
+>
+  <mat-icon
+    matBadge="2"
+    matBadgeColor="warn"
+    svgIcon="notificationBold"
+    aria-hidden="true"
+  ></mat-icon>
+  <span class="cdk-visually-hidden">15 notifications</span>
+</button>
+
+<mat-menu #notificationsMenu="matMenu">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>John</mat-card-title>
+      <mat-card-subtitle>5 min ago</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        Notifications from the system, assignements, etc. Aligned with profile
+        settings.
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>Action</button>
+      <button mat-button>Dismiss</button>
+    </mat-card-actions>
+  </mat-card>
+  <mat-divider></mat-divider>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title class="mat-subheader-1">Mary</mat-card-title>
+      <mat-card-subtitle>Yesterday</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        Notifications from the system, assignements, etc. Aligned with profile
+        settings.
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>Action</button>
+      <button mat-button>Dismiss</button>
+    </mat-card-actions>
+  </mat-card>
+</mat-menu>

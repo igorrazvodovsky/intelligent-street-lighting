@@ -9,6 +9,7 @@
     [opened]="isHandset === false"
   >
     <div>
+      <!-- primary nav -->
       <mat-selection-list
         [multiple]="false"
         *ngIf="isHandset; else desktopPrimaryNav"
@@ -28,6 +29,7 @@
           <div mat-line>{{ navItem.label }}</div>
         </mat-list-option>
       </mat-selection-list>
+
       <ng-template #desktopPrimaryNav>
         <button
           *ngFor="let navItem of primaryNavItems"
@@ -41,6 +43,7 @@
         </button>
       </ng-template>
     </div>
+    <!-- secondary nav -->
     <div class="text-secondary">
       <mat-selection-list
         [multiple]="false"
@@ -58,14 +61,9 @@
           ></mat-icon>
           <div mat-line>Administration</div>
         </mat-list-option>
-        <mat-list-option [matMenuTriggerFor]="userMenu">
-          <mat-icon
-            mat-list-icon
-            svgIcon="userBold"
-            aria-hidden="true"
-          ></mat-icon>
-          <div mat-line>User profile</div>
-        </mat-list-option>
+        <app-user-profile-menu
+          (navClose)="drawer.close()"
+        ></app-user-profile-menu>
       </mat-selection-list>
       <ng-template #desktopSecondaryNav>
         <button
@@ -76,129 +74,12 @@
         >
           <mat-icon svgIcon="gearBold" aria-hidden="true"></mat-icon>
         </button>
-        <button
-          (click)="drawer.close()"
-          mat-icon-button
-          aria-label="User profile"
-          routerLinkActive="active"
-          [matMenuTriggerFor]="userMenu"
-        >
-          <mat-icon svgIcon="userBold" aria-hidden="true"></mat-icon>
-        </button>
+        <app-user-profile-menu></app-user-profile-menu>
       </ng-template>
-      <mat-menu #userMenu="matMenu">
-        <button mat-menu-item [matMenuTriggerFor]="languages">Language</button>
-        <button
-          (click)="drawer.close()"
-          mat-menu-item
-          routerLink="./user-profile"
-        >
-          Profile
-        </button>
-        <mat-divider></mat-divider>
-        <button (click)="logout()" mat-menu-item>Log out</button>
-      </mat-menu>
-      <mat-menu #languages="matMenu">
-        <button (click)="drawer.close()" mat-menu-item>English</button>
-        <button (click)="drawer.close()" mat-menu-item>Latvian</button>
-        <button (click)="drawer.close()" mat-menu-item>Estonian</button>
-      </mat-menu>
     </div>
   </mat-sidenav>
   <mat-sidenav-content class="main-content">
-    <mat-toolbar>
-      <button
-        class="text-secondary"
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async"
-      >
-        <mat-icon svgIcon="menuBold" aria-hidden="true"></mat-icon>
-      </button>
-      <div id="page-actions-container">
-        <!-- content will be placed dynamically via Cdk Portal -->
-      </div>
-      <ng-container *ngIf="!modalMode">
-        <mat-form-field
-          class="no-hint no-label"
-          *ngIf="search; else searchButton"
-        >
-          <input matInput placeholder="Search" />
-          <mat-icon
-            (click)="search = !search"
-            matSuffix
-            svgIcon="closeMedium"
-            aria-hidden="true"
-          ></mat-icon>
-        </mat-form-field>
-        <ng-template #searchButton>
-          <button
-            class="text-secondary"
-            (click)="search = !search"
-            id="search"
-            mat-icon-button
-            aria-label="Search"
-          >
-            <mat-icon svgIcon="searchBold" aria-hidden="true"></mat-icon>
-            <span class="cdk-visually-hidden">Search button</span>
-          </button>
-        </ng-template>
-        <mat-menu #notificationsMenu="matMenu">
-          <mat-card>
-            <mat-card-header>
-              <mat-card-title>John</mat-card-title>
-              <mat-card-subtitle>5 min ago</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-              <p>
-                Notifications from the system, assignements, etc. Aligned with
-                profile settings.
-              </p>
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-button>Action</button>
-              <button mat-button>Dismiss</button>
-            </mat-card-actions>
-          </mat-card>
-          <mat-divider></mat-divider>
-          <mat-card>
-            <mat-card-header>
-              <mat-card-title class="mat-subheader-1">Mary</mat-card-title>
-              <mat-card-subtitle>Yesterday</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-              <p>
-                Notifications from the system, assignements, etc. Aligned with
-                profile settings.
-              </p>
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-button>Action</button>
-              <button mat-button>Dismiss</button>
-            </mat-card-actions>
-          </mat-card>
-          <!-- <button mat-menu-item>Item 1</button>
-        <button mat-menu-item>Item 2</button> -->
-        </mat-menu>
-        <button
-          class="text-secondary"
-          [matMenuTriggerFor]="notificationsMenu"
-          id="notifications"
-          mat-icon-button
-          aria-label="Notifications"
-        >
-          <mat-icon
-            matBadge="2"
-            matBadgeColor="warn"
-            svgIcon="notificationBold"
-            aria-hidden="true"
-          ></mat-icon>
-          <span class="cdk-visually-hidden">15 notifications</span>
-        </button>
-      </ng-container>
-    </mat-toolbar>
+    <app-toolbar (navToggle)="drawer.toggle()"></app-toolbar>
     <main>
       <router-outlet></router-outlet>
     </main>

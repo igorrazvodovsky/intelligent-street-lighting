@@ -1,0 +1,28 @@
+<mat-toolbar>
+  <button
+    class="text-secondary"
+    type="button"
+    aria-label="Toggle sidenav"
+    mat-icon-button
+    (click)="toggleNav()"
+    *ngIf="isHandset"
+  >
+    <mat-icon svgIcon="menuBold" aria-hidden="true"></mat-icon>
+  </button>
+  <div id="page-actions-container">
+    <!-- content will be placed dynamically via Cdk Portal -->
+  </div>
+  <ng-container *ngIf="!modalMode">
+    <button
+      class="text-secondary"
+      id="search"
+      mat-icon-button
+      aria-label="Search"
+    >
+      <mat-icon svgIcon="searchBold" aria-hidden="true"></mat-icon>
+      <span class="cdk-visually-hidden">Search button</span>
+    </button>
+
+    <app-notifications></app-notifications>
+  </ng-container>
+</mat-toolbar>
