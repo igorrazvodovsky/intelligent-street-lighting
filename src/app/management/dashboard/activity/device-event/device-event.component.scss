@@ -18,6 +18,9 @@ mat-icon.mat-list-avatar {
     height: auto !important;
     align-items: baseline !important;
   }
+  mat-icon.mat-list-avatar {
+    fill: hsla(0, 0%, 0%, 0.3);
+  }
   &-warning mat-icon.mat-list-avatar {
     background-color: hsla(var(--warning), 0.15);
     fill: hsla(var(--warning), 0.9);

@@ -1,8 +1,11 @@
+@import "../../../../styles/mixins";
+
 .mat-form-field {
   width: 100%;
 }
 
 section {
+  @include section-grid;
   .mat-list-base {
     margin: 0;
     padding: 0;

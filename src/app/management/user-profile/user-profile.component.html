@@ -1,7 +1,6 @@
 <app-page-actions>
   <div class="page-title">User profile</div>
 </app-page-actions>
-<mat-divider></mat-divider>
 <section>
   <h2>Personal information</h2>
   <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
@@ -99,7 +98,7 @@
 </section>
 <mat-divider></mat-divider>
 <section>
-  <h2>Notifications</h2>
+  <h2>Notify when</h2>
   <div>
     <mat-list role="list">
       <mat-list-item role="listitem">The voltage is too low</mat-list-item>

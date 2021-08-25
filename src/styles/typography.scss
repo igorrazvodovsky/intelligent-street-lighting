@@ -7,12 +7,12 @@
 
 .text {
   &-primary {
-    color: hsla(0, 0%, 0%, 0.9);
-    fill: hsla(0, 0%, 0%, 0.9);
+    color: hsla(0, 0%, 0%, 0.9) !important;
+    fill: hsla(0, 0%, 0%, 0.9) !important;
   }
   &-secondary {
-    color: hsla(0, 0%, 0%, 0.6);
-    fill: hsla(0, 0%, 0%, 0.6);
+    color: hsla(0, 0%, 0%, 0.6) !important;
+    fill: hsla(0, 0%, 0%, 0.6) !important;
   }
   &-caps {
     text-transform: uppercase;
