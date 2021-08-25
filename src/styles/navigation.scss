@@ -25,12 +25,11 @@
 }
 
 // Click-through toolbar
-
 .mat-toolbar button,
 .mat-toolbar .mat-chip,
 .mat-drawer button,
 .page-title,
 .breadcrumbs,
-.mat-drawer {
+.mat-drawer-inner-container {
   pointer-events: initial !important;
 }

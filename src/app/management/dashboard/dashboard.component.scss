@@ -1,9 +1,9 @@
 :host {
-  display: grid;
-  // grid-template-columns: repeat(3, minmax(320px, 1fr));
-  grid-template-columns: minmax(40vw, 1fr) minmax(320px, 1fr) minmax(320px, 1fr);
+  display: block;
   @media (min-width: 600px) {
     padding-left: 4.5rem;
+    display: grid;
+    grid-template-columns: minmax(40vw, 1fr) repeat(2, minmax(320px, 1fr));
   }
   @media (max-width: 599px) {
     padding-top: 3.5rem;
@@ -29,7 +29,7 @@ h2 {
 }
 
 section#tasks {
-  background: hsla(0, 0%, 0%, 0.05);
+  background: hsla(0, 0%, 0%, 0.025);
 }
 
 section#activity {
@@ -40,16 +40,6 @@ section#main {
   padding-left: 0rem;
   .mat-card-subtitle {
     margin-bottom: 0;
-  }
-}
-
-.stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14ch, 1fr));
-  gap: 0.5rem;
-
-  .mat-card {
-    background: hsla(0, 0%, 0%, 0.1);
   }
 }
 

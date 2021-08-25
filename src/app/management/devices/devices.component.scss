@@ -1,20 +1,29 @@
-.sidenav-container {
+.devices-container {
   height: 100%;
 }
 
-.sidenav {
+.device-list {
   background: #fafafa;
   border-right: 0;
-  width: 50vw;
+
+  @media (max-width: 599px) {
+    width: 100vw;
+  }
+
+  // width: 50vw;
   transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &.maximized {
     width: 100vw;
 
-    .list-max-toggle {
-      right: 6rem;
-    }
+    // .list-max-toggle {
+    //   right: 6rem;
+    // }
   }
+}
+
+.mat-mini-fab:not(.mat-accent) {
+  background-color: transparent;
 }
 
 .list-toggle {

@@ -1,3 +1,6 @@
+<!-- TODO: Fix TAB. Tabulation is broken due to the host element being positioned between list and its items -->
+<!-- https://github.com/angular/angular/issues/18877#issuecomment-782554777 -->
+
 <mat-list-option [routerLink]="'group/' + [group.id]" role="listitem">
   <!-- <mat-icon matListIcon svgIcon="chevronRightRegular"></mat-icon> -->
   <div matLine>{{ group.name }}</div>

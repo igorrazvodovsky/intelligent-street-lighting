@@ -13,24 +13,27 @@
       <button routerLink="/management/initialise" mat-menu-item>Device</button>
       <button (click)="openDialog()" mat-menu-item>Area</button>
     </mat-menu>
+    <!-- This toggle works differently on desktop and mobile -->
+    <!-- on desktop it toggles the list size -->
+    <!-- on mobile it toggles between list and map -->
     <button
-      [color]="maximized ? '' : 'accent'"
+      [color]="maximized || (isHandset && opened) ? '' : 'accent'"
       class="list-max-toggle mat-elevation-z0"
       type="button"
       aria-label="Toggle device list"
       mat-mini-fab
-      (click)="toggleMaximize()"
+      (click)="isHandset ? drawer.toggle() : toggleMaximize()"
     >
       <mat-icon svgIcon="mapBold" aria-hidden="true"></mat-icon>
     </button>
   </div>
 </app-page-actions>
 
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="devices-container">
   <mat-sidenav
     [(opened)]="opened"
     #drawer
-    class="sidenav"
+    class="device-list"
     [attr.role]="isHandset ? 'dialog' : 'navigation'"
     [mode]="isHandset ? 'over' : 'side'"
     [opened]="isHandset === false"

@@ -28,6 +28,7 @@ import { InitialisationLocationComponent } from './initialisation/initialisation
 import { NotificationsComponent } from './navigation/notifications/notifications.component';
 import { UserProfileMenuComponent } from './navigation/user-profile-menu/user-profile-menu.component';
 import { ToolbarComponent } from './navigation/toolbar/toolbar.component';
+import { StatsComponent } from './dashboard/stats/stats.component';
 
 @NgModule({
   imports: [
@@ -61,7 +62,8 @@ import { ToolbarComponent } from './navigation/toolbar/toolbar.component';
     InitialisationLocationComponent,
     NotificationsComponent,
     UserProfileMenuComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    StatsComponent
   ]
 })
 export class ManagementModule { }

@@ -4,9 +4,16 @@
 <device-filters></device-filters>
 
 <mat-selection-list *ngIf="groups" role="list" [multiple]="false">
-  <ng-container *ngFor="let group of groups">
-    <group-list-item [group]="group"></group-list-item>
-  </ng-container>
+  <group-list-item
+    *ngFor="let group of groups"
+    [group]="group"
+  ></group-list-item>
+  <!-- <mat-list-option
+    group-list-item
+    *ngFor="let group of groups"
+    [routerLink]="'group/' + [group.id]"
+    role="listitem"
+  ></mat-list-option> -->
   <mat-list-option role="listitem">
     <div class="text-secondary" matLine>Unassigned</div>
     <span matLine>78 lamps, 3 segment controllers</span>

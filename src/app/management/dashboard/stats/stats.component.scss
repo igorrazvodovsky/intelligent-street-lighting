@@ -1,0 +1,39 @@
+@import "../../../../styles/mixins";
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14ch, 1fr));
+  grid-auto-flow: column;
+  grid-gap: 0.5rem;
+  margin-bottom: 1rem;
+  @media (max-width: 599px) {
+    grid-template-columns: repeat(auto-fit, 25vw);
+    overflow-y: scroll;
+    padding: 1rem;
+  }
+  dl {
+    @media (max-width: 599px) {
+      width: 25vw;
+    }
+    @include transition;
+    padding: 1rem;
+    background: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &:hover {
+      background: hsla(0, 0%, 0%, 0.05);
+      cursor: pointer;
+    }
+
+    dt {
+      color: hsla(0, 0%, 0%, 0.6);
+    }
+
+    dd {
+      margin: 0;
+    }
+  }
+}
