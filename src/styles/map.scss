@@ -23,7 +23,7 @@
       }
       border-radius: 2rem;
       padding: 0.5rem 0.75rem;
-      color: white;
+      color: var(--text-color-1);
       transform: translate(-0%, -25%);
       display: inline-flex;
       align-items: center;
@@ -34,7 +34,7 @@
       }
     }
     &.off > div {
-      // color: hsla(0, 0%, 0%, 0.9);
+      // color: var(--text-color-1);
       fill: hsla(0, 0%, 100%, 0.6);
       // background: white;
     }

@@ -19,7 +19,7 @@ mat-icon.mat-list-avatar {
     align-items: baseline !important;
   }
   mat-icon.mat-list-avatar {
-    fill: hsla(0, 0%, 0%, 0.3);
+    fill: var(--text-color-3);
   }
   &-warning mat-icon.mat-list-avatar {
     background-color: hsla(var(--warning), 0.15);

@@ -9,7 +9,7 @@
 }
 
 .breadcrumbs {
-  color: hsla(0, 0%, 0%, 0.6);
+  color: var(--text-color-2);
 
   --nav-gap: 1ch;
   display: flex;
@@ -60,14 +60,14 @@
   white-space: nowrap;
 }
 .crumb > a[aria-current="page"] {
-  color: hsla(0, 0%, 0%, 0.9);
-  fill: hsla(0, 0%, 0%, 0.9);
+  color: var(--text-color-1);
+  fill: var(--text-color-1);
 }
 .crumb.tree-changed ~ * {
   display: none;
 }
 .crumb-separator {
-  color: hsla(0, 0%, 0%, 0.3) !important;
+  color: var(--text-color-3) !important;
 }
 .disguised-select {
   inline-size: 100%;

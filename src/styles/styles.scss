@@ -196,11 +196,11 @@ button {
   a,
   button {
     @include transition;
-    color: hsla(0, 0%, 0%, 0.6);
-    fill: hsla(0, 0%, 0%, 0.6);
+    color: var(--text-color-2);
+    fill: var(--text-color-2);
     &:hover {
-      color: hsla(0, 0%, 0%, 0.9);
-      fill: hsla(0, 0%, 0%, 0.9);
+      color: var(--text-color-1);
+      fill: var(--text-color-1);
     }
   }
 }
@@ -284,12 +284,12 @@ input.time {
   padding: 2rem;
   h3,
   p {
-    color: hsla(0, 0%, 0%, 0.3);
+    color: var(--text-color-3);
     text-align: center;
     margin: 0;
   }
   h3 {
-    color: hsla(0, 0%, 0%, 0.6);
+    color: var(--text-color-2);
   }
 }
 
@@ -316,16 +316,16 @@ input.time {
 }
 
 .mat-pseudo-checkbox-checked::after {
-  color: hsla(0, 0%, 0%, 0.9);
+  color: var(--text-color-1);
 }
 
 .mat-accent .mat-checkbox-checkmark-path {
-  stroke: hsla(0, 0%, 0%, 0.9) !important;
+  stroke: var(--text-color-1) !important;
 }
 
 .mat-expansion-panel-header-description,
 .mat-expansion-indicator::after {
-  color: hsla(0, 0%, 0%, 0.9);
+  color: var(--text-color-1);
 }
 
 .list-max-toggle {
@@ -339,15 +339,15 @@ input.time {
 
   z-index: 500;
   & > span {
-    color: hsla(0, 0%, 0%, 0.3);
+    color: var(--text-color-3);
   }
 }
 
 // Override ma-list disabled styles
 .mat-list-item-disabled {
   background: inherit;
-  color: hsla(0, 0%, 0%, 0.3) !important;
-  fill: hsla(0, 0%, 0%, 0.3);
+  color: var(--text-color-3) !important;
+  fill: var(--text-color-3);
 }
 
 // Disable fixed icon size in list items
@@ -415,7 +415,7 @@ input.time {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     background: hsla(0, 0%, 0%, 0.1);
-    color: hsla(0, 0%, 0%, 0.6);
+    color: var(--text-color-2);
     border-radius: 1rem;
     display: inline-flex;
 
@@ -454,8 +454,8 @@ input.time {
     display: inline-flex;
     align-items: center;
     &:hover {
-      color: hsla(0, 0%, 0%, 0.6);
-      fill: hsla(0, 0%, 0%, 0.6);
+      color: var(--text-color-2);
+      fill: var(--text-color-2);
     }
   }
 }
@@ -473,7 +473,7 @@ input.time {
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 0.5rem;
-  background: hsla(0, 0%, 0%, 0.6);
+  background: var(--text-color-2);
   display: inline-flex;
   position: relative;
   vertical-align: middle;
