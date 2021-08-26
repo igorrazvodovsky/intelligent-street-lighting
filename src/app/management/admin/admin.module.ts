@@ -6,13 +6,15 @@ import { UsersComponent } from './users/users.component';
 import { GroupsComponent } from './groups/groups.component';
 import { OrgsComponent } from './orgs/orgs.component';
 import { SharedModule } from '~local/shared/shared.module';
+import { DeviceModelsComponent } from './device-models/device-models.component';
 
 @NgModule({
   declarations: [
     AdminComponent,
     UsersComponent,
     GroupsComponent,
-    OrgsComponent
+    OrgsComponent,
+    DeviceModelsComponent
   ],
   imports: [
     CommonModule,

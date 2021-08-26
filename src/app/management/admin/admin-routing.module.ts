@@ -4,6 +4,7 @@ import { AdminComponent } from './admin/admin.component'
 import { UsersComponent } from './users/users.component'
 import { GroupsComponent } from './groups/groups.component'
 import { OrgsComponent } from './orgs/orgs.component'
+import { DeviceModelsComponent } from './device-models/device-models.component'
 import { AdminAuthGuard } from './auth.guard';
 
 const adminRoutes: Routes = [
@@ -16,6 +17,7 @@ const adminRoutes: Routes = [
         path: '',
         // canActivateChild: [AdminAuthGuard],
         children: [
+          { path: 'device-models', component: DeviceModelsComponent },
           { path: 'users', component: UsersComponent },
           { path: 'groups', component: GroupsComponent },
           { path: 'orgs', component: OrgsComponent },

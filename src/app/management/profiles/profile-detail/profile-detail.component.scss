@@ -1,13 +1,5 @@
 @import "../../../../styles/mixins";
 
-h2 {
-  margin: 1rem 1rem 0 1rem;
-}
-
-aside {
-  margin: 0 1rem;
-}
-
 section {
   @include section-grid;
 }
