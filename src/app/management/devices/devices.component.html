@@ -42,19 +42,19 @@
     <router-outlet></router-outlet>
   </mat-sidenav>
   <mat-sidenav-content>
-    <button
-      *ngIf="!isHandset"
-      class="list-toggle"
-      type="button"
-      aria-label="Toggle sidenav"
-      mat-icon-button
-      (click)="drawer.toggle()"
-    >
-      <mat-icon
-        [svgIcon]="opened ? 'chevronLeftBold' : 'chevronRightBold'"
-        aria-hidden="true"
-      ></mat-icon>
-    </button>
     <devices-map></devices-map>
   </mat-sidenav-content>
 </mat-sidenav-container>
+<button
+  *ngIf="!isHandset"
+  class="list-toggle"
+  type="button"
+  aria-label="Toggle sidenav"
+  mat-icon-button
+  (click)="drawer.toggle()"
+>
+  <mat-icon
+    [svgIcon]="opened ? 'chevronLeftBold' : 'chevronRightBold'"
+    aria-hidden="true"
+  ></mat-icon>
+</button>

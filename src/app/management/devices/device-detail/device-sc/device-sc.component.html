@@ -1,6 +1,37 @@
 <device-alerts [deviceId]="device.id"></device-alerts>
 <device-tasks [deviceId]="device.id"></device-tasks>
 
+<mat-list role="list">
+  <h3 matSubheader>Contactor controls</h3>
+  <mat-expansion-panel *ngFor="let relay of relays" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{ relay.name }}</mat-panel-title>
+      <mat-panel-description class="text-secondary">
+        {{ relay.settings.on ? "On" : "Off"
+        }}{{ relay.settings.manual ? ", in manual mode" : ""
+        }}{{ relay.settings.inverted ? ", inverted" : "" }}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-form-field class="no-hint">
+      <mat-label>Profile</mat-label>
+      <select [disabled]="relay.settings.manual" matNativeControl>
+        <option value="default">Default</option>
+        <option value="1">Profile B</option>
+        <option value="2">Another profile</option>
+        <option value="3">Best profile</option>
+      </select>
+    </mat-form-field>
+    <mat-selection-list>
+      <mat-list-option
+        [selected]="setting.value"
+        *ngFor="let setting of relay.settings | keyvalue: null"
+      >
+        {{ setting.key | titlecase }}
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-expansion-panel>
+</mat-list>
+
 <mat-selection-list role="list" [multiple]="false">
   <h3 matSubheader>Connected devices</h3>
   <mat-list-option role="listitem">

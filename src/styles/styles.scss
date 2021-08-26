@@ -164,9 +164,13 @@ button {
     grid-template-columns: 1fr 1fr;
   }
   .mat-expansion-panel-body {
-    padding: 1rem 1.5rem;
+    padding: 1rem;
     & > .mat-form-field + .mat-form-field {
       margin-left: 1rem;
+    }
+    & > .mat-list-base {
+      margin-left: -1rem;
+      margin-right: -1rem;
     }
   }
   .mat-expansion-panel.mat-expanded {
