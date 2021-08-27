@@ -14,6 +14,8 @@ import { DeviceService } from '~local/services/device.service'
 export class ProfileDetailComponent implements OnInit {
   profile$!: Observable<Profile>;
   groups$!: Observable<DeviceGroup[]>;
+  active: 'always' | 'date' | 'range' = 'always';
+  isDynamic = true
 
   constructor(
     private route: ActivatedRoute,

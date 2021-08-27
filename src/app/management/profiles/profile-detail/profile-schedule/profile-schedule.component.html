@@ -29,29 +29,19 @@
       <span>Active</span>
 
       <mat-form-field class="no-label no-hint input-auto-width time">
-        <mat-select>
+        <mat-select [value]="schedule.time.start | date: 'HH:mm'">
           <mat-option *ngFor="let option of timeOptions" [value]="option.value">
             {{ option.viewValue }}
           </mat-option>
         </mat-select>
       </mat-form-field>
-
-      <mat-form-field class="no-label no-hint input-auto-width">
-        <input
-          class="time"
-          matInput
-          placeholder="6:00"
-          [value]="schedule.time.start | date: 'HH:mm'"
-        />
-      </mat-form-field>
       <span class="text-secondary">&mdash;</span>
-      <mat-form-field class="no-label no-hint input-auto-width">
-        <input
-          class="time"
-          matInput
-          placeholder="22:00"
-          [value]="schedule.time.end | date: 'HH:mm'"
-        />
+      <mat-form-field class="no-label no-hint input-auto-width time">
+        <mat-select [value]="schedule.time.end | date: 'HH:mm'">
+          <mat-option *ngFor="let option of timeOptions" [value]="option.value">
+            {{ option.viewValue }}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
     <ng-container *ngFor="let day of week; let i = index">
@@ -59,32 +49,50 @@
         <mat-checkbox [checked]="schedule.time.week[i].enabled">{{
           week[i]
         }}</mat-checkbox>
-        <mat-form-field class="no-label no-hint input-auto-width">
-          <input
+        <mat-form-field class="no-label no-hint input-auto-width time">
+          <mat-select
             [disabled]="!schedule.time.week[i].enabled"
-            class="time"
-            matInput
-            [placeholder]="schedule.time.week[i].enabled ? '06:30' : null"
+            [placeholder]="
+              schedule.time.week[i].enabled
+                ? (schedule.time.start | date: 'HH:mm')
+                : null
+            "
             [value]="
               schedule.time.week[i].start
                 ? (schedule.time.week[i].start | date: 'HH:mm')
                 : null
             "
-          />
+          >
+            <mat-option
+              *ngFor="let option of timeOptions"
+              [value]="option.value"
+            >
+              {{ option.viewValue }}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
         <span class="text-secondary">&mdash;</span>
-        <mat-form-field class="no-label no-hint input-auto-width">
-          <input
+        <mat-form-field class="no-label no-hint input-auto-width time">
+          <mat-select
             [disabled]="!schedule.time.week[i].enabled"
-            class="time"
-            matInput
-            [placeholder]="schedule.time.week[i].enabled ? '22:00' : null"
+            [placeholder]="
+              schedule.time.week[i].enabled
+                ? (schedule.time.end | date: 'HH:mm')
+                : null
+            "
             [value]="
               schedule.time.week[i].end
                 ? (schedule.time.week[i].end | date: 'HH:mm')
                 : null
             "
-          />
+          >
+            <mat-option
+              *ngFor="let option of timeOptions"
+              [value]="option.value"
+            >
+              {{ option.viewValue }}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
     </ng-container>

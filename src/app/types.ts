@@ -141,6 +141,7 @@ export interface Profile {
   id: number
   name: string
   description?: string
+  dynamic?: boolean
   summary:
   {
     day: string

@@ -58,6 +58,7 @@ export const PROFILES: Profile[] = [
   {
     id: 1,
     name: 'Default',
+    dynamic: true,
     summary: [
       {
         day: 'mon',
@@ -245,6 +246,7 @@ export const PROFILES: Profile[] = [
     id: 2,
     name: 'Shopping centre',
     description: '70% throughout the day',
+    dynamic: false,
     summary: [
       {
         day: 'mon',
@@ -376,6 +378,7 @@ export const PROFILES: Profile[] = [
   {
     id: 3,
     name: 'Guļamrajons',
+    dynamic: true,
     description:
       '70% on weekdays from 6:30 to 23:00, on weekends from 8:00 to 22:00. 30% the rest of the time. Accounts for traffic & natural light.',
     summary: [
@@ -510,6 +513,7 @@ export const PROFILES: Profile[] = [
     id: 4,
     name: 'Pedestrian crossing',
     description: '70% throughout the day',
+    dynamic: true,
     summary: [
       {
         day: 'mon',
@@ -643,6 +647,7 @@ export const PROFILES: Profile[] = [
     name: 'Another one',
     description:
       '70% on weekdays from 6:30 to 23:00, on weekends from 8:00 to 22:00. 30% the rest of the time. Accounts for traffic & natural light.',
+    dynamic: true,
     summary: [
       {
         day: 'mon',

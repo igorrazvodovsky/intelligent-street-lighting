@@ -27,6 +27,7 @@ import { DeviceAlertsComponent } from './device-detail/device-alerts/device-aler
 import { DeviceTasksComponent } from './device-detail/device-tasks/device-tasks.component';
 import { MapLegendComponent } from './map/map-legend/map-legend.component';
 import { MapLayerMenuComponent } from './map/map-layer-menu/map-layer-menu.component';
+import { ScConnectedDevicesComponent } from './device-detail/device-sc/sc-connected-devices/sc-connected-devices.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { MapLayerMenuComponent } from './map/map-layer-menu/map-layer-menu.compo
     DeviceAlertsComponent,
     DeviceTasksComponent,
     MapLegendComponent,
-    MapLayerMenuComponent
+    MapLayerMenuComponent,
+    ScConnectedDevicesComponent
   ],
   imports: [
     CommonModule,

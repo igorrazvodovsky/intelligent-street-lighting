@@ -64,7 +64,7 @@ export class MapComponent implements AfterViewInit, OnInit {
       className: 'dark marker--cluster',
       html: sc.length > 0
         ? `<div>${childCount} •&nbsp;<span class="text-secondary">SC&nbsp;</span> ${sc}</div>`
-        : `<div>${childCount} • No SC`
+        : `<div>${childCount} • Uninitialised`
     });
   }
 

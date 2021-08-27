@@ -2,4 +2,36 @@
 
 section {
   @include section-grid;
+  &.dynamic {
+    div:first-of-type {
+      align-self: flex-end;
+    }
+  }
+}
+
+.dynamic__range {
+  min-height: 3rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+section > div > {
+  .mat-form-field,
+  .mat-radio-group {
+    margin: 1rem;
+  }
+  .mat-radio-group {
+    display: block;
+  }
+}
+.mat-slide-toggle {
+  margin-bottom: 1rem;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 1rem;
+}
+
+.mat-expansion-panel-header-title {
+  margin-bottom: 0 !important;
 }

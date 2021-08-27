@@ -1,11 +1,17 @@
 <div *ngIf="device">
   <mat-tab-group id="device" animationDuration="0ms">
     <mat-tab label="Overview">
-      <device-lamp *ngIf="device.type == 'lamp'" [device]="device"></device-lamp>
+      <device-lamp
+        *ngIf="device.type == 'lamp'"
+        [device]="device"
+      ></device-lamp>
       <device-sc *ngIf="device.type == 'sc'" [device]="device"></device-sc>
     </mat-tab>
     <mat-tab *ngIf="device.type == 'lamp'" label="Motion sensor">
       <device-motion-sensor></device-motion-sensor>
+    </mat-tab>
+    <mat-tab *ngIf="device.type == 'sc'" label="Segment">
+      <sc-connected-devices></sc-connected-devices>
     </mat-tab>
     <mat-tab label="Metrics">
       <device-metrics></device-metrics>
