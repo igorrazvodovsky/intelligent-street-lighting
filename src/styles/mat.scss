@@ -50,3 +50,10 @@
 .mat-line {
   max-width: 60ch;
 }
+
+.mat-menu-panel {
+  .mat-form-field {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

@@ -29,6 +29,19 @@
         {{ setting.key | titlecase }}
       </mat-list-option>
     </mat-selection-list>
+    <mat-selection-list [multiple]="false">
+      <mat-list-option [matMenuTriggerFor]="relayCommentPopover">
+        <div mat-line *ngIf="relay.comment">
+          <span class="mat-caption text-secondary">Comment</span>
+        </div>
+        <div mat-line>{{ relay.comment ? relay.comment : "Add comment" }}</div>
+      </mat-list-option>
+    </mat-selection-list>
+    <mat-menu #relayCommentPopover="matMenu">
+      <mat-form-field>
+        <input matInput placeholder="Comment" [value]="relay.comment" />
+      </mat-form-field>
+    </mat-menu>
   </mat-expansion-panel>
 </mat-list>
 

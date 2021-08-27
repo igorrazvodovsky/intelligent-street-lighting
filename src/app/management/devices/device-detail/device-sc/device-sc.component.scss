@@ -13,3 +13,7 @@ p {
 .mat-form-field {
   width: 100%;
 }
+
+.mat-list-base + .mat-list-base {
+  padding-top: 0;
+}

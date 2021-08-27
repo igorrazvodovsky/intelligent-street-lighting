@@ -29,6 +29,10 @@ body {
     color: var(--text-color-2) !important;
     fill: var(--text-color-2) !important;
   }
+  &-disabled {
+    color: var(--text-color-3) !important;
+    fill: var(--text-color-3) !important;
+  }
   &-caps {
     text-transform: uppercase;
   }

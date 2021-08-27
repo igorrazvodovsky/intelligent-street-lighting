@@ -14,7 +14,8 @@ export class DeviceScComponent implements OnInit {
   relays = [
     {
       name: "RO1",
-      profile: "Default",
+      profileId: 1,
+      comment: "Disable the light sensor and activate the power lines",
       settings: {
         on: true,
         manual: false,
@@ -24,6 +25,7 @@ export class DeviceScComponent implements OnInit {
         {
       name: "RO2",
       profile: "Default",
+      comment: "Disable the power on contactor 1.",
       settings: {
         on: true,
         manual: true,
@@ -32,7 +34,8 @@ export class DeviceScComponent implements OnInit {
     },
             {
       name: "RO3",
-      profile: "Default",
+              profile: "Default",
+      comment: "",
       settings: {
         on: true,
         manual: false,
@@ -42,6 +45,7 @@ export class DeviceScComponent implements OnInit {
                 {
       name: "RO4",
       profile: "Default",
+      comment: "",
       settings: {
         on: false,
         manual: false,
