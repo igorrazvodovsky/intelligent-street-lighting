@@ -96,7 +96,8 @@ export class ProfileVisualisationComponent implements OnChanges {
       .append('g')
       .attr('id', 'y-axis')
       .attr('stroke-width', 0)
-      .style('transform', 'translate(' + this.marginX + 'px,  0)')
+      // .style('transform', 'translate(' + this.marginX + 'px,  0)')
+      .style("text-anchor", "start")
 
     this.xScale = d3Scale.scaleTime()
       .domain([new Date(null, null , 1, 0, 0), new Date(null, null , 2, 0, 0)])

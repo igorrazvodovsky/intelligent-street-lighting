@@ -23,9 +23,12 @@ section > div > {
   .mat-radio-group {
     display: block;
   }
-}
-.mat-slide-toggle {
-  margin-bottom: 1rem;
+
+  & > div:first-of-type {
+    .mat-slide-toggle {
+      margin-bottom: 1rem;
+    }
+  }
 }
 
 .mat-radio-button ~ .mat-radio-button {
@@ -43,8 +46,18 @@ section > div > {
   & > * + * {
     margin-top: 1rem;
   }
-
   profile-visualisation {
-    padding: 0.5rem;
+    padding: 0.5rem 0.5rem 0 0.5rem;
+  }
+  &__preferences {
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1ch;
+    justify-content: flex-end;
+    .mat-slide-toggle {
+      margin-bottom: 0;
+    }
   }
 }
