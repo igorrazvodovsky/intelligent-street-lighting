@@ -35,3 +35,16 @@ section > div > {
 .mat-expansion-panel-header-title {
   margin-bottom: 0 !important;
 }
+
+.preview {
+  border: 1px solid hsla(0, 0%, 0%, 0.1);
+  // padding: 0 0.5rem 1rem;
+  margin-bottom: 1rem;
+  & > * + * {
+    margin-top: 1rem;
+  }
+
+  profile-visualisation {
+    padding: 0.5rem;
+  }
+}

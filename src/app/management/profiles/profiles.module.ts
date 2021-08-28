@@ -9,6 +9,7 @@ import { ProfileScheduleComponent } from './profile-detail/profile-schedule/prof
 import { ProfileDeviceListComponent } from './profile-detail/profile-device-list/profile-device-list.component';
 import { ConversationalTimeGroupPipe } from '~local/pipes/conversational-time-group.pipe';
 import { FormsModule } from '@angular/forms';
+import { ProfileVisualisationComponent } from './profile-detail/profile-visualisation/profile-visualisation.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     ProfileListComponent,
     ProfileScheduleComponent,
     ProfileDeviceListComponent,
-    ConversationalTimeGroupPipe
+    ConversationalTimeGroupPipe,
+    ProfileVisualisationComponent
   ],
   imports: [
     CommonModule,

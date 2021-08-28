@@ -17,6 +17,65 @@ export class ProfileDetailComponent implements OnInit {
   active: 'always' | 'date' | 'range' = 'always';
   isDynamic = true
 
+  data = {
+    static: [
+      {
+        "value": 30,
+        "date": new Date(null, null , 1, 0, 0)
+      },
+      {
+        "value": 30,
+        "date": new Date(null, null , 1, 6, 0)
+      },
+      {
+        "value": 40,
+        "date": new Date(null, null , 1, 7, 0)
+      },
+      {
+        "value": 40,
+        "date": new Date(null, null , 1, 16, 0)
+      },
+      {
+        "value": 30,
+        "date": new Date(null, null , 1, 23, 0)
+      },
+      {
+        "value": 30,
+        "date": new Date(null, null , 2, 0, 0)
+      },
+    ],
+    dynamic: [
+      {
+        "value": 60,
+        "date": new Date(null, null , 1, 0, 0)
+      },
+      {
+        "value": 60,
+        "date": new Date(null, null , 1, 7, 0)
+      },
+      {
+        "value": 0,
+        "date": new Date(null, null , 1, 7, 1)
+      },
+      {
+        "value": 0,
+        "date": new Date(null, null , 1, 15, 59)
+      },
+      {
+        "value": 60,
+        "date": new Date(null, null , 1, 16, 0)
+      },
+      {
+        "value": 60,
+        "date": new Date(null, null , 1, 23, 0)
+      },
+      {
+        "value": 60,
+        "date": new Date(null, null , 2, 0, 0)
+      },
+  ]
+  }
+
   constructor(
     private route: ActivatedRoute,
     private profileService: ProfileService,

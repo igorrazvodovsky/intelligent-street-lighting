@@ -24,6 +24,18 @@
       </aside>
     </div>
     <div class="behaviour">
+      <div class="preview">
+        <!-- TODO: Replace with specifc date selection if multiple are set  -->
+        <mat-tab-group *ngIf="active !== 'date'" animationDuration="0">
+          <mat-tab label="Mon"></mat-tab>
+          <mat-tab label="Tue"></mat-tab>
+          <mat-tab label="Wed"></mat-tab>
+          <mat-tab label="Thu"></mat-tab>
+          <mat-tab label="Fri"></mat-tab>
+          <mat-tab label="Sat"></mat-tab>
+        </mat-tab-group>
+        <profile-visualisation [data]="data"></profile-visualisation>
+      </div>
       <mat-accordion>
         <profile-schedule
           *ngFor="let schedule of profile.schedules; let last = last"
@@ -130,11 +142,12 @@
     <div>
       <mat-radio-group [(ngModel)]="active" aria-label="Select an option">
         <mat-radio-button value="always">Always</mat-radio-button>
-        <mat-radio-button value="date">On a specific day(s)</mat-radio-button>
         <mat-radio-button value="range"
           >During the time period</mat-radio-button
         >
+        <mat-radio-button value="date">On a specific day(s)</mat-radio-button>
       </mat-radio-group>
+      <!-- TODO: 'Add date' button -->
       <mat-form-field *ngIf="active == 'date'">
         <mat-label>Choose a date</mat-label>
         <input matInput [matDatepicker]="picker" />
