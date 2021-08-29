@@ -59,7 +59,6 @@ export class MapComponent implements AfterViewInit, OnInit {
 
   makeSCMarker(clusterMarkers, childCount) {
     const sc = clusterMarkers.filter(e => e.feature.properties.type == 'sc').map(e => e.feature.properties.name).join(', ')
-    console.log(sc)
     return L.divIcon({
       className: 'dark marker--cluster',
       html: sc.length > 0

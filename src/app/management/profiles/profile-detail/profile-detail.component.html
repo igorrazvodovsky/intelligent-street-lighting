@@ -18,12 +18,14 @@
   <section class="static">
     <div>
       <!-- <h2>Brightness</h2> -->
-      <aside class="mat-caption text-secondary">
-        Schedules overlap and merge. Order determines the&nbsp;priority.
-      </aside>
+      <p>Schedules overlap and merge. Order determines the&nbsp;priority.</p>
+      <mat-slide-toggle color="primary" [(ngModel)]="isDynamic"
+        >Account for 🚗 traffic</mat-slide-toggle
+      >
     </div>
     <div class="behaviour">
       <figure class="preview">
+        <!-- ???: As button-toggle? -->
         <!-- TODO: Replace with specifc date selection if multiple are set  -->
         <mat-tab-group *ngIf="active !== 'date'" animationDuration="0">
           <mat-tab label="Mon"></mat-tab>
@@ -37,10 +39,13 @@
         <figcaption class="preview__legend mat-caption">
           <div>
             <span><i class="dot"></i> Base brightness</span>
-            <span><i class="dot"></i> Dynamic</span>
+            <span
+              ><i class="dot"></i> In the presence of vehicles or
+              pedestrians</span
+            >
           </div>
           <div>
-            Noon <mat-slide-toggle>Midnight</mat-slide-toggle>
+            Noon <mat-slide-toggle color="primary">Midnight</mat-slide-toggle>
             <span class="text-secondary">in the middle</span>
           </div>
         </figcaption>
@@ -54,82 +59,97 @@
       </mat-accordion>
       <mat-selection-list [multiple]="false">
         <mat-list-option>
-          <div class="text-secondary" matLine>Add schedule</div>
+          <div class="text-secondary" matLine>
+            <mat-icon
+              class="small"
+              svgIcon="plusBold"
+              aria-hidden="true"
+            ></mat-icon>
+            Add
+          </div>
         </mat-list-option>
       </mat-selection-list>
-    </div>
-  </section>
-  <section class="dynamic">
-    <div>
-      <mat-slide-toggle [(ngModel)]="isDynamic"
-        >Account for 🚗 traffic</mat-slide-toggle
-      >
-    </div>
-    <div>
-      <mat-list role="list" *ngIf="isDynamic">
-        <mat-list-item role="listitem" class="text-secondary"
-          >In the presence of transport or people the brightness will increase
-          to:</mat-list-item
-        >
-        <!-- IF 1 -->
-        <!-- <mat-list-item role="listitem"
+      <ng-container *ngIf="isDynamic">
+        <mat-list role="list">
+          <mat-list-item role="listitem" class="text-secondary"
+            >In the presence of transport or people the brightness will increase
+            to:</mat-list-item
+          >
+          <!-- IF 1 -->
+          <!-- <mat-list-item role="listitem"
           ><p><strong>+30%</strong> in the presence of transport or people</p>
         </mat-list-item> -->
-      </mat-list>
-      <mat-accordion *ngIf="isDynamic">
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title class="mat-subheading-2"
-              ><strong>+30%</strong>&nbsp; from 16:00 to 23:00</mat-panel-title
-            >
-          </mat-expansion-panel-header>
-          <div class="dynamic__range">
-            <mat-form-field class="no-label no-hint input-auto-width time">
-              <mat-select value="30">
-                <mat-option value="30"> 30% </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <span class="text-secondary">from</span>
-            <mat-form-field class="no-label no-hint input-auto-width time">
-              <mat-select value="02:00">
-                <mat-option value="02:00"> 16:00 </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <span class="text-secondary">to</span>
-            <mat-form-field class="no-label no-hint input-auto-width time">
-              <mat-select value="05:00">
-                <mat-option value="05:00"> 05:00 </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-        </mat-expansion-panel>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title class="mat-subheading-2"
-              ><strong>+20%</strong>&nbsp; from 02:00 to 05:00</mat-panel-title
-            >
-          </mat-expansion-panel-header>
-          <div class="dynamic__range">
-            <mat-form-field class="no-label no-hint input-auto-width time">
-              <mat-select value="20">
-                <mat-option value="20"> 20% </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <span class="text-secondary">from</span>
-            <mat-form-field class="no-label no-hint input-auto-width time">
-              <mat-select value="02:00">
-                <mat-option value="02:00"> 02:00 </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <span class="text-secondary">to</span>
-            <mat-form-field class="no-label no-hint input-auto-width time">
-              <mat-select value="05:00">
-                <mat-option value="05:00"> 05:00 </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-        </mat-expansion-panel>
-      </mat-accordion>
+        </mat-list>
+
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title class="mat-subheading-2"
+                ><strong>+30%</strong>&nbsp; from 16:00 to
+                23:00</mat-panel-title
+              >
+            </mat-expansion-panel-header>
+            <div class="dynamic__range">
+              <mat-form-field class="no-label no-hint input-auto-width time">
+                <mat-select value="30">
+                  <mat-option value="30"> 30% </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <span class="text-secondary">from</span>
+              <mat-form-field class="no-label no-hint input-auto-width time">
+                <mat-select value="02:00">
+                  <mat-option value="02:00"> 16:00 </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <span class="text-secondary">to</span>
+              <mat-form-field class="no-label no-hint input-auto-width time">
+                <mat-select value="05:00">
+                  <mat-option value="05:00"> 05:00 </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title class="mat-subheading-2"
+                ><strong>+20%</strong>&nbsp; from 02:00 to
+                05:00</mat-panel-title
+              >
+            </mat-expansion-panel-header>
+            <div class="dynamic__range">
+              <mat-form-field class="no-label no-hint input-auto-width time">
+                <mat-select value="20">
+                  <mat-option value="20"> 20% </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <span class="text-secondary">from</span>
+              <mat-form-field class="no-label no-hint input-auto-width time">
+                <mat-select value="02:00">
+                  <mat-option value="02:00"> 02:00 </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <span class="text-secondary">to</span>
+              <mat-form-field class="no-label no-hint input-auto-width time">
+                <mat-select value="05:00">
+                  <mat-option value="05:00"> 05:00 </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <mat-selection-list [multiple]="false">
+          <mat-list-option>
+            <div class="text-secondary" matLine>
+              <mat-icon
+                class="small"
+                svgIcon="plusBold"
+                aria-hidden="true"
+              ></mat-icon>
+              Add
+            </div>
+          </mat-list-option>
+        </mat-selection-list>
+      </ng-container>
     </div>
   </section>
   <mat-divider></mat-divider>

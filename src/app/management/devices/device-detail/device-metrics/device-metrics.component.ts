@@ -7,7 +7,7 @@ import { MeasurementGroup } from '~local/types'
   styleUrls: ['./device-metrics.component.scss']
 })
 export class DeviceMetricsComponent implements OnInit {
-  chart: boolean = false;
+  chart: boolean = true;
 
   measurements: MeasurementGroup[] = [
     {

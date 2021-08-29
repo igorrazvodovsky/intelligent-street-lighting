@@ -51,7 +51,6 @@ export class ProfileVisualisationComponent implements OnChanges {
       .select(this.chartElem.nativeElement)
       .append('svg')
       .attr('height', this.height)
-      .attr('font-family', 'inherit')
 
     this.svgInner = this.svg
       .append('g')
@@ -92,15 +91,15 @@ export class ProfileVisualisationComponent implements OnChanges {
       .domain([100, 0])
       .range([0, this.height - 2 * this.marginY]);
 
+    this.xScale = d3Scale.scaleTime()
+      .domain([new Date(null, null , 1, 0, 0), new Date(null, null , 2, 0, 0)])
+
     this.yAxis = this.svgInner
       .append('g')
       .attr('id', 'y-axis')
       .attr('stroke-width', 0)
       // .style('transform', 'translate(' + this.marginX + 'px,  0)')
       .style("text-anchor", "start")
-
-    this.xScale = d3Scale.scaleTime()
-      .domain([new Date(null, null , 1, 0, 0), new Date(null, null , 2, 0, 0)])
 
     this.xAxis = this.svgInner
       .append('g')

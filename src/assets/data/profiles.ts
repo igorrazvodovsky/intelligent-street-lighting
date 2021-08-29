@@ -644,7 +644,7 @@ export const PROFILES: Profile[] = [
   },
   {
     id: 5,
-    name: 'Another one',
+    name: 'Viduspoguļanka',
     description:
       '70% on weekdays from 6:30 to 23:00, on weekends from 8:00 to 22:00. 30% the rest of the time. Accounts for traffic & natural light.',
     dynamic: true,
@@ -735,38 +735,39 @@ export const PROFILES: Profile[] = [
         ]
       }
     ],
+    // ??? How to encode cycle with Dates?
     schedules: [
       {
         name: 'Daytime',
-        brightness: 0.8,
+        brightness: 0.4,
         time: {
-          start: new Date(0, 0, 0, 6, 30, 0, 0),
-          end: new Date(0, 0, 0, 22, 30, 0, 0),
+          start: new Date(0, 0, 0, 7, 0,),
+          end: new Date(0, 0, 0, 16, 0,),
           week: [
             { enabled: true },
             { enabled: true },
-            { enabled: false },
-            { enabled: false },
-            { enabled: false },
-            { enabled: false },
-            { enabled: false }
+            { enabled: true },
+            { enabled: true },
+            { enabled: true },
+            { enabled: true },
+            { enabled: true }
           ]
         }
       },
       {
         name: 'Night',
-        brightness: 0.4,
+        brightness: 0.3,
         time: {
-          start: new Date(0, 0, 0, 6, 30, 0, 0),
-          end: new Date(0, 0, 0, 22, 30, 0, 0),
+          start: new Date(0, 0, 0, 23, 0),
+          end: new Date(0, 0, 0, 6, 0),
           week: [
             { enabled: true },
             { enabled: true },
-            { enabled: false },
-            { enabled: false },
-            { enabled: false },
-            { enabled: false },
-            { enabled: false }
+            { enabled: true },
+            { enabled: true },
+            { enabled: true },
+            { enabled: true },
+            { enabled: true }
           ]
         }
       }

@@ -8,12 +8,12 @@ section {
       grid-template-columns: minmax(0, 1fr) minmax(0, 4fr);
     }
   }
-  &.dynamic {
-    div:first-of-type {
-      align-self: flex-end;
-      padding-bottom: 1rem;
-    }
-  }
+  // &.dynamic {
+  //   div:first-of-type {
+  //     align-self: flex-end;
+  //     padding-bottom: 1rem;
+  //   }
+  // }
 }
 
 .dynamic__range {
@@ -68,4 +68,14 @@ section > div > {
 
 aside {
   margin-bottom: 1rem;
+}
+
+// ??? Generalise rule?
+.mat-accordion + .mat-list-base {
+  padding-top: 0;
+}
+
+// ???
+.mat-icon.small {
+  vertical-align: -10%;
 }

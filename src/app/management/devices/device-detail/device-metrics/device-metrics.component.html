@@ -18,26 +18,17 @@
 
 <div *ngIf="chart; else elseBlock">
   <section id="chart">
-    <h3>Controller health</h3>
-    <ul class="mat-subheading-1">
-      <li>
-        <mat-checkbox>Communication, %</mat-checkbox>
-      </li>
-      <li>
-        <mat-checkbox>Temperature, °C</mat-checkbox>
-      </li>
-    </ul>
-
-    <!-- <ul>
-        <li *ngFor="let subtask of task.subtasks">
-          <mat-checkbox [(ngModel)]="subtask.completed"
-                        [color]="subtask.color"
-                        (ngModelChange)="updateAllComplete()">
-            {{subtask.name}}
-          </mat-checkbox>
+    <div>
+      <h3>Controller health</h3>
+      <ul class="mat-subheading-1">
+        <li>
+          <mat-checkbox>Communication, %</mat-checkbox>
         </li>
-      </ul> -->
-
+        <li>
+          <mat-checkbox>Temperature, °C</mat-checkbox>
+        </li>
+      </ul>
+    </div>
     <device-chart></device-chart>
   </section>
 </div>

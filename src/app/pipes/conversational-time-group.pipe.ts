@@ -23,6 +23,7 @@ export class ConversationalTimeGroupPipe implements PipeTransform {
     const entireWeek = JSON.stringify(group.days) == JSON.stringify(this.entireWeek)
     const fullDay = (group.start.getHours() + group.start.getMinutes() == 0 && group.end.getHours() + group.end.getMinutes() == 0)
 
+    // TODO: add 'from sunrise/to sunset' cases
     if (!fullDay) {
       this.time = 'from ' + formatDate(group.start, 'HH:mm', this.locale) + ' to ' + formatDate(group.end, 'HH:mm', this.locale)
     }
@@ -32,7 +33,7 @@ export class ConversationalTimeGroupPipe implements PipeTransform {
       this.days = position == 'last' ? 'rest of the time' : 'around the clock'
       this.time = ''
     }
-    else if (entireWeek) this.days = 'every day'
+    else if (entireWeek) this.days = ''
     else if (JSON.stringify(group.days) == JSON.stringify(this.workWeek)) this.days = 'on workweek'
     else if (JSON.stringify(group.days) === JSON.stringify(this.weekend)) this.days = 'on weekends'
     else this.days = 'on ' + this.weekDays.filter((weekDay, i) => group.days.includes(i)).join(', ');
