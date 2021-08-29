@@ -66,3 +66,16 @@
 .mat-tab-label {
   min-width: auto !important;
 }
+
+.mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: var(--text-color-1) !important;
+}
+
+.mat-expansion-panel-header-description {
+  color: var(--text-color-1);
+}
+
+.mat-expansion-indicator::after {
+  color: var(--text-color-3) !important;
+}

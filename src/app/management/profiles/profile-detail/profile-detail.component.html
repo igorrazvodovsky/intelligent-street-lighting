@@ -15,16 +15,15 @@
     </div>
   </app-page-actions>
 
-  <section>
+  <section class="static">
     <div>
-      <h2>Brightness</h2>
+      <!-- <h2>Brightness</h2> -->
       <aside class="mat-caption text-secondary">
-        Schedules are superimposed and combined. Item order determines
-        the&nbsp;priority.
+        Schedules overlap and merge. Order determines the&nbsp;priority.
       </aside>
     </div>
     <div class="behaviour">
-      <div class="preview">
+      <figure class="preview">
         <!-- TODO: Replace with specifc date selection if multiple are set  -->
         <mat-tab-group *ngIf="active !== 'date'" animationDuration="0">
           <mat-tab label="Mon"></mat-tab>
@@ -35,11 +34,17 @@
           <mat-tab label="Sat"></mat-tab>
         </mat-tab-group>
         <profile-visualisation [data]="data"></profile-visualisation>
-        <div class="preview__preferences">
-          Noon <mat-slide-toggle>Midnight</mat-slide-toggle>
-          <span class="text-secondary">in the middle</span>
-        </div>
-      </div>
+        <figcaption class="preview__legend mat-caption">
+          <div>
+            <span><i class="dot"></i> Base brightness</span>
+            <span><i class="dot"></i> Dynamic</span>
+          </div>
+          <div>
+            Noon <mat-slide-toggle>Midnight</mat-slide-toggle>
+            <span class="text-secondary">in the middle</span>
+          </div>
+        </figcaption>
+      </figure>
       <mat-accordion>
         <profile-schedule
           *ngFor="let schedule of profile.schedules; let last = last"
@@ -72,7 +77,7 @@
         </mat-list-item> -->
       </mat-list>
       <mat-accordion *ngIf="isDynamic">
-        <mat-expansion-panel hideToggle>
+        <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title class="mat-subheading-2"
               ><strong>+30%</strong>&nbsp; from 16:00 to 23:00</mat-panel-title
@@ -98,7 +103,7 @@
             </mat-form-field>
           </div>
         </mat-expansion-panel>
-        <mat-expansion-panel hideToggle>
+        <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title class="mat-subheading-2"
               ><strong>+20%</strong>&nbsp; from 02:00 to 05:00</mat-panel-title

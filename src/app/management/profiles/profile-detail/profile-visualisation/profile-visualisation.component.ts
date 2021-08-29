@@ -113,12 +113,13 @@ export class ProfileVisualisationComponent implements OnChanges {
       .append('path')
       .attr('id', 'line')
       .style('fill', 'hsla(0, 0%, 0%, 0.1)')
+      // .style('fill', 'hsla(213, 97%, 53%, 0.3)')
 
     this.dynamicLineGroup = this.svgInner
       .append('g')
       .append('path')
       .attr('id', 'line')
-      .style('fill', 'hsla(0, 0%, 0%, 0.1)')
+      .style('fill', 'hsla(55, 94%, 54%, 0.2)')
   }
 
   private drawChart(): void {
@@ -167,8 +168,8 @@ export class ProfileVisualisationComponent implements OnChanges {
       this.yScale(v.value),
     ]);
 
-    this.staticLineGroup.attr('d', line(staticPoints));
     this.dynamicLineGroup.attr('d', line(dynamicPoints));
+    this.staticLineGroup.attr('d', line(staticPoints));
   }
 
 }
