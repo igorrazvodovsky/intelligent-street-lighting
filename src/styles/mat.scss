@@ -100,4 +100,16 @@ body {
   .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb-container {
     transform: translate3d(22px, 0, 0);
   }
+
+  // TODO: Reverse MD's default to match Windows/Mac/iOS idiom
+  // Works only with disabling default animation too:
+  // <mat-expansion-panel-header [@.disabled]="true">
+  // ??? Better solution?
+
+  // .mat-expansion-indicator {
+  //   transform: rotate(180deg) !important;
+  // }
+  // .mat-expanded .mat-expansion-indicator {
+  //   transform: rotate(0deg) !important;
+  // }
 }

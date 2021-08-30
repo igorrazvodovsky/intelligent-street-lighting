@@ -69,36 +69,37 @@
           </div>
         </mat-list-option>
       </mat-selection-list>
+
       <ng-container *ngIf="isDynamic">
         <mat-list role="list">
           <mat-list-item role="listitem" class="text-secondary"
             >In the presence of transport or people the brightness will increase
-            to:</mat-list-item
+            by:</mat-list-item
           >
           <!-- IF 1 -->
           <!-- <mat-list-item role="listitem"
           ><p><strong>+30%</strong> in the presence of transport or people</p>
         </mat-list-item> -->
         </mat-list>
-
         <mat-accordion>
+          <!-- TODO: Reordering -->
           <mat-expansion-panel>
             <mat-expansion-panel-header>
               <mat-panel-title class="mat-subheading-2"
-                ><strong>+30%</strong>&nbsp; from 16:00 to
-                23:00</mat-panel-title
+                ><strong>+10%</strong>&nbsp; from 02:00 to
+                05:00</mat-panel-title
               >
             </mat-expansion-panel-header>
             <div class="dynamic__range">
               <mat-form-field class="no-label no-hint input-auto-width time">
-                <mat-select value="30">
-                  <mat-option value="30"> 30% </mat-option>
+                <mat-select value="20">
+                  <mat-option value="20"> 10% </mat-option>
                 </mat-select>
               </mat-form-field>
               <span class="text-secondary">from</span>
               <mat-form-field class="no-label no-hint input-auto-width time">
                 <mat-select value="02:00">
-                  <mat-option value="02:00"> 16:00 </mat-option>
+                  <mat-option value="02:00"> 02:00 </mat-option>
                 </mat-select>
               </mat-form-field>
               <span class="text-secondary">to</span>
@@ -112,8 +113,8 @@
           <mat-expansion-panel>
             <mat-expansion-panel-header>
               <mat-panel-title class="mat-subheading-2"
-                ><strong>+20%</strong>&nbsp; from 02:00 to
-                05:00</mat-panel-title
+                ><strong>+20%</strong>&nbsp; from 01:00 to
+                06:00</mat-panel-title
               >
             </mat-expansion-panel-header>
             <div class="dynamic__range">
@@ -126,6 +127,33 @@
               <mat-form-field class="no-label no-hint input-auto-width time">
                 <mat-select value="02:00">
                   <mat-option value="02:00"> 02:00 </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <span class="text-secondary">to</span>
+              <mat-form-field class="no-label no-hint input-auto-width time">
+                <mat-select value="05:00">
+                  <mat-option value="05:00"> 05:00 </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title class="mat-subheading-2"
+                ><strong>+30%</strong>&nbsp; from 16:00 to
+                07:00</mat-panel-title
+              >
+            </mat-expansion-panel-header>
+            <div class="dynamic__range">
+              <mat-form-field class="no-label no-hint input-auto-width time">
+                <mat-select value="30">
+                  <mat-option value="30"> 30% </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <span class="text-secondary">from</span>
+              <mat-form-field class="no-label no-hint input-auto-width time">
+                <mat-select value="02:00">
+                  <mat-option value="02:00"> 16:00 </mat-option>
                 </mat-select>
               </mat-form-field>
               <span class="text-secondary">to</span>
