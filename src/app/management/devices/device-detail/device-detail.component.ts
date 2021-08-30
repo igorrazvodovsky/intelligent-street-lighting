@@ -13,7 +13,7 @@ import { DeviceService } from '~local/services/device.service'
 export class DeviceDetailComponent implements OnInit {
   device$!: Observable<Device>;
   device: Device;
-  group$!: Observable<DeviceGroup>;
+  group: DeviceGroup;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,7 +28,7 @@ export class DeviceDetailComponent implements OnInit {
 
     this.device$.subscribe(device => {
       this.device = device;
-      this.group$ = this.service.getGroup(device.groupId)
+      this.service.getGroup(device.groupId).subscribe(group => this.group = group)
     }
     );
   }

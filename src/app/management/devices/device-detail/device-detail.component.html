@@ -1,9 +1,10 @@
 <div *ngIf="device">
-  <mat-tab-group id="device" animationDuration="0ms" [selectedIndex]="2">
+  <mat-tab-group id="device" animationDuration="0ms" [selectedIndex]="0">
     <mat-tab label="Overview">
       <device-lamp
         *ngIf="device.type == 'lamp'"
         [device]="device"
+        [group]="group"
       ></device-lamp>
       <device-sc *ngIf="device.type == 'sc'" [device]="device"></device-sc>
     </mat-tab>

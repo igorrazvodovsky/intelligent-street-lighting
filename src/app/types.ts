@@ -34,7 +34,8 @@ export interface DeviceGroup {
   profileId: number
   parentId: number
   children: number[]
-  created: Date
+  created: Date,
+  profileLocked: boolean
 }
 
 export interface Event {
@@ -88,6 +89,10 @@ export interface Device {
   // TODO: lamps only
   orientation?: number
   firmware: string
+  profile: {
+    source: 'group' | 'sc' | 'itself'
+    id?: number,
+  }
 }
 
 export interface MotionSensor {

@@ -25,13 +25,17 @@
         "name": "01-002",
         "groupId": 1,
         "status": "active",
-        "profile": 1,
+        "profile": {
+          "source" : "sc",
+          "id" : 1
+        },
         "SC": 1,
         "orientation": 0,
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
         "sensors": ["motion", "traffic"]
+
       },
       "geometry": {
         "type": "Point",
@@ -46,7 +50,10 @@
         "name": "01-003",
         "groupId": 1,
         "status": "warning",
-        "profile": 1,
+        "profile": {
+          "source" : "itself",
+          "id" : 1
+        },
         "SC": 1,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -67,7 +74,10 @@
         "name": "01-004",
         "groupId": 1,
         "status": "active",
-        "profile": 1,
+        "profile": {
+          "source" : "group",
+          "id" : 1
+        },
         "SC": 1,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -88,7 +98,10 @@
         "name": "01-005",
         "groupId": 1,
         "status": "active",
-        "profile": 1,
+        "profile": {
+          "source" : "group",
+          "id" : 1
+        },
         "SC": 1,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -109,7 +122,10 @@
         "name": "01-006",
         "groupId": 1,
         "status": "active",
-        "profile": 1,
+        "profile": {
+          "source" : "group",
+          "id" : 1
+        },
         "SC": 1,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -130,7 +146,10 @@
         "name": "01-007",
         "groupId": 1,
         "status": "active",
-        "profile": 1,
+        "profile": {
+          "source" : "group",
+          "id" : 1
+        },
         "SC": 1,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -151,7 +170,10 @@
         "name": "01-008",
         "groupId": 1,
         "status": "active",
-        "profile": 1,
+        "profile": {
+          "source" : "group",
+          "id" : 1
+        },
         "SC": 1,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -172,7 +194,10 @@
         "name": "01-009",
         "groupId": 1,
         "status": "active",
-        "profile": 1,
+        "profile": {
+          "source" : "group",
+          "id" : 1
+        },
         "SC": 1,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -193,7 +218,10 @@
         "name": "01-010",
         "groupId": 1,
         "status": "active",
-        "profile": 1,
+        "profile": {
+          "source" : "group",
+          "id" : 1
+        },
         "SC": 1,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -214,7 +242,10 @@
         "name": "01-011",
         "groupId": 1,
         "status": "active",
-        "profile": 1,
+        "profile": {
+          "source" : "group",
+          "id" : 1
+        },
         "SC": 1,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -235,7 +266,10 @@
         "name": "01-012",
         "groupId": 1,
         "status": "active",
-        "profile": 1,
+        "profile": {
+          "source" : "group",
+          "id" : 1
+        },
         "SC": 1,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -256,7 +290,10 @@
         "name": "01-013",
         "groupId": 1,
         "status": "active",
-        "profile": 1,
+        "profile": {
+          "source" : "group",
+          "id" : 1
+        },
         "SC": 1,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -278,7 +315,10 @@
         "name": "01-014",
         "groupId": 1,
         "status": "active",
-        "profile": 1,
+        "profile": {
+          "source" : "group",
+          "id" : 1
+        },
         "SC": 1,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -299,7 +339,10 @@
         "name": "01-015",
         "groupId": 1,
         "status": "active",
-        "profile": 1,
+        "profile": {
+          "source" : "group",
+          "id" : 1
+        },
         "SC": 1,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -320,7 +363,10 @@
         "name": "01-016",
         "groupId": 1,
         "status": "active",
-        "profile": 1,
+        "profile": {
+          "source" : "group",
+          "id" : 1
+        },
         "SC": 1,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -341,7 +387,10 @@
         "name": "01-017",
         "groupId": 1,
         "status": "active",
-        "profile": 1,
+        "profile": {
+          "source" : "group",
+          "id" : 1
+        },
         "SC": 1,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -362,7 +411,10 @@
         "name": "01-018",
         "groupId": 1,
         "status": "active",
-        "profile": 1,
+        "profile": {
+          "source" : "group",
+          "id" : 1
+        },
         "SC": 1,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -383,7 +435,10 @@
         "name": "01-019",
         "groupId": 1,
         "status": "active",
-        "profile": 1,
+        "profile": {
+          "source" : "group",
+          "id" : 1
+        },
         "SC": 1,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -404,7 +459,10 @@
         "name": "01-020",
         "groupId": 1,
         "status": "active",
-        "profile": 1,
+        "profile": {
+          "source" : "group",
+          "id" : 1
+        },
         "SC": 1,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -425,7 +483,10 @@
         "name": "01-021",
         "groupId": 1,
         "status": "active",
-        "profile": 1,
+        "profile": {
+          "source" : "group",
+          "id" : 1
+        },
         "SC": 1,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -446,7 +507,10 @@
         "name": "01-022",
         "groupId": 1,
         "status": "active",
-        "profile": 1,
+        "profile": {
+          "source" : "group",
+          "id" : 1
+        },
         "SC": 1,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -467,7 +531,10 @@
         "name": "01-023",
         "groupId": 1,
         "status": "active",
-        "profile": 1,
+        "profile": {
+          "source" : "group",
+          "id" : 1
+        },
         "SC": 1,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -488,7 +555,10 @@
         "name": "01-024",
         "groupId": 1,
         "status": "active",
-        "profile": 1,
+        "profile": {
+          "source" : "group",
+          "id" : 1
+        },
         "SC": 1,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -509,7 +579,10 @@
         "name": "01-025",
         "groupId": 1,
         "status": "active",
-        "profile": 1,
+        "profile": {
+          "source" : "group",
+          "id" : 1
+        },
         "SC": 1,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -530,7 +603,10 @@
         "name": "01-026",
         "groupId": 1,
         "status": "active",
-        "profile": 1,
+        "profile": {
+          "source" : "group",
+          "id" : 1
+        },
         "SC": 1,
         "orientation": 32,
         "model": "LC2M2305R",
@@ -567,7 +643,10 @@
         "name": "02-001",
         "groupId": 2,
         "status": "off",
-        "profile": 2,
+        "profile": {
+          "source" : "group",
+          "id" : 2
+        },
         "SC": 2,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -588,7 +667,10 @@
         "name": "02-002",
         "groupId": 2,
         "status": "off",
-        "profile": 2,
+        "profile": {
+          "source" : "group",
+          "id" : 2
+        },
         "SC": 2,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -609,7 +691,10 @@
         "name": "02-003",
         "groupId": 2,
         "status": "off",
-        "profile": 2,
+        "profile": {
+          "source" : "group",
+          "id" : 2
+        },
         "SC": 2,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -630,7 +715,10 @@
         "name": "02-004",
         "groupId": 2,
         "status": "off",
-        "profile": 2,
+        "profile": {
+          "source" : "group",
+          "id" : 2
+        },
         "SC": 2,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -651,7 +739,10 @@
         "name": "02-005",
         "groupId": 2,
         "status": "off",
-        "profile": 2,
+        "profile": {
+          "source" : "group",
+          "id" : 2
+        },
         "SC": 2,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -672,7 +763,10 @@
         "name": "02-006",
         "groupId": 2,
         "status": "off",
-        "profile": 2,
+        "profile": {
+          "source" : "group",
+          "id" : 2
+        },
         "SC": 2,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -693,7 +787,10 @@
         "name": "02-007",
         "groupId": 2,
         "status": "off",
-        "profile": 2,
+        "profile": {
+          "source" : "group",
+          "id" : 2
+        },
         "SC": 2,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -714,7 +811,10 @@
         "name": "02-008",
         "groupId": 2,
         "status": "off",
-        "profile": 2,
+        "profile": {
+          "source" : "group",
+          "id" : 2
+        },
         "SC": 2,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -735,7 +835,10 @@
         "name": "02-009",
         "groupId": 2,
         "status": "off",
-        "profile": 2,
+        "profile": {
+          "source" : "group",
+          "id" : 2
+        },
         "SC": 2,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -756,7 +859,10 @@
         "name": "03-001",
         "groupId": 3,
         "status": "active",
-        "profile": 3,
+        "profile": {
+          "source" : "group",
+          "id" : 3
+        },
         "SC": 3,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -777,7 +883,10 @@
         "name": "03-002",
         "groupId": 3,
         "status": "active",
-        "profile": 3,
+        "profile": {
+          "source" : "group",
+          "id" : 3
+        },
         "SC": 3,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -798,7 +907,10 @@
         "name": "03-003",
         "groupId": 3,
         "status": "active",
-        "profile": 3,
+        "profile": {
+          "source" : "group",
+          "id" : 3
+        },
         "SC": 3,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -819,7 +931,10 @@
         "name": "03-004",
         "groupId": 3,
         "status": "active",
-        "profile": 3,
+        "profile": {
+          "source" : "group",
+          "id" : 3
+        },
         "SC": 3,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -840,7 +955,10 @@
         "name": "03-005",
         "groupId": 3,
         "status": "active",
-        "profile": 3,
+        "profile": {
+          "source" : "group",
+          "id" : 3
+        },
         "SC": 3,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -861,7 +979,10 @@
         "name": "03-006",
         "groupId": 3,
         "status": "active",
-        "profile": 3,
+        "profile": {
+          "source" : "group",
+          "id" : 3
+        },
         "SC": 3,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -882,7 +1003,10 @@
         "name": "03-007",
         "groupId": 3,
         "status": "active",
-        "profile": 3,
+        "profile": {
+          "source" : "group",
+          "id" : 3
+        },
         "SC": 3,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -903,7 +1027,10 @@
         "name": "03-008",
         "groupId": 3,
         "status": "active",
-        "profile": 3,
+        "profile": {
+          "source" : "group",
+          "id" : 3
+        },
         "SC": 3,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -924,7 +1051,10 @@
         "name": "03-009",
         "groupId": 3,
         "status": "active",
-        "profile": 3,
+        "profile": {
+          "source" : "group",
+          "id" : 3
+        },
         "SC": 3,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -945,7 +1075,10 @@
         "name": "03-010",
         "groupId": 3,
         "status": "active",
-        "profile": 3,
+        "profile": {
+          "source" : "group",
+          "id" : 3
+        },
         "SC": 3,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -966,7 +1099,10 @@
         "name": "03-011",
         "groupId": 3,
         "status": "active",
-        "profile": 3,
+        "profile": {
+          "source" : "group",
+          "id" : 3
+        },
         "SC": 3,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -987,7 +1123,10 @@
         "name": "03-012",
         "groupId": 3,
         "status": "active",
-        "profile": 3,
+        "profile": {
+          "source" : "group",
+          "id" : 3
+        },
         "SC": 3,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -1008,7 +1147,10 @@
         "name": "03-013",
         "groupId": 3,
         "status": "active",
-        "profile": 3,
+        "profile": {
+          "source" : "group",
+          "id" : 3
+        },
         "SC": 3,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -1029,7 +1171,10 @@
         "name": "03-014",
         "groupId": 3,
         "status": "active",
-        "profile": 3,
+        "profile": {
+          "source" : "group",
+          "id" : 3
+        },
         "SC": 3,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -1050,7 +1195,10 @@
         "name": "03-015",
         "groupId": 3,
         "status": "active",
-        "profile": 3,
+        "profile": {
+          "source" : "group",
+          "id" : 3
+        },
         "SC": 3,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -1071,7 +1219,10 @@
         "name": "03-016",
         "groupId": 3,
         "status": "active",
-        "profile": 3,
+        "profile": {
+          "source" : "group",
+          "id" : 3
+        },
         "SC": 3,
         "orientation": 0,
         "model": "LC2M2305R",
@@ -1092,7 +1243,10 @@
         "name": "03-017",
         "groupId": 3,
         "status": "danger",
-        "profile": 3,
+        "profile": {
+          "source" : "group",
+          "id" : 3
+        },
         "SC": 3,
         "orientation": 0,
         "model": "LC2M2305R",

@@ -23,16 +23,16 @@
       </button>
     </div>
   </mat-list-option>
-  <mat-menu #profileMenu="matMenu">
-    <button
-      [disabled]="profile.id === (profile$ | async)?.id"
-      *ngFor="let profile of profiles"
-      mat-menu-item
-    >
-      {{ profile.name }}
-    </button>
-  </mat-menu>
 </mat-selection-list>
+<mat-menu #profileMenu="matMenu">
+  <button
+    [disabled]="profile.id === (profile$ | async)?.id"
+    *ngFor="let profile of profiles"
+    mat-menu-item
+  >
+    {{ profile.name }}
+  </button>
+</mat-menu>
 <mat-divider></mat-divider>
 <div class="list-subheader mat-body-2 text-secondary">
   Lamps
