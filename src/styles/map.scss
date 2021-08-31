@@ -16,16 +16,20 @@
     position: relative;
     width: auto !important;
     font-size: 0.875rem;
-    & > div {
+    &.dark > div {
       background: hsla(0, 0%, 0%, 0.6);
       &:hover {
         background: hsla(0, 0%, 0%, 0.9);
       }
+    }
+    & > div {
+      background: white;
       border-radius: 2rem;
       padding: 0.5rem 0.75rem;
       color: var(--text-color-1);
       transform: translate(-0%, -25%);
       display: inline-flex;
+      gap: 1ch;
       align-items: center;
       & > svg {
         margin-right: 1ch;
@@ -43,6 +47,13 @@
     }
     &.danger > div {
       fill: hsl(var(--red-400));
+    }
+    .dot {
+      background: hotpink;
+      box-shadow: 0 0 0 2pt white;
+      &:not(:first-child) {
+        margin-left: -0.5rem;
+      }
     }
   }
   .marker--sc {

@@ -42,7 +42,8 @@ $dark-theme: mat.define-dark-theme(
   )
 );
 
-.dark {
+.dark,
+section#activity {
   @include mat.all-component-colors($dark-theme);
 }
 
