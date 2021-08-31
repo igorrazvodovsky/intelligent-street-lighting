@@ -1,3 +1,5 @@
+@import "../../../../styles/mixins.scss";
+
 .mat-toolbar {
   @media (min-width: 600px) {
     padding-left: 3.5rem;
@@ -17,7 +19,9 @@
     pointer-events: initial;
   }
 
-  button#notifications {
-    margin-left: auto;
+  button#search {
+    @media (min-width: 600px) {
+      @include dark-mode;
+    }
   }
 }

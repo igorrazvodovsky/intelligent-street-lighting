@@ -1,3 +1,13 @@
+@import "../../../../styles/mixins.scss";
+
+:host {
+  & > button {
+    @media (min-width: 600px) {
+      @include dark-mode;
+    }
+  }
+}
+
 .mat-card-title {
   font-size: 1rem;
 }

@@ -15,3 +15,12 @@
     grid-template-columns: minmax(0, 1fr) minmax(0, 3fr) minmax(0, 1fr);
   }
 }
+
+@mixin dark-mode {
+  --text-color: 0, 0%, 100%;
+  // hmmm...
+  --text-color-1: hsla(var(--text-color), 0.9);
+  --text-color-2: hsla(var(--text-color), 0.6);
+  --text-color-3: hsla(var(--text-color), 0.3);
+  color: var(--text-color-1);
+}

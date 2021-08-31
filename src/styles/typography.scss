@@ -12,14 +12,6 @@ body {
   --text-color-3: hsla(var(--text-color), 0.3);
 }
 
-.dark {
-  --text-color: 0, 0%, 100%;
-  // hmmm...
-  --text-color-1: hsla(var(--text-color), 0.9);
-  --text-color-2: hsla(var(--text-color), 0.6);
-  --text-color-3: hsla(var(--text-color), 0.3);
-}
-
 .text {
   &-primary {
     color: var(--text-color-1) !important;
