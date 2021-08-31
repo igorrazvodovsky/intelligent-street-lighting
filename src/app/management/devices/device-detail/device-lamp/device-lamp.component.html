@@ -15,11 +15,14 @@
       <ng-container
         *ngIf="device.profile.source !== 'itself'; else selfAssigned"
       >
-        Inherited from
+        Profile inherited from
         {{ device.profile.source == "sc" ? "segment controller" : "group" }}
       </ng-container>
 
-      <ng-template #selfAssigned>Individual profile</ng-template>
+      <!-- ??? Use cases for individual profiles. HOW NORMAL? -->
+      <ng-template #selfAssigned
+        ><span style="color: red">Individual profile</span></ng-template
+      >
     </span>
     <div
       matListIcon
