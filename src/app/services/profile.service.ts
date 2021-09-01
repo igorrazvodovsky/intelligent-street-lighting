@@ -4,7 +4,8 @@ import { PROFILES } from '~local/../assets/data/profiles';
 import { MessageService } from './message.service';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-
+import * as d3Scale from 'd3-scale';
+import * as d3ScaleChromatic from 'd3-scale-chromatic';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,12 +18,6 @@ export class ProfileService {
   }
 
   constructor(private messageService: MessageService) { }
-
-  // getProfiles(): Observable<Profile[]> {
-  //   const profiles = of(PROFILES);
-  //   this.messageService.add('ProfileService: fetched profiles');
-  //   return profiles;
-  // }
 
   getProfile(id: number | string) {
     return this._profiles.pipe(
