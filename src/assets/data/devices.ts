@@ -1,6 +1,4 @@
-// TODO: REMOVE
-
-import { Device, DeviceGroup, SensorType } from '~local/types';
+import { DeviceGroup, MeasurementGroup } from '~local/types';
 
 export const GROUPS: DeviceGroup[] = [
   {
@@ -112,3 +110,106 @@ export const GROUPS: DeviceGroup[] = [
     profileLocked: false
   }
 ];
+
+export const MEASUREMENTS: MeasurementGroup[] = [
+  {
+    name: "Controller health",
+    measurements: [
+      {
+        name: "Communication",
+        units: "%",
+        thresholds: {
+          min: 50,
+        }
+      },
+      {
+        name: "Temperature",
+        units: "°C",
+        thresholds: {
+          min: 50,
+        }
+      }
+    ]
+  },
+  {
+    name: "Luminaire",
+    measurements: [
+      {
+        name: "Brightness",
+        units: "%",
+        thresholds: {
+          min: 50,
+        }
+      }
+    ]
+  },
+  {
+    name: "Motion sensor",
+    measurements: [
+      {
+        name: "Counted objects",
+        units: ""
+      }
+    ]
+  },
+  {
+    name: "Energy meter",
+    measurements: [
+      {
+        name: "Energy",
+        units: "kWh"
+      },
+      {
+        name: "Operating",
+        units: "h"
+      },
+      {
+        name: "Up time (by controller)",
+        units: "h"
+      },
+      {
+        name: "Burn time (by controller)",
+        units: "h"
+      }
+    ]
+  },
+  {
+    name: "",
+    measurements: [
+      {
+        name: "Frequency",
+        units: "Hz"
+      },
+      {
+        name: "Voltage",
+        units: "V",
+      },
+      {
+        name: "Current",
+        units: "A",
+      },
+      {
+        name: "Power factor",
+        units: "",
+      },
+      {
+        name: "Power",
+        units: "W",
+      }
+    ]
+  },
+  {
+    name: "LED",
+    measurements: [
+      {
+        name: "Voltage",
+        units: "V",
+      },
+      {
+        name: "Current",
+        units: "A",
+      }
+    ]
+  }
+]
+

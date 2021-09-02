@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '~local/services/profile.service';
 import { Profile } from '~local/types'
-
+import * as d3Scale from 'd3-scale';
+import * as d3ScaleChromatic from 'd3-scale-chromatic';
 @Component({
   selector: 'map-legend',
   templateUrl: './map-legend.component.html',
@@ -43,7 +44,11 @@ export class MapLegendComponent implements OnInit {
   constructor(private profileService: ProfileService) { }
 
   ngOnInit(): void {
-    this.profileService.Profiles.subscribe(profiles => this.profiles = profiles);
+    this.profileService.Profiles.subscribe(profiles => {
+      this.profiles = profiles;
+      this.profiles.forEach((profile: any): string => profile.colour = this.profileService.getProfileColour(profile.id));
+    }
+    );
   }
 
 }

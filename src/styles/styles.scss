@@ -7,7 +7,6 @@
 @import "layout";
 @import "typography";
 @import "navigation";
-@import "highcharts";
 @import "mobile";
 @import "mat";
 
@@ -472,4 +471,27 @@ input.time {
 
 svg text {
   font-family: "General Sans", sans-serif !important;
+}
+
+svg#device-metrics {
+  margin-top: -4rem;
+  background: white;
+  // background: hsla(0%, 0, 0, 0.05);
+  path.domain {
+    stroke-width: 0;
+  }
+}
+
+#device-metrics-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0.5rem;
+  .mat-slide-toggle {
+    margin: 1rem 0;
+  }
+  .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+    height: auto;
+    line-height: 2rem;
+  }
 }

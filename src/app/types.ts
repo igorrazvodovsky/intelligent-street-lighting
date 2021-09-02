@@ -1,3 +1,14 @@
+type DeviceMetricValue = {
+  date: string,
+  consumed: number,
+  seen: number,
+  conversion: number,
+}
+
+export interface DeviceMetrics {
+  [key: string]: DeviceMetricValue[]
+}[]
+
 export interface User {
   name: string
   id: number
@@ -110,13 +121,13 @@ export interface MeasurementGroup {
 export interface Measurement {
   name: string
   units: string
-  values: [
+  values?: [
     {
       value: number
       date: Date
     }
   ],
-  thresholds: {
+  thresholds?: {
     min?: number
     max?: number
   }

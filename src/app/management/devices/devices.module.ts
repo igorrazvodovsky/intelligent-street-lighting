@@ -5,8 +5,6 @@ import { DevicesComponent } from './devices.component';
 import { DeviceListComponent } from './device-list/device-list.component';
 import { DeviceDetailComponent } from './device-detail/device-detail.component';
 import { MapComponent } from './map/map.component';
-import { ChartComponent } from './device-detail/chart/chart.component'
-import { ChartModule } from 'angular-highcharts';
 import { MarkerService } from '~local/services/marker.service';
 import { PopupService } from '~local/services/popup.service';
 import { ShapeService } from '~local/services/shape.service';
@@ -28,13 +26,13 @@ import { DeviceTasksComponent } from './device-detail/device-tasks/device-tasks.
 import { MapLegendComponent } from './map/map-legend/map-legend.component';
 import { MapLayerMenuComponent } from './map/map-layer-menu/map-layer-menu.component';
 import { ScConnectedDevicesComponent } from './device-detail/device-sc/sc-connected-devices/sc-connected-devices.component';
+import { DeviceMetricsChartComponent } from './device-detail/device-metrics/device-metrics-chart/device-metrics-chart.component';
 
 @NgModule({
   declarations: [
     DevicesComponent,
     DeviceListComponent,
     DeviceDetailComponent,
-    ChartComponent,
     MapComponent,
     GroupListComponent,
     DeviceLampComponent,
@@ -51,13 +49,13 @@ import { ScConnectedDevicesComponent } from './device-detail/device-sc/sc-connec
     DeviceTasksComponent,
     MapLegendComponent,
     MapLayerMenuComponent,
-    ScConnectedDevicesComponent
+    ScConnectedDevicesComponent,
+    DeviceMetricsChartComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     DevicesRoutingModule,
-    ChartModule,
     FormsModule
   ],
   providers: [

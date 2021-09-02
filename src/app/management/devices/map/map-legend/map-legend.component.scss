@@ -10,17 +10,18 @@ ul {
 }
 
 li {
-  &::before {
-    content: "";
-    background: lawngreen;
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 50%;
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-margin-end: 0.5rem;
-    margin-inline-end: 0.5rem;
-  }
+  // &::before {
+  //   content: "";
+  //   background: lawngreen;
+  //   width: 0.5rem;
+  //   height: 0.5rem;
+  //   border-radius: 50%;
+  //   display: inline-block;
+  //   vertical-align: middle;
+  //   -webkit-margin-end: 0.5rem;
+  //   margin-inline-end: 0.5rem;
+  // }
+  // TODO: Remove
   &.green::before,
   &.color-1::before {
     background: green;

@@ -23,12 +23,7 @@ ul {
 
 #chart {
   display: flex;
-  // ul {
-  //   float: left;
-  // }
-  // device-chart {
-  //   float: right;
-  // }
+  gap: 2rem;
 }
 
 #list-chart-toggle {
@@ -36,8 +31,4 @@ ul {
   right: 0.5rem;
   top: 1rem;
   z-index: 1;
-}
-
-.mat-slide-toggle {
-  margin: 1rem;
 }

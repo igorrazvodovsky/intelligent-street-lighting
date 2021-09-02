@@ -1,3 +1,5 @@
+@import "../../../../styles/mixins.scss";
+
 :host > h2 {
   margin-left: 1rem;
   margin-bottom: 0;
@@ -10,4 +12,16 @@ h3 {
 
 .empty {
   padding: 1rem;
+}
+
+// Inverting icons in toolbar
+::ng-deep {
+  .dashboard {
+    button#search,
+    button#notifications {
+      @media (min-width: 600px) {
+        @include dark-mode;
+      }
+    }
+  }
 }

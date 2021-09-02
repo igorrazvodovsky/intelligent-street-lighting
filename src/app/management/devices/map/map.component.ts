@@ -25,7 +25,6 @@ export class MapComponent implements AfterViewInit, OnInit {
   markersGeoJsonData: any;
   accessToken = 'pk.eyJ1IjoiaWdvcnJhenZvZG92c2t5IiwiYSI6ImNrczV3dHI3ODA1YTQycnF5bnV4N2xjcm0ifQ.1b4VIA7aqOZc_oiiTyNl-w';
   deviceLayer = 'profile'
-  getProfileColour: any
   profileNames: string[]
 
   // TODO: Replace with something
@@ -74,8 +73,8 @@ export class MapComponent implements AfterViewInit, OnInit {
   }
 
   makeProfileMarker(clusterMarkers, childCount) {
-    const clusterProfilesColours = this.getClusterProfileIds(clusterMarkers).map(id => this.getProfileColour(id))
-    const profileDots = clusterProfilesColours.map(c => `<i class="dot" style="background: ${c}"></i> `).join('')
+    const clusterProfilesColours = this.getClusterProfileIds(clusterMarkers).map(id => this.profileService.getProfileColour(id.toString()))
+    const profileDots = clusterProfilesColours.map(colour => `<i class="dot" style="background: ${colour}"></i> `).join('')
     return L.divIcon({
       className: 'marker--cluster ' + status, html: `<div>${childCount} ${profileDots}</div>`
     });
@@ -149,10 +148,7 @@ export class MapComponent implements AfterViewInit, OnInit {
     this.markerService.getMarkers().subscribe((markers: any) => {
       this.markersGeoJsonData = markers;
       this.initGroupsLayer()
-    });
-    this.profileService.Profiles.subscribe(profiles => {
-      this.getProfileColour = d3Scale.scaleOrdinal(d3ScaleChromatic.schemeCategory10).domain(profiles.map((p:any) => p.id))
-    });
+    })
   }
 
   getClusterProfileIds(clusterMarkers): number[] {
@@ -160,6 +156,7 @@ export class MapComponent implements AfterViewInit, OnInit {
       .filter(e => e.feature.properties.hasOwnProperty('profile'))
       .map(e => e.feature.properties.profile.id).filter(i => i)
     const uniqueIds = [...new Set<number>(ids)]
+    console.log(uniqueIds)
     return Array.from(uniqueIds)
   }
 

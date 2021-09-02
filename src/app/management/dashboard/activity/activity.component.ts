@@ -1,6 +1,6 @@
 // TODO: Refactor
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
 import { UserEvent, DeviceEvent } from '~local/types'
 import { EventService } from '~local/services/event.service';
 import { DeviceService } from '~local/services/device.service';
@@ -11,7 +11,7 @@ import { UserService } from '~local/services/user.service';
   templateUrl: './activity.component.html',
   styleUrls: ['./activity.component.scss']
 })
-export class ActivityComponent implements OnInit {
+export class ActivityComponent implements OnInit, OnDestroy {
   events: UserEvent[] | DeviceEvent[] = [];
   fileredEvents: UserEvent[] | DeviceEvent[] = [];
   filter = {
@@ -20,10 +20,20 @@ export class ActivityComponent implements OnInit {
     warning: true,
     info: true
   };
-  constructor(private eventService: EventService, private deviceService: DeviceService, private userService: UserService) { }
+  constructor(
+    private renderer: Renderer2,
+    private eventService: EventService,
+    private deviceService: DeviceService,
+    private userService: UserService) {
+      this.renderer.addClass(document.body, 'dashboard');
+    }
 
   ngOnInit() {
     this.getEvents();
+  }
+
+  ngOnDestroy() {
+    this.renderer.removeClass(document.body, 'dashboard');
   }
 
   filterEvents(events) {

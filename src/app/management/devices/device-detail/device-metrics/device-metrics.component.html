@@ -9,27 +9,41 @@
 >
   <mat-icon svgIcon="chartMedium" aria-label="List toggle icon"></mat-icon>
 </button> -->
-<mat-slide-toggle
-  color="primary"
-  [checked]="chart"
-  (toggleChange)="toggleChart()"
-  >History data & comparison</mat-slide-toggle
->
-
+<div id="device-metrics-controls">
+  <mat-slide-toggle
+    color="primary"
+    [checked]="chart"
+    (toggleChange)="toggleChart()"
+    >History & comparison</mat-slide-toggle
+  >
+  <mat-button-toggle-group
+    *ngIf="chart"
+    name="timePeriod"
+    aria-label="Time period"
+    value="day"
+  >
+    <mat-button-toggle value="day">Day</mat-button-toggle>
+    <mat-button-toggle value="week">Week</mat-button-toggle>
+    <mat-button-toggle value="month">Month</mat-button-toggle>
+    <mat-button-toggle value="quarter">Quarter</mat-button-toggle>
+    <mat-button-toggle value="quarter">Custom</mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
 <div *ngIf="chart; else elseBlock">
   <section id="chart">
     <div>
-      <h3>Controller health</h3>
-      <ul class="mat-subheading-1">
-        <li>
-          <mat-checkbox>Communication, %</mat-checkbox>
-        </li>
-        <li>
-          <mat-checkbox>Temperature, °C</mat-checkbox>
-        </li>
-      </ul>
+      <ng-container *ngFor="let group of measurements">
+        <h3>{{ group.name }}</h3>
+        <ul class="mat-subheading-1">
+          <li *ngFor="let measurement of group.measurements">
+            <mat-checkbox
+              >{{ measurement.name }} {{ measurement.unit }}</mat-checkbox
+            >
+          </li>
+        </ul>
+      </ng-container>
     </div>
-    <device-chart></device-chart>
+    <device-metrics-chart></device-metrics-chart>
   </section>
 </div>
 <ng-template #elseBlock>

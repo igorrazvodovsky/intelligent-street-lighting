@@ -18,10 +18,4 @@
   & .mat-icon {
     pointer-events: initial;
   }
-
-  button#search {
-    @media (min-width: 600px) {
-      @include dark-mode;
-    }
-  }
 }
