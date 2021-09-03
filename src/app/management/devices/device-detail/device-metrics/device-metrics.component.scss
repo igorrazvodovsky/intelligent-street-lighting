@@ -9,6 +9,8 @@ p {
 
 .mat-expansion-panel {
   background-color: transparent;
+  // Compensate for header margin
+  margin-left: 0.5rem;
 }
 
 ul {
@@ -31,4 +33,15 @@ ul {
   right: 0.5rem;
   top: 1rem;
   z-index: 1;
+}
+
+$colors: #a6cee3, #1f78b4, #b2df8a, #33a02c, #fb9a99, #e31a1c, #fdbf6f, #ff7f00,
+  #cab2d6, #6a3d9a, #ffff99, #b15928;
+
+:host ::ng-deep {
+  @for $i from 1 through length($colors) {
+    .mat-checkbox-checked.colour-#{$i} .mat-checkbox-background {
+      background: nth($colors, $i);
+    }
+  }
 }

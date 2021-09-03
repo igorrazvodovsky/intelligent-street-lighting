@@ -127,6 +127,10 @@ button {
 
 #task-dialog.mat-dialog-container {
   max-width: 50vmax;
+  max-height: 90vh;
+  @media (max-width: 599px) {
+    max-height: 100vh;
+  }
   padding: 1.5rem 0 1.5rem 0;
   .mat-dialog-content,
   .mat-dialog-title,

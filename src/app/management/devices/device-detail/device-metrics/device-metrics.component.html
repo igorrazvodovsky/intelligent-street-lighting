@@ -36,8 +36,11 @@
         <h3>{{ group.name }}</h3>
         <ul class="mat-subheading-1">
           <li *ngFor="let measurement of group.measurements">
-            <mat-checkbox
-              >{{ measurement.name }} {{ measurement.unit }}</mat-checkbox
+            <mat-checkbox [class]="'colour-' + measurement.id"
+              >{{ measurement.name
+              }}<small class="text-secondary" *ngIf="measurement.units"
+                >, {{ measurement.units }}</small
+              ></mat-checkbox
             >
           </li>
         </ul>
@@ -47,33 +50,34 @@
   </section>
 </div>
 <ng-template #elseBlock>
-  <h3>Controller health</h3>
-  <mat-accordion>
-    <mat-expansion-panel hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title> Communication </mat-panel-title>
-        <mat-panel-description>
-          <p><span class="text-primary">60%.</span> Alert if less than 50.</p>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <mat-form-field>
-        <mat-label>Alert if less than</mat-label>
-        <input matInput />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>or more than</mat-label>
-        <input matInput />
-      </mat-form-field>
-      <p><small>Updated 5 min ago.</small></p>
-    </mat-expansion-panel>
-    <mat-expansion-panel hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title> Temperature </mat-panel-title>
-        <mat-panel-description>
-          <p><span class="text-primary">35°C.</span> Alert if more than 70.</p>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <p>This is the primary content of the panel.</p>
-    </mat-expansion-panel>
-  </mat-accordion>
+  <ng-container *ngFor="let group of measurements">
+    <h3>{{ group.name }}</h3>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let measurement of group.measurements">
+        <mat-expansion-panel-header>
+          <mat-panel-title> {{ measurement.name }} </mat-panel-title>
+          <mat-panel-description>
+            <p>
+              <span class="text-primary"
+                >{{ measurement.values[0].value }}{{ measurement.units }}</span
+              >
+              <small *ngIf="measurement.thresholds" class="text-secondary">
+                . Alert if less than 50.
+              </small>
+            </p>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-form-field>
+          <mat-label>Alert if less than</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>or more than</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <!-- TODO: "See history" opens history + selects the metric -->
+        <p><small>Updated 5 min ago. See history</small></p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </ng-container>
 </ng-template>

@@ -116,18 +116,32 @@ export const MEASUREMENTS: MeasurementGroup[] = [
     name: "Controller health",
     measurements: [
       {
+        id: 1,
         name: "Communication",
         units: "%",
         thresholds: {
           min: 50,
-        }
+        },
+        values: [
+          {
+            value: 90,
+            date: new Date()
+          }
+        ]
       },
       {
+        id: 2,
         name: "Temperature",
         units: "°C",
         thresholds: {
           min: 50,
-        }
+        },
+        values: [
+          {
+            value: 23,
+            date: new Date()
+          }
+        ]
       }
     ]
   },
@@ -135,11 +149,18 @@ export const MEASUREMENTS: MeasurementGroup[] = [
     name: "Luminaire",
     measurements: [
       {
+        id: 3,
         name: "Brightness",
         units: "%",
         thresholds: {
           min: 50,
-        }
+        },
+        values: [
+          {
+            value: 50,
+            date: new Date()
+          }
+        ]
       }
     ]
   },
@@ -147,8 +168,15 @@ export const MEASUREMENTS: MeasurementGroup[] = [
     name: "Motion sensor",
     measurements: [
       {
+        id: 4,
         name: "Counted objects",
-        units: ""
+        units: "",
+        values: [
+          {
+            value: 7781,
+            date: new Date()
+          }
+        ]
       }
     ]
   },
@@ -156,20 +184,48 @@ export const MEASUREMENTS: MeasurementGroup[] = [
     name: "Energy meter",
     measurements: [
       {
+        id: 5,
         name: "Energy",
-        units: "kWh"
+        units: "kWh",
+        values: [
+          {
+            value: 0,
+            date: new Date()
+          }
+        ]
       },
       {
+        id: 6,
         name: "Operating",
-        units: "h"
+        units: "h",
+        values: [
+          {
+            value: 0,
+            date: new Date()
+          }
+        ]
       },
       {
+        id: 7,
         name: "Up time (by controller)",
-        units: "h"
+        units: "h",
+        values: [
+          {
+            value: 0,
+            date: new Date()
+          }
+        ]
       },
       {
+        id: 8,
         name: "Burn time (by controller)",
-        units: "h"
+        units: "h",
+        values: [
+          {
+            value: 0,
+            date: new Date()
+          }
+        ]
       }
     ]
   },
@@ -177,24 +233,59 @@ export const MEASUREMENTS: MeasurementGroup[] = [
     name: "",
     measurements: [
       {
+        id: 9,
         name: "Frequency",
-        units: "Hz"
+        units: "Hz",
+        values: [
+          {
+            value: 0,
+            date: new Date()
+          }
+        ]
       },
       {
+        id: 10,
         name: "Voltage",
         units: "V",
+        values: [
+          {
+            value: 0,
+            date: new Date()
+          }
+        ]
       },
       {
+        id: 11,
         name: "Current",
         units: "A",
+        values: [
+          {
+            value: 0,
+            date: new Date()
+          }
+        ]
       },
       {
+        id: 12,
         name: "Power factor",
         units: "",
+        values: [
+          {
+            value: 0,
+            date: new Date()
+          }
+        ]
       },
       {
+        id: 13,
         name: "Power",
         units: "W",
+        values: [
+          {
+            value: 0,
+            date: new Date()
+          }
+        ]
       }
     ]
   },
@@ -202,12 +293,26 @@ export const MEASUREMENTS: MeasurementGroup[] = [
     name: "LED",
     measurements: [
       {
+        id: 14,
         name: "Voltage",
         units: "V",
+        values: [
+          {
+            value: 0,
+            date: new Date()
+          }
+        ]
       },
       {
+        id: 15,
         name: "Current",
         units: "A",
+        values: [
+          {
+            value: 0,
+            date: new Date()
+          }
+        ]
       }
     ]
   }

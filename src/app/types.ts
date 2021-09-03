@@ -119,6 +119,7 @@ export interface MeasurementGroup {
 }
 
 export interface Measurement {
+  id: number
   name: string
   units: string
   values?: [

@@ -44,7 +44,8 @@ body {
 
   .mat-card,
   .mat-expansion-panel,
-  .mat-form-field-appearance-fill .mat-form-field-flex {
+  .mat-form-field-appearance-fill .mat-form-field-flex,
+  .mat-dialog-container {
     border-radius: 0 !important;
   }
 
