@@ -5,6 +5,7 @@
 <device-tasks [deviceId]="device.id"></device-tasks>
 
 <mat-selection-list role="list" [multiple]="false">
+  <mat-divider></mat-divider>
   <mat-list-option
     class="list-item-icon-right list-item-with-btn"
     role="listitem"
@@ -39,6 +40,7 @@
       </button>
     </div>
   </mat-list-option>
+  <mat-divider></mat-divider>
 </mat-selection-list>
 
 <mat-menu #profileMenu="matMenu">
@@ -64,6 +66,7 @@
       aria-label="unit(s)"
     ></mat-slider>
   </mat-expansion-panel>
+  <mat-divider></mat-divider>
   <mat-expansion-panel hideToggle>
     <mat-expansion-panel-header>
       <!-- TODO: On, off, no monitoring? -->
@@ -72,8 +75,8 @@
     </mat-expansion-panel-header>
     ???
   </mat-expansion-panel>
+  <mat-divider></mat-divider>
 </mat-accordion>
-<mat-divider></mat-divider>
 <mat-selection-list role="list" [multiple]="false">
   <mat-list-option role="listitem">
     <mat-icon matListIcon svgIcon="ticketRegular" aria-hidden="true"></mat-icon>

@@ -3,53 +3,58 @@
 
 <mat-list role="list">
   <h3 matSubheader>Contactor controls</h3>
-  <mat-expansion-panel *ngFor="let relay of relays" hideToggle>
-    <mat-expansion-panel-header>
-      <mat-panel-title>{{ relay.name }}</mat-panel-title>
-      <mat-panel-description class="text-secondary">
-        {{ relay.settings.on ? "On" : "Off"
-        }}{{ relay.settings.manual ? ", in manual mode" : ""
-        }}{{ relay.settings.inverted ? ", inverted" : "" }}
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <mat-form-field class="no-hint">
-      <mat-label>Profile</mat-label>
-      <select [disabled]="relay.settings.manual" matNativeControl>
-        <option value="default">Default</option>
-        <option value="1">Profile B</option>
-        <option value="2">Another profile</option>
-        <option value="3">Best profile</option>
-      </select>
-    </mat-form-field>
-    <mat-selection-list>
-      <mat-list-option
-        [selected]="setting.value"
-        *ngFor="let setting of relay.settings | keyvalue: null"
-      >
-        {{ setting.key | titlecase }}
-      </mat-list-option>
-    </mat-selection-list>
-    <mat-selection-list [multiple]="false">
-      <mat-list-option [matMenuTriggerFor]="relayCommentPopover">
-        <div mat-line *ngIf="relay.comment">
-          <span class="mat-caption text-secondary">Comment</span>
-        </div>
-        <div mat-line>{{ relay.comment ? relay.comment : "Add comment" }}</div>
-      </mat-list-option>
-    </mat-selection-list>
-    <mat-menu #relayCommentPopover="matMenu">
-      <mat-form-field>
-        <input matInput placeholder="Comment" [value]="relay.comment" />
+  <mat-divider></mat-divider>
+  <ng-container *ngFor="let relay of relays">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{ relay.name }}</mat-panel-title>
+        <mat-panel-description class="text-secondary">
+          {{ relay.settings.on ? "On" : "Off"
+          }}{{ relay.settings.manual ? ", in manual mode" : ""
+          }}{{ relay.settings.inverted ? ", inverted" : "" }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field class="no-hint">
+        <mat-label>Profile</mat-label>
+        <select [disabled]="relay.settings.manual" matNativeControl>
+          <option value="default">Default</option>
+          <option value="1">Profile B</option>
+          <option value="2">Another profile</option>
+          <option value="3">Best profile</option>
+        </select>
       </mat-form-field>
-    </mat-menu>
-  </mat-expansion-panel>
+      <mat-selection-list>
+        <mat-list-option
+          [selected]="setting.value"
+          *ngFor="let setting of relay.settings | keyvalue: null"
+        >
+          {{ setting.key | titlecase }}
+        </mat-list-option>
+      </mat-selection-list>
+      <mat-selection-list [multiple]="false">
+        <mat-list-option [matMenuTriggerFor]="relayCommentPopover">
+          <div mat-line *ngIf="relay.comment">
+            <span class="mat-caption text-secondary">Comment</span>
+          </div>
+          <div mat-line>
+            {{ relay.comment ? relay.comment : "Add comment" }}
+          </div>
+        </mat-list-option>
+      </mat-selection-list>
+      <mat-menu #relayCommentPopover="matMenu">
+        <mat-form-field>
+          <input matInput placeholder="Comment" [value]="relay.comment" />
+        </mat-form-field>
+      </mat-menu>
+    </mat-expansion-panel>
+    <mat-divider></mat-divider>
+  </ng-container>
 </mat-list>
 
 <!-- Properties -->
 <!-- TBD: Door status is irrelevant as long as it's closed -->
 
 <!-- Actions -->
-<mat-divider></mat-divider>
 
 <mat-selection-list role="list" [multiple]="false">
   <mat-list-option role="listitem">
