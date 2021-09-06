@@ -18,9 +18,16 @@
       >
         <mat-icon svgIcon="zoomOutBold" aria-hidden="true"></mat-icon>
       </button>
-      <map-layer-menu></map-layer-menu>
+      <map-layer-menu
+        [currentLayer]="deviceLayer"
+        (layerChange)="changeLayer($event)"
+      ></map-layer-menu>
     </div>
-    <map-legend></map-legend>
+    <!-- SCs don't need a legend -->
+    <map-legend
+      *ngIf="deviceLayer !== 'sc'"
+      [currentLayer]="deviceLayer"
+    ></map-legend>
   </div>
 </div>
 

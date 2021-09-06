@@ -10,7 +10,13 @@
 <mat-menu #statuses="matMenu">
   <!-- TBD: Disable if none? -->
   <!-- TBD: Ammount of devices with status? -->
-  <button mat-menu-item disabled>All</button>
+  <button
+    (click)="changeLayer('status')"
+    mat-menu-item
+    [disabled]="currentLayer == 'status'"
+  >
+    All
+  </button>
   <button mat-menu-item>Alarm</button>
   <button mat-menu-item>No power</button>
   <button mat-menu-item>Not responding</button>
@@ -23,8 +29,20 @@
 
 <mat-menu #menuLayers="matMenu">
   <button mat-menu-item [matMenuTriggerFor]="statuses">Status</button>
-  <button mat-menu-item>Profile</button>
-  <button mat-menu-item>Segment controllers</button>
+  <button
+    (click)="changeLayer('profile')"
+    mat-menu-item
+    [disabled]="currentLayer == 'profile'"
+  >
+    Profile
+  </button>
+  <button
+    (click)="changeLayer('sc')"
+    mat-menu-item
+    [disabled]="currentLayer == 'sc'"
+  >
+    Segment controllers
+  </button>
   <mat-divider></mat-divider>
   <!-- TODO: check for a11y issues -->
   <!-- https://github.com/angular/components/issues/9739-->

@@ -1,4 +1,4 @@
-<span class="mat-body-2 text-secondary">Status</span>
+<span class="mat-body-2 text-secondary">{{ currentLayer }}</span>
 
 <button
   [matMenuTriggerFor]="menuLegend"
@@ -10,15 +10,13 @@
 </button>
 
 <mat-menu #menuLegend="matMenu">
-  <!-- <label class="text-secondary mat-body-2">Status</label> -->
-  <!-- <ul role="list">
+  <ul *ngIf="currentLayer == 'status'" role="list">
     <li [class]="status.color" *ngFor="let status of statuses">
       {{ status.name }}
     </li>
-  </ul> -->
+  </ul>
 
-  <!-- <label class="text-secondary mat-body-2">Profiles</label> -->
-  <ul role="list">
+  <ul *ngIf="currentLayer == 'profile'" role="list">
     <li [class]="'color-' + profile.id" *ngFor="let profile of profiles">
       <i class="dot" [style.background]="profile.colour"></i> {{ profile.name }}
     </li>

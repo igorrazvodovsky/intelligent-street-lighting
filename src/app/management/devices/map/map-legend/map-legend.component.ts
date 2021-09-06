@@ -3,12 +3,15 @@ import { ProfileService } from '~local/services/profile.service';
 import { Profile } from '~local/types'
 import * as d3Scale from 'd3-scale';
 import * as d3ScaleChromatic from 'd3-scale-chromatic';
+import { Input } from '@angular/core';
+
 @Component({
   selector: 'map-legend',
   templateUrl: './map-legend.component.html',
   styleUrls: ['./map-legend.component.scss']
 })
 export class MapLegendComponent implements OnInit {
+  @Input() currentLayer: 'sc' | 'profile' | 'status'
   profiles!: Profile[];
   statuses = [
     {

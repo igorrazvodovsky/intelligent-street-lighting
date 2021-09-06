@@ -23,8 +23,9 @@ export class MapComponent implements AfterViewInit, OnInit {
   map;
   devices: any;
   markersGeoJsonData: any;
+  markers: any;
   accessToken = 'pk.eyJ1IjoiaWdvcnJhenZvZG92c2t5IiwiYSI6ImNrczV3dHI3ODA1YTQycnF5bnV4N2xjcm0ifQ.1b4VIA7aqOZc_oiiTyNl-w';
-  deviceLayer = 'profile'
+  deviceLayer = 'status'
   profileNames: string[]
 
   // TODO: Replace with something
@@ -61,6 +62,12 @@ export class MapComponent implements AfterViewInit, OnInit {
   //   layer.setStyle({
   //   });
   // }
+
+  changeLayer(layer) {
+    this.deviceLayer = layer;
+    this.markers.clearLayers()
+    this.initGroupsLayer();
+  }
 
   makeSCMarker(clusterMarkers, childCount) {
     const sc = clusterMarkers.filter(e => e.feature.properties.type == 'sc').map(e => e.feature.properties.name).join(', ')
@@ -100,7 +107,7 @@ export class MapComponent implements AfterViewInit, OnInit {
   }
 
   initGroupsLayer() {
-    let markers = L.markerClusterGroup({
+    this.markers = L.markerClusterGroup({
       iconCreateFunction: (cluster) => {
         const clusterMarkers = cluster.getAllChildMarkers()
         if (this.deviceLayer == "status") return this.makeStatusMarker(clusterMarkers, cluster.getChildCount())
@@ -134,14 +141,14 @@ export class MapComponent implements AfterViewInit, OnInit {
       }
     });
 
-    markers.addLayer(geoJsonLayer)
-    this.map.addLayer(markers)
+    this.markers.addLayer(geoJsonLayer)
+    this.map.addLayer(this.markers)
     // TODO: Zoom on specific area/device if selected
     // const latLngs = [ marker.getLatLng() ]
     // const markerBounds = L.latLngBounds(latLngs)
     // this.map.fitBounds(markerBounds)
     // https://leafletjs.com/reference-1.7.1.html#map-flyto
-    this.map.fitBounds(markers.getBounds(), {padding: [50, 50]})
+    this.map.fitBounds(this.markers.getBounds(), {padding: [50, 50]})
   }
 
   ngOnInit(): void {
