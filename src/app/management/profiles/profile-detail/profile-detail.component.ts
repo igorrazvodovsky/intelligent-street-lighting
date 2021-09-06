@@ -13,6 +13,7 @@ import { DeviceService } from '~local/services/device.service'
 })
 export class ProfileDetailComponent implements OnInit {
   profile$!: Observable<Profile>;
+  profile: Profile;
   groups$!: Observable<DeviceGroup[]>;
   active: 'always' | 'date' | 'range' = 'always';
   isDynamic = true
@@ -92,6 +93,7 @@ export class ProfileDetailComponent implements OnInit {
         return this.deviceService.getGroupsByProfile(params.get('id')!);
       })
     );
+    this.profile$.subscribe(profile => this.profile = profile)
   }
 }
 

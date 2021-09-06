@@ -48,10 +48,13 @@
   <!-- https://github.com/angular/components/issues/9739-->
   <button mat-menu-item>
     Sensor icons
-    <mat-slide-toggle></mat-slide-toggle>
+    <mat-slide-toggle color="primary"></mat-slide-toggle>
   </button>
   <button mat-menu-item>
     Device names
-    <mat-slide-toggle [(ngModel)]="showNames"></mat-slide-toggle>
+    <mat-slide-toggle
+      color="primary"
+      [(ngModel)]="showNames"
+    ></mat-slide-toggle>
   </button>
 </mat-menu>

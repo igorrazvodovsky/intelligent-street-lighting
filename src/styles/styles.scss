@@ -499,3 +499,10 @@ svg#device-metrics {
     line-height: 2rem;
   }
 }
+
+// For renaming modals
+.mat-menu-panel {
+  .mat-form-field {
+    margin: 1rem 0.5rem 0;
+  }
+}

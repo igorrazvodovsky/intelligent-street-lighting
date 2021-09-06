@@ -14,6 +14,7 @@
   <ng-container *ngIf="currentGroup">
     <span class="crumb" *ngFor="let level of currentGroup; let i = index">
       <a
+        [matMenuTriggerFor]="i + 1 == currentGroup.length ? renameMenu : ''"
         [attr.aria-current]="!deviceId ? 'page' : 'false'"
         [routerLink]="'group/' + currentGroup[i].id"
         >{{ currentGroup[i].name }}</a
@@ -37,7 +38,7 @@
   </ng-container>
 
   <span *ngIf="currentDevice" class="crumb">
-    <a aria-current="page"
+    <a [matMenuTriggerFor]="renameMenu" aria-current="page"
       >{{ currentDevice.type == "lamp" ? "Lamp" : "Segment controller" }}
       {{ currentDevice.name }}</a
     >
@@ -58,3 +59,20 @@
     </span>
   </span>
 </nav>
+
+<!-- TODO: Move to shared -->
+<!-- TODO: Autoselect text -->
+<mat-menu #renameMenu="matMenu">
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input
+      autofocus
+      matInput
+      [value]="
+        devices.length > 1
+          ? currentDevice.name
+          : currentGroup[currentGroup.length - 1].name
+      "
+    />
+  </mat-form-field>
+</mat-menu>
