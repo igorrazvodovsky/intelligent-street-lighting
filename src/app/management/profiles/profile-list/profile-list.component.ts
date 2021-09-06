@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Profile } from '~local/types'
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from '~local/services/profile.service';
+import { MatDialog } from '@angular/material/dialog';
+import { NameDialogComponent } from '~local/shared/name-dialog/name-dialog.component';
 
 @Component({
   selector: 'profile-list',
@@ -13,13 +14,31 @@ export class ProfileListComponent implements OnInit {
   profiles!: Profile[];
 
   constructor(
+    public dialog: MatDialog,
     private service: ProfileService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.service.Profiles.subscribe(profiles => {
       this.profiles = profiles
+    });
+  }
+  openDialog() {
+    const dialogRef = this.dialog.open(NameDialogComponent, {
+      id: 'name-dialog',
+      data: {
+        name: "New profile",
+        mode: "Create",
+        entity: "profile"
+      },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      // TODO: Navigate to created profile
+      this.router.navigate(['6'], { relativeTo: this.route });
     });
   }
 

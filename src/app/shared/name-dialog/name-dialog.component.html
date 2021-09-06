@@ -1,0 +1,18 @@
+<!-- TODO: Status chip is clickable and shows status options -->
+
+<mat-form-field>
+  <mat-label>Name</mat-label>
+  <input cdkFocusInitial matInput placeholder="New {{ data.entity }}" />
+</mat-form-field>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="true">Close</button>
+  <!-- 'Update' when editing -->
+  <button
+    mat-flat-button
+    [mat-dialog-close]="true"
+    color="accent"
+    cdkFocusInitial
+  >
+    Create
+  </button>
+</mat-dialog-actions>

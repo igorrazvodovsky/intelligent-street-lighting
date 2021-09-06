@@ -56,193 +56,6 @@ export const TIME_OPTIONS = [
 
 export const PROFILES: Profile[] = [
   {
-    id: 1,
-    name: 'Default',
-    dynamic: true,
-    summary: [
-      {
-        day: 'mon',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      },
-      {
-        day: 'tue',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      },
-      {
-        day: 'wed',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      },
-      {
-        day: 'thu',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      },
-      {
-        day: 'fri',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      }
-    ],
-    schedules: [
-      {
-        name: 'Full',
-        brightness: 0.9,
-        time: {
-          start: new Date(0, 0, 0, 0, 0, 0, 0),
-          end: new Date(0, 0, 0, 24, 0, 0, 0),
-          week: [
-            { enabled: true },
-            { enabled: true },
-            { enabled: true },
-            { enabled: true },
-            { enabled: true },
-            { enabled: true },
-            { enabled: true }
-          ]
-        }
-      },
-      {
-        name: 'Daytime',
-        brightness: 0.7,
-        time: {
-          start: new Date(0, 0, 0, 0, 0, 0, 0),
-          end: new Date(0, 0, 0, 24, 0, 0, 0),
-          week: [
-            { enabled: true },
-            {
-              enabled: true,
-              start: new Date(0, 0, 0, 6, 0, 0, 0),
-              end: new Date(0, 0, 0, 22, 0, 0, 0),
-            },
-            { enabled: true },
-            { enabled: true },
-            { enabled: true },
-            { enabled: true },
-            { enabled: true }
-          ]
-        }
-      },
-      {
-        name: 'Night',
-        brightness: 0.4,
-        time: {
-          start: new Date(0, 0, 0, 6, 30, 0, 0),
-          end: new Date(0, 0, 0, 22, 30, 0, 0),
-          week: [
-            { enabled: true },
-            { enabled: true },
-            { enabled: true },
-            { enabled: true },
-            { enabled: true },
-            { enabled: false },
-            { enabled: false }
-          ]
-        }
-      },
-      {
-        name: 'Weekend',
-        brightness: 0.5,
-        time: {
-          start: new Date(0, 0, 0, 6, 30, 0, 0),
-          end: new Date(0, 0, 0, 22, 30, 0, 0),
-          week: [
-            { enabled: false },
-            { enabled: false },
-            { enabled: false },
-            { enabled: false },
-            { enabled: false },
-            { enabled: true },
-            { enabled: true }
-          ]
-        }
-      },
-      {
-        name: 'Full last',
-        brightness: 0.9,
-        time: {
-          start: new Date(0, 0, 0, 0, 0, 0, 0),
-          end: new Date(0, 0, 0, 24, 0, 0, 0),
-          week: [
-            { enabled: true },
-            { enabled: true },
-            { enabled: true },
-            { enabled: true },
-            { enabled: true },
-            { enabled: true },
-            { enabled: true }
-          ]
-        }
-      }
-    ],
-    naturalLight: true,
-    sun: true,
-    motionSensor: true,
-    parentId: null
-  },
-  {
     id: 2,
     name: 'Shopping centre',
     description: '70% throughout the day',
@@ -380,7 +193,7 @@ export const PROFILES: Profile[] = [
     name: 'Guļamrajons',
     dynamic: true,
     description:
-      '70% on weekdays from 6:30 to 23:00, on weekends from 8:00 to 22:00. 30% the rest of the time. Accounts for traffic & natural light.',
+      '70% on weekdays from 6:30 to 23:00, on weekends from 8:00 to 22:00. 30% the rest of the time. Accounts for traffic & natural light',
     summary: [
       {
         day: 'mon',
@@ -646,7 +459,7 @@ export const PROFILES: Profile[] = [
     id: 5,
     name: 'Viduspoguļanka',
     description:
-      '70% on weekdays from 6:30 to 23:00, on weekends from 8:00 to 22:00. 30% the rest of the time. Accounts for traffic & natural light.',
+      '70% on weekdays from 6:30 to 23:00, on weekends from 8:00 to 22:00. 30% the rest of the time. Accounts for traffic & natural light',
     dynamic: true,
     summary: [
       {
@@ -776,5 +589,222 @@ export const PROFILES: Profile[] = [
     sun: true,
     motionSensor: true,
     parentId: null
-  }
+  },
+  {
+    id: 6,
+    name: 'New profile',
+    description: '50% throughout the day',
+    dynamic: true,
+    schedules: [
+      {
+        name: 'Daytime',
+        brightness: 0.5,
+        time: {
+          start: new Date(0, 0, 0, 7, 0,),
+          end: new Date(0, 0, 0, 16, 0,),
+          week: [
+            { enabled: true },
+            { enabled: true },
+            { enabled: true },
+            { enabled: true },
+            { enabled: true },
+            { enabled: true },
+            { enabled: true }
+          ]
+        }
+      }
+    ],
+    naturalLight: true,
+    sun: true,
+    motionSensor: true,
+    parentId: null
+  },
+  {
+    id: 1,
+    name: 'Default',
+    description: 'City default profile',
+    dynamic: true,
+    summary: [
+      {
+        day: 'mon',
+        schedule: [
+          {
+            time: '0:00',
+            brightness: 0.3
+          },
+          {
+            time: '6:30',
+            brightness: 0.7
+          },
+          {
+            time: '22:30',
+            brightness: 0.3
+          }
+        ]
+      },
+      {
+        day: 'tue',
+        schedule: [
+          {
+            time: '0:00',
+            brightness: 0.3
+          },
+          {
+            time: '6:30',
+            brightness: 0.7
+          },
+          {
+            time: '22:30',
+            brightness: 0.3
+          }
+        ]
+      },
+      {
+        day: 'wed',
+        schedule: [
+          {
+            time: '0:00',
+            brightness: 0.3
+          },
+          {
+            time: '6:30',
+            brightness: 0.7
+          },
+          {
+            time: '22:30',
+            brightness: 0.3
+          }
+        ]
+      },
+      {
+        day: 'thu',
+        schedule: [
+          {
+            time: '0:00',
+            brightness: 0.3
+          },
+          {
+            time: '6:30',
+            brightness: 0.7
+          },
+          {
+            time: '22:30',
+            brightness: 0.3
+          }
+        ]
+      },
+      {
+        day: 'fri',
+        schedule: [
+          {
+            time: '0:00',
+            brightness: 0.3
+          },
+          {
+            time: '6:30',
+            brightness: 0.7
+          },
+          {
+            time: '22:30',
+            brightness: 0.3
+          }
+        ]
+      }
+    ],
+    schedules: [
+      {
+        name: 'Full',
+        brightness: 0.9,
+        time: {
+          start: new Date(0, 0, 0, 0, 0, 0, 0),
+          end: new Date(0, 0, 0, 24, 0, 0, 0),
+          week: [
+            { enabled: true },
+            { enabled: true },
+            { enabled: true },
+            { enabled: true },
+            { enabled: true },
+            { enabled: true },
+            { enabled: true }
+          ]
+        }
+      },
+      {
+        name: 'Daytime',
+        brightness: 0.7,
+        time: {
+          start: new Date(0, 0, 0, 0, 0, 0, 0),
+          end: new Date(0, 0, 0, 24, 0, 0, 0),
+          week: [
+            { enabled: true },
+            {
+              enabled: true,
+              start: new Date(0, 0, 0, 6, 0, 0, 0),
+              end: new Date(0, 0, 0, 22, 0, 0, 0),
+            },
+            { enabled: true },
+            { enabled: true },
+            { enabled: true },
+            { enabled: true },
+            { enabled: true }
+          ]
+        }
+      },
+      {
+        name: 'Night',
+        brightness: 0.4,
+        time: {
+          start: new Date(0, 0, 0, 6, 30, 0, 0),
+          end: new Date(0, 0, 0, 22, 30, 0, 0),
+          week: [
+            { enabled: true },
+            { enabled: true },
+            { enabled: true },
+            { enabled: true },
+            { enabled: true },
+            { enabled: false },
+            { enabled: false }
+          ]
+        }
+      },
+      {
+        name: 'Weekend',
+        brightness: 0.5,
+        time: {
+          start: new Date(0, 0, 0, 6, 30, 0, 0),
+          end: new Date(0, 0, 0, 22, 30, 0, 0),
+          week: [
+            { enabled: false },
+            { enabled: false },
+            { enabled: false },
+            { enabled: false },
+            { enabled: false },
+            { enabled: true },
+            { enabled: true }
+          ]
+        }
+      },
+      {
+        name: 'Full last',
+        brightness: 0.9,
+        time: {
+          start: new Date(0, 0, 0, 0, 0, 0, 0),
+          end: new Date(0, 0, 0, 24, 0, 0, 0),
+          week: [
+            { enabled: true },
+            { enabled: true },
+            { enabled: true },
+            { enabled: true },
+            { enabled: true },
+            { enabled: true },
+            { enabled: true }
+          ]
+        }
+      }
+    ],
+    naturalLight: true,
+    sun: true,
+    motionSensor: true,
+    parentId: null
+  },
 ];

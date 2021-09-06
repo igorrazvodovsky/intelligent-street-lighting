@@ -8,9 +8,10 @@ import { AutocompleteUserComponent } from './autocomplete-user/autocomplete-user
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { RouterModule } from '@angular/router';
+import { NameDialogComponent } from './name-dialog/name-dialog.component';
 
 @NgModule({
-  declarations: [PageActionsComponent, TaskCardComponent, TaskDialogComponent, AutocompleteUserComponent, BreadcrumbsComponent],
+  declarations: [PageActionsComponent, TaskCardComponent, TaskDialogComponent, AutocompleteUserComponent, BreadcrumbsComponent, NameDialogComponent],
   imports: [
     CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, RouterModule
   ],

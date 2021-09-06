@@ -159,7 +159,7 @@ export interface Profile {
   name: string
   description?: string
   dynamic?: boolean
-  summary:
+  summary?:
   {
     day: string
     schedule: {
