@@ -1,3 +1,5 @@
+<!-- TODO: Extract common with dynamic schedule parts into separate component -->
+
 <mat-expansion-panel>
   <mat-expansion-panel-header>
     <mat-panel-title class="mat-subheading-2">
@@ -5,12 +7,10 @@
       >&nbsp;
       <ng-container *ngFor="let group of timeGroups">
         {{
-          last
+          last && last !== first
             ? (group | conversationalTimeGroup: "last")
             : (group | conversationalTimeGroup)
         }}
-        <!-- {{ group.days | dayRange }} from {{ group.start | date: "HH:mm" }} to
-        {{ group.end | date: "HH:mm" }} -->
       </ng-container>
       <!-- weekdays from 6:30 to 23:00, on weekends from 8:00 to 22:00. -->
     </mat-panel-title>
@@ -24,45 +24,12 @@
     min="0"
     max="1"
   ></mat-slider>
-  <form>
-    <div>
-      <span>Active</span>
-
-      <mat-form-field class="no-label no-hint input-auto-width time">
-        <mat-select [value]="schedule.time.start | date: 'HH:mm'">
-          <mat-option *ngFor="let option of timeOptions" [value]="option.value">
-            {{ option.viewValue }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <span class="text-secondary">&mdash;</span>
-      <mat-form-field class="no-label no-hint input-auto-width time">
-        <mat-select [value]="schedule.time.end | date: 'HH:mm'">
-          <mat-option *ngFor="let option of timeOptions" [value]="option.value">
-            {{ option.viewValue }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <ng-container *ngFor="let day of week; let i = index">
+  <div class="schedule-settings">
+    <form>
       <div>
-        <mat-checkbox [checked]="schedule.time.week[i].enabled">{{
-          week[i]
-        }}</mat-checkbox>
+        <span>Active</span>
         <mat-form-field class="no-label no-hint input-auto-width time">
-          <mat-select
-            [disabled]="!schedule.time.week[i].enabled"
-            [placeholder]="
-              schedule.time.week[i].enabled
-                ? (schedule.time.start | date: 'HH:mm')
-                : null
-            "
-            [value]="
-              schedule.time.week[i].start
-                ? (schedule.time.week[i].start | date: 'HH:mm')
-                : null
-            "
-          >
+          <mat-select [value]="schedule.time.start | date: 'HH:mm'">
             <mat-option
               *ngFor="let option of timeOptions"
               [value]="option.value"
@@ -73,19 +40,7 @@
         </mat-form-field>
         <span class="text-secondary">&mdash;</span>
         <mat-form-field class="no-label no-hint input-auto-width time">
-          <mat-select
-            [disabled]="!schedule.time.week[i].enabled"
-            [placeholder]="
-              schedule.time.week[i].enabled
-                ? (schedule.time.end | date: 'HH:mm')
-                : null
-            "
-            [value]="
-              schedule.time.week[i].end
-                ? (schedule.time.week[i].end | date: 'HH:mm')
-                : null
-            "
-          >
+          <mat-select [value]="schedule.time.end | date: 'HH:mm'">
             <mat-option
               *ngFor="let option of timeOptions"
               [value]="option.value"
@@ -95,17 +50,69 @@
           </mat-select>
         </mat-form-field>
       </div>
-    </ng-container>
-  </form>
-</mat-expansion-panel>
-
-<!--
-<article>
-  <div>30%. Active always.</div>
-  <mat-slider value="30" aria-label="brightness"></mat-slider>
-  <div>
-    <button mat-button>Specify days</button>
-    <button mat-button>Specify time</button>
+      <ng-container *ngFor="let day of week; let i = index">
+        <div>
+          <mat-checkbox [checked]="schedule.time.week[i].enabled">{{
+            week[i]
+          }}</mat-checkbox>
+          <mat-form-field class="no-label no-hint input-auto-width time">
+            <mat-select
+              [disabled]="!schedule.time.week[i].enabled"
+              [placeholder]="
+                schedule.time.week[i].enabled
+                  ? (schedule.time.start | date: 'HH:mm')
+                  : null
+              "
+              [value]="
+                schedule.time.week[i].start
+                  ? (schedule.time.week[i].start | date: 'HH:mm')
+                  : null
+              "
+            >
+              <mat-option
+                *ngFor="let option of timeOptions"
+                [value]="option.value"
+              >
+                {{ option.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <span class="text-secondary">&mdash;</span>
+          <mat-form-field class="no-label no-hint input-auto-width time">
+            <mat-select
+              [disabled]="!schedule.time.week[i].enabled"
+              [placeholder]="
+                schedule.time.week[i].enabled
+                  ? (schedule.time.end | date: 'HH:mm')
+                  : null
+              "
+              [value]="
+                schedule.time.week[i].end
+                  ? (schedule.time.week[i].end | date: 'HH:mm')
+                  : null
+              "
+            >
+              <mat-option
+                *ngFor="let option of timeOptions"
+                [value]="option.value"
+              >
+                {{ option.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </ng-container>
+    </form>
+    <div>
+      <button [disabled]="first" class="text-secondary" mat-icon-button>
+        <mat-icon svgIcon="arrowThinUpRegular" aria-hidden="true"></mat-icon>
+      </button>
+      <button [disabled]="last" class="text-secondary" mat-icon-button>
+        <mat-icon svgIcon="arrowThinDownRegular" aria-hidden="true"></mat-icon>
+      </button>
+      <button class="text-secondary" mat-icon-button>
+        <mat-icon svgIcon="trashRegular" aria-hidden="true"></mat-icon>
+      </button>
+    </div>
   </div>
-</article>
--->
+</mat-expansion-panel>

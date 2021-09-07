@@ -10,6 +10,7 @@ import { TIME_OPTIONS } from '~local/../assets/data/profiles'
 export class ProfileScheduleComponent implements OnInit {
   @Input() schedule: Schedule;
   @Input() last: boolean;
+  @Input() first: boolean;
   week = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
   daysActive = null
   timeGroups: TimeGroup[] = []

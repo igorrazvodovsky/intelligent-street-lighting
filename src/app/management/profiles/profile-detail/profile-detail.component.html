@@ -59,7 +59,8 @@
           first as isFirst
         "
         [schedule]="schedule"
-        [last]="isLast !== isFirst ? isLast : null"
+        [last]="isLast"
+        [first]="isFirst"
       ></profile-schedule>
     </mat-accordion>
     <mat-selection-list [multiple]="false">
