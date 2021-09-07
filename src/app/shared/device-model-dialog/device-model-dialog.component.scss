@@ -1,0 +1,16 @@
+:host {
+  display: block;
+  position: relative;
+}
+
+.mat-list {
+  margin-left: -1rem;
+  margin-right: -1rem;
+  min-width: 50ch;
+}
+
+#link {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

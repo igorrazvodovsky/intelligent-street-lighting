@@ -9,9 +9,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { RouterModule } from '@angular/router';
 import { NameDialogComponent } from './name-dialog/name-dialog.component';
+import { DeviceModelDialogComponent } from './device-model-dialog/device-model-dialog.component';
 
 @NgModule({
-  declarations: [PageActionsComponent, TaskCardComponent, TaskDialogComponent, AutocompleteUserComponent, BreadcrumbsComponent, NameDialogComponent],
+  declarations: [PageActionsComponent, TaskCardComponent, TaskDialogComponent, AutocompleteUserComponent, BreadcrumbsComponent, NameDialogComponent, DeviceModelDialogComponent],
   imports: [
     CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, RouterModule
   ],
