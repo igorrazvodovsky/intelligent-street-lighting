@@ -9,7 +9,7 @@
     *ngIf="profile$ | async as profile"
     class="list-item-icon-right list-item-with-btn"
     role="listitem"
-    [routerLink]="'../../profiles/' + [profile.id]"
+    [routerLink]="'../../../profiles/' + [profile.id]"
   >
     <div matLine>{{ profile.name }}</div>
     <span matLine>{{ profile.description }}</span>

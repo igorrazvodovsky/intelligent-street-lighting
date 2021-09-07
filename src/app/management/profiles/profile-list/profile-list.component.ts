@@ -29,8 +29,8 @@ export class ProfileListComponent implements OnInit {
     const dialogRef = this.dialog.open(NameDialogComponent, {
       id: 'name-dialog',
       data: {
-        name: "New profile",
-        mode: "Create",
+        name: "",
+        edit: false,
         entity: "profile"
       },
     });
@@ -38,8 +38,8 @@ export class ProfileListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
       // TODO: Navigate to created profile
-      this.router.navigate(['6'], { relativeTo: this.route });
+      if (result) this.router.navigate(['6'], { relativeTo: this.route });
     });
-  }
 
+  }
 }

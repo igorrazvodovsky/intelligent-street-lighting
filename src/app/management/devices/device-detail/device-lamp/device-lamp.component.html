@@ -5,11 +5,10 @@
 <device-tasks [deviceId]="device.id"></device-tasks>
 
 <mat-selection-list role="list" [multiple]="false">
-  <mat-divider></mat-divider>
   <mat-list-option
     class="list-item-icon-right list-item-with-btn"
     role="listitem"
-    [routerLink]="'../../profiles/' + [device.profile.id]"
+    [routerLink]="'../../../profiles/' + [device.profile.id]"
   >
     <div matLine>{{ profile.name }}</div>
     <span matLine class="text-secondary">

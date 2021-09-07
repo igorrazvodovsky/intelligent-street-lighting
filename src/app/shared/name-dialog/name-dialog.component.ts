@@ -1,5 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Component, Inject, ViewChild, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
+export interface DialogData { name: string; edit: boolean; entity?: string }
 
 @Component({
   selector: 'name-dialog',
@@ -7,10 +9,18 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
   styleUrls: ['./name-dialog.component.scss']
 })
 export class NameDialogComponent implements OnInit {
+  @ViewChild('input') input;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { name: string; mode: 'create' | 'edit'; entity?: string }) { }
+  constructor(
+    public dialogRef: MatDialogRef<NameDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  onCancel(): void {
+    this.dialogRef.close();
   }
 
 }
