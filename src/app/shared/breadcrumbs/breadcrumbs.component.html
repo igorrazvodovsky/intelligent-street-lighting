@@ -38,8 +38,9 @@
   </ng-container>
 
   <span *ngIf="currentDevice" class="crumb">
-    <a [matMenuTriggerFor]="renameMenu" aria-current="page"
-      >{{ currentDevice.type == "lamp" ? "Lamp" : "Segment controller" }}
+    <a [matMenuTriggerFor]="renameMenu" aria-current="page">
+      <i class="dot active"></i>
+      {{ currentDevice.type == "lamp" ? "Lamp" : "Segment controller" }}
       {{ currentDevice.name }}</a
     >
     <span *ngIf="devices.length > 1" class="crumbicon">

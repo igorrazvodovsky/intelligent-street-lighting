@@ -68,7 +68,7 @@ export enum Regular {
   RadioOn = 'radioOn',
   RadioOff = 'radioOff',
   Move = 'move',
-  Delete = 'delete',
+  Trash = 'trash',
   Firmware = 'firmware',
   Sun = 'sun',
   Enter = 'enter',
@@ -77,7 +77,9 @@ export enum Regular {
   CancelCircle = 'cancelCircle',
   Ticket = 'ticket',
   Alert = 'alert',
-  Power = 'power'
+  Power = 'power',
+  ArrowThinUp = 'arrowThinUp',
+  arrowThinDown = 'arrowThinDown'
 }
 
 @Injectable({

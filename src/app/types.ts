@@ -148,6 +148,15 @@ export interface Schedule {
   }
 }
 
+export interface ScheduleDynamic {
+  brightness: number
+  time: {
+    // ??? How to encode sunrise/sunset?
+    start: Date | string
+    end: Date | string
+  }
+}
+
 export interface TimeGroup {
   days: number[]
   start: Date
@@ -168,6 +177,7 @@ export interface Profile {
     }[],
   }[],
   schedules: Schedule[]
+  schedulesDynamic?: ScheduleDynamic[]
   naturalLight: boolean
   sun: boolean
   motionSensor: boolean

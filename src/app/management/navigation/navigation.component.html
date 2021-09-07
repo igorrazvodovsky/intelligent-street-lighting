@@ -37,7 +37,9 @@
           [attr.aria-label]="navItem.label"
           [routerLink]="navItem.route"
           routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
+          [routerLinkActiveOptions]="
+            navItem.label == 'Dashboard' ? { exact: true } : {}
+          "
         >
           <mat-icon [svgIcon]="navItem.icon" aria-hidden="true"></mat-icon>
         </button>

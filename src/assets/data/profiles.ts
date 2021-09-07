@@ -60,93 +60,6 @@ export const PROFILES: Profile[] = [
     name: 'Shopping centre',
     description: '70% throughout the day',
     dynamic: false,
-    summary: [
-      {
-        day: 'mon',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      },
-      {
-        day: 'tue',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      },
-      {
-        day: 'wed',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      },
-      {
-        day: 'thu',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      },
-      {
-        day: 'fri',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      }
-    ],
     schedules: [
       {
         name: 'Daytime',
@@ -194,93 +107,6 @@ export const PROFILES: Profile[] = [
     dynamic: true,
     description:
       '70% on weekdays from 6:30 to 23:00, on weekends from 8:00 to 22:00. 30% the rest of the time. Accounts for traffic & natural light',
-    summary: [
-      {
-        day: 'mon',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      },
-      {
-        day: 'tue',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      },
-      {
-        day: 'wed',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      },
-      {
-        day: 'thu',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      },
-      {
-        day: 'fri',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      }
-    ],
     schedules: [
       {
         name: 'Daytime',
@@ -327,93 +153,6 @@ export const PROFILES: Profile[] = [
     name: 'Pedestrian crossing',
     description: '70% throughout the day',
     dynamic: true,
-    summary: [
-      {
-        day: 'mon',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      },
-      {
-        day: 'tue',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      },
-      {
-        day: 'wed',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      },
-      {
-        day: 'thu',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      },
-      {
-        day: 'fri',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      }
-    ],
     schedules: [
       {
         name: 'Daytime',
@@ -461,93 +200,6 @@ export const PROFILES: Profile[] = [
     description:
       '70% on weekdays from 6:30 to 23:00, on weekends from 8:00 to 22:00. 30% the rest of the time. Accounts for traffic & natural light',
     dynamic: true,
-    summary: [
-      {
-        day: 'mon',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      },
-      {
-        day: 'tue',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      },
-      {
-        day: 'wed',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      },
-      {
-        day: 'thu',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      },
-      {
-        day: 'fri',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      }
-    ],
     // ??? How to encode cycle with Dates?
     schedules: [
       {
@@ -597,11 +249,11 @@ export const PROFILES: Profile[] = [
     dynamic: true,
     schedules: [
       {
-        name: 'Daytime',
+        name: 'Full',
         brightness: 0.5,
         time: {
-          start: new Date(0, 0, 0, 7, 0,),
-          end: new Date(0, 0, 0, 16, 0,),
+          start: new Date(0, 0, 0, 0, 0, 0, 0),
+          end: new Date(0, 0, 0, 24, 0, 0, 0),
           week: [
             { enabled: true },
             { enabled: true },
@@ -612,7 +264,16 @@ export const PROFILES: Profile[] = [
             { enabled: true }
           ]
         }
-      }
+      },
+    ],
+    schedulesDynamic: [
+      {
+        brightness: 0.2,
+        time: {
+          start:  new Date(0, 0, 0, 0),
+          end:    new Date(0, 0, 0, 0)
+        }
+          }
     ],
     naturalLight: true,
     sun: true,
@@ -624,93 +285,6 @@ export const PROFILES: Profile[] = [
     name: 'Default',
     description: 'City default profile',
     dynamic: true,
-    summary: [
-      {
-        day: 'mon',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      },
-      {
-        day: 'tue',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      },
-      {
-        day: 'wed',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      },
-      {
-        day: 'thu',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      },
-      {
-        day: 'fri',
-        schedule: [
-          {
-            time: '0:00',
-            brightness: 0.3
-          },
-          {
-            time: '6:30',
-            brightness: 0.7
-          },
-          {
-            time: '22:30',
-            brightness: 0.3
-          }
-        ]
-      }
-    ],
     schedules: [
       {
         name: 'Full',
@@ -801,6 +375,29 @@ export const PROFILES: Profile[] = [
           ]
         }
       }
+    ],
+    schedulesDynamic: [
+      {
+        brightness: 0.1,
+        time: {
+          start:  new Date(0, 0, 0, 2),
+          end:    new Date(0, 0, 0, 5)
+        }
+      },
+      {
+        brightness: 0.2,
+        time: {
+          start:  new Date(0, 0, 0, 1),
+          end:    new Date(0, 0, 0, 6)
+        }
+      },
+      {
+        brightness: 0.3,
+        time: {
+          start:  new Date(0, 0, 0, 16),
+          end:    new Date(0, 0, 0, 7)
+        }
+      },
     ],
     naturalLight: true,
     sun: true,

@@ -8,20 +8,8 @@ section {
       grid-template-columns: minmax(0, 1fr) minmax(0, 4fr);
     }
   }
-  // &.dynamic {
-  //   div:first-of-type {
-  //     align-self: flex-end;
-  //     padding-bottom: 1rem;
-  //   }
-  // }
 }
 
-.dynamic__range {
-  min-height: 3rem;
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
 section > div > {
   .mat-form-field,
   .mat-radio-group {

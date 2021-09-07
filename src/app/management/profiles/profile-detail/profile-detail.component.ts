@@ -16,7 +16,6 @@ export class ProfileDetailComponent implements OnInit {
   profile: Profile;
   groups$!: Observable<DeviceGroup[]>;
   active: 'always' | 'date' | 'range' = 'always';
-  isDynamic = true
 
   data = {
     static: [

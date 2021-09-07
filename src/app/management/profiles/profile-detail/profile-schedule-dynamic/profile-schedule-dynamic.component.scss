@@ -1,0 +1,17 @@
+.dynamic-range {
+  min-height: 3rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  div:first-child {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+}
+
+.mat-expansion-panel-header-title {
+  max-width: 70ch;
+  margin-bottom: 0;
+}
