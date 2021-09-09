@@ -65,6 +65,8 @@ export enum Regular {
   Message = 'message',
   User = 'user',
   ChevronRight = 'chevronRight',
+  ChevronRightSmall = 'chevronRightSmall',
+  ChevronDownSmall = 'chevronDownSmall',
   RadioOn = 'radioOn',
   RadioOff = 'radioOff',
   Move = 'move',
@@ -80,7 +82,8 @@ export enum Regular {
   Power = 'power',
   ArrowThinUp = 'arrowThinUp',
   ArrowThinDown = 'arrowThinDown',
-  Link = 'link'
+  Link = 'link',
+
 }
 
 @Injectable({

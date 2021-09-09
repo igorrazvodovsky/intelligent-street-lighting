@@ -23,5 +23,9 @@
 </mat-selection-list>
 
 <ng-template #empty>
-  <p class="empty text-secondary">So far, this profile is not used anywhere.</p>
+  <p class="empty text-secondary">
+    So far, this profile is not used anywhere. To assign profile to the area,
+    select it in area's configuration.
+  </p>
+  <button routerLink="../../devices" mat-button>Go to devices</button>
 </ng-template>

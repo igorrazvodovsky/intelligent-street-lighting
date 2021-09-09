@@ -23,11 +23,12 @@
   ></mat-icon>
   <div matLine>
     <h3>{{ event.title }}</h3>
-    <small class="text-secondary">{{
+    <!-- <small class="text-secondary">{{
       event.created | dfnsFormatRelative: now
-    }}</small>
+    }}</small> -->
   </div>
   <p matLine class="text-secondary">
-    {{ device.name }} &bull; {{ group.name }}
+    {{ device.name }} &bull; {{ group.name }} &bull;
+    {{ event.created | dfnsFormatRelative: now }}
   </p>
 </mat-list-option>

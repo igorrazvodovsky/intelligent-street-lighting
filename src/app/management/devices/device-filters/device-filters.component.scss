@@ -2,3 +2,15 @@
   display: block;
   margin: 1rem;
 }
+
+.mat-chip {
+  &.round {
+    padding-right: 7px;
+    padding-left: 7px;
+  }
+
+  // Cancel default Material styling
+  &.outlined .mat-icon {
+    transform: translateX(0) !important;
+  }
+}

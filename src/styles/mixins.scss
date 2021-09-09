@@ -12,6 +12,9 @@
   @media (min-width: 600px) {
     display: grid;
     gap: 5rem;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 4fr);
+  }
+  @media (min-width: 1240px) {
     grid-template-columns: minmax(0, 1fr) minmax(0, 3fr) minmax(0, 1fr);
   }
 }

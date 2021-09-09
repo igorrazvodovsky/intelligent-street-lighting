@@ -4,7 +4,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DeviceService } from '~local/services/device.service'
 import { Observable, BehaviorSubject } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
-import { Device } from '~local/types'
+import { Device, Category } from '~local/types'
 import { Router, ActivatedRoute, Event, NavigationEnd } from '@angular/router';
 
 interface Crumb { name: string, id: number, type?: string };
@@ -27,6 +27,7 @@ export class BreadcrumbsComponent implements OnInit {
   devices: Crumb[] = []
   currentDevice: Crumb
   city: string
+  category: Category = "Location"
 
   constructor(
     private service: DeviceService,

@@ -3,8 +3,11 @@
 <!-- TODO: Replace selects with material menu -->
 
 <nav class="breadcrumbs mat-h2" role="navigation">
-  <a routerLink="/management/devices">
-    <span *ngIf="!groupId && !deviceId" class="home-label">{{ city }}</span>
+  <a [matMenuTriggerFor]="categoryMenu">
+    <span *ngIf="!groupId && !deviceId" class="home-label"
+      >{{ category
+      }}<mat-icon inline svgIcon="dropdownMedium" aria-hidden="true"></mat-icon
+    ></span>
     <ng-container *ngIf="groupId || deviceId">
       <mat-icon svgIcon="cityBold" aria-hidden="true"></mat-icon>
       <span class="crumb-separator" aria-hidden="true">·</span>
@@ -39,7 +42,7 @@
 
   <span *ngIf="currentDevice" class="crumb">
     <a [matMenuTriggerFor]="renameMenu" aria-current="page">
-      <i class="dot active"></i>
+      <i class="dot active" matTooltip="Active"></i>
       {{ currentDevice.type == "lamp" ? "Lamp" : "Segment controller" }}
       {{ currentDevice.name }}</a
     >
@@ -68,4 +71,11 @@
     <mat-label>Name</mat-label>
     <input autofocus matInput value="05-012" />
   </mat-form-field>
+</mat-menu>
+
+<mat-menu #categoryMenu="matMenu">
+  <button mat-menu-item disabled>Location</button>
+  <button mat-menu-item>Street</button>
+  <button mat-menu-item>Functional</button>
+  <button mat-menu-item>User defined</button>
 </mat-menu>

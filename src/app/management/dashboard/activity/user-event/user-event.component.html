@@ -9,11 +9,12 @@
       {{ user.name }} &bull;
       {{ device.name }}
     </h3>
-    <small class="text-secondary">{{
+    <!-- <small class="text-secondary">{{
       event.created | dfnsFormatDistance: now
-    }}</small>
+    }}</small> -->
   </div>
   <p matLine class="text-secondary">
-    Changed {{ event.property }} to {{ event.to }}
+    Changed {{ event.property }} to {{ event.to }} &bull;
+    {{ event.created | dfnsFormatRelative: now }}
   </p>
 </mat-list-option>

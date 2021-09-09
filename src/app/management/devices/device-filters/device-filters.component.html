@@ -1,36 +1,67 @@
 <!-- color="accent" when filter is selected -->
 
 <mat-chip-list aria-label="Fish selection">
+  <!-- <mat-chip selected removable [matMenuTriggerFor]="categoryFilterMenu"
+    >All functional <mat-icon matChipRemove svgIcon="closeBold"></mat-icon>
+  </mat-chip> -->
   <mat-chip [matMenuTriggerFor]="typeFilterMenu">Type</mat-chip>
-  <mat-menu #typeFilterMenu="matMenu">
-    <button disabled mat-menu-item>All</button>
-    <button mat-menu-item>Lamps</button>
-    <button mat-menu-item>Segment controllers</button>
-    <button mat-menu-item>...</button>
-  </mat-menu>
   <!-- all, lamps, SCs, etc. -->
   <mat-chip [matMenuTriggerFor]="statusFilterMenu">Status</mat-chip>
-  <mat-menu #statusFilterMenu="matMenu">
-    <button mat-menu-item disabled>All</button>
-    <button mat-menu-item>Not responsing</button>
-    <button mat-menu-item>Offline</button>
-    <!-- TBD: 'New' as 'added recently' -->
-    <button mat-menu-item>New</button>
-  </mat-menu>
   <mat-chip [matMenuTriggerFor]="profileFilterMenu">
     <!-- <mat-icon class="small" matListIcon svgIcon="profileBold"></mat-icon> -->
     Profile</mat-chip
   >
-  <mat-menu #profileFilterMenu="matMenu">
-    <button mat-menu-item disabled>All</button>
-    <button *ngFor="let profile of profiles" mat-menu-item>
-      {{ profile.name }}
-    </button>
-  </mat-menu>
-
   <!-- specify model, filter for devices with active events of specific type... -->
   <mat-chip selected>
     <!-- <mat-icon class="small" matListIcon svgIcon="filterBold"></mat-icon> -->
     More filters • 2</mat-chip
   >
+  <mat-chip class="round outlined"
+    ><mat-icon class="small" matListIcon svgIcon="plusBold"></mat-icon
+  ></mat-chip>
 </mat-chip-list>
+
+<mat-menu #typeFilterMenu="matMenu">
+  <button disabled mat-menu-item>All</button>
+  <button mat-menu-item>Lamps</button>
+  <button mat-menu-item>Segment controllers</button>
+  <button mat-menu-item>...</button>
+</mat-menu>
+<mat-menu #profileFilterMenu="matMenu">
+  <button mat-menu-item disabled>All</button>
+  <button *ngFor="let profile of profiles" mat-menu-item>
+    {{ profile.name }}
+  </button>
+</mat-menu>
+<mat-menu #statusFilterMenu="matMenu">
+  <button mat-menu-item disabled>All</button>
+  <button mat-menu-item>Not responsing</button>
+  <button mat-menu-item>Offline</button>
+  <!-- TBD: 'New' as 'added recently' -->
+  <button mat-menu-item>New</button>
+</mat-menu>
+
+<mat-menu #categoryFilterMenu="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="categoryLocation">Location</button>
+  <button mat-menu-item disabled>Street</button>
+  <button mat-menu-item [matMenuTriggerFor]="categoryFunctional">
+    Functional
+  </button>
+  <button mat-menu-item disabled>User defined</button>
+</mat-menu>
+
+<mat-menu #categoryLocation="matMenu">
+  <button disabled mat-menu-item>All</button>
+  <button mat-menu-item>SC1</button>
+  <button mat-menu-item>SC2</button>
+  <button mat-menu-item>SC3</button>
+  <button mat-menu-item>...</button>
+</mat-menu>
+
+<mat-menu #categoryFunctional="matMenu">
+  <button mat-menu-item>All</button>
+  <button mat-menu-item>Centrs (Gaismekli no 1-718 un 763-768)</button>
+  <button mat-menu-item>Centrs (Gaismekli no 719-762)</button>
+  <button mat-menu-item>Centrs (bez kategorijas)</button>
+  <button mat-menu-item>...</button>
+</mat-menu>

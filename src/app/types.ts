@@ -5,6 +5,9 @@ type DeviceMetricValue = {
   conversion: number,
 }
 
+// ??? Rename "Location" to "Area" to clarify "street is not location" confusion
+export type Category = "Location" | "Street" | "Function" | "User defined"
+
 export interface DeviceMetrics {
   [key: string]: DeviceMetricValue[]
 }[]
