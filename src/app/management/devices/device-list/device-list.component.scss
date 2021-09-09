@@ -7,3 +7,23 @@
     padding-left: 5rem;
   }
 }
+
+#edit-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+#edit-actions {
+  text-align: right;
+  // Buttons + divider + margin
+  min-height: calc(2.25rem + 0.5rem + 1px);
+
+  .mat-divider {
+    margin-bottom: 0.5rem;
+  }
+
+  button {
+    margin-right: 0.5rem;
+  }
+}

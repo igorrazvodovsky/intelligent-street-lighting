@@ -3,7 +3,7 @@
 
 <device-filters></device-filters>
 
-<mat-selection-list role="list" [multiple]="false">
+<!-- <mat-selection-list role="list" [multiple]="false">
   <h2 matSubheader>Profile</h2>
   <mat-list-option
     *ngIf="profile$ | async as profile"
@@ -23,34 +23,27 @@
       </button>
     </div>
   </mat-list-option>
-</mat-selection-list>
-<mat-menu #profileMenu="matMenu">
-  <button
-    [disabled]="profile.id === (profile$ | async)?.id"
-    *ngFor="let profile of profiles"
-    mat-menu-item
-  >
-    {{ profile.name }}
-  </button>
-</mat-menu>
-<mat-divider></mat-divider>
-<div class="list-subheader mat-body-2 text-secondary">
-  Lamps
-  <div>
-    <ng-container *ngIf="isEditable && selectedDevices.length">
+</mat-selection-list> -->
+
+<button
+  id="edit-toggle"
+  type="button"
+  aria-label="Toggle edit mode"
+  (click)="isEditable = !isEditable"
+  mat-icon-button
+>
+  <mat-icon svgIcon="editBold"></mat-icon>
+</button>
+
+<div id="edit-actions">
+  <ng-container *ngIf="isEditable && selectedDevices.length">
+    <mat-divider></mat-divider>
+    <div>
       <button type="button" mat-button>Change status</button>
       <button type="button" mat-button>Update firmware</button>
       <button type="button" mat-button>Move</button>
-    </ng-container>
-    <button
-      type="button"
-      aria-label="Toggle edit mode"
-      (click)="isEditable = !isEditable"
-      mat-button
-    >
-      {{ isEditable ? "Done" : "Edit" }}
-    </button>
-  </div>
+    </div>
+  </ng-container>
 </div>
 
 <!-- https://material.angular.io/components/select/overview#error-cannot-change-multiple-mode-of-select-after-initialization -->
@@ -104,3 +97,13 @@
     >
   </mat-list-option>
 </mat-selection-list>
+
+<mat-menu #profileMenu="matMenu">
+  <button
+    [disabled]="profile.id === (profile$ | async)?.id"
+    *ngFor="let profile of profiles"
+    mat-menu-item
+  >
+    {{ profile.name }}
+  </button>
+</mat-menu>
