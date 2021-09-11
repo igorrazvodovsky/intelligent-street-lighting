@@ -9,7 +9,7 @@ import { ShapeService } from '~local/services/shape.service';
 import { Router } from '@angular/router';
 import * as d3Scale from 'd3-scale';
 import * as d3ScaleChromatic from 'd3-scale-chromatic';
-import { Profile } from '~local/types'
+import { Profile, DeviceStatus } from '~local/types'
 
 type DeviceLayer = 'status' | 'sc' | 'profile'
 
@@ -90,8 +90,10 @@ export class MapComponent implements AfterViewInit, OnInit {
   makeStatusMarker(clusterMarkers, childCount) {
     let status = "active"
     let icon = ""
-    const warning = clusterMarkers.filter(e => e.feature.properties.status === 'warning').length > 0
-    const danger = clusterMarkers.filter(e => e.feature.properties.status === 'danger').length > 0
+    // TODO:
+    let warningStatuses = ['not responding', 'no power', 'unassigned']
+    const warning = clusterMarkers.filter(e => warningStatuses.includes(e.feature.properties.status)).length > 0
+    const danger = clusterMarkers.filter(e => e.feature.properties.status === 'alarm').length > 0
     const offline = clusterMarkers.filter(e => e.feature.properties.status === 'off').length == clusterMarkers.length
 
     if (warning || danger) icon = this.iconAlert
@@ -148,7 +150,7 @@ export class MapComponent implements AfterViewInit, OnInit {
     // const markerBounds = L.latLngBounds(latLngs)
     // this.map.fitBounds(markerBounds)
     // https://leafletjs.com/reference-1.7.1.html#map-flyto
-    this.map.fitBounds(this.markers.getBounds(), {padding: [50, 50]})
+    this.map.fitBounds(this.markers.getBounds(), { padding: [50, 50] })
   }
 
   ngOnInit(): void {

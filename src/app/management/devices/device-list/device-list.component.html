@@ -1,7 +1,10 @@
 <!-- TODO: Loading: devices, group, profile -->
 <!-- TODO: Error handling -->
 
-<device-filters></device-filters>
+<device-filters
+  [selected$]="filters$"
+  (filterUpdateEvent)="updateFilter($event)"
+></device-filters>
 
 <!-- <mat-selection-list role="list" [multiple]="false">
   <h2 matSubheader>Profile</h2>
@@ -51,7 +54,7 @@
   <mat-list-option
     [routerLink]="'../../device/' + [device.id]"
     role="listitem"
-    *ngFor="let device of devices$ | async"
+    *ngFor="let device of filteredDevices$ | async"
   >
     <div matLine>{{ device.name }}</div>
     <span matLine
@@ -71,7 +74,10 @@
   *ngIf="isEditable"
   role="list"
 >
-  <mat-list-option role="listitem" *ngFor="let device of devices$ | async">
+  <mat-list-option
+    role="listitem"
+    *ngFor="let device of filteredDevices$ | async"
+  >
     <div matLine>{{ device.name }}</div>
     <span matLine
       >SC11, 1 luminaire{{ device.surgeProtector ? ", surge protector" : null
@@ -80,7 +86,7 @@
   </mat-list-option>
 </mat-selection-list>
 
-<mat-selection-list role="list" [multiple]="false">
+<!-- <mat-selection-list role="list" [multiple]="false">
   <h2 matSubheader>Segment controllers</h2>
   <mat-list-option>
     <div matLine>SC11</div>
@@ -89,14 +95,7 @@
       TB1caf0d2cb6cb4db88087730cd2db0fb1</span
     >
   </mat-list-option>
-  <mat-list-option>
-    <div matLine>SC6</div>
-    <span matLine class="text-secondary text-caps"
-      >SC3M24UL8-868-44, 355855056091604,
-      TBe43d2685265f49a796b541de06c6205f</span
-    >
-  </mat-list-option>
-</mat-selection-list>
+</mat-selection-list> -->
 
 <mat-menu #profileMenu="matMenu">
   <button

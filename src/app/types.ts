@@ -76,15 +76,21 @@ export interface DeviceEvent extends Event {
   taskId?: number
 }
 
-export type SensorType = "motion" | 'wifi' | 'traffic'
+export type SensorType = 'motion' | 'wifi' | 'traffic'
 
-type DeviceType = "Lamp" | "SegmentController"
+export type DeviceType = 'lamp' | 'sc' | 'sensor'
+export type DeviceStatus = 'active' | 'inactive' | 'off' | 'not responding' | 'no power' | 'alarm' | 'unassigned'
+
+export interface DeviceFilters {
+  type: DeviceType;
+  status: DeviceStatus;
+}
 
 // TBD: Status of a response can be calculated from latest response date
 // 'status' is (temp.) summary of all other statuses
 export interface Device {
   id: number
-  status?: 'active' | 'warning' | 'danger' | 'off'
+  status: DeviceStatus
   statusOn?: boolean
   statusActive?: boolean
   statusResponding?: boolean

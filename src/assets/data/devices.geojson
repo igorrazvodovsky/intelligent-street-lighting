@@ -26,8 +26,8 @@
         "groupId": 1,
         "status": "active",
         "profile": {
-          "source" : "sc",
-          "id" : 1
+          "source": "sc",
+          "id": 1
         },
         "SC": 1,
         "orientation": 0,
@@ -35,7 +35,6 @@
         "firmware": "0.1.0",
         "surgeProtector": false,
         "sensors": ["motion", "traffic"]
-
       },
       "geometry": {
         "type": "Point",
@@ -49,10 +48,10 @@
         "type": "lamp",
         "name": "01-003",
         "groupId": 1,
-        "status": "warning",
+        "status": "not responding",
         "profile": {
-          "source" : "itself",
-          "id" : 3
+          "source": "itself",
+          "id": 3
         },
         "SC": 1,
         "orientation": 0,
@@ -75,8 +74,8 @@
         "groupId": 1,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 1
+          "source": "group",
+          "id": 1
         },
         "SC": 1,
         "orientation": 0,
@@ -99,8 +98,8 @@
         "groupId": 1,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 1
+          "source": "group",
+          "id": 1
         },
         "SC": 1,
         "orientation": 0,
@@ -123,8 +122,8 @@
         "groupId": 1,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 1
+          "source": "group",
+          "id": 1
         },
         "SC": 1,
         "orientation": 0,
@@ -147,8 +146,8 @@
         "groupId": 1,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 1
+          "source": "group",
+          "id": 1
         },
         "SC": 1,
         "orientation": 0,
@@ -171,8 +170,8 @@
         "groupId": 1,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 1
+          "source": "group",
+          "id": 1
         },
         "SC": 1,
         "orientation": 0,
@@ -195,8 +194,8 @@
         "groupId": 1,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 1
+          "source": "group",
+          "id": 1
         },
         "SC": 1,
         "orientation": 0,
@@ -219,8 +218,8 @@
         "groupId": 1,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 1
+          "source": "group",
+          "id": 1
         },
         "SC": 1,
         "orientation": 0,
@@ -243,8 +242,8 @@
         "groupId": 1,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 1
+          "source": "group",
+          "id": 1
         },
         "SC": 1,
         "orientation": 0,
@@ -267,8 +266,8 @@
         "groupId": 1,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 1
+          "source": "group",
+          "id": 1
         },
         "SC": 1,
         "orientation": 0,
@@ -291,8 +290,8 @@
         "groupId": 1,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 1
+          "source": "group",
+          "id": 1
         },
         "SC": 1,
         "orientation": 0,
@@ -316,8 +315,8 @@
         "groupId": 1,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 1
+          "source": "group",
+          "id": 1
         },
         "SC": 1,
         "orientation": 0,
@@ -340,8 +339,8 @@
         "groupId": 1,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 1
+          "source": "group",
+          "id": 1
         },
         "SC": 1,
         "orientation": 0,
@@ -364,8 +363,8 @@
         "groupId": 1,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 1
+          "source": "group",
+          "id": 1
         },
         "SC": 1,
         "orientation": 0,
@@ -388,8 +387,8 @@
         "groupId": 1,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 1
+          "source": "group",
+          "id": 1
         },
         "SC": 1,
         "orientation": 0,
@@ -412,8 +411,8 @@
         "groupId": 1,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 1
+          "source": "group",
+          "id": 1
         },
         "SC": 1,
         "orientation": 0,
@@ -436,8 +435,8 @@
         "groupId": 1,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 1
+          "source": "group",
+          "id": 1
         },
         "SC": 1,
         "orientation": 0,
@@ -460,8 +459,8 @@
         "groupId": 1,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 1
+          "source": "group",
+          "id": 1
         },
         "SC": 1,
         "orientation": 0,
@@ -484,8 +483,8 @@
         "groupId": 1,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 1
+          "source": "group",
+          "id": 1
         },
         "SC": 1,
         "orientation": 0,
@@ -508,8 +507,8 @@
         "groupId": 1,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 1
+          "source": "group",
+          "id": 1
         },
         "SC": 1,
         "orientation": 0,
@@ -532,8 +531,8 @@
         "groupId": 1,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 1
+          "source": "group",
+          "id": 1
         },
         "SC": 1,
         "orientation": 0,
@@ -556,8 +555,8 @@
         "groupId": 1,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 1
+          "source": "group",
+          "id": 1
         },
         "SC": 1,
         "orientation": 0,
@@ -580,8 +579,8 @@
         "groupId": 1,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 1
+          "source": "group",
+          "id": 1
         },
         "SC": 1,
         "orientation": 0,
@@ -604,8 +603,8 @@
         "groupId": 1,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 1
+          "source": "group",
+          "id": 1
         },
         "SC": 1,
         "orientation": 32,
@@ -644,8 +643,8 @@
         "groupId": 2,
         "status": "off",
         "profile": {
-          "source" : "group",
-          "id" : 2
+          "source": "group",
+          "id": 2
         },
         "SC": 2,
         "orientation": 0,
@@ -668,8 +667,8 @@
         "groupId": 2,
         "status": "off",
         "profile": {
-          "source" : "group",
-          "id" : 2
+          "source": "group",
+          "id": 2
         },
         "SC": 2,
         "orientation": 0,
@@ -692,8 +691,8 @@
         "groupId": 2,
         "status": "off",
         "profile": {
-          "source" : "group",
-          "id" : 2
+          "source": "group",
+          "id": 2
         },
         "SC": 2,
         "orientation": 0,
@@ -716,8 +715,8 @@
         "groupId": 2,
         "status": "off",
         "profile": {
-          "source" : "group",
-          "id" : 2
+          "source": "group",
+          "id": 2
         },
         "SC": 2,
         "orientation": 0,
@@ -740,8 +739,8 @@
         "groupId": 2,
         "status": "off",
         "profile": {
-          "source" : "group",
-          "id" : 2
+          "source": "group",
+          "id": 2
         },
         "SC": 2,
         "orientation": 0,
@@ -764,8 +763,8 @@
         "groupId": 2,
         "status": "off",
         "profile": {
-          "source" : "group",
-          "id" : 2
+          "source": "group",
+          "id": 2
         },
         "SC": 2,
         "orientation": 0,
@@ -788,8 +787,8 @@
         "groupId": 2,
         "status": "off",
         "profile": {
-          "source" : "group",
-          "id" : 2
+          "source": "group",
+          "id": 2
         },
         "SC": 2,
         "orientation": 0,
@@ -812,8 +811,8 @@
         "groupId": 2,
         "status": "off",
         "profile": {
-          "source" : "group",
-          "id" : 2
+          "source": "group",
+          "id": 2
         },
         "SC": 2,
         "orientation": 0,
@@ -836,8 +835,8 @@
         "groupId": 2,
         "status": "off",
         "profile": {
-          "source" : "group",
-          "id" : 2
+          "source": "group",
+          "id": 2
         },
         "SC": 2,
         "orientation": 0,
@@ -860,8 +859,8 @@
         "groupId": 3,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 3
+          "source": "group",
+          "id": 3
         },
         "SC": 3,
         "orientation": 0,
@@ -884,8 +883,8 @@
         "groupId": 3,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 3
+          "source": "group",
+          "id": 3
         },
         "SC": 3,
         "orientation": 0,
@@ -908,8 +907,8 @@
         "groupId": 3,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 3
+          "source": "group",
+          "id": 3
         },
         "SC": 3,
         "orientation": 0,
@@ -932,8 +931,8 @@
         "groupId": 3,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 3
+          "source": "group",
+          "id": 3
         },
         "SC": 3,
         "orientation": 0,
@@ -956,8 +955,8 @@
         "groupId": 3,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 3
+          "source": "group",
+          "id": 3
         },
         "SC": 3,
         "orientation": 0,
@@ -980,8 +979,8 @@
         "groupId": 3,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 3
+          "source": "group",
+          "id": 3
         },
         "SC": 3,
         "orientation": 0,
@@ -1004,8 +1003,8 @@
         "groupId": 3,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 3
+          "source": "group",
+          "id": 3
         },
         "SC": 3,
         "orientation": 0,
@@ -1028,8 +1027,8 @@
         "groupId": 3,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 3
+          "source": "group",
+          "id": 3
         },
         "SC": 3,
         "orientation": 0,
@@ -1052,8 +1051,8 @@
         "groupId": 3,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 3
+          "source": "group",
+          "id": 3
         },
         "SC": 3,
         "orientation": 0,
@@ -1076,8 +1075,8 @@
         "groupId": 3,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 3
+          "source": "group",
+          "id": 3
         },
         "SC": 3,
         "orientation": 0,
@@ -1100,8 +1099,8 @@
         "groupId": 3,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 3
+          "source": "group",
+          "id": 3
         },
         "SC": 3,
         "orientation": 0,
@@ -1124,8 +1123,8 @@
         "groupId": 3,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 3
+          "source": "group",
+          "id": 3
         },
         "SC": 3,
         "orientation": 0,
@@ -1148,8 +1147,8 @@
         "groupId": 3,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 3
+          "source": "group",
+          "id": 3
         },
         "SC": 3,
         "orientation": 0,
@@ -1172,8 +1171,8 @@
         "groupId": 3,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 3
+          "source": "group",
+          "id": 3
         },
         "SC": 3,
         "orientation": 0,
@@ -1196,8 +1195,8 @@
         "groupId": 3,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 3
+          "source": "group",
+          "id": 3
         },
         "SC": 3,
         "orientation": 0,
@@ -1220,8 +1219,8 @@
         "groupId": 3,
         "status": "active",
         "profile": {
-          "source" : "group",
-          "id" : 3
+          "source": "group",
+          "id": 3
         },
         "SC": 3,
         "orientation": 0,
@@ -1239,13 +1238,13 @@
       "type": "Feature",
       "properties": {
         "id": 66,
-        "type": "lamp",
+        "type": "Lamp",
         "name": "03-017",
         "groupId": 3,
-        "status": "danger",
+        "status": "alarm",
         "profile": {
-          "source" : "group",
-          "id" : 3
+          "source": "group",
+          "id": 3
         },
         "SC": 3,
         "orientation": 0,

@@ -12,7 +12,7 @@ const appRoutes: Routes = [
     loadChildren: () => import('./management/management.module').then(m => m.ManagementModule),
     // canLoad: [AuthGuard]
   },
-  { path: '',   redirectTo: '/management', pathMatch: 'full' },
+  { path: '', redirectTo: '/management', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -21,6 +21,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       {
+        useHash: true,
         enableTracing: false, // <-- debugging purposes only
         preloadingStrategy: SelectivePreloadingStrategyService,
       }
@@ -30,4 +31,4 @@ const appRoutes: Routes = [
     RouterModule
   ]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

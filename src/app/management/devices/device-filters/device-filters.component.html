@@ -1,31 +1,51 @@
 <!-- TODO: Save [current filter settings] as category -->
 
-<mat-chip-list aria-label="Fish selection">
-  <!-- <mat-chip selected removable [matMenuTriggerFor]="categoryFilterMenu"
-    >All functional <mat-icon matChipRemove svgIcon="closeBold"></mat-icon>
-  </mat-chip> -->
-  <mat-chip [matMenuTriggerFor]="typeFilterMenu">Type</mat-chip>
+<mat-chip-list multiple aria-label="Filter selection">
+  <mat-chip
+    [removable]="selected.type"
+    (removed)="updateType(null)"
+    [selected]="selected.type"
+    [matMenuTriggerFor]="typeFilterMenu"
+    >{{ selected.type ? (selected.type | i18nSelect: typeMap) : "Type"
+    }}<mat-icon
+      *ngIf="selected.type"
+      matChipRemove
+      svgIcon="closeBold"
+    ></mat-icon
+  ></mat-chip>
   <!-- all, lamps, SCs, etc. -->
-  <mat-chip [matMenuTriggerFor]="statusFilterMenu">Status</mat-chip>
-  <mat-chip [matMenuTriggerFor]="profileFilterMenu">
-    <!-- <mat-icon class="small" matListIcon svgIcon="profileBold"></mat-icon> -->
-    Profile</mat-chip
-  >
+  <mat-chip
+    [selected]="selected.status"
+    [removable]="selected.status"
+    (removed)="updateStatus(null)"
+    [matMenuTriggerFor]="statusFilterMenu"
+    >{{ selected.status ? (selected.status | i18nSelect: statusMap) : "Status"
+    }}<mat-icon
+      *ngIf="selected.status"
+      matChipRemove
+      svgIcon="closeBold"
+    ></mat-icon
+  ></mat-chip>
+  <mat-chip [matMenuTriggerFor]="profileFilterMenu"> Profile</mat-chip>
   <!-- specify model, filter for devices with active events of specific type... -->
-  <mat-chip selected>
-    <!-- <mat-icon class="small" matListIcon svgIcon="filterBold"></mat-icon> -->
-    More filters • 2</mat-chip
-  >
+  <mat-chip selected> More filters • 2</mat-chip>
   <mat-chip class="round outlined"
     ><mat-icon class="small" matListIcon svgIcon="plusBold"></mat-icon
   ></mat-chip>
 </mat-chip-list>
 
 <mat-menu #typeFilterMenu="matMenu">
-  <button disabled mat-menu-item>All</button>
-  <button mat-menu-item>Lamps</button>
-  <button mat-menu-item>Segment controllers</button>
-  <button mat-menu-item>...</button>
+  <button (click)="updateType(null)" [disabled]="!selected.type" mat-menu-item>
+    All
+  </button>
+  <button
+    (click)="updateType(type)"
+    [disabled]="type == selected.type"
+    *ngFor="let type of types; let i = index"
+    mat-menu-item
+  >
+    {{ type | i18nSelect: typeMap }}
+  </button>
 </mat-menu>
 <mat-menu #profileFilterMenu="matMenu">
   <button mat-menu-item disabled>All</button>
@@ -34,11 +54,21 @@
   </button>
 </mat-menu>
 <mat-menu #statusFilterMenu="matMenu">
-  <button mat-menu-item disabled>All</button>
-  <button mat-menu-item>Not responsing</button>
-  <button mat-menu-item>Offline</button>
-  <!-- TBD: 'New' as 'added recently' -->
-  <button mat-menu-item>New</button>
+  <button
+    (click)="updateStatus(null)"
+    mat-menu-item
+    [disabled]="!selected.status"
+  >
+    All
+  </button>
+  <button
+    (click)="updateStatus(status)"
+    [disabled]="status == selected.status"
+    *ngFor="let status of statuses"
+    mat-menu-item
+  >
+    {{ status | i18nSelect: statusMap }}
+  </button>
 </mat-menu>
 
 <mat-menu #categoryFilterMenu="matMenu">
