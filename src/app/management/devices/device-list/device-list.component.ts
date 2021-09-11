@@ -7,6 +7,8 @@ import { Device, DeviceGroup, Profile, DeviceStatus, DeviceType, DeviceFilters }
 import { ActivatedRoute } from '@angular/router';
 import { DeviceService } from '~local/services/device.service';
 import { ProfileService } from '~local/services/profile.service';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { DeviceListEditActionsComponent } from './device-list-edit-actions/device-list-edit-actions.component'
 
 @Component({
   selector: 'device-list',
@@ -14,6 +16,7 @@ import { ProfileService } from '~local/services/profile.service';
   styleUrls: ['./device-list.component.scss']
 })
 export class DeviceListComponent implements OnInit {
+  category: number = null;
   group$!: Observable<DeviceGroup>;
   devices$!: Observable<Device[]>;
   filteredDevices$: Observable<Device[]>;
@@ -29,10 +32,16 @@ export class DeviceListComponent implements OnInit {
   })
 
   constructor(
+    private _bottomSheet: MatBottomSheet,
     private deviceService: DeviceService,
     private profileService: ProfileService,
     private route: ActivatedRoute
   ) { }
+
+  openEditActions(): void {
+    this.isEditable = !this.isEditable;
+    this._bottomSheet.open(DeviceListEditActionsComponent, { hasBackdrop: false });
+  }
 
   onProfileSelectClick(event) {
     event.stopPropagation();
@@ -44,6 +53,12 @@ export class DeviceListComponent implements OnInit {
 
   ngOnInit() {
     this.profileService.Profiles.subscribe(profiles => this.profiles = profiles);
+
+    this.route.paramMap.subscribe(params => {
+      const category = params.get('groupId')
+      if (category == null) this.category = null
+      else this.category = +category
+    })
 
     this.group$ = this.route.paramMap.pipe(
       switchMap(params =>
@@ -75,9 +90,10 @@ export class DeviceListComponent implements OnInit {
         })
       )
 
-    this.group$.subscribe(group =>
-      this.profile$ = this.profileService.getProfile(group.profileId)
-    );
+    // this.group$.subscribe(group =>
+    //   this.profile$ = this.profileService.getProfile(group.profileId)
+    // );
 
   }
 }
+

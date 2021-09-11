@@ -28,64 +28,56 @@
   </mat-list-option>
 </mat-selection-list> -->
 
+<!-- (click)="isEditable = !isEditable" -->
 <button
   id="edit-toggle"
   type="button"
   aria-label="Toggle edit mode"
-  (click)="isEditable = !isEditable"
+  (click)="openEditActions()"
   mat-icon-button
 >
-  <mat-icon svgIcon="editBold"></mat-icon>
+  <mat-icon svgIcon="editMedium"></mat-icon>
 </button>
 
-<div id="edit-actions">
-  <ng-container *ngIf="isEditable && selectedDevices.length">
-    <mat-divider></mat-divider>
-    <div>
-      <button type="button" mat-button>Change status</button>
-      <button type="button" mat-button>Update firmware</button>
-      <button type="button" mat-button>Move</button>
-    </div>
-  </ng-container>
-</div>
-
-<!-- https://material.angular.io/components/select/overview#error-cannot-change-multiple-mode-of-select-after-initialization -->
-<mat-selection-list *ngIf="!isEditable" role="list" [multiple]="false">
-  <mat-list-option
-    [routerLink]="'../../device/' + [device.id]"
-    role="listitem"
-    *ngFor="let device of filteredDevices$ | async"
-  >
-    <div matLine>{{ device.name }}</div>
-    <span matLine
-      >SC11, 1 luminaire{{ device.surgeProtector ? ", surge protector" : null
-      }}{{ device.sensors ? ", " + device.sensors.join(", ") : null }}
-      <!-- <ng-container *ngFor="let sensor of device.sensors">
+<group-list [category]="category"></group-list>
+<ng-container>
+  <!-- https://material.angular.io/components/select/overview#error-cannot-change-multiple-mode-of-select-after-initialization -->
+  <mat-selection-list *ngIf="!isEditable" role="list" [multiple]="false">
+    <mat-list-option
+      [routerLink]="'../../device/' + [device.id]"
+      role="listitem"
+      *ngFor="let device of filteredDevices$ | async"
+    >
+      <div matLine>{{ device.name }}</div>
+      <span matLine
+        >SC11, 1 luminaire{{ device.surgeProtector ? ", surge protector" : null
+        }}{{ device.sensors ? ", " + device.sensors.join(", ") : null }}
+        <!-- <ng-container *ngFor="let sensor of device.sensors">
         {{ sensor }}</ng-container
       > -->
-    </span>
-  </mat-list-option>
-  <mat-list-option role="listitem">
-    <div class="text-secondary" matLine>Add</div>
-  </mat-list-option>
-</mat-selection-list>
-<mat-selection-list
-  [(ngModel)]="selectedDevices"
-  *ngIf="isEditable"
-  role="list"
->
-  <mat-list-option
-    role="listitem"
-    *ngFor="let device of filteredDevices$ | async"
+      </span>
+    </mat-list-option>
+    <mat-list-option role="listitem">
+      <div class="text-secondary" matLine>Add</div>
+    </mat-list-option>
+  </mat-selection-list>
+  <mat-selection-list
+    [(ngModel)]="selectedDevices"
+    *ngIf="isEditable"
+    role="list"
   >
-    <div matLine>{{ device.name }}</div>
-    <span matLine
-      >SC11, 1 luminaire{{ device.surgeProtector ? ", surge protector" : null
-      }}{{ device.sensors ? ", " + device.sensors.join(", ") : null }}
-    </span>
-  </mat-list-option>
-</mat-selection-list>
-
+    <mat-list-option
+      role="listitem"
+      *ngFor="let device of filteredDevices$ | async"
+    >
+      <div matLine>{{ device.name }}</div>
+      <span matLine
+        >SC11, 1 luminaire{{ device.surgeProtector ? ", surge protector" : null
+        }}{{ device.sensors ? ", " + device.sensors.join(", ") : null }}
+      </span>
+    </mat-list-option>
+  </mat-selection-list>
+</ng-container>
 <!-- <mat-selection-list role="list" [multiple]="false">
   <h2 matSubheader>Segment controllers</h2>
   <mat-list-option>
@@ -97,7 +89,7 @@
   </mat-list-option>
 </mat-selection-list> -->
 
-<mat-menu #profileMenu="matMenu">
+<!-- <mat-menu #profileMenu="matMenu">
   <button
     [disabled]="profile.id === (profile$ | async)?.id"
     *ngFor="let profile of profiles"
@@ -105,4 +97,4 @@
   >
     {{ profile.name }}
   </button>
-</mat-menu>
+</mat-menu> -->

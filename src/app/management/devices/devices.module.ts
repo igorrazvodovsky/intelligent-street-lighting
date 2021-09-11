@@ -27,6 +27,7 @@ import { MapLegendComponent } from './map/map-legend/map-legend.component';
 import { MapLayerMenuComponent } from './map/map-layer-menu/map-layer-menu.component';
 import { ScConnectedDevicesComponent } from './device-detail/device-sc/sc-connected-devices/sc-connected-devices.component';
 import { DeviceMetricsChartComponent } from './device-detail/device-metrics/device-metrics-chart/device-metrics-chart.component';
+import { DeviceListEditActionsComponent } from './device-list/device-list-edit-actions/device-list-edit-actions.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { DeviceMetricsChartComponent } from './device-detail/device-metrics/devi
     MapLegendComponent,
     MapLayerMenuComponent,
     ScConnectedDevicesComponent,
-    DeviceMetricsChartComponent
+    DeviceMetricsChartComponent,
+    DeviceListEditActionsComponent
   ],
   imports: [
     CommonModule,

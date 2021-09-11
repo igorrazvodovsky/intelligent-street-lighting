@@ -98,7 +98,6 @@ export class DeviceMetricsChartComponent implements OnInit {
     }
   }
 
-
   private drawPlot(): void {
 
     // set the height of both y axis

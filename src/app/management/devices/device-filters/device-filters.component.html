@@ -28,7 +28,7 @@
   ></mat-chip>
   <mat-chip [matMenuTriggerFor]="profileFilterMenu"> Profile</mat-chip>
   <!-- specify model, filter for devices with active events of specific type... -->
-  <mat-chip selected> More filters • 2</mat-chip>
+  <!-- <mat-chip> More filters • 2</mat-chip> -->
   <mat-chip class="round outlined"
     ><mat-icon class="small" matListIcon svgIcon="plusBold"></mat-icon
   ></mat-chip>
@@ -74,10 +74,9 @@
 <mat-menu #categoryFilterMenu="matMenu">
   <button mat-menu-item [matMenuTriggerFor]="categoryLocation">Location</button>
   <button mat-menu-item disabled>Street</button>
-  <button mat-menu-item [matMenuTriggerFor]="categoryFunctional">
-    Functional
-  </button>
-  <button mat-menu-item disabled>User defined</button>
+  <button mat-menu-item [matMenuTriggerFor]="categoryFunction">Function</button>
+  <!-- aka "User defined" -->
+  <button mat-menu-item disabled>Custom</button>
 </mat-menu>
 
 <mat-menu #categoryLocation="matMenu">
@@ -88,7 +87,7 @@
   <button mat-menu-item>...</button>
 </mat-menu>
 
-<mat-menu #categoryFunctional="matMenu">
+<mat-menu #categoryFunction="matMenu">
   <button mat-menu-item>All</button>
   <button mat-menu-item>Centrs (Gaismekli no 1-718 un 763-768)</button>
   <button mat-menu-item>Centrs (Gaismekli no 719-762)</button>

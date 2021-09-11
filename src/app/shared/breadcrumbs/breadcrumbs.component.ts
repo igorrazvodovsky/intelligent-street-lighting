@@ -27,7 +27,7 @@ export class BreadcrumbsComponent implements OnInit {
   devices: Crumb[] = []
   currentDevice: Crumb
   city: string
-  category: Category = "Location"
+  category: Category = "Area"
 
   constructor(
     private service: DeviceService,

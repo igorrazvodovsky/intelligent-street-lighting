@@ -55,7 +55,8 @@ export enum Medium {
   Ticket = 'ticket',
   Filter = 'filter',
   QR = 'qr',
-  Plus = 'plus'
+  Plus = 'plus',
+  Edit = 'edit'
 }
 
 export enum Regular {

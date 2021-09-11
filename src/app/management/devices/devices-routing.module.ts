@@ -16,7 +16,7 @@ const devicesRoutes: Routes = [
       { path: 'group/:groupId', component: DeviceListComponent, data: { animation: 'device' } },
       {
         path: '',
-        component: GroupListComponent,
+        component: DeviceListComponent,
         data: { animation: 'devices' },
         pathMatch: 'full'
       }

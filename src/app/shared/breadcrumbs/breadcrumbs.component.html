@@ -4,6 +4,7 @@
 
 <nav class="breadcrumbs mat-h2" role="navigation">
   <a [matMenuTriggerFor]="categoryMenu">
+    <!-- Devices grouped by... -->
     <span *ngIf="!groupId && !deviceId" class="home-label"
       >{{ category
       }}<mat-icon inline svgIcon="dropdownMedium" aria-hidden="true"></mat-icon
@@ -76,6 +77,8 @@
 <mat-menu #categoryMenu="matMenu">
   <button mat-menu-item disabled>Location</button>
   <button mat-menu-item>Street</button>
-  <button mat-menu-item>Functional</button>
-  <button mat-menu-item>User defined</button>
+  <button mat-menu-item>Function</button>
+  <!-- aka "User defined" -->
+  <button mat-menu-item>Custom</button>
+  <button mat-menu-item>Unassigned</button>
 </mat-menu>

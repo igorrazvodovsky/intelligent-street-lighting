@@ -1,18 +1,10 @@
-<!-- TODO: Don't show the group if empty? -->
-<!-- TODO: Group creation through assignemt?-->
+<!-- TODO: Don't show the category if empty? -->
+<!-- TODO: Category creation through assignemt?-->
 
-<device-filters></device-filters>
-
-<mat-selection-list *ngIf="groups" role="list" [multiple]="false">
+<mat-selection-list role="list" [multiple]="false">
   <group-list-item
     *ngFor="let group of groups"
     [group]="group"
   ></group-list-item>
-  <mat-list-option role="listitem">
-    <div class="text-secondary" matLine>Unassigned</div>
-    <span matLine>78 lamps, 3 segment controllers</span>
-  </mat-list-option>
-  <mat-list-option role="listitem">
-    <div class="text-secondary" matLine>All</div>
-  </mat-list-option>
 </mat-selection-list>
+<mat-divider *ngIf="groups.length > 0"></mat-divider>
