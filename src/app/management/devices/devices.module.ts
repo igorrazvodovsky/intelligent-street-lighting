@@ -16,7 +16,7 @@ import { DeviceMetricsComponent } from './device-detail/device-metrics/device-me
 import { DeviceInfoComponent } from './device-detail/device-info/device-info.component';
 import { DeviceHistoryComponent } from './device-detail/device-history/device-history.component';
 import { DeviceFriendsListComponent } from './device-detail/device-motion-sensor/device-friends-list/device-friends-list.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GroupListItemComponent } from './group-list/group-list-item/group-list-item.component';
 import { GroupDialogComponent } from './group-dialog/group-dialog.component';
 import { DeviceFiltersComponent } from './device-filters/device-filters.component';
@@ -28,6 +28,7 @@ import { MapLayerMenuComponent } from './map/map-layer-menu/map-layer-menu.compo
 import { ScConnectedDevicesComponent } from './device-detail/device-sc/sc-connected-devices/sc-connected-devices.component';
 import { DeviceMetricsChartComponent } from './device-detail/device-metrics/device-metrics-chart/device-metrics-chart.component';
 import { DeviceListEditActionsComponent } from './device-list/device-list-edit-actions/device-list-edit-actions.component';
+import { DeviceCategoriesComponent } from './device-detail/device-categories/device-categories.component';
 
 @NgModule({
   declarations: [
@@ -52,13 +53,15 @@ import { DeviceListEditActionsComponent } from './device-list/device-list-edit-a
     MapLayerMenuComponent,
     ScConnectedDevicesComponent,
     DeviceMetricsChartComponent,
-    DeviceListEditActionsComponent
+    DeviceListEditActionsComponent,
+    DeviceCategoriesComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     DevicesRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     MarkerService,

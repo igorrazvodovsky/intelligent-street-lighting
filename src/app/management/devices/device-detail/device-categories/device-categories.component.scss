@@ -1,0 +1,28 @@
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-chip {
+  font-size: 0.75rem;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  // padding-left: 8px;
+  // padding-right: 8px;
+  min-height: 1.5rem;
+  // &.mat-chip-with-trailing-icon {
+  //   padding-left: 8px;
+  //   padding-right: 8px;
+  // }
+}
+
+:host ::ng-deep {
+  .mat-form-field .mat-form-field-flex {
+    background-color: transparent;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+  }
+  .mat-form-field.mat-focused .mat-form-field-flex {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+}
