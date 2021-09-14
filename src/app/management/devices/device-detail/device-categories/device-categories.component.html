@@ -29,9 +29,10 @@
   <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
     <mat-option
       *ngFor="let category of filteredCategories | async"
-      [value]="category"
+      [value]="category.name"
     >
-      {{ category }}
+      <span class="mat-body-2">{{ category }}</span>
+      <!-- <small class="text-secondary">, {{ category.type }}</small> -->
     </mat-option>
   </mat-autocomplete>
 </mat-form-field>
