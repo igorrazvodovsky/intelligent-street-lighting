@@ -6,7 +6,7 @@ export interface DialogData { name: string; edit: boolean; entity?: string }
 @Component({
   selector: 'name-dialog',
   templateUrl: './name-dialog.component.html',
-  styleUrls: ['./name-dialog.component.scss']
+  styleUrls: []
 })
 export class NameDialogComponent implements OnInit {
   @ViewChild('input') input;

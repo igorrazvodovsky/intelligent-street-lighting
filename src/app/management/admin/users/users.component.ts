@@ -4,7 +4,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { UsersDataSource } from './users-datasource';
 import { User } from '~local/types'
-
+import { MatDialog } from '@angular/material/dialog';
+import { InviteDialogComponent } from './invite-dialog/invite-dialog.component';
 
 @Component({
   selector: 'users',
@@ -20,7 +21,7 @@ export class UsersComponent implements AfterViewInit {
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'name', 'status', 'enabled', 'locked'];
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
     this.dataSource = new UsersDataSource();
   }
 
@@ -28,5 +29,11 @@ export class UsersComponent implements AfterViewInit {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(InviteDialogComponent, {
+      id: 'invite-dialog'
+    });
   }
 }

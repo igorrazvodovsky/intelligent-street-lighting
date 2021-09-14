@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Invite user</h1>
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input
+      type="email"
+      #input
+      cdkFocusInitial
+      matInput
+      placeholder="E.g. john.smith@city.com"
+    />
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    mat-flat-button
+    color="accent"
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+  >
+    Invite
+  </button>
+</mat-dialog-actions>

@@ -7,6 +7,7 @@ import { GroupsComponent } from './groups/groups.component';
 import { OrgsComponent } from './orgs/orgs.component';
 import { SharedModule } from '~local/shared/shared.module';
 import { DeviceModelsComponent } from './device-models/device-models.component';
+import { InviteDialogComponent } from './users/invite-dialog/invite-dialog.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { DeviceModelsComponent } from './device-models/device-models.component';
     UsersComponent,
     GroupsComponent,
     OrgsComponent,
-    DeviceModelsComponent
+    DeviceModelsComponent,
+    InviteDialogComponent
   ],
   imports: [
     CommonModule,
