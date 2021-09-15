@@ -1,6 +1,11 @@
 <app-page-actions>
   Users
-  <button type="button" aria-label="Add user" mat-icon-button>
+  <button
+    (click)="openDialog()"
+    type="button"
+    aria-label="Add user"
+    mat-icon-button
+  >
     <mat-icon svgIcon="plusBold" aria-hidden="true"></mat-icon></button
 ></app-page-actions>
 

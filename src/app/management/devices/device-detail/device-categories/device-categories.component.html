@@ -1,0 +1,38 @@
+<mat-form-field class="no-label no-hint" appearance="fill">
+  <mat-chip-list #chipList aria-label="Category selection">
+    <mat-chip
+      *ngFor="let category of categories"
+      [selectable]="selectable"
+      [removable]="removable"
+      (removed)="remove(category)"
+    >
+      {{ category }}
+      <mat-icon
+        class="small"
+        matChipRemove
+        svgIcon="closeBold"
+        *ngIf="removable && isFocused"
+      ></mat-icon>
+    </mat-chip>
+    <input
+      (focus)="onFocus()"
+      (blur)="onBlur()"
+      [placeholder]="isFocused ? 'Add category' : ''"
+      #fruitInput
+      [formControl]="categoryCtrl"
+      [matAutocomplete]="auto"
+      [matChipInputFor]="chipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      (matChipInputTokenEnd)="add($event)"
+    />
+  </mat-chip-list>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+    <mat-option
+      *ngFor="let category of filteredCategories | async"
+      [value]="category.name"
+    >
+      <span class="mat-body-2">{{ category }}</span>
+      <!-- <small class="text-secondary">, {{ category.type }}</small> -->
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

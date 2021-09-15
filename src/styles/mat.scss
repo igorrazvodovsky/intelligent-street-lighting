@@ -6,7 +6,8 @@ body {
     width: 100%;
   }
 
-  .mat-form-field.no-label .mat-form-field-infix {
+  .mat-form-field.no-label .mat-form-field-infix,
+  .mat-form-field-appearance-fill.no-label .mat-form-field-flex {
     padding-top: 0;
   }
 
@@ -67,6 +68,7 @@ body {
 
   .mat-tab-label {
     min-width: auto !important;
+    padding: 0 1rem;
   }
 
   .mat-tab-group.mat-primary .mat-ink-bar,
