@@ -21,7 +21,10 @@
     <!-- ??? merge? better wording maybe: flatten? -->
     <p>Schedules overlap and merge. Order determines the&nbsp;priority.</p>
     <mat-slide-toggle color="primary" [(ngModel)]="profile.dynamic"
-      >Account for 🚗 traffic</mat-slide-toggle
+      >Account for traffic 🚗 🚶</mat-slide-toggle
+    >
+    <mat-slide-toggle color="primary" [(ngModel)]="profile.isInterpolated"
+      >Сhange the brightness smoothly</mat-slide-toggle
     >
   </div>
   <div class="behaviour">

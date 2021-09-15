@@ -60,6 +60,7 @@ export const PROFILES: Profile[] = [
     name: 'Shopping centre',
     description: '70% throughout the day',
     dynamic: false,
+    isInterpolated: true,
     schedules: [
       {
         name: 'Daytime',
@@ -105,6 +106,7 @@ export const PROFILES: Profile[] = [
     id: 3,
     name: 'Guļamrajons',
     dynamic: true,
+    isInterpolated: true,
     description:
       '70% on weekdays from 6:30 to 23:00, on weekends from 8:00 to 22:00. 30% the rest of the time. Accounts for traffic & natural light',
     schedules: [
@@ -153,6 +155,7 @@ export const PROFILES: Profile[] = [
     name: 'Pedestrian crossing',
     description: '70% throughout the day',
     dynamic: true,
+    isInterpolated: true,
     schedules: [
       {
         name: 'Daytime',
@@ -200,6 +203,7 @@ export const PROFILES: Profile[] = [
     description:
       '70% on weekdays from 6:30 to 23:00, on weekends from 8:00 to 22:00. 30% the rest of the time. Accounts for traffic & natural light',
     dynamic: true,
+    isInterpolated: true,
     // ??? How to encode cycle with Dates?
     schedules: [
       {
@@ -247,6 +251,7 @@ export const PROFILES: Profile[] = [
     name: 'New profile',
     description: '50% throughout the day',
     dynamic: true,
+    isInterpolated: true,
     schedules: [
       {
         name: 'Full',
@@ -270,10 +275,10 @@ export const PROFILES: Profile[] = [
       {
         brightness: 0.2,
         time: {
-          start:  new Date(0, 0, 0, 0),
-          end:    new Date(0, 0, 0, 0)
+          start: new Date(0, 0, 0, 0),
+          end: new Date(0, 0, 0, 0)
         }
-          }
+      }
     ],
     naturalLight: true,
     sun: true,
@@ -285,6 +290,7 @@ export const PROFILES: Profile[] = [
     name: 'Default',
     description: 'City default profile',
     dynamic: true,
+    isInterpolated: true,
     schedules: [
       {
         name: 'Full',
@@ -380,22 +386,22 @@ export const PROFILES: Profile[] = [
       {
         brightness: 0.1,
         time: {
-          start:  new Date(0, 0, 0, 2),
-          end:    new Date(0, 0, 0, 5)
+          start: new Date(0, 0, 0, 2),
+          end: new Date(0, 0, 0, 5)
         }
       },
       {
         brightness: 0.2,
         time: {
-          start:  new Date(0, 0, 0, 1),
-          end:    new Date(0, 0, 0, 6)
+          start: new Date(0, 0, 0, 1),
+          end: new Date(0, 0, 0, 6)
         }
       },
       {
         brightness: 0.3,
         time: {
-          start:  new Date(0, 0, 0, 16),
-          end:    new Date(0, 0, 0, 7)
+          start: new Date(0, 0, 0, 16),
+          end: new Date(0, 0, 0, 7)
         }
       },
     ],

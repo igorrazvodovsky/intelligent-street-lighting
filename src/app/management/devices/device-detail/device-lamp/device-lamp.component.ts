@@ -13,6 +13,7 @@ export class DeviceLampComponent implements OnInit {
   on = true;
   profiles: Profile[]
   profile: Profile
+  manualMode: boolean = false
 
   constructor(private profileService: ProfileService) { }
 

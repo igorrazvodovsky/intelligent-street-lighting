@@ -10,20 +10,23 @@
     role="listitem"
     [routerLink]="'../../../profiles/' + [device.profile.id]"
   >
-    <div matLine>{{ profile.name }}</div>
-    <span matLine class="text-secondary">
-      <ng-container
-        *ngIf="device.profile.source !== 'itself'; else selfAssigned"
-      >
-        Profile inherited from
-        {{ device.profile.source == "sc" ? "segment controller" : "group" }}
-      </ng-container>
+    <ng-container *ngIf="manualMode; else profileControlled">
+      Controlled manually
+    </ng-container>
+    <ng-template #profileControlled>
+      <div matLine>{{ profile.name }}</div>
+      <span matLine class="text-secondary">
+        <ng-container
+          *ngIf="device.profile.source !== 'itself'; else selfAssigned"
+        >
+          Profile inherited from
+          {{ device.profile.source == "sc" ? "segment controller" : "area" }}
+        </ng-container>
 
-      <!-- ??? Use cases for individual profiles. HOW NORMAL? -->
-      <ng-template #selfAssigned
-        ><span style="color: red">Individual profile</span></ng-template
-      >
-    </span>
+        <!-- ??? Use cases for individual profiles. HOW NORMAL? -->
+        <ng-template #selfAssigned><span>Individual profile</span></ng-template>
+      </span>
+    </ng-template>
     <div
       matListIcon
       matTooltip="Overrides are disabled for this group"
@@ -50,9 +53,29 @@
   >
     {{ profile.name }}
   </button>
+  <mat-divider></mat-divider>
+  <button (click)="manualMode = !manualMode" mat-menu-item>
+    Control manually
+  </button>
+  <button mat-menu-item>Create new</button>
 </mat-menu>
 
 <mat-accordion>
+  <mat-expansion-panel [disabled]="!manualMode" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Brightness</mat-panel-title>
+      <mat-panel-description>
+        50%. Target is set to 60% until 07:00.
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-slider
+      value="60"
+      min="0"
+      max="100"
+      aria-label="brightness"
+    ></mat-slider>
+  </mat-expansion-panel>
+  <mat-divider></mat-divider>
   <mat-expansion-panel hideToggle>
     <mat-expansion-panel-header>
       <mat-panel-title>Orientation</mat-panel-title>
@@ -66,13 +89,12 @@
     ></mat-slider>
   </mat-expansion-panel>
   <mat-divider></mat-divider>
-  <mat-expansion-panel hideToggle>
+  <mat-expansion-panel disabled hideToggle>
     <mat-expansion-panel-header>
       <!-- TODO: On, off, no monitoring? -->
       <mat-panel-title>Surge protector</mat-panel-title>
-      <mat-panel-description>None</mat-panel-description>
+      <mat-panel-description>No</mat-panel-description>
     </mat-expansion-panel-header>
-    ???
   </mat-expansion-panel>
   <mat-divider></mat-divider>
 </mat-accordion>

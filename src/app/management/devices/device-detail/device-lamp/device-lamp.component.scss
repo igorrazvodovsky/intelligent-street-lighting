@@ -1,3 +1,8 @@
 :host > * {
   margin-top: 1rem;
 }
+
+// Disable default 'disable' styling to use reuse expansion panel in 'not expandable' state
+.mat-expansion-panel-header[aria-disabled="true"] {
+  color: inherit;
+}

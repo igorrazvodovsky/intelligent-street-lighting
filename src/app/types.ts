@@ -176,6 +176,7 @@ export interface Profile {
   name: string
   description?: string
   dynamic?: boolean
+  isInterpolated: boolean
   summary?:
   {
     day: string

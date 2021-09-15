@@ -29,8 +29,8 @@ export const TASKS: Task[] = [
   },
   {
     id: 2,
-    title: 'Fix communication failure',
-    description: 'The dhikr is a demonstration of devotion in which worshippers share in a meditation on Allah via synchronised group chants, rhythmic movements and, in some instances, the spinning dances of whirling dervishes.',
+    title: 'Fix the GSM signal issue',
+    description: 'GSM signal of poor quality. Need to check the antenna.',
     status: 'New',
     priority: 'High',
     deviceId: 15,

@@ -146,7 +146,7 @@ export class DeviceMetricsChartComponent implements OnInit {
     this.chart
       .append("g")
       .attr("class", "y-axis")
-      .attr("transform", "translate(" + this.chartWidth + ", 0)")
+      .attr("transform", "translate(" + (this.chartWidth - this.chartMargin.right) + ", 0)")
       .call(this.yAxis);
 
     // get list of bucket names
