@@ -6,27 +6,62 @@
   (filterUpdateEvent)="updateFilter($event)"
 ></device-filters>
 
-<!-- <mat-selection-list role="list" [multiple]="false">
-  <h2 matSubheader>Profile</h2>
-  <mat-list-option
+<mat-accordion>
+  <mat-expansion-panel
+    id="category-profiles"
     *ngIf="profile$ | async as profile"
-    class="list-item-icon-right list-item-with-btn"
-    role="listitem"
-    [routerLink]="'../../../profiles/' + [profile.id]"
+    hideToggle
   >
-    <div matLine>{{ profile.name }}</div>
-    <span matLine>{{ profile.description }}</span>
-    <div matListIcon>
-      <button
-        (click)="onProfileSelectClick($event)"
-        mat-icon-button
-        [matMenuTriggerFor]="profileMenu"
-      >
-        <mat-icon svgIcon="editRegular"></mat-icon>
+    <mat-expansion-panel-header>
+      <!-- TODO: 1 profile → singular -->
+      <mat-panel-title> Profiles </mat-panel-title>
+      <mat-panel-description class="text-secondary">
+        <div class="truncate">
+          {{ profile.name }}, Pedestrian crossing, 12 in manual mode
+        </div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-action-list>
+      <button mat-list-item [routerLink]="'../../../profiles/' + [profile.id]">
+        <div matLine>{{ profile.name }}</div>
+        <div matLine>120 lamps &bull; segment controller 13</div>
       </button>
-    </div>
-  </mat-list-option>
-</mat-selection-list> -->
+      <button mat-list-item>
+        <div matLine>Pedestrian crossing</div>
+        <div matLine>4 lamps &bull; Protected</div>
+      </button>
+      <button mat-list-item>
+        <div matLine>Manual mode 🙌</div>
+        <div matLine>12 lamps</div>
+      </button>
+      <button mat-list-item [matMenuTriggerFor]="profileMenu">Assign</button>
+    </mat-action-list>
+  </mat-expansion-panel>
+  <!-- Subcategories for current selection -->
+  <mat-expansion-panel id="category-subcategories" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Subcategories </mat-panel-title>
+      <mat-panel-description class="text-secondary">
+        Pedestrian crossing, Side street
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-action-list>
+      <button mat-list-item>
+        <div matLine>Pedestrian crossing</div>
+        <div matLine>4 lamps</div>
+      </button>
+      <button mat-list-item>
+        <div matLine>Pedestrian crossing</div>
+        <div matLine>4 lamps</div>
+      </button>
+      <button mat-list-item>
+        <div matLine>Side street</div>
+        <div matLine>12 lamps</div>
+      </button>
+      <button mat-list-item>Add</button>
+    </mat-action-list>
+  </mat-expansion-panel>
+</mat-accordion>
 
 <!-- (click)="isEditable = !isEditable" -->
 <button
@@ -40,15 +75,22 @@
 </button>
 
 <group-list [category]="category"></group-list>
+
 <ng-container>
   <!-- https://material.angular.io/components/select/overview#error-cannot-change-multiple-mode-of-select-after-initialization -->
   <mat-selection-list *ngIf="!isEditable" role="list" [multiple]="false">
+    <mat-list-option role="listitem">
+      <div matLine>Air quality sensor</div>
+    </mat-list-option>
+    <mat-list-option role="listitem">
+      <div matLine>Video sensor</div>
+    </mat-list-option>
     <mat-list-option
       [routerLink]="'../../device/' + [device.id]"
       role="listitem"
       *ngFor="let device of filteredDevices$ | async"
     >
-      <div matLine>{{ device.name }}</div>
+      <div matLine>{{ device.type }} {{ device.name }}</div>
       <span matLine
         >SC11, 1 luminaire{{ device.surgeProtector ? ", surge protector" : null
         }}{{ device.sensors ? ", " + device.sensors.join(", ") : null }}
@@ -89,7 +131,7 @@
   </mat-list-option>
 </mat-selection-list> -->
 
-<!-- <mat-menu #profileMenu="matMenu">
+<mat-menu #profileMenu="matMenu">
   <button
     [disabled]="profile.id === (profile$ | async)?.id"
     *ngFor="let profile of profiles"
@@ -97,4 +139,4 @@
   >
     {{ profile.name }}
   </button>
-</mat-menu> -->
+</mat-menu>

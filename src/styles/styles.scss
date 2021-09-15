@@ -168,10 +168,12 @@ button {
 }
 
 #device,
-#permissions {
+#permissions,
+#category-subcategories,
+#category-profiles {
   .mat-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
   }
   .mat-expansion-panel-body {
     padding: 1rem;

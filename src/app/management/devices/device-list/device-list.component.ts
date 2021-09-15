@@ -90,9 +90,9 @@ export class DeviceListComponent implements OnInit {
         })
       )
 
-    // this.group$.subscribe(group =>
-    //   this.profile$ = this.profileService.getProfile(group.profileId)
-    // );
+    this.group$.subscribe(group =>
+      this.profile$ = this.profileService.getProfile(group.profileId)
+    );
 
   }
 }

@@ -27,3 +27,16 @@
     margin-right: 0.5rem;
   }
 }
+
+:host ::ng-deep {
+  .mat-expansion-panel-body {
+    padding: 0;
+  }
+}
+
+.truncate {
+  width: 30ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
