@@ -4,8 +4,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-orgs',
-  templateUrl: './orgs.component.html',
-  styleUrls: ['./orgs.component.scss']
+  templateUrl: './orgs.component.html'
 })
 export class OrgsComponent implements OnInit {
 

@@ -1,12 +1,11 @@
 import { Component, Inject, ViewChild, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export interface DialogData { name: string; edit: boolean; entity?: string }
 
 @Component({
   selector: 'name-dialog',
-  templateUrl: './name-dialog.component.html',
-  styleUrls: []
+  templateUrl: './name-dialog.component.html'
 })
 export class NameDialogComponent implements OnInit {
   @ViewChild('input') input;

@@ -7,8 +7,7 @@ import { NameDialogComponent } from '~local/shared/name-dialog/name-dialog.compo
 
 @Component({
   selector: 'profile-list',
-  templateUrl: './profile-list.component.html',
-  styleUrls: ['./profile-list.component.scss']
+  templateUrl: './profile-list.component.html'
 })
 export class ProfileListComponent implements OnInit {
   profiles!: Profile[];

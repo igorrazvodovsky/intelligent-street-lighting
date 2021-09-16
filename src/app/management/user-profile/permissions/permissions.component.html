@@ -2,11 +2,7 @@
   <mat-expansion-panel *ngFor="let permissionGroup of permissions">
     <mat-expansion-panel-header>
       <mat-panel-title>{{ permissionGroup.name }}</mat-panel-title>
-      <mat-panel-description>
-        <ng-container *ngFor="let permisssion of permissionGroup.permissions">
-          {{ permisssion.enabled ? permisssion.name : "" }}
-        </ng-container>
-      </mat-panel-description>
+      <mat-panel-description> View, edit, delete </mat-panel-description>
     </mat-expansion-panel-header>
     <mat-selection-list
       *ngFor="let permission of permissionGroup.permissions"

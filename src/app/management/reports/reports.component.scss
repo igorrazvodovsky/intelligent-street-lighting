@@ -1,9 +1,11 @@
+@import "../../../styles/variables.scss";
+
 :host {
   display: block;
   padding-top: 4.5rem;
   padding-bottom: 3rem;
   @media (min-width: 600px) {
-    padding-left: 4.5rem;
+    padding-left: $main-padding-left-desktop;
   }
   height: 100%;
   width: 100%;

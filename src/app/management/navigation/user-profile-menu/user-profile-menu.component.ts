@@ -6,8 +6,7 @@ import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-user-profile-menu',
-  templateUrl: './user-profile-menu.component.html',
-  styleUrls: ['./user-profile-menu.component.scss']
+  templateUrl: './user-profile-menu.component.html'
 })
 export class UserProfileMenuComponent implements OnInit {
   isHandset: boolean
@@ -21,7 +20,7 @@ export class UserProfileMenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.appStateService.isHandset.subscribe(value =>
-    this.isHandset = value
+      this.isHandset = value
     );
   }
 
