@@ -136,11 +136,11 @@ export class ProfileVisualisationComponent implements OnChanges {
       .y1(d => d[1])
 
     this.morningDark
-      .attr("x", this.xScale(this.sunRiseTime))
-      .attr("width", this.width - this.xScale(this.sunRiseTime) - this.marginX)
+      .attr("x", this.width / 2)
+      .attr("width", this.xScale(this.sunRiseTime) - this.width / 2)
     this.eveningDark
-      .attr("x", this.marginX)
-      .attr("width", this.xScale(this.sunSetTime) - this.marginX)
+      .attr("x", this.xScale(this.sunSetTime))
+      .attr("width", this.width / 2 - this.xScale(this.sunSetTime))
 
     // TODO: Replace "4" with something proper
     this.sunRiseIcon.attr("x", this.xScale(this.sunRiseTime) + 4)
