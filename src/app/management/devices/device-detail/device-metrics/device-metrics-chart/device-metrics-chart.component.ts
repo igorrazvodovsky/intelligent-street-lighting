@@ -118,7 +118,8 @@ export class DeviceMetricsChartComponent implements OnInit {
       .line()
       .y((d: any) => this.timeScale(this.parseTime(d.date)))
       .x((d: any) => this.metricsScale(d.conversion))
-      .curve(d3Shape.curveCardinal);
+      .curve(d3Shape.curveStepAfter);
+      // TBD: different interpolation based on the metric?
 
     // create chart
     this.chart = this.svg

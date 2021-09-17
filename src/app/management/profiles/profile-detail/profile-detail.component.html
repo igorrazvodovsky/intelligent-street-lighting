@@ -49,7 +49,10 @@
           >
         </div>
         <div>
-          Noon <mat-slide-toggle color="primary">Midnight</mat-slide-toggle>
+          Noon
+          <mat-slide-toggle [(ngModel)]="previewMidnight" color="primary"
+            >Midnight</mat-slide-toggle
+          >
           <span class="text-secondary">in the middle</span>
         </div>
       </figcaption>

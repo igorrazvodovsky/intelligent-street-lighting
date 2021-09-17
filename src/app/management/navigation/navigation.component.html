@@ -34,6 +34,8 @@
         <button
           *ngFor="let navItem of primaryNavItems"
           mat-icon-button
+          [matTooltip]="navItem.label"
+          matTooltipPosition="right"
           [attr.aria-label]="navItem.label"
           [routerLink]="navItem.route"
           routerLinkActive="active"
