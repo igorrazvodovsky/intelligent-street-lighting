@@ -14,7 +14,10 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.523120403289795, 55.90654803560104]
+        "coordinates": [
+          26.523120403289795,
+          55.90654803560104
+        ]
       }
     },
     {
@@ -34,11 +37,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.523538827896118, 55.90650593765867]
+        "coordinates": [
+          26.523538827896118,
+          55.90650593765867
+        ]
       }
     },
     {
@@ -58,11 +67,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.52417182922363, 55.90645181166562]
+        "coordinates": [
+          26.52417182922363,
+          55.90645181166562
+        ]
       }
     },
     {
@@ -82,59 +97,63 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.524740457534786, 55.906403699608404]
+        "coordinates": [
+          26.524740457534786,
+          55.906403699608404
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
         "id": 15,
-        "type": "lamp",
-        "name": "01-005",
+        "type": "sensor",
+        "name": "Air quality station",
         "groupId": 1,
         "status": "active",
-        "profile": {
-          "source": "group",
-          "id": 1
-        },
         "SC": 1,
-        "orientation": 0,
-        "model": "LC2M2305R",
+        "model": "X",
         "firmware": "0.1.0",
-        "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensor": {
+          "type": "env"
+        }
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.525126695632935, 55.90637362954232]
+        "coordinates": [
+          26.525126695632935,
+          55.90637362954232
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
         "id": 16,
-        "type": "lamp",
-        "name": "01-006",
+        "type": "sensor",
+        "name": "Traffic sensor",
         "groupId": 1,
         "status": "active",
-        "profile": {
-          "source": "group",
-          "id": 1
-        },
         "SC": 1,
-        "orientation": 0,
-        "model": "LC2M2305R",
+        "model": "X",
         "firmware": "0.1.0",
-        "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensor": {
+          "type": "traffic"
+        }
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.52750849723816, 55.906169152474696]
+        "coordinates": [
+          26.52750849723816,
+          55.906169152474696
+        ]
       }
     },
     {
@@ -154,11 +173,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.52619957923889, 55.90628943323327]
+        "coordinates": [
+          26.52619957923889,
+          55.90628943323327
+        ]
       }
     },
     {
@@ -178,11 +203,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.52565240859985, 55.90633153141064]
+        "coordinates": [
+          26.52565240859985,
+          55.90633153141064
+        ]
       }
     },
     {
@@ -202,11 +233,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.52677893638611, 55.90624132097461]
+        "coordinates": [
+          26.52677893638611,
+          55.90624132097461
+        ]
       }
     },
     {
@@ -226,11 +263,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.528055667877197, 55.90611502601163]
+        "coordinates": [
+          26.528055667877197,
+          55.90611502601163
+        ]
       }
     },
     {
@@ -250,11 +293,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.528677940368652, 55.90604285727672]
+        "coordinates": [
+          26.528677940368652,
+          55.90604285727672
+        ]
       }
     },
     {
@@ -274,11 +323,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.529150009155273, 55.90598271656169]
+        "coordinates": [
+          26.529150009155273,
+          55.90598271656169
+        ]
       }
     },
     {
@@ -298,11 +353,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.529386043548584, 55.90595866024957]
+        "coordinates": [
+          26.529386043548584,
+          55.90595866024957
+        ]
       },
       "orientation": 0
     },
@@ -323,11 +384,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.533033847808838, 55.905549700660515]
+        "coordinates": [
+          26.533033847808838,
+          55.905549700660515
+        ]
       }
     },
     {
@@ -347,11 +414,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.5312260389328, 55.90575418099408]
+        "coordinates": [
+          26.5312260389328,
+          55.90575418099408
+        ]
       }
     },
     {
@@ -371,11 +444,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.532095074653625, 55.90565494802567]
+        "coordinates": [
+          26.532095074653625,
+          55.90565494802567
+        ]
       }
     },
     {
@@ -395,11 +474,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.530244350433346, 55.905868448946215]
+        "coordinates": [
+          26.530244350433346,
+          55.905868448946215
+        ]
       }
     },
     {
@@ -419,11 +504,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.53323233127594, 55.90552263700616]
+        "coordinates": [
+          26.53323233127594,
+          55.90552263700616
+        ]
       }
     },
     {
@@ -443,11 +534,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.534643173217773, 55.90536326176972]
+        "coordinates": [
+          26.534643173217773,
+          55.90536326176972
+        ]
       }
     },
     {
@@ -467,11 +564,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.533897519111633, 55.90545347424815]
+        "coordinates": [
+          26.533897519111633,
+          55.90545347424815
+        ]
       }
     },
     {
@@ -491,11 +594,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.534895300865173, 55.90543242468861]
+        "coordinates": [
+          26.534895300865173,
+          55.90543242468861
+        ]
       }
     },
     {
@@ -515,11 +624,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.53647243976593, 55.90524297813878]
+        "coordinates": [
+          26.53647243976593,
+          55.90524297813878
+        ]
       }
     },
     {
@@ -539,11 +654,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.535635590553284, 55.90533619798527]
+        "coordinates": [
+          26.535635590553284,
+          55.90533619798527
+        ]
       }
     },
     {
@@ -563,11 +684,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.53599500656128, 55.90529109163592]
+        "coordinates": [
+          26.53599500656128,
+          55.90529109163592
+        ]
       }
     },
     {
@@ -587,11 +714,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.53523325920105, 55.90539032553529]
+        "coordinates": [
+          26.53523325920105,
+          55.90539032553529
+        ]
       }
     },
     {
@@ -611,11 +744,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.537062525749207, 55.90517982908316]
+        "coordinates": [
+          26.537062525749207,
+          55.90517982908316
+        ]
       }
     },
     {
@@ -631,7 +770,10 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.53793692588806, 55.90496632437185]
+        "coordinates": [
+          26.53793692588806,
+          55.90496632437185
+        ]
       }
     },
     {
@@ -651,11 +793,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.507107615470886, 55.8845546603819]
+        "coordinates": [
+          26.507107615470886,
+          55.8845546603819
+        ]
       }
     },
     {
@@ -675,11 +823,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.50750458240509, 55.88516542152983]
+        "coordinates": [
+          26.50750458240509,
+          55.88516542152983
+        ]
       }
     },
     {
@@ -699,11 +853,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.507332921028137, 55.884900659256616]
+        "coordinates": [
+          26.507332921028137,
+          55.884900659256616
+        ]
       }
     },
     {
@@ -723,11 +883,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.507949829101562, 55.885502389083676]
+        "coordinates": [
+          26.507949829101562,
+          55.885502389083676
+        ]
       }
     },
     {
@@ -747,11 +913,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.508598923683167, 55.88564078562438]
+        "coordinates": [
+          26.508598923683167,
+          55.88564078562438
+        ]
       }
     },
     {
@@ -771,11 +943,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.511130928993225, 55.88614021251544]
+        "coordinates": [
+          26.511130928993225,
+          55.88614021251544
+        ]
       }
     },
     {
@@ -795,11 +973,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.509816646575928, 55.88592359441213]
+        "coordinates": [
+          26.509816646575928,
+          55.88592359441213
+        ]
       }
     },
     {
@@ -819,11 +1003,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.51044428348541, 55.8861823325618]
+        "coordinates": [
+          26.51044428348541,
+          55.8861823325618
+        ]
       }
     },
     {
@@ -843,11 +1033,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.509312391281128, 55.88572201814671]
+        "coordinates": [
+          26.509312391281128,
+          55.88572201814671
+        ]
       }
     },
     {
@@ -867,11 +1063,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.530603766441345, 55.86998079457913]
+        "coordinates": [
+          26.530603766441345,
+          55.86998079457913
+        ]
       }
     },
     {
@@ -891,11 +1093,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.532781720161438, 55.870712176106274]
+        "coordinates": [
+          26.532781720161438,
+          55.870712176106274
+        ]
       }
     },
     {
@@ -915,11 +1123,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.531671285629272, 55.87033896256241]
+        "coordinates": [
+          26.531671285629272,
+          55.87033896256241
+        ]
       }
     },
     {
@@ -939,11 +1153,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.531177759170532, 55.87017342314876]
+        "coordinates": [
+          26.531177759170532,
+          55.87017342314876
+        ]
       }
     },
     {
@@ -963,11 +1183,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.53223991394043, 55.87052857956921]
+        "coordinates": [
+          26.53223991394043,
+          55.87052857956921
+        ]
       }
     },
     {
@@ -987,11 +1213,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.53298020362854, 55.87065800016922]
+        "coordinates": [
+          26.53298020362854,
+          55.87065800016922
+        ]
       }
     },
     {
@@ -1011,11 +1243,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.534396409988403, 55.869113954192045]
+        "coordinates": [
+          26.534396409988403,
+          55.869113954192045
+        ]
       }
     },
     {
@@ -1035,11 +1273,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.533800959587097, 55.86985438156106]
+        "coordinates": [
+          26.533800959587097,
+          55.86985438156106
+        ]
       }
     },
     {
@@ -1059,11 +1303,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.53347373008728, 55.87017342314876]
+        "coordinates": [
+          26.53347373008728,
+          55.87017342314876
+        ]
       }
     },
     {
@@ -1083,11 +1333,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.53323769569397, 55.87042022710727]
+        "coordinates": [
+          26.53323769569397,
+          55.87042022710727
+        ]
       }
     },
     {
@@ -1107,11 +1363,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.534096002578735, 55.869499218974944]
+        "coordinates": [
+          26.534096002578735,
+          55.869499218974944
+        ]
       }
     },
     {
@@ -1131,11 +1393,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.533210873603817, 55.86875276498705]
+        "coordinates": [
+          26.533210873603817,
+          55.86875276498705
+        ]
       }
     },
     {
@@ -1155,11 +1423,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.534165740013123, 55.868954429374014]
+        "coordinates": [
+          26.534165740013123,
+          55.868954429374014
+        ]
       }
     },
     {
@@ -1179,11 +1453,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.532663702964783, 55.868990548258125]
+        "coordinates": [
+          26.532663702964783,
+          55.868990548258125
+        ]
       }
     },
     {
@@ -1203,11 +1483,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.532089710235596, 55.86925541904856]
+        "coordinates": [
+          26.532089710235596,
+          55.86925541904856
+        ]
       }
     },
     {
@@ -1227,11 +1513,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.53151571750641, 55.86952329789699]
+        "coordinates": [
+          26.53151571750641,
+          55.86952329789699
+        ]
       }
     },
     {
@@ -1251,11 +1543,17 @@
         "model": "LC2M2305R",
         "firmware": "0.1.0",
         "surgeProtector": false,
-        "sensors": ["motion", "traffic"]
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [26.531043648719788, 55.86975204691173]
+        "coordinates": [
+          26.531043648719788,
+          55.86975204691173
+        ]
       }
     }
   ]

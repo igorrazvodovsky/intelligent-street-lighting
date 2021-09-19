@@ -97,7 +97,7 @@ export interface Device {
   model: string
   groupId: number
   profileId?: number
-  type: 'lamp' | 'sc'
+  type: 'lamp' | 'sc' | 'sensor'
   // TODO: Narrow the type to 'level'='critical'
   events?: DeviceEvent[]
   tasks?: Task[]
@@ -111,6 +111,10 @@ export interface Device {
   profile: {
     source: 'group' | 'sc' | 'itself'
     id?: number,
+  }
+  // Sensor properties
+  sensor?: {
+    type: 'env' | 'traffic'
   }
 }
 
@@ -127,7 +131,7 @@ export interface MeasurementGroup {
 }
 
 export interface Measurement {
-  id: number
+  id?: number
   name: string
   units: string
   values?: [

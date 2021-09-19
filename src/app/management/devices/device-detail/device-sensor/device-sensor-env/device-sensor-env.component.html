@@ -1,0 +1,11 @@
+<mat-accordion multi>
+  <mat-expansion-panel expanded *ngFor="let measurement of measurements" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title> {{ measurement.name }} </mat-panel-title>
+          <mat-panel-description class="text-primary">
+            {{ measurement.values[0].value }}{{ measurement.units }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+    <p>This is the primary content of the panel.</p>
+  </mat-expansion-panel>
+</mat-accordion>

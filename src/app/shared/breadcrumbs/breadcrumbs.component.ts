@@ -29,6 +29,12 @@ export class BreadcrumbsComponent implements OnInit {
   city: string
   category: Category = "Area"
 
+  deviceTypeMap: any = {
+    'lamp': 'Lamp',
+    'sc': 'Segment controller',
+    'sensor': '',
+  }
+
   constructor(
     private service: DeviceService,
     public router: Router,

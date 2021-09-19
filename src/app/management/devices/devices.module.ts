@@ -29,6 +29,8 @@ import { ScConnectedDevicesComponent } from './device-detail/device-sc/sc-connec
 import { DeviceMetricsChartComponent } from './device-detail/device-metrics/device-metrics-chart/device-metrics-chart.component';
 import { DeviceListEditActionsComponent } from './device-list/device-list-edit-actions/device-list-edit-actions.component';
 import { DeviceCategoriesComponent } from './device-detail/device-categories/device-categories.component';
+import { DeviceSensorEnvComponent } from './device-detail/device-sensor/device-sensor-env/device-sensor-env.component';
+import { DeviceSensorTrafficComponent } from './device-detail/device-sensor/device-sensor-traffic/device-sensor-traffic.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { DeviceCategoriesComponent } from './device-detail/device-categories/dev
     ScConnectedDevicesComponent,
     DeviceMetricsChartComponent,
     DeviceListEditActionsComponent,
-    DeviceCategoriesComponent
+    DeviceCategoriesComponent,
+    DeviceSensorEnvComponent,
+    DeviceSensorTrafficComponent
   ],
   imports: [
     CommonModule,

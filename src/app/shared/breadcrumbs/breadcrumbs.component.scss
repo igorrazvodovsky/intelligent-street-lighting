@@ -18,8 +18,13 @@
   overscroll-behavior-x: contain;
   -ms-scroll-snap-type: x proximity;
   scroll-snap-type: x proximity;
-  gap: 0 var(--nav-gap);
-  // padding: calc(var(--nav-gap) / 2);
+  // gap: 0 var(--nav-gap);
+  // Safari workaround
+
+  & > * + * {
+    margin-left: var(--nav-gap);
+  }
+  padding: calc(var(--nav-gap) / 2);
   scroll-padding-inline: calc(var(--nav-gap) / 2);
   &.mat-h2 {
     margin-bottom: 0;

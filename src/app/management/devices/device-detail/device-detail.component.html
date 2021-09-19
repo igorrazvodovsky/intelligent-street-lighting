@@ -1,4 +1,5 @@
-<div *ngIf="device">
+<!-- TODO: -->
+<div *ngIf="device.type=='sc' || device.type=='lamp'">
   <!-- <device-categories></device-categories> -->
   <mat-tab-group id="device" animationDuration="0ms" [selectedIndex]="0">
     <mat-tab label="Overview">
@@ -32,3 +33,6 @@
     </mat-tab>
   </mat-tab-group>
 </div>
+
+<device-sensor-env *ngIf="device.type=='sensor' && device.sensor.type=='env'"></device-sensor-env>
+<device-sensor-traffic *ngIf="device.type=='sensor' && device.sensor.type=='traffic'"></device-sensor-traffic>
