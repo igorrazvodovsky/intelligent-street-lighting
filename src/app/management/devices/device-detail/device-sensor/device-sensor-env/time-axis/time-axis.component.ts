@@ -16,7 +16,7 @@ import * as d3TimeFormat from 'd3-time-format';
 export class TimeAxisComponent implements OnInit {
 
   private width = 700;
-  private height = 40;
+  private height = 32;
   private marginX = 8;
   private marginY = 0;
 

@@ -9,8 +9,12 @@
 
 :host ::ng-deep {
   #measurements .mat-expansion-panel.mat-expanded {
-    background: white;
+    background: transparent;
+    .mat-expansion-panel-header.mat-expanded:hover {
+      background: hsla(0, 0%, 0%, 0.05);
+    }
   }
+
   .mat-button-toggle-group {
     margin: 1rem 0 1rem auto;
     .mat-button-toggle-label-content {
