@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Measurement } from '~local/types';
+import { AREA } from '~local/../assets/data/areas';
 
 @Component({
   selector: 'device-sensor-env',
@@ -69,7 +70,7 @@ export class DeviceSensorEnvComponent implements OnInit {
       ]
     },
     {
-      name: "Particle matter (PM1)",
+      name: "Particulate matter (PM1)",
       units: "μm",
       values: [
         {
@@ -79,7 +80,7 @@ export class DeviceSensorEnvComponent implements OnInit {
       ]
     },
     {
-      name: "Particle matter (PM2,5)",
+      name: "Particulate matter (PM2,5)",
       units: "μm",
       values: [
         {
@@ -89,7 +90,7 @@ export class DeviceSensorEnvComponent implements OnInit {
       ]
     },
     {
-      name: "Particle matter (PM10)",
+      name: "Particulate matter (PM10)",
       units: "μm",
       values: [
         {
@@ -109,7 +110,7 @@ export class DeviceSensorEnvComponent implements OnInit {
       ]
     },
     {
-      name: "Battery",
+      name: "Battery level",
       units: "%",
       values: [
         {
@@ -119,7 +120,7 @@ export class DeviceSensorEnvComponent implements OnInit {
       ]
     },
     {
-      name: "Noise level",
+      name: "Battery voltage",
       units: "V",
       values: [
         {
@@ -128,7 +129,8 @@ export class DeviceSensorEnvComponent implements OnInit {
         }
       ]
     }
-  ]
+  ];
+  data = AREA;
 
   constructor() { }
 

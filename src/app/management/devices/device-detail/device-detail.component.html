@@ -1,38 +1,41 @@
 <!-- TODO: -->
-<div *ngIf="device.type=='sc' || device.type=='lamp'">
-  <!-- <device-categories></device-categories> -->
-  <mat-tab-group id="device" animationDuration="0ms" [selectedIndex]="0">
-    <mat-tab label="Overview">
-      <device-lamp
-        *ngIf="device.type == 'lamp'"
-        [device]="device"
-        [group]="group"
-      ></device-lamp>
-      <device-sc *ngIf="device.type == 'sc'" [device]="device"></device-sc>
-    </mat-tab>
-    <mat-tab *ngIf="device.type == 'lamp'" label="Motion sensor">
-      <device-motion-sensor></device-motion-sensor>
-    </mat-tab>
-    <mat-tab *ngIf="device.type == 'sc'" label="Segment">
-      <sc-connected-devices></sc-connected-devices>
-    </mat-tab>
-    <mat-tab label="Metrics">
-      <device-metrics></device-metrics>
-    </mat-tab>
-    <mat-tab>
-      <ng-template mat-tab-label>
-        <mat-icon svgIcon="infoMedium" aria-hidden="true"></mat-icon>
-      </ng-template>
-      <device-info></device-info>
-    </mat-tab>
-    <mat-tab>
-      <ng-template mat-tab-label>
-        <mat-icon svgIcon="historyMedium" aria-hidden="true"></mat-icon>
-      </ng-template>
-      <device-history [id]="device.id"></device-history>
-    </mat-tab>
-  </mat-tab-group>
-</div>
-
-<device-sensor-env *ngIf="device.type=='sensor' && device.sensor.type=='env'"></device-sensor-env>
-<device-sensor-traffic *ngIf="device.type=='sensor' && device.sensor.type=='traffic'"></device-sensor-traffic>
+<ng-container *ngIf="device">
+  <div *ngIf="device.type=='sc' || device.type=='lamp'">
+    <!-- <device-categories></device-categories> -->
+    <mat-tab-group id="device" animationDuration="0ms" [selectedIndex]="0">
+      <mat-tab label="Overview">
+        <device-lamp
+          *ngIf="device.type == 'lamp'"
+          [device]="device"
+          [group]="group"
+        ></device-lamp>
+        <device-sc *ngIf="device.type == 'sc'" [device]="device"></device-sc>
+      </mat-tab>
+      <mat-tab *ngIf="device.type == 'lamp'" label="Motion sensor">
+        <device-motion-sensor></device-motion-sensor>
+      </mat-tab>
+      <mat-tab *ngIf="device.type == 'sc'" label="Segment">
+        <sc-connected-devices></sc-connected-devices>
+      </mat-tab>
+      <mat-tab label="Metrics">
+        <device-metrics></device-metrics>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon svgIcon="infoMedium" aria-hidden="true"></mat-icon>
+        </ng-template>
+        <device-info></device-info>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon svgIcon="historyMedium" aria-hidden="true"></mat-icon>
+        </ng-template>
+        <device-history [id]="device.id"></device-history>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <ng-container *ngIf="device.type=='sensor'">
+    <device-sensor-env *ngIf="device.sensor.type=='env'"></device-sensor-env>
+    <device-sensor-traffic *ngIf="device.sensor.type=='traffic'"></device-sensor-traffic>
+  </ng-container>
+</ng-container>

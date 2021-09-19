@@ -1,0 +1,21 @@
+:host {
+  display: block;
+}
+
+.mat-accordion {
+  display: block;
+  margin-top: 1rem;
+}
+
+:host ::ng-deep {
+  #measurements .mat-expansion-panel.mat-expanded {
+    background: white;
+  }
+  .mat-button-toggle-group {
+    margin: 1rem 0 1rem auto;
+    .mat-button-toggle-label-content {
+      height: auto;
+      line-height: 2rem;
+    }
+  }
+}

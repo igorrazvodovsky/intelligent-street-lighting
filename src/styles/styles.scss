@@ -170,7 +170,8 @@ button {
 #device,
 #permissions,
 #category-subcategories,
-#category-profiles {
+#category-profiles,
+#measurements {
   .mat-content {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
@@ -467,8 +468,11 @@ input.time {
 
 // D3
 
-svg text {
-  font-family: "General Sans", sans-serif !important;
+svg {
+  overflow: visible;
+    text {
+    font-family: "General Sans", sans-serif !important;
+  }
 }
 
 svg#device-metrics {

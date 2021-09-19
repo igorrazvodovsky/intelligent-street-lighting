@@ -31,6 +31,8 @@ import { DeviceListEditActionsComponent } from './device-list/device-list-edit-a
 import { DeviceCategoriesComponent } from './device-detail/device-categories/device-categories.component';
 import { DeviceSensorEnvComponent } from './device-detail/device-sensor/device-sensor-env/device-sensor-env.component';
 import { DeviceSensorTrafficComponent } from './device-detail/device-sensor/device-sensor-traffic/device-sensor-traffic.component';
+import { LineChartComponent } from './device-detail/device-sensor/device-sensor-env/line-chart/line-chart.component';
+import { TimeAxisComponent } from './device-detail/device-sensor/device-sensor-env/time-axis/time-axis.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { DeviceSensorTrafficComponent } from './device-detail/device-sensor/devi
     DeviceListEditActionsComponent,
     DeviceCategoriesComponent,
     DeviceSensorEnvComponent,
-    DeviceSensorTrafficComponent
+    DeviceSensorTrafficComponent,
+    LineChartComponent,
+    TimeAxisComponent
   ],
   imports: [
     CommonModule,

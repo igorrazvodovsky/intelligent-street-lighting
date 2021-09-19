@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, Input, OnChanges } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges } from '@angular/core';
 import * as d3 from 'd3-selection';
 import * as d3Scale from 'd3-scale';
 import * as d3Array from 'd3-array';
@@ -152,7 +152,6 @@ export class ProfileVisualisationComponent implements OnChanges {
       .offset(d3Shape.stackOffsetNone);
 
     const stackedData = stack(this.data);
-    console.log("Initial:", this.data, "Stacked:", stackedData)
 
     let areaGen = d3Shape.area()
       .x((d: any) => this.xScale(new Date(d.data.date)))

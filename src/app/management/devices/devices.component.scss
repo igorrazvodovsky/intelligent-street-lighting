@@ -2,12 +2,13 @@
   height: 100%;
 }
 
-.device-list {
+#device-list {
   background: #fafafa;
   @media (max-width: 599px) {
     width: 100vw;
   }
-  min-width: 30vw;
+  // TODO: different widths depending on the context
+  width: 50vw;
   transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &.maximized {
