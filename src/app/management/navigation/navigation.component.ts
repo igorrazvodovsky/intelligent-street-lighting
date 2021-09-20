@@ -26,7 +26,7 @@ export class NavigationComponent {
       icon: 'profileBold'
     },
     {
-      label: 'Reports',
+      label: 'Report',
       route: './reports',
       icon: 'chartBold'
     }

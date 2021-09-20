@@ -85,7 +85,8 @@ export enum Regular {
   ArrowThinUp = 'arrowThinUp',
   ArrowThinDown = 'arrowThinDown',
   Link = 'link',
-
+  Tree = 'tree',
+  Camera = 'camera'
 }
 
 @Injectable({

@@ -1,5 +1,11 @@
 @import "../../../../styles/mixins";
 
+:host {
+  display: block;
+  // TODO: take from theme
+  background: #ffe57f;
+}
+
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(14ch, 1fr));
@@ -18,7 +24,7 @@
     }
     @include transition;
     padding: 1rem;
-    background: white;
+    // background: white;
 
     display: flex;
     flex-direction: column;

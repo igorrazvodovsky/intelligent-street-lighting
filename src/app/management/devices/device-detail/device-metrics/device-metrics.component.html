@@ -22,11 +22,12 @@
     aria-label="Time period"
     value="day"
   >
-    <mat-button-toggle value="day">Day</mat-button-toggle>
-    <mat-button-toggle value="week">Week</mat-button-toggle>
-    <mat-button-toggle value="month">Month</mat-button-toggle>
-    <mat-button-toggle value="quarter">Quarter</mat-button-toggle>
-    <mat-button-toggle value="quarter">Custom</mat-button-toggle>
+    <mat-button-toggle value="day">1D</mat-button-toggle>
+    <mat-button-toggle value="week">1W</mat-button-toggle>
+    <mat-button-toggle value="month">1M</mat-button-toggle>
+    <mat-button-toggle value="quarter">3M</mat-button-toggle>
+    <mat-button-toggle value="6months">6M</mat-button-toggle>
+    <mat-button-toggle value="year">1Y</mat-button-toggle>
   </mat-button-toggle-group>
 </div>
 <div *ngIf="chart; else elseBlock">

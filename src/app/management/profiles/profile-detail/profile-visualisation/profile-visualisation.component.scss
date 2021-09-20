@@ -1,3 +1,9 @@
 :host {
   display: block;
 }
+
+:host ::ng-deep {
+  svg path {
+    mix-blend-mode: darken;
+  }
+}

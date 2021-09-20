@@ -99,7 +99,7 @@ export class LineChartComponent implements OnChanges {
       .line()
       .x(d => d[0])
       .y(d => d[1])
-      .curve(d3Shape.curveNatural);
+      .curve(d3Shape.curveMonotoneX);
 
     const points: [number, number][] = this.data.map(d => [
       this.x(new Date(d.date)),

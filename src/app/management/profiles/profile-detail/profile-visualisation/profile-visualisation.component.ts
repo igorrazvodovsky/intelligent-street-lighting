@@ -165,7 +165,8 @@ export class ProfileVisualisationComponent implements OnChanges {
     const colorScale = d3Scale.scaleOrdinal()
       .domain(["static", "dynamic"])
       // TODO: take colours from CSS
-      .range(["hsla(45, 100%, 58%, 0.6)", "hsla(45, 100%, 58%, 0.3)"]);
+      // Amber A400, A100
+      .range(["#ffc400", "#ffe57f"]);
 
     this.svgInner
       .selectAll(".areas")

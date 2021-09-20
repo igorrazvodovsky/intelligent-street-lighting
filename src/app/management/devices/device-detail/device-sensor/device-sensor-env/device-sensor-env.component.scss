@@ -16,10 +16,14 @@
   }
 
   .mat-button-toggle-group {
-    margin: 1rem 0 1rem auto;
+    margin: 1rem;
     .mat-button-toggle-label-content {
       height: auto;
       line-height: 2rem;
     }
   }
+}
+
+.controls {
+  text-align: right;
 }

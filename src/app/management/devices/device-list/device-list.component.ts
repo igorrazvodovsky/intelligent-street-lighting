@@ -31,6 +31,12 @@ export class DeviceListComponent implements OnInit {
     status: null
   })
 
+  deviceTypeMap: any = {
+    'lamp': 'Lamp',
+    'sc': 'Segment controller',
+    'sensor': '',
+  }
+
   constructor(
     private _bottomSheet: MatBottomSheet,
     private deviceService: DeviceService,

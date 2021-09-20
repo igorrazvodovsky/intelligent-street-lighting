@@ -464,13 +464,19 @@ input.time {
   &.off {
     background: hsla(0, 0%, 0%, 0.3);
   }
+  &.accent {
+    background: mat.get-color-from-palette($angular-accent, A400);
+  }
+  &.accent-2 {
+    background: mat.get-color-from-palette($angular-accent, A100);
+  }
 }
 
 // D3
 
 svg {
   overflow: visible;
-    text {
+  text {
     font-family: "General Sans", sans-serif !important;
   }
 }

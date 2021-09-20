@@ -1,30 +1,38 @@
-<!-- <mat-button-toggle-group
-  name="timePeriod"
-  aria-label="Time period"
-  value="day"
->
-  <mat-button-toggle value="day">Day</mat-button-toggle>
-  <mat-button-toggle value="week">Week</mat-button-toggle>
-  <mat-button-toggle value="month">Month</mat-button-toggle>
-  <mat-button-toggle value="quarter">Quarter</mat-button-toggle>
-  <mat-button-toggle value="quarter">Custom</mat-button-toggle>
-</mat-button-toggle-group> -->
-
+<div class="controls">
+  <mat-button-toggle-group
+    name="timePeriod"
+    aria-label="Time period"
+    value="day"
+  >
+    <mat-button-toggle value="day">1D</mat-button-toggle>
+    <mat-button-toggle value="week">1W</mat-button-toggle>
+    <mat-button-toggle value="month">1M</mat-button-toggle>
+    <mat-button-toggle value="quarter">3M</mat-button-toggle>
+    <mat-button-toggle value="6months">6M</mat-button-toggle>
+    <mat-button-toggle value="year">1Y</mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
 <!-- TODO: Hide if nothing is selected -->
 <time-axis></time-axis>
 <!-- <mat-divider></mat-divider> -->
 <mat-accordion id="measurements" multi>
   <ng-container *ngFor="let measurement of measurements; let i = index">
     <mat-expansion-panel expanded hideToggle>
-          <mat-expansion-panel-header>
-            <mat-panel-title> {{ measurement.name }} </mat-panel-title>
-            <mat-panel-description >
-              {{ measurement.values[0].value }}{{ measurement.units }}
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-      <line-chart *ngIf="data[i]; else noDataMsg" [data]="data[i]" [index]="i"></line-chart>
+      <mat-expansion-panel-header>
+        <mat-panel-title> {{ measurement.name }} </mat-panel-title>
+        <mat-panel-description>
+          {{ measurement.values[0].value }}{{ measurement.units }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <line-chart
+        *ngIf="data[i]; else noDataMsg"
+        [data]="data[i]"
+        [index]="i"
+      ></line-chart>
       <ng-template #noDataMsg>
-        <p class="text-secondary">Strange, but no data is available right now.</p>
+        <span class="text-secondary">
+          Strange, but no data is available right now.
+        </span>
       </ng-template>
     </mat-expansion-panel>
     <!-- <mat-divider></mat-divider> -->

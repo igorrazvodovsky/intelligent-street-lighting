@@ -29,8 +29,12 @@
   </div>
 </app-page-actions>
 
+<!-- Default transition doesn't work well when sidenav is so wide -->
+<!-- [@.disabled]="true" disables default transition -->
+<!-- TODO: custom transition? -->
 <mat-sidenav-container class="devices-container">
   <mat-sidenav
+    [@.disabled]="true"
     [(opened)]="opened"
     #drawer
     id="device-list"

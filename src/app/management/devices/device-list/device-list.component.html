@@ -79,19 +79,23 @@
 <ng-container>
   <!-- https://material.angular.io/components/select/overview#error-cannot-change-multiple-mode-of-select-after-initialization -->
   <mat-selection-list *ngIf="!isEditable" role="list" [multiple]="false">
-    <mat-list-option role="listitem">
-      <div matLine>Air quality sensor</div>
-    </mat-list-option>
-    <mat-list-option role="listitem">
-      <div matLine>Traffic sensor</div>
-    </mat-list-option>
     <mat-list-option
       [routerLink]="'../../device/' + [device.id]"
       role="listitem"
       *ngFor="let device of filteredDevices$ | async"
     >
-      <div matLine>{{ device.type }} {{ device.name }}</div>
-      <span matLine
+      <div matLine>
+        <mat-icon
+          *ngIf="device.type == 'sensor'"
+          inline
+          [svgIcon]="
+            device.sensor.type == 'env' ? 'treeRegular' : 'cameraRegular'
+          "
+          aria-hidden="true"
+        ></mat-icon
+        >&nbsp;{{ device.type | i18nSelect: deviceTypeMap }} {{ device.name }}
+      </div>
+      <span *ngIf="device.type !== 'sensor'" matLine
         >SC11, 1 luminaire{{ device.surgeProtector ? ", surge protector" : null
         }}{{ device.sensors ? ", " + device.sensors.join(", ") : null }}
         <!-- <ng-container *ngFor="let sensor of device.sensors">

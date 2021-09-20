@@ -65,7 +65,7 @@ export class AreaChartComponent implements OnChanges {
       .x(d => d[0])
       .y0(100)
       .y1(d => d[1])
-      .curve(d3Shape.curveNatural);
+      .curve(d3Shape.curveMonotoneX);
 
     const points: [number, number][] = this.data.map(d => [
       this.x(new Date(d.date)),
