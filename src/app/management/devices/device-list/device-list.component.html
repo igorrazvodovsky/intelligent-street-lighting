@@ -92,8 +92,11 @@
             device.sensor.type == 'env' ? 'treeRegular' : 'cameraRegular'
           "
           aria-hidden="true"
-        ></mat-icon
-        >&nbsp;{{ device.type | i18nSelect: deviceTypeMap }} {{ device.name }}
+        ></mat-icon>
+        <span>
+          {{ device.type | i18nSelect: deviceTypeMap }}
+          {{ device.name }}
+        </span>
       </div>
       <span *ngIf="device.type !== 'sensor'" matLine
         >SC11, 1 luminaire{{ device.surgeProtector ? ", surge protector" : null

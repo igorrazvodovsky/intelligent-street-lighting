@@ -1,4 +1,4 @@
-  // TODO: Unsubscribe from stuff onDestroy
+// TODO: Unsubscribe from stuff onDestroy
 
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
@@ -26,7 +26,7 @@ export class DevicesComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private appStateService: AppStateService
-  ) {}
+  ) { }
 
 
   openDialog() {

@@ -56,7 +56,8 @@
       }
     }
   }
-  .marker--sc {
+  .marker--sc,
+  .marker--sensor {
     position: relative;
     label {
       position: absolute;
@@ -82,6 +83,9 @@
     }
     &.off figure {
       background: gray;
+    }
+    &.selected figure {
+      background: mat.get-color-from-palette(mat.$amber-palette, 400);
     }
   }
   .marker--lamp {

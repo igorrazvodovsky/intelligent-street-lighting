@@ -1,6 +1,7 @@
 <!-- TODO: Group of one → (separator!) → child groups -->
 <!-- TODO: Click on the last/current opens its renaming -->
 <!-- TODO: Replace selects with material menu -->
+<!-- TODO: Keyboard support: ←→ switching horizontally between devices -->
 
 <nav class="breadcrumbs mat-h2" role="navigation">
   <a [matMenuTriggerFor]="categoryMenu">
@@ -44,7 +45,7 @@
   <span *ngIf="currentDevice" class="crumb">
     <a [matMenuTriggerFor]="renameMenu" aria-current="page">
       <i class="dot active" matTooltip="Active"></i>
-      {{ currentDevice.type |  i18nSelect: deviceTypeMap }}
+      {{ currentDevice.type | i18nSelect: deviceTypeMap }}
       {{ currentDevice.name }}</a
     >
     <span *ngIf="devices.length > 1" class="crumbicon">

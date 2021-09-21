@@ -33,8 +33,7 @@ body {
       }
     }
     &.mat-icon-inline {
-      // Fix for custom icons
-      padding-left: 2px;
+      vertical-align: middle;
     }
   }
 
