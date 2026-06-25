@@ -4,16 +4,20 @@
 <!-- TODO: Keyboard support: ←→ switching horizontally between devices -->
 
 <nav class="breadcrumbs mat-h2" role="navigation">
-  <a [matMenuTriggerFor]="categoryMenu">
-    <!-- Devices grouped by... -->
-    <span *ngIf="!groupId && !deviceId" class="home-label"
+  <a [matMenuTriggerFor]="cityMenu" class="crumb">
+    <mat-icon svgIcon="cityBold" aria-hidden="true"></mat-icon>
+    <span>{{ city }}</span>
+    <mat-icon inline svgIcon="dropdownMedium" aria-hidden="true"></mat-icon>
+  </a>
+  <a
+    *ngIf="isDevicesRoute && !groupId && !deviceId"
+    [matMenuTriggerFor]="categoryMenu"
+    class="crumb"
+  >
+    <span class="home-label"
       >{{ category
       }}<mat-icon inline svgIcon="dropdownMedium" aria-hidden="true"></mat-icon
     ></span>
-    <ng-container *ngIf="groupId || deviceId">
-      <mat-icon svgIcon="cityBold" aria-hidden="true"></mat-icon>
-      <span class="crumb-separator" aria-hidden="true">·</span>
-    </ng-container>
   </a>
 
   <ng-container *ngIf="currentGroup">
@@ -66,8 +70,17 @@
   </span>
 </nav>
 
-<!-- TODO: Move to shared -->
-<!-- TODO: Autoselect text -->
+<mat-menu #cityMenu="matMenu">
+  <button
+    mat-menu-item
+    *ngFor="let c of cities"
+    (click)="onCityChange(c.id)"
+    [disabled]="c.id === activeCityId"
+  >
+    {{ c.name }}, {{ c.country }}
+  </button>
+</mat-menu>
+
 <mat-menu #renameMenu="matMenu">
   <mat-form-field appearance="fill">
     <mat-label>Name</mat-label>
@@ -79,7 +92,6 @@
   <button mat-menu-item disabled>Area</button>
   <button mat-menu-item>Street</button>
   <button mat-menu-item>Function</button>
-  <!-- aka "User defined" -->
   <button mat-menu-item>Custom</button>
   <button mat-menu-item>Unassigned</button>
 </mat-menu>

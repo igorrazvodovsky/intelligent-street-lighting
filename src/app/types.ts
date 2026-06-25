@@ -5,6 +5,14 @@ type DeviceMetricValue = {
   conversion: number,
 }
 
+export interface City {
+  id: string
+  name: string
+  country: string
+  centerLat: number
+  centerLng: number
+}
+
 export type Category = "Area" | "Street" | "Function" | "Custom"
 
 export interface DeviceMetrics {

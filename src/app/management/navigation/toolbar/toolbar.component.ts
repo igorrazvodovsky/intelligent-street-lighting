@@ -21,8 +21,6 @@ export class ToolbarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Part of common toolbar items should be hidden in some views
-    // TODO: Replace with something appropriate
     this.checkRoute()
     this.router.events.subscribe((event: Event) => {
       this.checkRoute()

@@ -2,16 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as L from 'leaflet';
 import { PopupService } from './popup.service';
+import { DeviceService } from './device.service';
+import { switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MarkerService {
-  devices: string = '/assets/data/devices.geojson';
-
   constructor(
     private http: HttpClient,
-    private popupService: PopupService
+    private popupService: PopupService,
+    private deviceService: DeviceService,
   ) { }
 
   static scaledRadius(val: number, maxVal: number): number {
@@ -19,20 +20,10 @@ export class MarkerService {
   }
 
   getMarkers() {
-    return this.http.get(this.devices)
+    return this.deviceService.activeCity$.pipe(
+      switchMap(city =>
+        this.http.get(`/assets/data/${city.id}/devices.geojson`)
+      )
+    );
   }
-
-  // makeMarkers() {
-  //   this.http.get(this.devices).subscribe((res: any) => {
-  //     let markers = []
-  //     for (const c of res.features) {
-  //       const lon = c.geometry.coordinates[0];
-  //       const lat = c.geometry.coordinates[1];
-  //       const circle = L.circleMarker([lat, lon], { radius: 5 });
-  //       circle.bindPopup(this.popupService.makeDevicePopup(c.properties));
-  //       markers.push(circle);
-  //     }
-  //     return markers
-  //   });
-  // }
 }

@@ -1,0 +1,837 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 201, "type": "sc", "name": "SC-C1", "groupId": 101,
+        "status": "active", "model": "SCM24UL8-868-44", "firmware": "0.2.1"
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9985, 59.3595 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 202, "type": "lamp", "name": "SV-001", "groupId": 110,
+        "status": "active", "profile": { "source": "sc", "id": 1 }, "SC": 1,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.2.1",
+        "surgeProtector": false, "sensors": ["motion", "traffic"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9870, 59.3578 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 203, "type": "lamp", "name": "SV-002", "groupId": 110,
+        "status": "active", "profile": { "source": "group", "id": 1 }, "SC": 1,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.2.1",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9885, 59.3580 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 204, "type": "lamp", "name": "SV-003", "groupId": 110,
+        "status": "active", "profile": { "source": "group", "id": 1 }, "SC": 1,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.2.1",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9900, 59.3583 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 205, "type": "lamp", "name": "SV-004", "groupId": 110,
+        "status": "active", "profile": { "source": "group", "id": 1 }, "SC": 1,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.2.1",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9915, 59.3587 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 206, "type": "lamp", "name": "SV-005", "groupId": 110,
+        "status": "active", "profile": { "source": "group", "id": 1 }, "SC": 1,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.2.1",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9930, 59.3590 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 207, "type": "lamp", "name": "SV-006", "groupId": 110,
+        "status": "not responding", "profile": { "source": "group", "id": 1 }, "SC": 1,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.2.1",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9945, 59.3594 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 208, "type": "lamp", "name": "SV-007", "groupId": 110,
+        "status": "active", "profile": { "source": "group", "id": 1 }, "SC": 1,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.2.1",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9960, 59.3597 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 209, "type": "lamp", "name": "SV-008", "groupId": 111,
+        "status": "active", "profile": { "source": "itself", "id": 1 }, "SC": 1,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.2.1",
+        "surgeProtector": true, "sensors": ["motion", "traffic"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9975, 59.3600 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 210, "type": "lamp", "name": "SV-009", "groupId": 111,
+        "status": "active", "profile": { "source": "group", "id": 1 }, "SC": 1,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.2.1",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9990, 59.3603 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 211, "type": "lamp", "name": "SV-010", "groupId": 111,
+        "status": "active", "profile": { "source": "group", "id": 1 }, "SC": 1,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.2.1",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0005, 59.3606 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 212, "type": "lamp", "name": "SV-011", "groupId": 111,
+        "status": "active", "profile": { "source": "group", "id": 1 }, "SC": 1,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.2.1",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0020, 59.3610 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 213, "type": "lamp", "name": "SV-012", "groupId": 111,
+        "status": "active", "profile": { "source": "group", "id": 1 }, "SC": 1,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.2.1",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0035, 59.3613 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 214, "type": "sensor", "name": "TS-Korsning", "groupId": 101,
+        "status": "active", "SC": 1, "model": "X", "firmware": "0.2.1",
+        "sensor": { "type": "traffic" }
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9980, 59.3590 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 220, "type": "sc", "name": "SC-R1", "groupId": 102,
+        "status": "active", "model": "SCM24UL8-868-44", "firmware": "0.1.8"
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9870, 59.3610 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 221, "type": "lamp", "name": "RV-001", "groupId": 102,
+        "status": "active", "profile": { "source": "sc", "id": 3 }, "SC": 2,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.1.8",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9785, 59.3555 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 222, "type": "lamp", "name": "RV-002", "groupId": 102,
+        "status": "active", "profile": { "source": "group", "id": 3 }, "SC": 2,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.1.8",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9795, 59.3562 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 223, "type": "lamp", "name": "RV-003", "groupId": 102,
+        "status": "active", "profile": { "source": "group", "id": 3 }, "SC": 2,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.1.8",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9805, 59.3569 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 224, "type": "lamp", "name": "RV-004", "groupId": 102,
+        "status": "active", "profile": { "source": "group", "id": 3 }, "SC": 2,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.1.8",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9818, 59.3575 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 225, "type": "lamp", "name": "RV-005", "groupId": 102,
+        "status": "warning", "profile": { "source": "group", "id": 3 }, "SC": 2,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.1.8",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9830, 59.3582 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 226, "type": "lamp", "name": "RV-006", "groupId": 102,
+        "status": "active", "profile": { "source": "group", "id": 3 }, "SC": 2,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.1.8",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9842, 59.3590 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 227, "type": "lamp", "name": "RV-007", "groupId": 102,
+        "status": "active", "profile": { "source": "group", "id": 3 }, "SC": 2,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.1.8",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9853, 59.3597 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 228, "type": "lamp", "name": "RV-008", "groupId": 102,
+        "status": "active", "profile": { "source": "group", "id": 3 }, "SC": 2,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.1.8",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9865, 59.3603 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 229, "type": "lamp", "name": "RV-009", "groupId": 102,
+        "status": "active", "profile": { "source": "group", "id": 3 }, "SC": 2,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.1.8",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9875, 59.3611 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 230, "type": "lamp", "name": "RV-010", "groupId": 102,
+        "status": "active", "profile": { "source": "group", "id": 3 }, "SC": 2,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.1.8",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9885, 59.3620 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 231, "type": "lamp", "name": "RV-011", "groupId": 102,
+        "status": "active", "profile": { "source": "group", "id": 3 }, "SC": 2,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.1.8",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9895, 59.3628 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 232, "type": "lamp", "name": "RV-012", "groupId": 102,
+        "status": "active", "profile": { "source": "group", "id": 3 }, "SC": 2,
+        "orientation": 45, "model": "LC2M2305R", "firmware": "0.1.8",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9908, 59.3635 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 233, "type": "lamp", "name": "RV-013", "groupId": 102,
+        "status": "active", "profile": { "source": "group", "id": 3 }, "SC": 2,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.1.8",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9920, 59.3642 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 234, "type": "lamp", "name": "RV-014", "groupId": 102,
+        "status": "active", "profile": { "source": "group", "id": 3 }, "SC": 2,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.1.8",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9932, 59.3650 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 235, "type": "lamp", "name": "RV-015", "groupId": 102,
+        "status": "active", "profile": { "source": "group", "id": 3 }, "SC": 2,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.1.8",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9945, 59.3657 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 236, "type": "lamp", "name": "RV-016", "groupId": 102,
+        "status": "active", "profile": { "source": "group", "id": 3 }, "SC": 2,
+        "orientation": 90, "model": "LC2M2305R", "firmware": "0.1.8",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9840, 59.3585 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 240, "type": "sc", "name": "SC-H1", "groupId": 103,
+        "status": "active", "model": "SCM24UL8-868-44", "firmware": "0.1.5"
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9965, 59.3690 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 241, "type": "lamp", "name": "HL-001", "groupId": 103,
+        "status": "active", "profile": { "source": "sc", "id": 3 }, "SC": 3,
+        "orientation": 0, "model": "LC2M1806R", "firmware": "0.1.5",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9925, 59.3670 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 242, "type": "lamp", "name": "HL-002", "groupId": 103,
+        "status": "active", "profile": { "source": "group", "id": 3 }, "SC": 3,
+        "orientation": 0, "model": "LC2M1806R", "firmware": "0.1.5",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9940, 59.3676 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 243, "type": "lamp", "name": "HL-003", "groupId": 103,
+        "status": "active", "profile": { "source": "group", "id": 3 }, "SC": 3,
+        "orientation": 0, "model": "LC2M1806R", "firmware": "0.1.5",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9955, 59.3685 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 244, "type": "lamp", "name": "HL-004", "groupId": 103,
+        "status": "active", "profile": { "source": "group", "id": 3 }, "SC": 3,
+        "orientation": 0, "model": "LC2M1806R", "firmware": "0.1.5",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9970, 59.3695 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 245, "type": "lamp", "name": "HL-005", "groupId": 103,
+        "status": "active", "profile": { "source": "group", "id": 3 }, "SC": 3,
+        "orientation": 0, "model": "LC2M1806R", "firmware": "0.1.5",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9985, 59.3702 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 246, "type": "lamp", "name": "HL-006", "groupId": 103,
+        "status": "active", "profile": { "source": "group", "id": 3 }, "SC": 3,
+        "orientation": 0, "model": "LC2M1806R", "firmware": "0.1.5",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9935, 59.3700 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 247, "type": "lamp", "name": "HL-007", "groupId": 103,
+        "status": "active", "profile": { "source": "group", "id": 3 }, "SC": 3,
+        "orientation": 0, "model": "LC2M1806R", "firmware": "0.1.5",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9950, 59.3708 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 248, "type": "lamp", "name": "HL-008", "groupId": 103,
+        "status": "alarm", "profile": { "source": "group", "id": 3 }, "SC": 3,
+        "orientation": 0, "model": "LC2M1806R", "firmware": "0.1.5",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9968, 59.3715 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 249, "type": "lamp", "name": "HL-009", "groupId": 103,
+        "status": "active", "profile": { "source": "group", "id": 3 }, "SC": 3,
+        "orientation": 90, "model": "LC2M1806R", "firmware": "0.1.5",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9938, 59.3725 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 250, "type": "lamp", "name": "HL-010", "groupId": 103,
+        "status": "active", "profile": { "source": "group", "id": 3 }, "SC": 3,
+        "orientation": 0, "model": "LC2M1806R", "firmware": "0.1.5",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9980, 59.3722 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 251, "type": "lamp", "name": "HL-011", "groupId": 103,
+        "status": "inactive", "profile": { "source": "group", "id": 3 }, "SC": 3,
+        "orientation": 0, "model": "LC2M1806R", "firmware": "0.1.5",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9958, 59.3735 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 252, "type": "lamp", "name": "HL-012", "groupId": 103,
+        "status": "active", "profile": { "source": "group", "id": 3 }, "SC": 3,
+        "orientation": 180, "model": "LC2M1806R", "firmware": "0.1.5",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9975, 59.3740 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 260, "type": "sc", "name": "SC-HV1", "groupId": 104,
+        "status": "active", "model": "SCM24UL8-868-44", "firmware": "0.1.8"
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9855, 59.3470 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 261, "type": "lamp", "name": "HV-001", "groupId": 104,
+        "status": "active", "profile": { "source": "sc", "id": 3 }, "SC": 4,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.1.8",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9825, 59.3460 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 262, "type": "lamp", "name": "HV-002", "groupId": 104,
+        "status": "active", "profile": { "source": "group", "id": 3 }, "SC": 4,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.1.8",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9840, 59.3472 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 263, "type": "lamp", "name": "HV-003", "groupId": 104,
+        "status": "active", "profile": { "source": "group", "id": 3 }, "SC": 4,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.1.8",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9855, 59.3485 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 264, "type": "lamp", "name": "HV-004", "groupId": 104,
+        "status": "active", "profile": { "source": "group", "id": 3 }, "SC": 4,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.1.8",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9870, 59.3495 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 265, "type": "lamp", "name": "HV-005", "groupId": 112,
+        "status": "active", "profile": { "source": "group", "id": 4 }, "SC": 4,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.1.8",
+        "surgeProtector": false, "sensors": ["motion", "traffic"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9820, 59.3445 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 266, "type": "lamp", "name": "HV-006", "groupId": 112,
+        "status": "active", "profile": { "source": "group", "id": 4 }, "SC": 4,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.1.8",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9835, 59.3435 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 267, "type": "lamp", "name": "HV-007", "groupId": 112,
+        "status": "active", "profile": { "source": "group", "id": 4 }, "SC": 4,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.1.8",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9850, 59.3420 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 268, "type": "lamp", "name": "HV-008", "groupId": 112,
+        "status": "inactive", "profile": { "source": "group", "id": 4 }, "SC": 4,
+        "orientation": 180, "model": "LC2M2305R", "firmware": "0.1.8",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 17.9865, 59.3410 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 280, "type": "sc", "name": "SC-J1", "groupId": 105,
+        "status": "active", "model": "SCM32UL10-868-55", "firmware": "0.1.3"
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0365, 59.3740 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 281, "type": "lamp", "name": "E4-J1", "groupId": 105,
+        "status": "active", "profile": { "source": "sc", "id": 5 }, "SC": 5,
+        "orientation": 0, "model": "LC2M3008H", "firmware": "0.1.3",
+        "surgeProtector": true, "sensors": ["traffic"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0340, 59.3700 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 282, "type": "lamp", "name": "E4-J2", "groupId": 105,
+        "status": "error", "profile": { "source": "group", "id": 5 }, "SC": 5,
+        "orientation": 0, "model": "LC2M3008H", "firmware": "0.1.3",
+        "surgeProtector": true, "sensors": ["traffic"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0360, 59.3725 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 283, "type": "lamp", "name": "E4-J3", "groupId": 105,
+        "status": "active", "profile": { "source": "group", "id": 5 }, "SC": 5,
+        "orientation": 0, "model": "LC2M3008H", "firmware": "0.1.3",
+        "surgeProtector": true, "sensors": ["traffic"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0380, 59.3755 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 284, "type": "lamp", "name": "E4-J4", "groupId": 105,
+        "status": "active", "profile": { "source": "group", "id": 5 }, "SC": 5,
+        "orientation": 0, "model": "LC2M3008H", "firmware": "0.1.3",
+        "surgeProtector": true, "sensors": ["traffic"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0400, 59.3780 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 285, "type": "lamp", "name": "E4-J5", "groupId": 105,
+        "status": "active", "profile": { "source": "group", "id": 5 }, "SC": 5,
+        "orientation": 0, "model": "LC2M3008H", "firmware": "0.1.3",
+        "surgeProtector": true, "sensors": ["traffic"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0420, 59.3805 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 286, "type": "lamp", "name": "E4-J6", "groupId": 105,
+        "status": "active", "profile": { "source": "group", "id": 5 }, "SC": 5,
+        "orientation": 0, "model": "LC2M3008H", "firmware": "0.1.3",
+        "surgeProtector": true, "sensors": ["traffic"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0440, 59.3830 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 287, "type": "lamp", "name": "JR-S1", "groupId": 105,
+        "status": "active", "profile": { "source": "group", "id": 5 }, "SC": 5,
+        "orientation": 0, "model": "LC2M3008H", "firmware": "0.1.3",
+        "surgeProtector": true, "sensors": ["traffic"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0375, 59.3770 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 288, "type": "lamp", "name": "JR-S2", "groupId": 105,
+        "status": "active", "profile": { "source": "group", "id": 5 }, "SC": 5,
+        "orientation": 90, "model": "LC2M3008H", "firmware": "0.1.3",
+        "surgeProtector": true, "sensors": ["traffic"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0410, 59.3760 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 290, "type": "sc", "name": "SC-A1", "groupId": 106,
+        "status": "active", "model": "SCM32UL10-868-55", "firmware": "0.3.0"
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0085, 59.3720 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 291, "type": "lamp", "name": "AR-001", "groupId": 106,
+        "status": "active", "profile": { "source": "sc", "id": 2 }, "SC": 6,
+        "orientation": 0, "model": "LC2M3008H", "firmware": "0.3.0",
+        "surgeProtector": true, "sensors": ["motion", "traffic"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0050, 59.3710 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 292, "type": "lamp", "name": "AR-002", "groupId": 106,
+        "status": "active", "profile": { "source": "group", "id": 2 }, "SC": 6,
+        "orientation": 0, "model": "LC2M3008H", "firmware": "0.3.0",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0070, 59.3715 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 293, "type": "lamp", "name": "AR-003", "groupId": 106,
+        "status": "active", "profile": { "source": "group", "id": 2 }, "SC": 6,
+        "orientation": 0, "model": "LC2M3008H", "firmware": "0.3.0",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0095, 59.3725 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 294, "type": "lamp", "name": "AR-004", "groupId": 106,
+        "status": "active", "profile": { "source": "group", "id": 2 }, "SC": 6,
+        "orientation": 0, "model": "LC2M3008H", "firmware": "0.3.0",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0115, 59.3735 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 295, "type": "lamp", "name": "AR-005", "groupId": 106,
+        "status": "active", "profile": { "source": "group", "id": 2 }, "SC": 6,
+        "orientation": 0, "model": "LC2M3008H", "firmware": "0.3.0",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0135, 59.3745 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 296, "type": "lamp", "name": "AR-006", "groupId": 106,
+        "status": "active", "profile": { "source": "group", "id": 2 }, "SC": 6,
+        "orientation": 45, "model": "LC2M3008H", "firmware": "0.3.0",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0065, 59.3735 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 297, "type": "lamp", "name": "AR-007", "groupId": 106,
+        "status": "off", "profile": { "source": "group", "id": 2 }, "SC": 6,
+        "orientation": 0, "model": "LC2M3008H", "firmware": "0.3.0",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0105, 59.3748 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 298, "type": "sensor", "name": "AQ-Arena", "groupId": 106,
+        "status": "active", "SC": 6, "model": "X", "firmware": "0.3.0",
+        "sensor": { "type": "env" }
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0090, 59.3728 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 300, "type": "sc", "name": "SC-K1", "groupId": 107,
+        "status": "active", "model": "SCM24UL8-868-44", "firmware": "0.2.0"
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0355, 59.3515 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 301, "type": "lamp", "name": "KA-001", "groupId": 107,
+        "status": "active", "profile": { "source": "sc", "id": 4 }, "SC": 7,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.2.0",
+        "surgeProtector": false, "sensors": ["motion", "traffic"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0330, 59.3495 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 302, "type": "lamp", "name": "KA-002", "groupId": 107,
+        "status": "active", "profile": { "source": "group", "id": 4 }, "SC": 7,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.2.0",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0348, 59.3505 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 303, "type": "lamp", "name": "KA-003", "groupId": 107,
+        "status": "warning", "profile": { "source": "group", "id": 4 }, "SC": 7,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.2.0",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0365, 59.3515 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 304, "type": "lamp", "name": "KA-004", "groupId": 107,
+        "status": "active", "profile": { "source": "group", "id": 4 }, "SC": 7,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.2.0",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0378, 59.3525 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 305, "type": "lamp", "name": "KA-005", "groupId": 107,
+        "status": "active", "profile": { "source": "group", "id": 4 }, "SC": 7,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.2.0",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0390, 59.3535 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 306, "type": "lamp", "name": "KA-006", "groupId": 107,
+        "status": "active", "profile": { "source": "group", "id": 4 }, "SC": 7,
+        "orientation": 180, "model": "LC2M2305R", "firmware": "0.2.0",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0350, 59.3538 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 310, "type": "sc", "name": "SC-B1", "groupId": 108,
+        "status": "active", "model": "SCM24UL8-868-44", "firmware": "0.1.5"
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0035, 59.3810 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 311, "type": "lamp", "name": "BG-001", "groupId": 108,
+        "status": "active", "profile": { "source": "sc", "id": 1 }, "SC": 8,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.1.5",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0005, 59.3790 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 312, "type": "lamp", "name": "BG-002", "groupId": 108,
+        "status": "active", "profile": { "source": "group", "id": 1 }, "SC": 8,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.1.5",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0025, 59.3800 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 313, "type": "lamp", "name": "BG-003", "groupId": 108,
+        "status": "active", "profile": { "source": "group", "id": 1 }, "SC": 8,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.1.5",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0045, 59.3815 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 314, "type": "lamp", "name": "BG-004", "groupId": 108,
+        "status": "active", "profile": { "source": "group", "id": 1 }, "SC": 8,
+        "orientation": 45, "model": "LC2M2305R", "firmware": "0.1.5",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0065, 59.3825 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 315, "type": "lamp", "name": "BG-005", "groupId": 108,
+        "status": "active", "profile": { "source": "group", "id": 1 }, "SC": 8,
+        "orientation": 0, "model": "LC2M2305R", "firmware": "0.1.5",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0080, 59.3835 ] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 316, "type": "lamp", "name": "BG-006", "groupId": 108,
+        "status": "active", "profile": { "source": "group", "id": 1 }, "SC": 8,
+        "orientation": 90, "model": "LC2M2305R", "firmware": "0.1.5",
+        "surgeProtector": false, "sensors": ["motion"]
+      },
+      "geometry": { "type": "Point", "coordinates": [ 18.0020, 59.3828 ] }
+    }
+  ]
+}

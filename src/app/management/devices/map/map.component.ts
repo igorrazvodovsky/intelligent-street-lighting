@@ -6,6 +6,7 @@ import 'leaflet.markercluster';
 import { MarkerService } from '~local/services/marker.service';
 import { ProfileService } from '~local/services/profile.service'
 import { ShapeService } from '~local/services/shape.service';
+import { DeviceService } from '~local/services/device.service';
 import { Router } from '@angular/router';
 import * as d3Scale from 'd3-scale';
 import * as d3ScaleChromatic from 'd3-scale-chromatic';
@@ -32,8 +33,9 @@ export class MapComponent implements AfterViewInit, OnInit {
   showNames: boolean = true
 
   private initMap(): void {
+    const city = this.deviceService.city;
     this.map = L.map('map', {
-      center: [55.8747, 26.5362],
+      center: [city.centerLat, city.centerLng],
       zoom: 13,
       zoomControl: false,
       zoomSnap: 0.5
@@ -49,6 +51,7 @@ export class MapComponent implements AfterViewInit, OnInit {
     private markerService: MarkerService,
     private profileService: ProfileService,
     private shapeService: ShapeService,
+    private deviceService: DeviceService,
     public router: Router
   ) { }
 
@@ -152,7 +155,16 @@ export class MapComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
+    this.deviceService.activeCity$.subscribe(city => {
+      if (this.map) {
+        this.map.setView([city.centerLat, city.centerLng], 13);
+      }
+    });
+
     this.markerService.getMarkers().subscribe((markers: any) => {
+      if (this.markers) {
+        this.map.removeLayer(this.markers);
+      }
       this.markersGeoJsonData = markers;
       this.initGroupsLayer()
     })
