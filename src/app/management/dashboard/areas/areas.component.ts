@@ -12,27 +12,37 @@ export class AreasComponent implements OnInit {
     {
       name: "Ventas",
       children: [],
-      profileId: 1
+      profileId: 1,
+      status: "active",
+      tooltip: "Connection stability: 99%"
     },
     {
       name: "Tabore",
       children: [],
-      profileId: 2
+      profileId: 2,
+      status: "active",
+      tooltip: "Connection stability: 98%"
     },
     {
       name: "Laucese",
       children: [],
-      profileId: 3
+      profileId: 3,
+      status: "warning",
+      tooltip: "Connection stability: 82%"
     },
     {
       name: "Otrie Peski",
       children: [],
-      profileId: 3
+      profileId: 3,
+      status: "active",
+      tooltip: "Connection stability: 96%"
     },
     {
       name: "Čerepova",
       children: [],
-      profileId: 1
+      profileId: 1,
+      status: "error",
+      tooltip: "Connection stability: 45%"
     }
   ]
   constructor() { }

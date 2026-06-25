@@ -25,7 +25,7 @@
   <mat-card *ngFor="let area of areas; let i = index">
     <mat-card-header>
       <mat-card-title
-        ><span class="dot" matTooltip="Connection stability: 97%"></span>
+        ><span class="dot" [ngClass]="area.status" [matTooltip]="area.tooltip"></span>
         {{ area.name }}</mat-card-title
       >
       <mat-card-subtitle>3&nbsp;profiles, 27&nbsp;lamps</mat-card-subtitle>
