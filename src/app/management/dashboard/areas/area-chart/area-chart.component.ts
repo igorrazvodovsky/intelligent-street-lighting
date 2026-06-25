@@ -21,6 +21,7 @@ export class AreaChartComponent implements OnChanges {
   public y;
   public x;
   public lineGroup;
+  public areaGroup;
 
   constructor(public chartElem: ElementRef) {
   }
@@ -35,6 +36,8 @@ export class AreaChartComponent implements OnChanges {
   }
 
   private initializeChart(): void {
+    d3.select(this.chartElem.nativeElement).selectAll('*').remove();
+
     this.svg = d3
       .select(this.chartElem.nativeElement)
       .append('svg')
@@ -47,11 +50,38 @@ export class AreaChartComponent implements OnChanges {
 
     this.x = d3Scale.scaleTime().domain(d3Array.extent(this.data, d => new Date(d.date)));
 
+    const defs = this.svg.append('defs');
+    const gradient = defs.append('linearGradient')
+      .attr('id', 'area-gradient')
+      .attr('x1', '0%')
+      .attr('y1', '0%')
+      .attr('x2', '0%')
+      .attr('y2', '100%');
+
+    // Using a more muted, desaturated blue (#78a3c8) so it doesn't attract too much attention
+    gradient.append('stop')
+      .attr('offset', '0%')
+      .attr('stop-color', '#78a3c8')
+      .attr('stop-opacity', 0.4);
+
+    gradient.append('stop')
+      .attr('offset', '100%')
+      .attr('stop-color', '#78a3c8')
+      .attr('stop-opacity', 0.05);
+
+    this.areaGroup = this.svg
+      .append('g')
+      .append('path')
+      .attr('id', 'area')
+      .style('fill', 'url(#area-gradient)');
+
     this.lineGroup = this.svg
       .append('g')
       .append('path')
       .attr('id', 'line')
-      .style('fill', 'hsla(0, 0%, 0%, 0.2)')
+      .style('fill', 'none')
+      .style('stroke', '#78a3c8')
+      .style('stroke-width', '1px');
   }
 
   private drawChart(): void {
@@ -60,11 +90,17 @@ export class AreaChartComponent implements OnChanges {
 
     this.x.range([this.margin, this.width - 2 * this.margin]);
 
-    const line = d3Shape
+    const area = d3Shape
       .area()
       .x(d => d[0])
       .y0(100)
       .y1(d => d[1])
+      .curve(d3Shape.curveBasis);
+
+    const line = d3Shape
+      .line()
+      .x(d => d[0])
+      .y(d => d[1])
       .curve(d3Shape.curveBasis);
 
     const points: [number, number][] = this.data.map(d => [
@@ -72,7 +108,7 @@ export class AreaChartComponent implements OnChanges {
       this.y(d.value),
     ]);
 
+    this.areaGroup.attr('d', area(points));
     this.lineGroup.attr('d', line(points));
   }
-
 }

@@ -28,7 +28,7 @@
         ><span class="dot" [ngClass]="area.status" [matTooltip]="area.tooltip"></span>
         {{ area.name }}</mat-card-title
       >
-      <mat-card-subtitle>3&nbsp;profiles, 27&nbsp;lamps</mat-card-subtitle>
+      <mat-card-subtitle>{{ area.profiles }}&nbsp;profiles, {{ area.lamps }}&nbsp;lamps</mat-card-subtitle>
     </mat-card-header>
     <!-- TODO: Add nominal energy level -->
     <area-chart class="card-chart" mat-card-image [data]="data[i]"></area-chart>
@@ -36,7 +36,7 @@
   <mat-card>
     <mat-card-header>
       <mat-card-title>Unassigned</mat-card-title>
-      <mat-card-subtitle>27 lamps</mat-card-subtitle>
+      <mat-card-subtitle>{{ unassignedLamps }} lamps</mat-card-subtitle>
     </mat-card-header>
   </mat-card>
 </div>

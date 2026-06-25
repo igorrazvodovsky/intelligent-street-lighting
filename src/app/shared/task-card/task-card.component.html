@@ -38,7 +38,7 @@
         svgIcon="locationRegular"
         aria-hidden="true"
       ></mat-icon>
-      {{ task.deviceId }} • Otrie Peski
+      {{ deviceName || task.deviceId }}<ng-container *ngIf="groupName"> &bull; {{ groupName }}</ng-container>
     </div>
     <div>
       <mat-icon

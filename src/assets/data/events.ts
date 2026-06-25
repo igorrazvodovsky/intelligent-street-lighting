@@ -1,13 +1,13 @@
 import { UserEvent, DeviceEvent } from '~local/types';
 
+let __offset = 0;
 function getTime() {
-  const from: Date = new Date();
-  let to: Date = new Date();
-  to.setDate(to.getDate() - 1)
-  const fromTime = from.getTime();
-  const toTime = to.getTime();
-  return new Date(fromTime + Math.random() * (toTime - fromTime));
+  __offset += Math.floor(Math.random() * 120) + 5;
+  const d = new Date();
+  d.setMinutes(d.getMinutes() - __offset);
+  return new Date(d);
 }
+
 
 export const DEVICE_EVENTS: DeviceEvent[] = [
   {

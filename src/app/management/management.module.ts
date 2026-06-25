@@ -40,7 +40,7 @@ import { StatsComponent } from './dashboard/stats/stats.component';
     HttpClientModule,
     LayoutModule,
     DevicesModule,
-    DateFnsModule.forRoot()
+    DateFnsModule
   ],
   declarations: [
     NavigationComponent,
