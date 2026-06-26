@@ -31,32 +31,33 @@
 
 <!-- Default transition doesn't work well when sidenav is so wide -->
 <!-- TODO: custom transition? -->
-<mat-sidenav-container class="devices-container">
+<mat-sidenav-container class="devices-container" [hasBackdrop]="false">
   <mat-sidenav
     [(opened)]="opened"
     #drawer
     id="device-list"
     [attr.role]="isHandset ? 'dialog' : 'navigation'"
-    [mode]="isHandset ? 'over' : 'side'"
-    [opened]="isHandset === false"
+    mode="over"
     [class]="maximized ? 'maximized' : ''"
   >
     <router-outlet></router-outlet>
   </mat-sidenav>
   <mat-sidenav-content>
     <devices-map></devices-map>
+    <button
+      *ngIf="!isHandset"
+      class="list-toggle"
+      [class.opened]="opened"
+      [class.maximized]="maximized"
+      type="button"
+      aria-label="Toggle sidenav"
+      mat-icon-button
+      (click)="drawer.toggle()"
+    >
+      <mat-icon
+        [svgIcon]="opened ? 'chevronLeftBold' : 'chevronRightBold'"
+        aria-hidden="true"
+      ></mat-icon>
+    </button>
   </mat-sidenav-content>
 </mat-sidenav-container>
-<button
-  *ngIf="!isHandset"
-  class="list-toggle"
-  type="button"
-  aria-label="Toggle sidenav"
-  mat-icon-button
-  (click)="drawer.toggle()"
->
-  <mat-icon
-    [svgIcon]="opened ? 'chevronLeftBold' : 'chevronRightBold'"
-    aria-hidden="true"
-  ></mat-icon>
-</button>

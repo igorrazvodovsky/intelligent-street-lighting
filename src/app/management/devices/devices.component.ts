@@ -40,9 +40,10 @@ export class DevicesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.appStateService.isHandset.subscribe(value =>
-      this.isHandset = value
-    );
+    this.appStateService.isHandset.subscribe(value => {
+      this.isHandset = value;
+      this.opened = !value;
+    });
   }
 
   public toggleMaximize() {
