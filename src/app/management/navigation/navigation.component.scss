@@ -1,7 +1,7 @@
 .mat-drawer {
   @media (min-width: 600px) {
     background: transparent;
-    padding: 5rem 0.5rem 1rem 0.5rem;
+    padding: 5rem 0 1rem 0;
   }
   pointer-events: none;
 }
@@ -23,4 +23,104 @@ main {
 
 .main-content {
   margin-left: 0 !important;
+}
+
+.text-secondary {
+  padding: 0 0.5rem;
+}
+
+// === Overlapping tab navigation ===
+$tab-h: 56px;
+$tab-r: 16px;
+$tab-inactive: #e2e2e2;
+$tab-active: #ffca28;
+$overlap: 6px;
+
+.nav-tabs {
+  display: flex;
+  flex-direction: column;
+  width: 56px;
+}
+
+.nav-tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: $tab-h;
+  background: $tab-inactive;
+  border-radius: 0 $tab-r $tab-r 0;
+  text-decoration: none;
+  color: inherit;
+  z-index: 1;
+  pointer-events: initial;
+  transition: background 0.15s ease;
+  margin-top: -$overlap;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  mat-icon {
+    opacity: 0.55;
+    transition: opacity 0.15s ease;
+  }
+
+  // ::before and ::after fill the curved corner areas adjacent to the border-radius,
+  // using radial-gradient origins at the actual bounding-box corner so the concave
+  // arc matches the convex border-radius arc.
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: $tab-r;
+    height: $tab-r;
+    pointer-events: none;
+  }
+
+  &::before {
+    bottom: 100%;
+    transform: rotate(270deg);
+    background: radial-gradient(
+      circle at 100% 100%,
+      transparent calc(#{$tab-r} - 0.5px),
+      $tab-inactive #{$tab-r}
+    );
+  }
+
+  &::after {
+    top: 100%;
+    transform: rotate(90deg);
+    background: radial-gradient(
+      circle at 100% 0%,
+      transparent calc(#{$tab-r} - 0.5px),
+      $tab-inactive #{$tab-r}
+    );
+  }
+
+  &.nav-tab--active {
+    background: $tab-active;
+    z-index: 2;
+
+    mat-icon {
+      opacity: 1;
+    }
+
+    &::before {
+      background: radial-gradient(
+        circle at 100% 100%,
+        transparent calc(#{$tab-r} - 0.5px),
+        $tab-active #{$tab-r}
+      );
+    }
+
+    &::after {
+      background: radial-gradient(
+        circle at 100% 0%,
+        transparent calc(#{$tab-r} - 0.5px),
+        $tab-active #{$tab-r}
+      );
+    }
+  }
 }

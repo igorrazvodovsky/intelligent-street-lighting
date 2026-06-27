@@ -31,20 +31,20 @@
       </mat-selection-list>
 
       <ng-template #desktopPrimaryNav>
-        <button
-          *ngFor="let navItem of primaryNavItems"
-          mat-icon-button
-          [matTooltip]="navItem.label"
-          matTooltipPosition="right"
-          [attr.aria-label]="navItem.label"
-          [routerLink]="navItem.route"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="
-            navItem.label == 'Dashboard' ? { exact: true } : {}
-          "
-        >
-          <mat-icon [svgIcon]="navItem.icon" aria-hidden="true"></mat-icon>
-        </button>
+        <nav class="nav-tabs">
+          <a
+            class="nav-tab"
+            *ngFor="let navItem of primaryNavItems"
+            [routerLink]="navItem.route"
+            routerLinkActive="nav-tab--active"
+            [routerLinkActiveOptions]="navItem.label == 'Dashboard' ? { exact: true } : {}"
+            [matTooltip]="navItem.label"
+            matTooltipPosition="right"
+            [attr.aria-label]="navItem.label"
+          >
+            <mat-icon [svgIcon]="navItem.icon" aria-hidden="true"></mat-icon>
+          </a>
+        </nav>
       </ng-template>
     </div>
     <!-- secondary nav -->
