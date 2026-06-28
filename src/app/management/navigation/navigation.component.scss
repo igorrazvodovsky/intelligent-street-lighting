@@ -31,8 +31,9 @@ main {
 
 // === Overlapping tab navigation ===
 $tab-h: 56px;
-$tab-r: 16px;
+$tab-r: 20px;
 $tab-inactive: #e2e2e2;
+$tab-inactive-odd: #cecece;
 $tab-active: #ffca28;
 $overlap: 6px;
 
@@ -52,7 +53,7 @@ $overlap: 6px;
   border-radius: 0 $tab-r $tab-r 0;
   text-decoration: none;
   color: inherit;
-  z-index: 1;
+  z-index: 1; // fallback; overridden per nth-child below
   pointer-events: initial;
   transition: background 0.15s ease;
   margin-top: -$overlap;
@@ -99,9 +100,34 @@ $overlap: 6px;
     );
   }
 
+  &:nth-child(odd) {
+    background: $tab-inactive-odd;
+
+    &::before {
+      background: radial-gradient(
+        circle at 100% 100%,
+        transparent calc(#{$tab-r} - 0.5px),
+        $tab-inactive-odd #{$tab-r}
+      );
+    }
+
+    &::after {
+      background: radial-gradient(
+        circle at 100% 0%,
+        transparent calc(#{$tab-r} - 0.5px),
+        $tab-inactive-odd #{$tab-r}
+      );
+    }
+  }
+
+  // First tab sits on top; each subsequent tab tucks under the one above it.
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) { z-index: 11 - $i; }
+  }
+
   &.nav-tab--active {
     background: $tab-active;
-    z-index: 2;
+    z-index: 20; // always above all inactive tabs
 
     mat-icon {
       opacity: 1;
