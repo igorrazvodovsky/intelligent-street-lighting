@@ -30,17 +30,26 @@ main {
 }
 
 // === Overlapping tab navigation ===
-$tab-h: 56px;
-$tab-r: 20px;
+// Tab silhouette comes from Union.svg (a 40×84 "petal" that pinches to the rail
+// at top/bottom and bulges rightward). It's applied as a CSS mask, so colour
+// lives on `background` and the shape scales with the element box.
+$tab-w: 40px;
+$tab-h: 80px; // Union.svg silhouette, scaled down from its native height
 $tab-inactive: #e2e2e2;
 $tab-inactive-odd: #cecece;
 $tab-active: #ffca28;
-$overlap: 6px;
+$overlap: 32px; // deep overlap so the pinched ends tuck under the neighbour (~52px pitch)
+
+// fill colour is irrelevant for a mask (only alpha matters); colour is on background.
+// preserveAspectRatio="none" lets the 40×84 path stretch to fill the (wider) tab box.
+// Without it the SVG default ("xMidYMid meet") fits the path to height and centres it,
+// leaving a ~8px gap on each side of the 56px tab — the left gap we were chasing.
+$tab-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 84" preserveAspectRatio="none"><path d="M20 15C10 11.25 0 7.5 0 0V30V54V84C0 76.5 10 72.75 20 69C30 65.25 40 61.5 40 54V30C40 22.5 30 18.75 20 15Z" fill="black"/></svg>');
 
 .nav-tabs {
   display: flex;
   flex-direction: column;
-  width: 56px;
+  width: $tab-w;
 }
 
 .nav-tab {
@@ -48,15 +57,17 @@ $overlap: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: $tab-w;
   height: $tab-h;
   background: $tab-inactive;
-  border-radius: 0 $tab-r $tab-r 0;
   text-decoration: none;
   color: inherit;
-  z-index: 1; // fallback; overridden per nth-child below
   pointer-events: initial;
   transition: background 0.15s ease;
   margin-top: -$overlap;
+
+  -webkit-mask: $tab-mask no-repeat center / 100% 100%;
+  mask: $tab-mask no-repeat center / 100% 100%;
 
   &:first-child {
     margin-top: 0;
@@ -67,56 +78,13 @@ $overlap: 6px;
     transition: opacity 0.15s ease;
   }
 
-  // ::before and ::after fill the curved corner areas adjacent to the border-radius,
-  // using radial-gradient origins at the actual bounding-box corner so the concave
-  // arc matches the convex border-radius arc.
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    width: $tab-r;
-    height: $tab-r;
-    pointer-events: none;
-  }
-
-  &::before {
-    bottom: 100%;
-    transform: rotate(270deg);
-    background: radial-gradient(
-      circle at 100% 100%,
-      transparent calc(#{$tab-r} - 0.5px),
-      $tab-inactive #{$tab-r}
-    );
-  }
-
-  &::after {
-    top: 100%;
-    transform: rotate(90deg);
-    background: radial-gradient(
-      circle at 100% 0%,
-      transparent calc(#{$tab-r} - 0.5px),
-      $tab-inactive #{$tab-r}
-    );
-  }
-
   &:nth-child(odd) {
     background: $tab-inactive-odd;
+  }
 
-    &::before {
-      background: radial-gradient(
-        circle at 100% 100%,
-        transparent calc(#{$tab-r} - 0.5px),
-        $tab-inactive-odd #{$tab-r}
-      );
-    }
-
-    &::after {
-      background: radial-gradient(
-        circle at 100% 0%,
-        transparent calc(#{$tab-r} - 0.5px),
-        $tab-inactive-odd #{$tab-r}
-      );
+  &:hover:not(.nav-tab--active) {
+    mat-icon {
+      opacity: 0.9;
     }
   }
 
@@ -131,22 +99,6 @@ $overlap: 6px;
 
     mat-icon {
       opacity: 1;
-    }
-
-    &::before {
-      background: radial-gradient(
-        circle at 100% 100%,
-        transparent calc(#{$tab-r} - 0.5px),
-        $tab-active #{$tab-r}
-      );
-    }
-
-    &::after {
-      background: radial-gradient(
-        circle at 100% 0%,
-        transparent calc(#{$tab-r} - 0.5px),
-        $tab-active #{$tab-r}
-      );
     }
   }
 }
