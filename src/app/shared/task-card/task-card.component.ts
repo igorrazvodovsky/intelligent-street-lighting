@@ -36,14 +36,10 @@ export class TaskCardComponent implements OnInit {
     }
   }
 
-  openDialog(task) {
-    const dialogRef = this.dialog.open(TaskDialogComponent, {
+  openDialog(task: Task) {
+    this.dialog.open(TaskDialogComponent, {
       id: 'task-dialog',
       data: { task: task },
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
     });
   }
 

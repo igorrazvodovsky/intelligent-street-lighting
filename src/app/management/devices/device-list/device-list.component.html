@@ -82,7 +82,7 @@
     <mat-list-option
       [routerLink]="'../../device/' + [device.id]"
       role="listitem"
-      *ngFor="let device of filteredDevices$ | async"
+      *ngFor="let device of filteredDevices$ | async; trackBy: trackByDeviceId"
     >
       <div matLine>
         <mat-icon
@@ -117,7 +117,7 @@
   >
     <mat-list-option
       role="listitem"
-      *ngFor="let device of filteredDevices$ | async"
+      *ngFor="let device of filteredDevices$ | async; trackBy: trackByDeviceId"
     >
       <div matLine>{{ device.name }}</div>
       <span matLine

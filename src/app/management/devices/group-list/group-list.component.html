@@ -3,7 +3,7 @@
 
 <mat-selection-list role="list" [multiple]="false">
   <group-list-item
-    *ngFor="let group of groups"
+    *ngFor="let group of groups; trackBy: trackByGroupId"
     [group]="group"
   ></group-list-item>
 </mat-selection-list>

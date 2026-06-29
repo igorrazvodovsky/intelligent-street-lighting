@@ -1,7 +1,9 @@
 // TODO: Refactor
 
 import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
-import { UserEvent, DeviceEvent } from '~local/types'
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { UserEvent, DeviceEvent, Event } from '~local/types'
 import { EventService } from '~local/services/event.service';
 import { DeviceService } from '~local/services/device.service';
 import { UserService } from '~local/services/user.service';
@@ -12,6 +14,7 @@ import { UserService } from '~local/services/user.service';
   styleUrls: ['./activity.component.scss']
 })
 export class ActivityComponent implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
   events: UserEvent[] | DeviceEvent[] = [];
   fileredEvents: UserEvent[] | DeviceEvent[] = [];
   filter = {
@@ -34,6 +37,12 @@ export class ActivityComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.renderer.removeClass(document.body, 'dashboard');
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  trackByEventId(_index: number, event: Event) {
+    return event.id;
   }
 
   filterEvents(events) {
@@ -48,6 +57,7 @@ export class ActivityComponent implements OnInit, OnDestroy {
 
   getEvents(): void {
     this.eventService.getEvents()
+      .pipe(takeUntil(this.destroy$))
       .subscribe(events => {
         this.events = events
         this.fileredEvents = this.filterEvents(events)

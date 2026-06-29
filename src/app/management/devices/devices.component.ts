@@ -30,12 +30,8 @@ export class DevicesComponent implements OnInit {
 
 
   openDialog() {
-    const dialogRef = this.dialog.open(GroupDialogComponent, {
+    this.dialog.open(GroupDialogComponent, {
       id: 'group-dialog'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
     });
   }
 

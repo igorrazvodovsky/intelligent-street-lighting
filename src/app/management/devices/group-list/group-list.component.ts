@@ -1,5 +1,6 @@
-import { Observable } from 'rxjs';
-import { Component, OnInit, Input } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { DeviceGroup } from '~local/types'
 import { DeviceService } from '~local/services/device.service';
 
@@ -8,7 +9,8 @@ import { DeviceService } from '~local/services/device.service';
   templateUrl: './group-list.component.html',
   styleUrls: ['./group-list.component.scss']
 })
-export class GroupListComponent implements OnInit {
+export class GroupListComponent implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
   groups$!: Observable<DeviceGroup[]>
   groups!: DeviceGroup[]
   @Input() category: number
@@ -16,10 +18,18 @@ export class GroupListComponent implements OnInit {
   constructor(
     private deviceService: DeviceService) { }
 
-  ngOnInit() {
-    this.groups$ = this.deviceService.getGroupsByParent(this.category);
-    this.groups$.subscribe(groups => this.groups = groups)
+  trackByGroupId(_index: number, group: DeviceGroup) {
+    return group.id;
   }
 
+  ngOnInit() {
+    this.groups$ = this.deviceService.getGroupsByParent(this.category);
+    this.groups$.pipe(takeUntil(this.destroy$)).subscribe(groups => this.groups = groups)
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
 }

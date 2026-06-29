@@ -35,7 +35,6 @@ export class ProfileListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
       // TODO: Navigate to created profile
       if (result) this.router.navigate(['6'], { relativeTo: this.route });
     });

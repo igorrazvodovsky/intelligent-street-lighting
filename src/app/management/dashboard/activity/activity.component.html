@@ -52,7 +52,7 @@
   [multiple]="false"
   *ngIf="fileredEvents.length > 0; else empty"
 >
-  <ng-container *ngFor="let event of fileredEvents">
+  <ng-container *ngFor="let event of fileredEvents; trackBy: trackByEventId">
     <!-- TODO: ??? -->
     <device-event [event]="event" *ngIf="event.type == 'device'"></device-event>
     <user-event [event]="event" *ngIf="event.type == 'user'"></user-event>

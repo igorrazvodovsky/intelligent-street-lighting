@@ -1,6 +1,8 @@
 // TODO: Map shows only currently selected (in the list) groups/devices
 
-import { Component, AfterViewInit, OnInit, Input } from '@angular/core';
+import { Component, AfterViewInit, OnInit, OnDestroy, Input, NgZone } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import * as L from 'leaflet';
 import 'leaflet.markercluster';
 import { MarkerService } from '~local/services/marker.service';
@@ -21,7 +23,8 @@ type DeviceLayer = 'status' | 'sc' | 'profile'
   styleUrls: ['./map.component.scss']
 })
 
-export class MapComponent implements AfterViewInit, OnInit {
+export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
   selectedDevice: number = 15;
   map;
   devices: any;
@@ -34,17 +37,23 @@ export class MapComponent implements AfterViewInit, OnInit {
 
   private initMap(): void {
     const city = this.deviceService.city;
-    this.map = L.map('map', {
-      center: [city.centerLat, city.centerLng],
-      zoom: 13,
-      zoomControl: false,
-      zoomSnap: 0.5
+    // Leaflet fires a flood of mousemove/drag/zoom events. Creating and running
+    // the map outside Angular's zone keeps those events from triggering app-wide
+    // change detection on every frame. Handlers that need Angular (e.g. routing)
+    // must re-enter the zone explicitly.
+    this.ngZone.runOutsideAngular(() => {
+      this.map = L.map('map', {
+        center: [city.centerLat, city.centerLng],
+        zoom: 13,
+        zoomControl: false,
+        zoomSnap: 0.5
+      });
+      const tiles = L.tileLayer('https://api.mapbox.com/styles/v1/igorrazvodovsky/cks5ww8yk0kxm17p4t4lcftfr/tiles/{z}/{x}/{y}?access_token=' + this.accessToken, {
+        maxZoom: 18,
+        minZoom: 1,
+      });
+      tiles.addTo(this.map);
     });
-    const tiles = L.tileLayer('https://api.mapbox.com/styles/v1/igorrazvodovsky/cks5ww8yk0kxm17p4t4lcftfr/tiles/{z}/{x}/{y}?access_token=' + this.accessToken, {
-      maxZoom: 18,
-      minZoom: 1,
-    });
-    tiles.addTo(this.map);
   }
 
   constructor(
@@ -52,6 +61,7 @@ export class MapComponent implements AfterViewInit, OnInit {
     private profileService: ProfileService,
     private shapeService: ShapeService,
     private deviceService: DeviceService,
+    private ngZone: NgZone,
     public router: Router
   ) { }
 
@@ -140,7 +150,8 @@ export class MapComponent implements AfterViewInit, OnInit {
           html: pointer + `<figure>${icon}</figure><label>${label}</label>`
         }))
 
-        layer.on('click', () => this.router.navigate(['/management/devices/device/' + feature.properties.id]));
+        // Re-enter the Angular zone so routing triggers change detection.
+        layer.on('click', () => this.ngZone.run(() => this.router.navigate(['/management/devices/device/' + feature.properties.id])));
       }
     });
 
@@ -155,18 +166,20 @@ export class MapComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
-    this.deviceService.activeCity$.subscribe(city => {
+    this.deviceService.activeCity$.pipe(takeUntil(this.destroy$)).subscribe(city => {
       if (this.map) {
         this.map.setView([city.centerLat, city.centerLng], 13);
       }
     });
 
-    this.markerService.getMarkers().subscribe((markers: any) => {
-      if (this.markers) {
-        this.map.removeLayer(this.markers);
-      }
-      this.markersGeoJsonData = markers;
-      this.initGroupsLayer()
+    this.markerService.getMarkers().pipe(takeUntil(this.destroy$)).subscribe((markers: any) => {
+      this.ngZone.runOutsideAngular(() => {
+        if (this.markers) {
+          this.map.removeLayer(this.markers);
+        }
+        this.markersGeoJsonData = markers;
+        this.initGroupsLayer()
+      });
     })
   }
 
@@ -175,12 +188,19 @@ export class MapComponent implements AfterViewInit, OnInit {
       .filter(e => e.feature.properties.hasOwnProperty('profile'))
       .map(e => e.feature.properties.profile.id).filter(i => i)
     const uniqueIds = [...new Set<number>(ids)]
-    console.log(uniqueIds)
     return Array.from(uniqueIds)
   }
 
   ngAfterViewInit(): void {
     this.initMap()
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+    if (this.map) {
+      this.map.remove();
+    }
   }
 
 }

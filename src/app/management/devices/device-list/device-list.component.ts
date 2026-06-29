@@ -1,8 +1,8 @@
 // TODO: No sense in using Obseravle for things that won't change (group)
 
-import { Observable, BehaviorSubject } from 'rxjs';
-import { switchMap, filter, map } from 'rxjs/operators';
-import { Component, OnInit } from '@angular/core';
+import { Observable, BehaviorSubject, Subject } from 'rxjs';
+import { switchMap, filter, map, takeUntil } from 'rxjs/operators';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Device, DeviceGroup, Profile, DeviceStatus, DeviceType, DeviceFilters } from '~local/types'
 import { ActivatedRoute } from '@angular/router';
 import { DeviceService } from '~local/services/device.service';
@@ -15,7 +15,8 @@ import { DeviceListEditActionsComponent } from './device-list-edit-actions/devic
   templateUrl: './device-list.component.html',
   styleUrls: ['./device-list.component.scss']
 })
-export class DeviceListComponent implements OnInit {
+export class DeviceListComponent implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
   category: number = null;
   group$!: Observable<DeviceGroup>;
   devices$!: Observable<Device[]>;
@@ -57,10 +58,14 @@ export class DeviceListComponent implements OnInit {
     this.filters$.next(update)
   }
 
-  ngOnInit() {
-    this.profileService.Profiles.subscribe(profiles => this.profiles = profiles);
+  trackByDeviceId(_index: number, device: Device) {
+    return device.id;
+  }
 
-    this.route.paramMap.subscribe(params => {
+  ngOnInit() {
+    this.profileService.Profiles.pipe(takeUntil(this.destroy$)).subscribe(profiles => this.profiles = profiles);
+
+    this.route.paramMap.pipe(takeUntil(this.destroy$)).subscribe(params => {
       const category = params.get('groupId')
       if (category == null) this.category = null
       else this.category = +category
@@ -96,10 +101,15 @@ export class DeviceListComponent implements OnInit {
         })
       )
 
-    this.group$.subscribe(group => {
+    this.group$.pipe(takeUntil(this.destroy$)).subscribe(group => {
       if (group) this.profile$ = this.profileService.getProfile(group.profileId)
     });
 
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }
 
