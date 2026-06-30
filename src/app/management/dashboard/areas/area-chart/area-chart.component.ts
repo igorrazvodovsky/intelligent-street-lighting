@@ -61,12 +61,12 @@ export class AreaChartComponent implements OnChanges {
     // Using a more muted, desaturated blue (#78a3c8) so it doesn't attract too much attention
     gradient.append('stop')
       .attr('offset', '0%')
-      .attr('stop-color', '#78a3c8')
+      .attr('stop-color', '#949db8')
       .attr('stop-opacity', 0.4);
 
     gradient.append('stop')
       .attr('offset', '100%')
-      .attr('stop-color', '#78a3c8')
+      .attr('stop-color', '#949db8')
       .attr('stop-opacity', 0.05);
 
     this.areaGroup = this.svg
@@ -80,7 +80,7 @@ export class AreaChartComponent implements OnChanges {
       .append('path')
       .attr('id', 'line')
       .style('fill', 'none')
-      .style('stroke', '#78a3c8')
+      .style('stroke', '#949db8')
       .style('stroke-width', '1px');
   }
 
