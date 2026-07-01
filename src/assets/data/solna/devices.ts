@@ -152,25 +152,25 @@ export const MEASUREMENTS: MeasurementGroup[] = [
         id: 5,
         name: "Energy",
         units: "kWh",
-        values: [{ value: 0, date: new Date() }]
+        values: [{ value: 912.4, date: new Date() }]
       },
       {
         id: 6,
         name: "Operating",
         units: "h",
-        values: [{ value: 0, date: new Date() }]
+        values: [{ value: 21850, date: new Date() }]
       },
       {
         id: 7,
         name: "Up time (by controller)",
         units: "h",
-        values: [{ value: 0, date: new Date() }]
+        values: [{ value: 48230, date: new Date() }]
       },
       {
         id: 8,
         name: "Burn time (by controller)",
         units: "h",
-        values: [{ value: 0, date: new Date() }]
+        values: [{ value: 21790, date: new Date() }]
       }
     ]
   },
@@ -181,31 +181,31 @@ export const MEASUREMENTS: MeasurementGroup[] = [
         id: 9,
         name: "Frequency",
         units: "Hz",
-        values: [{ value: 0, date: new Date() }]
+        values: [{ value: 50.0, date: new Date() }]
       },
       {
         id: 10,
         name: "Voltage",
         units: "V",
-        values: [{ value: 0, date: new Date() }]
+        values: [{ value: 231, date: new Date() }]
       },
       {
         id: 11,
         name: "Current",
         units: "A",
-        values: [{ value: 0, date: new Date() }]
+        values: [{ value: 0.21, date: new Date() }]
       },
       {
         id: 12,
         name: "Power factor",
         units: "",
-        values: [{ value: 0, date: new Date() }]
+        values: [{ value: 0.95, date: new Date() }]
       },
       {
         id: 13,
         name: "Power",
         units: "W",
-        values: [{ value: 0, date: new Date() }]
+        values: [{ value: 46, date: new Date() }]
       }
     ]
   },
@@ -216,13 +216,13 @@ export const MEASUREMENTS: MeasurementGroup[] = [
         id: 14,
         name: "Voltage",
         units: "V",
-        values: [{ value: 0, date: new Date() }]
+        values: [{ value: 145, date: new Date() }]
       },
       {
         id: 15,
         name: "Current",
         units: "A",
-        values: [{ value: 0, date: new Date() }]
+        values: [{ value: 0.28, date: new Date() }]
       }
     ]
   }
