@@ -13,8 +13,16 @@
   }
   .marker--cluster {
     white-space: nowrap;
-    position: relative;
+    // Leaflet positions marker icons with position: absolute + a translate3d
+    // transform computed from the marker's lat/lng. `relative` (instead of
+    // `absolute`) leaves the icon's flow-box in place, so the transform
+    // shift stacks on top of its normal-flow position instead of replacing
+    // it — each marker ends up offset by the cumulative height of every
+    // marker rendered before it in the DOM, growing without bound as more
+    // clusters are added.
+    position: absolute !important;
     width: auto !important;
+    height: auto !important;
     font-size: 0.875rem;
     &.dark > div {
       background: hsla(0, 0%, 0%, 0.6);
@@ -27,7 +35,9 @@
       border-radius: 2rem;
       padding: 0.5rem 0.75rem;
       color: var(--text-color-1);
-      transform: translate(-0%, -25%);
+      // center the label on the marker's true coordinate, regardless of its
+      // (variable, content-driven) rendered width/height
+      transform: translate(-50%, -50%);
       display: inline-flex;
       gap: 1ch;
       align-items: center;
@@ -55,6 +65,16 @@
         margin-left: -0.5rem;
       }
     }
+  }
+  // hover-coverage hull for a cluster (leaflet.markercluster's showCoverageOnHover),
+  // toned down to match the dark, translucent cluster badges instead of Leaflet's default blue
+  .cluster-coverage {
+    stroke: none;
+    fill: hsla(0, 0%, 0%, 0.4);
+    fill-opacity: 1;
+    // fill alone traces the convex hull's sharp vertices exactly; blur softens
+    // them into a rounded blob without needing a (visibly double-density) stroke
+    filter: blur(1px);
   }
   .marker--sc,
   .marker--sensor {

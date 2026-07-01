@@ -15,6 +15,33 @@ import * as d3ScaleChromatic from 'd3-scale-chromatic';
 import { Profile, DeviceStatus } from '~local/types'
 import { iconAlert, iconOff, iconSensorEnv, iconSensorTraffic, iconSC } from './icons'
 
+// leaflet.markercluster centers a cluster icon on the average lat/lng of its
+// children. Along a curving street (e.g. one hugging a shoreline) that average
+// can land off the road entirely, even though every individual marker sits on
+// it. Anchoring on the first-added child (_cLatLng) isn't reliable either,
+// since clustering order doesn't correlate with geographic centrality. Instead
+// snap the icon to whichever real member marker is closest to the computed
+// centroid, so it's always a point that's actually on the map's road network.
+const originalRecalculateBounds = (L as any).MarkerCluster.prototype._recalculateBounds;
+(L as any).MarkerCluster.prototype._recalculateBounds = function (): void {
+  originalRecalculateBounds.call(this);
+  const centroid = this._latlng;
+  const members = this.getAllChildMarkers();
+  let closest = members[0];
+  let closestDistSq = Infinity;
+  for (const marker of members) {
+    const ll = marker.getLatLng();
+    const dLat = ll.lat - centroid.lat;
+    const dLng = ll.lng - centroid.lng;
+    const distSq = dLat * dLat + dLng * dLng;
+    if (distSq < closestDistSq) {
+      closestDistSq = distSq;
+      closest = marker;
+    }
+  }
+  this._latlng = closest.getLatLng();
+};
+
 type DeviceLayer = 'status' | 'sc' | 'profile'
 
 @Component({
@@ -81,6 +108,10 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
     const sc = clusterMarkers.filter(e => e.feature.properties.type == 'sc').map(e => e.feature.properties.name).join(', ')
     return L.divIcon({
       className: 'dark marker--cluster',
+      // L.DivIcon defaults iconSize to [12, 12], anchoring the icon 6px up/left
+      // of its true coordinate. These labels are variably sized (width: auto),
+      // so let the CSS transform on the inner div do all the centering instead.
+      iconSize: [0, 0],
       html: sc.length > 0
         ? `<div>${childCount} •&nbsp;<span class="text-secondary">SC&nbsp;</span> ${sc}</div>`
         : `<div>${childCount} • Uninitialised`
@@ -91,7 +122,9 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
     const clusterProfilesColours = this.getClusterProfileIds(clusterMarkers).map(id => this.profileService.getProfileColour(id.toString()))
     const profileDots = clusterProfilesColours.map(colour => `<i class="dot" style="background: ${colour}"></i> `).join('')
     return L.divIcon({
-      className: 'marker--cluster ' + status, html: `<div>${childCount} ${profileDots}</div>`
+      className: 'marker--cluster ' + status,
+      iconSize: [0, 0],
+      html: `<div>${childCount} ${profileDots}</div>`
     });
   }
 
@@ -112,7 +145,9 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
       icon = iconOff
     }
     return L.divIcon({
-      className: 'dark marker--cluster ' + status, html: `<div>${icon} ${childCount}</div>`
+      className: 'dark marker--cluster ' + status,
+      iconSize: [0, 0],
+      html: `<div>${icon} ${childCount}</div>`
     });
   }
 
@@ -123,7 +158,10 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
         if (this.deviceLayer == "status") return this.makeStatusMarker(clusterMarkers, cluster.getChildCount())
         if (this.deviceLayer == "sc") return this.makeSCMarker(clusterMarkers, cluster.getChildCount())
         if (this.deviceLayer == "profile") return this.makeProfileMarker(clusterMarkers, cluster.getChildCount())
-      }
+      },
+      // Leaflet's default coverage polygon is solid blue; className hands
+      // styling over to map.scss to match the dark cluster badges instead.
+      polygonOptions: { className: 'cluster-coverage' }
     });
 
     let geoJsonLayer = L.geoJson(this.markersGeoJsonData, {
