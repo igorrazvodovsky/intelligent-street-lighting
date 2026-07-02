@@ -132,9 +132,10 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
     let status = "active"
     let icon = ""
     // TODO:
-    let warningStatuses = ['not responding', 'no power', 'unassigned']
+    let warningStatuses = ['not responding', 'no power', 'unassigned', 'warning']
+    let dangerStatuses = ['alarm', 'error']
     const warning = clusterMarkers.filter(e => warningStatuses.includes(e.feature.properties.status)).length > 0
-    const danger = clusterMarkers.filter(e => e.feature.properties.status === 'alarm').length > 0
+    const danger = clusterMarkers.filter(e => dangerStatuses.includes(e.feature.properties.status)).length > 0
     const offline = clusterMarkers.filter(e => e.feature.properties.status === 'off').length == clusterMarkers.length
 
     if (warning || danger) icon = iconAlert

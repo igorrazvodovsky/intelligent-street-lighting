@@ -86,7 +86,7 @@ export interface DeviceEvent extends Event {
 export type SensorType = 'motion' | 'wifi' | 'traffic'
 
 export type DeviceType = 'lamp' | 'sc' | 'sensor'
-export type DeviceStatus = 'active' | 'inactive' | 'off' | 'not responding' | 'no power' | 'alarm' | 'unassigned'
+export type DeviceStatus = 'active' | 'inactive' | 'off' | 'not responding' | 'no power' | 'alarm' | 'unassigned' | 'error' | 'warning'
 
 export interface DeviceFilters {
   type: DeviceType;

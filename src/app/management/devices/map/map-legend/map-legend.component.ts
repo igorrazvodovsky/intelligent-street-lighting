@@ -41,6 +41,14 @@ export class MapLegendComponent implements OnInit {
     {
       name: "Unassigned",
       color: "orange"
+    },
+    {
+      name: "Error",
+      color: "red"
+    },
+    {
+      name: "Warning",
+      color: "violet"
     }
   ]
 

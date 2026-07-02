@@ -15,7 +15,7 @@ import { BehaviorSubject } from 'rxjs';
 export class DeviceFiltersComponent implements OnInit {
   profiles: Profile[];
   types: DeviceType[] = ['lamp', 'sc', 'sensor'];
-  statuses: DeviceStatus[] = ['active', 'inactive', 'off', 'not responding', 'no power', 'alarm', 'unassigned'];
+  statuses: DeviceStatus[] = ['active', 'inactive', 'off', 'not responding', 'no power', 'alarm', 'unassigned', 'error', 'warning'];
 
   @Input() selected$: BehaviorSubject<DeviceFilters>
   selected: DeviceFilters
@@ -30,7 +30,9 @@ export class DeviceFiltersComponent implements OnInit {
     'not responding': 'Not responding',
     'no power': 'No power',
     'alarm': 'Alarm',
-    'unassigned': 'Unassigned'
+    'unassigned': 'Unassigned',
+    'error': 'Error',
+    'warning': 'Warning'
   }
 
   constructor(private profileService: ProfileService) { }

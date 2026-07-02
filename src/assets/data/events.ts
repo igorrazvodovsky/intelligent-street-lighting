@@ -36,7 +36,7 @@ export const DEVICE_EVENTS: DeviceEvent[] = [
     value: 'communicationFailure',
     title: 'Communication failure	',
     level: 'info',
-    taskId: 1
+    taskId: 4
   },
   {
     id: 4,
@@ -63,8 +63,7 @@ export const DEVICE_EVENTS: DeviceEvent[] = [
     deviceId: 23,
     value: 'communicationFailure',
     title: 'Communication failure	',
-    level: 'info',
-    taskId: 2
+    level: 'info'
   },
   {
     id: 20,
@@ -83,7 +82,7 @@ export const DEVICE_EVENTS: DeviceEvent[] = [
     value: 'communicationFailure',
     title: 'Lost communication with controller',
     level: 'critical',
-    taskId: 1
+    taskId: 7
   },
   {
     id: 22,
@@ -93,7 +92,7 @@ export const DEVICE_EVENTS: DeviceEvent[] = [
     value: 'lampFailure',
     title: 'LED module failure',
     level: 'critical',
-    taskId: 2
+    taskId: 8
   },
   {
     id: 23,
