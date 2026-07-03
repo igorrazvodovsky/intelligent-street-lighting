@@ -1,25 +1,33 @@
 import { Injectable } from '@angular/core';
 import { Profile } from '../types';
-import { PROFILES } from '~local/../assets/data/profiles';
+import { PROFILES as DAUGAVPILS_PROFILES } from '~local/../assets/data/daugavpils/profiles';
+import { PROFILES as SOLNA_PROFILES } from '~local/../assets/data/solna/profiles';
+import { DeviceService } from './device.service';
 import { MessageService } from './message.service';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as d3Scale from 'd3-scale';
 import * as d3ScaleChromatic from 'd3-scale-chromatic';
-import * as d3Array from 'd3-array';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
 
-  private _profiles = of(PROFILES)
+  private cityProfilesMap: { [key: string]: Profile[] } = {
+    'daugavpils': DAUGAVPILS_PROFILES,
+    'solna': SOLNA_PROFILES,
+  };
+
+  private _profiles = this.deviceService.activeCity$.pipe(
+    map(city => this.cityProfilesMap[city.id] ?? SOLNA_PROFILES)
+  )
 
   public get Profiles(): Observable<Profile[]> {
     return this._profiles
   }
 
-  constructor(private messageService: MessageService) { }
+  constructor(private deviceService: DeviceService, private messageService: MessageService) { }
 
   getProfile(id: number | string) {
     return this._profiles.pipe(
@@ -27,9 +35,10 @@ export class ProfileService {
     );
   }
 
+  // Built from the union of every city's profile ids, so the colour scale stays
+  // consistent even if one city's catalogue diverges from another's.
   getProfileColour = d3Scale
     .scaleOrdinal(d3ScaleChromatic.schemeCategory10)
-    .domain(PROFILES.map((p: any) => p.id))
-    // .domain(d3Array.extent(PROFILES, (d:any) => d.id))
+    .domain([...new Set([...DAUGAVPILS_PROFILES, ...SOLNA_PROFILES].map((p: any) => p.id))])
 
 }

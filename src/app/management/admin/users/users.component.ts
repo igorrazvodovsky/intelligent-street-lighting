@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { UsersDataSource } from './users-datasource';
 import { User } from '~local/types'
+import { UserService } from '~local/services/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { InviteDialogComponent } from './invite-dialog/invite-dialog.component';
 
@@ -21,8 +22,8 @@ export class UsersComponent implements AfterViewInit {
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'name', 'status', 'enabled', 'locked'];
 
-  constructor(public dialog: MatDialog) {
-    this.dataSource = new UsersDataSource();
+  constructor(public dialog: MatDialog, private userService: UserService) {
+    this.dataSource = new UsersDataSource(this.userService);
   }
 
   ngAfterViewInit(): void {

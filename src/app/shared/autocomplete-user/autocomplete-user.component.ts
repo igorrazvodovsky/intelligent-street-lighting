@@ -1,28 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { User } from '~local/types'
 import { UserService } from '~local/services/user.service';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
-import { USERS } from '~local/../assets/data/users'
+import { Observable, Subject } from 'rxjs';
+import { map, startWith, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'autocomplete-user',
   templateUrl: './autocomplete-user.component.html',
   styleUrls: ['./autocomplete-user.component.scss']
 })
-export class AutocompleteUserComponent implements OnInit {
+export class AutocompleteUserComponent implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
+
   myControl = new FormControl();
-  options: User[] = USERS;
+  options: User[] = [];
   filteredOptions: Observable<User[]>;
 
+  constructor(private userService: UserService) { }
+
   ngOnInit() {
+    this.userService.Users.pipe(
+      takeUntil(this.destroy$)
+    ).subscribe(users => this.options = users);
+
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
         startWith(''),
         map(value => typeof value === 'string' ? value : value.name),
         map(name => name ? this._filter(name) : this.options.slice())
       );
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   displayFn(user: User): string {

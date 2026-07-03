@@ -2,12 +2,9 @@ import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
-import { Observable, of as observableOf, merge } from 'rxjs';
+import { Observable, Subscription, merge } from 'rxjs';
 import { User } from '~local/types'
-import { USERS } from '~local/../assets/data/users'
-
-// TODO: replace this with real data from your application
-
+import { UserService } from '~local/services/user.service'
 
 /**
  * Data source for the Users view. This class should
@@ -15,12 +12,14 @@ import { USERS } from '~local/../assets/data/users'
  * (including sorting, pagination, and filtering).
  */
 export class UsersDataSource extends DataSource<User> {
-  data: User[] = USERS;
+  data: User[] = [];
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
+  private usersSubscription: Subscription;
 
-  constructor() {
+  constructor(private userService: UserService) {
     super();
+    this.usersSubscription = this.userService.Users.subscribe(users => this.data = users);
   }
 
   /**
@@ -32,7 +31,7 @@ export class UsersDataSource extends DataSource<User> {
     if (this.paginator && this.sort) {
       // Combine everything that affects the rendered data into one update
       // stream for the data-table to consume.
-      return merge(observableOf(this.data), this.paginator.page, this.sort.sortChange)
+      return merge(this.userService.Users, this.paginator.page, this.sort.sortChange)
         .pipe(map(() => {
           return this.getPagedData(this.getSortedData([...this.data]));
         }));
@@ -45,7 +44,9 @@ export class UsersDataSource extends DataSource<User> {
    *  Called when the table is being destroyed. Use this function, to clean up
    * any open connections or free any held resources that were set up during connect.
    */
-  disconnect(): void { }
+  disconnect(): void {
+    this.usersSubscription.unsubscribe();
+  }
 
   /**
    * Paginate the data (client-side). If you're using server-side pagination,

@@ -1,11 +1,12 @@
 import { GROUPS as DAUGAVPILS_GROUPS, MEASUREMENTS as DAUGAVPILS_MEASUREMENTS } from '~local/../assets/data/devices';
 import { GROUPS as SOLNA_GROUPS, MEASUREMENTS as SOLNA_MEASUREMENTS } from '~local/../assets/data/solna/devices';
-import { DEVICE_METRICS } from '~local/../assets/data/device-metrics'
+import { DEVICE_METRICS as DAUGAVPILS_METRICS } from '~local/../assets/data/daugavpils/device-metrics'
+import { DEVICE_METRICS as SOLNA_METRICS } from '~local/../assets/data/solna/device-metrics'
 
 import { Injectable } from '@angular/core';
 import { Device, DeviceGroup, DeviceMetrics, MeasurementGroup, City } from '../types';
 import { MessageService } from './message.service';
-import { Observable, of, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { map, switchMap, shareReplay } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
@@ -56,7 +57,15 @@ export class DeviceService {
     shareReplay(1)
   )
 
-  private _metrics = of(DEVICE_METRICS)
+  private cityMetricsMap: { [key: string]: DeviceMetrics } = {
+    'daugavpils': DAUGAVPILS_METRICS,
+    'solna': SOLNA_METRICS,
+  };
+
+  private _metrics = this.activeCity$.pipe(
+    map(city => this.cityMetricsMap[city.id] || DAUGAVPILS_METRICS),
+    shareReplay(1)
+  )
 
   private _measurements = this.activeCity$.pipe(
     map(city => this.cityMeasurementsMap[city.id] || DAUGAVPILS_MEASUREMENTS),

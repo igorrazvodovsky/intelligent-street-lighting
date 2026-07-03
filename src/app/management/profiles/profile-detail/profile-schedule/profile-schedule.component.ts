@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Schedule, TimeGroup } from '~local/types'
-import { TIME_OPTIONS } from '~local/../assets/data/profiles'
+import { TIME_OPTIONS } from '~local/../assets/data/profile-time-options'
 
 @Component({
   selector: 'profile-schedule',

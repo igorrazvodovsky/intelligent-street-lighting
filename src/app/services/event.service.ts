@@ -1,19 +1,32 @@
 import { Injectable } from '@angular/core';
-import { DEVICE_EVENTS, USER_EVENTS } from '~local/../assets/data/events';
-import { Observable, of, zip } from 'rxjs';
+import { DEVICE_EVENTS as DAUGAVPILS_DEVICE_EVENTS, USER_EVENTS as DAUGAVPILS_USER_EVENTS } from '~local/../assets/data/daugavpils/events';
+import { DEVICE_EVENTS as SOLNA_DEVICE_EVENTS, USER_EVENTS as SOLNA_USER_EVENTS } from '~local/../assets/data/solna/events';
+import { Observable, zip } from 'rxjs';
 import { map } from 'rxjs/operators'
 import { UserEvent, DeviceEvent } from '~local/types'
+import { DeviceService } from './device.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
-  constructor() { }
+
+  private cityDeviceEventsMap: { [key: string]: DeviceEvent[] } = {
+    'daugavpils': DAUGAVPILS_DEVICE_EVENTS,
+    'solna': SOLNA_DEVICE_EVENTS,
+  };
+
+  private cityUserEventsMap: { [key: string]: UserEvent[] } = {
+    'daugavpils': DAUGAVPILS_USER_EVENTS,
+    'solna': SOLNA_USER_EVENTS,
+  };
+
+  constructor(private deviceService: DeviceService) { }
 
   getEvents(): Observable<any[]> {
-    const events = zip(
-      of(DEVICE_EVENTS),
-      of(USER_EVENTS)
+    return zip(
+      this.getDeviceEvents(),
+      this.getUserEvents()
     ).pipe(
       map(x => x.flat()),
       map((data) => {
@@ -23,12 +36,12 @@ export class EventService {
         return data;
       })
     )
-    return events;
   }
 
   getUserEvents(): Observable<UserEvent[]> {
-    const events = of(USER_EVENTS);
-    return events;
+    return this.deviceService.activeCity$.pipe(
+      map(city => this.cityUserEventsMap[city.id] ?? SOLNA_USER_EVENTS)
+    );
   }
 
   getUserEventsForDevice(id: number) {
@@ -38,8 +51,9 @@ export class EventService {
   }
 
   getDeviceEvents(): Observable<DeviceEvent[]> {
-    const events = of(DEVICE_EVENTS);
-    return events;
+    return this.deviceService.activeCity$.pipe(
+      map(city => this.cityDeviceEventsMap[city.id] ?? SOLNA_DEVICE_EVENTS)
+    );
   }
 
   getDeviceEventsForDevice(id: number) {
