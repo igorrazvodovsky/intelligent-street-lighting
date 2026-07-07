@@ -9,6 +9,8 @@ import * as d3Pointer from 'd3-selection';
 import * as d3ScaleChromatic from 'd3-scale-chromatic';
 import { DeviceService } from '~local/services/device.service'
 import { DeviceMetrics } from '~local/types';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'device-metrics-chart',
@@ -49,10 +51,12 @@ export class DeviceMetricsChartComponent implements OnInit {
   tooltipBackground: any
   tooltipText: any
 
-  constructor(private service: DeviceService, public chartElem: ElementRef) { }
+  constructor(private service: DeviceService, public chartElem: ElementRef, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.service.Metrics.subscribe(metrics => {
+    this.route.paramMap.pipe(
+      switchMap((params: ParamMap) => this.service.getMetrics(params.get('deviceId')!))
+    ).subscribe(metrics => {
       this.data = metrics
       this.createSvg();
       this.initializeChart();

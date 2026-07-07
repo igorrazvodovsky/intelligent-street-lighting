@@ -10,6 +10,16 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { map, switchMap, shareReplay } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
+function mulberry32(seed: number) {
+  let a = seed;
+  return () => {
+    a |= 0; a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -82,6 +92,28 @@ export class DeviceService {
 
   public get Metrics(): Observable<DeviceMetrics> {
     return this._metrics
+  }
+
+  getMetrics(deviceId: number | string): Observable<DeviceMetrics> {
+    return this._metrics.pipe(
+      map(metrics => this.scaleMetricsForDevice(metrics, +deviceId))
+    );
+  }
+
+  // Deterministic per-device jitter so each device's chart looks distinct
+  // but stays stable across reloads, without needing a metrics fixture per device.
+  private scaleMetricsForDevice(metrics: DeviceMetrics, deviceId: number): DeviceMetrics {
+    const random = mulberry32(deviceId);
+    const factor = 0.7 + random() * 0.6; // 0.7x-1.3x
+    const scaled: DeviceMetrics = {};
+    for (const key of Object.keys(metrics)) {
+      scaled[key] = metrics[key].map(entry => {
+        const seen = Math.round(entry.seen * factor);
+        const consumed = Math.min(seen, Math.round(entry.consumed * factor));
+        return { ...entry, seen, consumed, conversion: seen > 0 ? +(consumed / seen * 100).toFixed(2) : 0 };
+      });
+    }
+    return scaled;
   }
 
   public get Measurements(): Observable<MeasurementGroup[]> {
