@@ -1,5 +1,5 @@
-import { GROUPS as DAUGAVPILS_GROUPS, MEASUREMENTS as DAUGAVPILS_MEASUREMENTS } from '~local/../assets/data/devices';
-import { GROUPS as SOLNA_GROUPS, MEASUREMENTS as SOLNA_MEASUREMENTS } from '~local/../assets/data/solna/devices';
+import { GROUPS as DAUGAVPILS_GROUPS, MEASUREMENTS as DAUGAVPILS_MEASUREMENTS } from '~local/../assets/data/daugavpils/groups';
+import { GROUPS as SOLNA_GROUPS, MEASUREMENTS as SOLNA_MEASUREMENTS } from '~local/../assets/data/solna/groups';
 import { DEVICE_METRICS as DAUGAVPILS_METRICS } from '~local/../assets/data/daugavpils/device-metrics'
 import { DEVICE_METRICS as SOLNA_METRICS } from '~local/../assets/data/solna/device-metrics'
 

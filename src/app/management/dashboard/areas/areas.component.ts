@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AREA as DAUGAVPILS_AREA } from '~local/../assets/data/areas';
-import { AREA as SOLNA_AREA } from '~local/../assets/data/solna/areas';
+import { AREA as DAUGAVPILS_AREA } from '~local/../assets/data/daugavpils/area-energy';
+import { AREA as SOLNA_AREA } from '~local/../assets/data/solna/area-energy';
 import { AREA_NAMES as DAUGAVPILS_AREA_NAMES } from '~local/../assets/data/daugavpils/area-names';
 import { AREA_NAMES as SOLNA_AREA_NAMES } from '~local/../assets/data/solna/area-names';
 import { DeviceService } from '~local/services/device.service'

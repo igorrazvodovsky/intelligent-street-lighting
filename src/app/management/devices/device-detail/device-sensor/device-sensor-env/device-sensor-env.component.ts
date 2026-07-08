@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Measurement } from '~local/types';
-import { AREA } from '~local/../assets/data/areas';
+import { AREA } from '~local/../assets/data/daugavpils/area-energy';
 
 @Component({
   selector: 'device-sensor-env',
