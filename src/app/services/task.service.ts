@@ -5,7 +5,8 @@ import { TASKS as SOLNA_TASKS } from '~local/../assets/data/solna/tasks';
 import { DeviceService } from './device.service';
 import { MessageService } from './message.service';
 import { Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+import { cityScoped } from './city-scoped';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,8 @@ export class TaskService {
     'solna': SOLNA_TASKS,
   };
 
+  private _tasks = cityScoped(this.deviceService.activeCity$, this.cityTasksMap, SOLNA_TASKS)
+
   constructor(
     private deviceService: DeviceService,
     private messageService: MessageService,
@@ -24,9 +27,7 @@ export class TaskService {
 
   getTasks(): Observable<Task[]> {
     this.messageService.add('TaskService: fetched tasks');
-    return this.deviceService.activeCity$.pipe(
-      map(city => this.cityTasksMap[city.id] ?? SOLNA_TASKS)
-    );
+    return this._tasks;
   }
 
   getTask(id: number | string): Observable<Task> {

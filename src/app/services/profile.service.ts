@@ -6,6 +6,7 @@ import { DeviceService } from './device.service';
 import { MessageService } from './message.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { cityScoped } from './city-scoped';
 import * as d3Scale from 'd3-scale';
 import * as d3ScaleChromatic from 'd3-scale-chromatic';
 
@@ -19,9 +20,7 @@ export class ProfileService {
     'solna': SOLNA_PROFILES,
   };
 
-  private _profiles = this.deviceService.activeCity$.pipe(
-    map(city => this.cityProfilesMap[city.id] ?? SOLNA_PROFILES)
-  )
+  private _profiles = cityScoped(this.deviceService.activeCity$, this.cityProfilesMap, SOLNA_PROFILES)
 
   public get Profiles(): Observable<Profile[]> {
     return this._profiles

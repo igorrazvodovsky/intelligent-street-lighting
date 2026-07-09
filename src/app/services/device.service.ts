@@ -9,6 +9,7 @@ import { MessageService } from './message.service';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { map, switchMap, shareReplay } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { cityScoped } from './city-scoped';
 
 function mulberry32(seed: number) {
   let a = seed;
@@ -62,25 +63,16 @@ export class DeviceService {
     shareReplay(1)
   )
 
-  private _groups = this.activeCity$.pipe(
-    map(city => this.cityGroupsMap[city.id] || DAUGAVPILS_GROUPS),
-    shareReplay(1)
-  )
+  private _groups = cityScoped(this.activeCity$, this.cityGroupsMap, DAUGAVPILS_GROUPS)
 
   private cityMetricsMap: { [key: string]: DeviceMetrics } = {
     'daugavpils': DAUGAVPILS_METRICS,
     'solna': SOLNA_METRICS,
   };
 
-  private _metrics = this.activeCity$.pipe(
-    map(city => this.cityMetricsMap[city.id] || DAUGAVPILS_METRICS),
-    shareReplay(1)
-  )
+  private _metrics = cityScoped(this.activeCity$, this.cityMetricsMap, DAUGAVPILS_METRICS)
 
-  private _measurements = this.activeCity$.pipe(
-    map(city => this.cityMeasurementsMap[city.id] || DAUGAVPILS_MEASUREMENTS),
-    shareReplay(1)
-  )
+  private _measurements = cityScoped(this.activeCity$, this.cityMeasurementsMap, DAUGAVPILS_MEASUREMENTS)
 
   public get Devices(): Observable<Device[]> {
     return this._devices

@@ -6,6 +6,7 @@ import { DeviceService } from './device.service';
 import { MessageService } from './message.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { cityScoped } from './city-scoped';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +18,7 @@ export class UserService {
     'solna': SOLNA_USERS,
   };
 
-  private _users = this.deviceService.activeCity$.pipe(
-    map(city => this.cityUsersMap[city.id] ?? SOLNA_USERS)
-  )
+  private _users = cityScoped(this.deviceService.activeCity$, this.cityUsersMap, SOLNA_USERS)
 
   public get Users(): Observable<User[]> {
     return this._users

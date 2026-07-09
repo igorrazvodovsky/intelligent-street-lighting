@@ -5,6 +5,7 @@ import { Observable, zip } from 'rxjs';
 import { map } from 'rxjs/operators'
 import { UserEvent, DeviceEvent } from '~local/types'
 import { DeviceService } from './device.service';
+import { cityScoped } from './city-scoped';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,9 @@ export class EventService {
     'daugavpils': DAUGAVPILS_USER_EVENTS,
     'solna': SOLNA_USER_EVENTS,
   };
+
+  private _deviceEvents = cityScoped(this.deviceService.activeCity$, this.cityDeviceEventsMap, SOLNA_DEVICE_EVENTS)
+  private _userEvents = cityScoped(this.deviceService.activeCity$, this.cityUserEventsMap, SOLNA_USER_EVENTS)
 
   constructor(private deviceService: DeviceService) { }
 
@@ -39,9 +43,7 @@ export class EventService {
   }
 
   getUserEvents(): Observable<UserEvent[]> {
-    return this.deviceService.activeCity$.pipe(
-      map(city => this.cityUserEventsMap[city.id] ?? SOLNA_USER_EVENTS)
-    );
+    return this._userEvents;
   }
 
   getUserEventsForDevice(id: number) {
@@ -51,9 +53,7 @@ export class EventService {
   }
 
   getDeviceEvents(): Observable<DeviceEvent[]> {
-    return this.deviceService.activeCity$.pipe(
-      map(city => this.cityDeviceEventsMap[city.id] ?? SOLNA_DEVICE_EVENTS)
-    );
+    return this._deviceEvents;
   }
 
   getDeviceEventsForDevice(id: number) {
