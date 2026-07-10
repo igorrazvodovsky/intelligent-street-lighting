@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnInit, ElementRef } from '@angular/core';
+import { Component, HostBinding, OnInit, OnDestroy, ElementRef } from '@angular/core';
 import * as d3 from 'd3-selection';
 import * as d3Scale from 'd3-scale';
 import * as d3Array from 'd3-array';
@@ -10,14 +10,16 @@ import * as d3ScaleChromatic from 'd3-scale-chromatic';
 import { DeviceService } from '~local/services/device.service'
 import { DeviceMetrics } from '~local/types';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { switchMap, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'device-metrics-chart',
   templateUrl: './device-metrics-chart.component.html',
   styleUrls: ['./device-metrics-chart.component.scss']
 })
-export class DeviceMetricsChartComponent implements OnInit {
+export class DeviceMetricsChartComponent implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
   private svg: any;
   private chart: any;
   private chartLines: any
@@ -55,13 +57,19 @@ export class DeviceMetricsChartComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.pipe(
-      switchMap((params: ParamMap) => this.service.getMetrics(params.get('deviceId')!))
+      switchMap((params: ParamMap) => this.service.getMetrics(params.get('deviceId')!)),
+      takeUntil(this.destroy$)
     ).subscribe(metrics => {
       this.data = metrics
       this.createSvg();
       this.initializeChart();
       this.drawPlot();
     });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   parseTime: any = d3TimeFormat.timeParse("%H:%M");

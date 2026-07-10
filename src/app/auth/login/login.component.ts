@@ -1,16 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { LoadingService } from '~local/services/loading.service';
 import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnDestroy {
   loading$ = this.loader.loading$;
+  private destroy$ = new Subject<void>();
 
   constructor(
     public authService: AuthService,
@@ -20,10 +23,15 @@ export class LoginComponent {
   ) {
   }
 
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
   login() {
     this.loader.show()
 
-    this.authService.login().subscribe(() => {
+    this.authService.login().pipe(takeUntil(this.destroy$)).subscribe(() => {
       if (this.authService.isLoggedIn) {
         // Usually you would use the redirect URL from the auth service.
         const redirectUrl = '/management';

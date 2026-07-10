@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Profile, DeviceGroup } from '~local/types'
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { switchMap, takeUntil } from 'rxjs/operators';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ProfileService } from '~local/services/profile.service'
 import { DeviceService } from '~local/services/device.service'
@@ -11,12 +11,13 @@ import { DeviceService } from '~local/services/device.service'
   templateUrl: './profile-detail.component.html',
   styleUrls: ['./profile-detail.component.scss']
 })
-export class ProfileDetailComponent implements OnInit {
+export class ProfileDetailComponent implements OnInit, OnDestroy {
   profile$!: Observable<Profile>;
   profile: Profile;
   groups$!: Observable<DeviceGroup[]>;
   active: 'always' | 'date' | 'range' = 'always';
   previewMidnight: boolean = true
+  private destroy$ = new Subject<void>();
 
   // I'm assuming here that brightness should rise and fall with an hour of a change
   // Here I'm mocking it with additional points but it depends on the implementation
@@ -114,7 +115,12 @@ export class ProfileDetailComponent implements OnInit {
         return this.deviceService.getGroupsByProfile(params.get('id')!);
       })
     );
-    this.profile$.subscribe(profile => this.profile = profile)
+    this.profile$.pipe(takeUntil(this.destroy$)).subscribe(profile => this.profile = profile)
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }
 

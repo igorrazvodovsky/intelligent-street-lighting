@@ -1,7 +1,6 @@
-// TODO: Unsubscribe from stuff onDestroy
-
-import { Component, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { GroupDialogComponent } from './group-dialog/group-dialog.component'
 import { AppStateService } from '~local/services/app-state.service'
@@ -17,11 +16,12 @@ type MapPosition = {
   templateUrl: './devices.component.html',
   styleUrls: ['./devices.component.scss']
 })
-export class DevicesComponent implements OnInit {
+export class DevicesComponent implements OnInit, OnDestroy {
   mapPosition: MapPosition
   opened: boolean
   maximized: boolean = false
   isHandset: boolean
+  private destroy$ = new Subject<void>();
 
   constructor(
     public dialog: MatDialog,
@@ -36,10 +36,15 @@ export class DevicesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.appStateService.isHandset.subscribe(value => {
+    this.appStateService.isHandset.pipe(takeUntil(this.destroy$)).subscribe(value => {
       this.isHandset = value;
       this.opened = !value;
     });
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   public toggleMaximize() {

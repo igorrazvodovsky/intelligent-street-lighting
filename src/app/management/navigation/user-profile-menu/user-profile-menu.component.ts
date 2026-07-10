@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '~local/auth/auth.service';
 import { Router } from '@angular/router';
 import { AppStateService } from '~local/services/app-state.service'
 import { Output, EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-user-profile-menu',
   templateUrl: './user-profile-menu.component.html'
 })
-export class UserProfileMenuComponent implements OnInit {
+export class UserProfileMenuComponent implements OnInit, OnDestroy {
   isHandset: boolean
   @Output() navClose = new EventEmitter<void>();
+  private destroy$ = new Subject<void>();
 
   constructor(
     public router: Router,
@@ -19,9 +22,14 @@ export class UserProfileMenuComponent implements OnInit {
   ) { };
 
   ngOnInit(): void {
-    this.appStateService.isHandset.subscribe(value =>
+    this.appStateService.isHandset.pipe(takeUntil(this.destroy$)).subscribe(value =>
       this.isHandset = value
     );
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   closeNav() {

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { map, takeUntil } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { SelectivePreloadingStrategyService } from '~local/selective-preloading-strategy.service';
 
@@ -10,10 +10,11 @@ import { SelectivePreloadingStrategyService } from '~local/selective-preloading-
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
   sessionId: Observable<string>;
   token: Observable<string>;
   isHandset: boolean;
+  private destroy$ = new Subject<void>();
 
   constructor(
     private route: ActivatedRoute,
@@ -22,9 +23,15 @@ export class DashboardComponent implements OnInit {
   ) {
   }
 
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
   ngOnInit() {
     this.breakpointObserver
       .observe([Breakpoints.Small, Breakpoints.HandsetPortrait])
+      .pipe(takeUntil(this.destroy$))
       .subscribe((state: BreakpointState) => {
         if (state.matches) this.isHandset = true
         else this.isHandset = false
