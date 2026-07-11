@@ -17,7 +17,7 @@ export type Category = "Area" | "Street" | "Function" | "Custom"
 
 export interface DeviceMetrics {
   [key: string]: DeviceMetricValue[]
-}[]
+}
 
 export interface User {
   name: string
@@ -105,7 +105,7 @@ export interface Device {
   model: string
   groupId: number
   profileId?: number
-  type: 'lamp' | 'sc' | 'sensor'
+  type: DeviceType
   // TODO: Narrow the type to 'level'='critical'
   events?: DeviceEvent[]
   tasks?: Task[]
