@@ -4,12 +4,13 @@ import { DEVICE_METRICS as DAUGAVPILS_METRICS } from '~local/../assets/data/daug
 import { DEVICE_METRICS as SOLNA_METRICS } from '~local/../assets/data/solna/device-metrics'
 
 import { Injectable } from '@angular/core';
-import { Device, DeviceGroup, DeviceMetrics, MeasurementGroup, City } from '../types';
+import { Device, DeviceGroup, DeviceMetrics, MeasurementGroup } from '../types';
 import { MessageService } from './message.service';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map, switchMap, shareReplay } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { cityScoped } from './city-scoped';
+import { CityService } from './city.service';
 
 function mulberry32(seed: number) {
   let a = seed;
@@ -26,24 +27,6 @@ function mulberry32(seed: number) {
 })
 
 export class DeviceService {
-  cities: City[] = [
-    { id: 'daugavpils', name: 'Daugavpils', country: 'Latvia', centerLat: 55.875, centerLng: 26.53 },
-    { id: 'solna', name: 'Solna', country: 'Sweden', centerLat: 59.363, centerLng: 18.00 },
-  ];
-
-  activeCity$ = new BehaviorSubject<City>(this.cities[1]);
-
-  get city(): City {
-    return this.activeCity$.value;
-  }
-
-  setCity(cityId: string) {
-    const city = this.cities.find(c => c.id === cityId);
-    if (city) {
-      this.activeCity$.next(city);
-    }
-  }
-
   private cityGroupsMap: { [key: string]: DeviceGroup[] } = {
     'daugavpils': DAUGAVPILS_GROUPS,
     'solna': SOLNA_GROUPS,
@@ -54,7 +37,7 @@ export class DeviceService {
     'solna': SOLNA_MEASUREMENTS,
   };
 
-  private _devices = this.activeCity$.pipe(
+  private _devices = this.cityService.activeCity$.pipe(
     switchMap(city =>
       this.http.get(`/assets/data/${city.id}/devices.geojson`).pipe(
         map((data: any) => data.features.map(e => e.properties))
@@ -63,16 +46,16 @@ export class DeviceService {
     shareReplay(1)
   )
 
-  private _groups = cityScoped(this.activeCity$, this.cityGroupsMap, DAUGAVPILS_GROUPS)
+  private _groups = cityScoped(this.cityService.activeCity$, this.cityGroupsMap, DAUGAVPILS_GROUPS)
 
   private cityMetricsMap: { [key: string]: DeviceMetrics } = {
     'daugavpils': DAUGAVPILS_METRICS,
     'solna': SOLNA_METRICS,
   };
 
-  private _metrics = cityScoped(this.activeCity$, this.cityMetricsMap, DAUGAVPILS_METRICS)
+  private _metrics = cityScoped(this.cityService.activeCity$, this.cityMetricsMap, DAUGAVPILS_METRICS)
 
-  private _measurements = cityScoped(this.activeCity$, this.cityMeasurementsMap, DAUGAVPILS_MEASUREMENTS)
+  private _measurements = cityScoped(this.cityService.activeCity$, this.cityMeasurementsMap, DAUGAVPILS_MEASUREMENTS)
 
   public get Devices(): Observable<Device[]> {
     return this._devices
@@ -112,7 +95,7 @@ export class DeviceService {
     return this._measurements
   }
 
-  constructor(private messageService: MessageService, private http: HttpClient,) { }
+  constructor(private messageService: MessageService, private http: HttpClient, private cityService: CityService) { }
 
   getGroup(id: number | string) {
     return this._groups.pipe(

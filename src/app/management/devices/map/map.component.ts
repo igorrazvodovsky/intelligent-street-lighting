@@ -8,7 +8,7 @@ import 'leaflet.markercluster';
 import { MarkerService } from '~local/services/marker.service';
 import { ProfileService } from '~local/services/profile.service'
 import { ShapeService } from '~local/services/shape.service';
-import { DeviceService } from '~local/services/device.service';
+import { CityService } from '~local/services/city.service';
 import { Router } from '@angular/router';
 import * as d3Scale from 'd3-scale';
 import * as d3ScaleChromatic from 'd3-scale-chromatic';
@@ -63,7 +63,7 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
   showNames: boolean = true
 
   private initMap(): void {
-    const city = this.deviceService.city;
+    const city = this.cityService.city;
     // Leaflet fires a flood of mousemove/drag/zoom events. Creating and running
     // the map outside Angular's zone keeps those events from triggering app-wide
     // change detection on every frame. Handlers that need Angular (e.g. routing)
@@ -87,7 +87,7 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
     private markerService: MarkerService,
     private profileService: ProfileService,
     private shapeService: ShapeService,
-    private deviceService: DeviceService,
+    private cityService: CityService,
     private ngZone: NgZone,
     public router: Router
   ) { }
@@ -205,7 +205,7 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.deviceService.activeCity$.pipe(takeUntil(this.destroy$)).subscribe(city => {
+    this.cityService.activeCity$.pipe(takeUntil(this.destroy$)).subscribe(city => {
       if (this.map) {
         this.map.setView([city.centerLat, city.centerLng], 13);
       }

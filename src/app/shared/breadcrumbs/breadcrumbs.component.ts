@@ -2,6 +2,7 @@
 
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { DeviceService } from '~local/services/device.service'
+import { CityService } from '~local/services/city.service'
 import { Observable, BehaviorSubject, Subject } from 'rxjs';
 import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
 import { Device, Category, City } from '~local/types'
@@ -41,6 +42,7 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
 
   constructor(
     private service: DeviceService,
+    private cityService: CityService,
     public router: Router,
     private activatedRoute: ActivatedRoute
   ) { }
@@ -65,9 +67,9 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.cities = this.service.cities
-    this.activeCityId = this.service.city.id
-    this.service.activeCity$.pipe(takeUntil(this.destroy$)).subscribe(city => {
+    this.cities = this.cityService.cities
+    this.activeCityId = this.cityService.city.id
+    this.cityService.activeCity$.pipe(takeUntil(this.destroy$)).subscribe(city => {
       this.city = city.name
       this.activeCityId = city.id
     })
@@ -133,6 +135,6 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
   }
 
   onCityChange(cityId: string) {
-    this.service.setCity(cityId)
+    this.cityService.setCity(cityId)
   }
 }

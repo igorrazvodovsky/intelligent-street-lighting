@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DeviceService } from '~local/services/device.service'
+import { CityService } from '~local/services/city.service'
 
 @Component({
   selector: 'group-dialog',
@@ -13,11 +13,11 @@ export class GroupDialogComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { task: any },
-    private deviceService: DeviceService
+    private cityService: CityService
   ) { }
 
   ngOnInit(): void {
-    this.cityName = this.deviceService.city.name
+    this.cityName = this.cityService.city.name
   }
 
 }

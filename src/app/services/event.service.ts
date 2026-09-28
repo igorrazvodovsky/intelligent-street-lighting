@@ -4,7 +4,7 @@ import { DEVICE_EVENTS as SOLNA_DEVICE_EVENTS, USER_EVENTS as SOLNA_USER_EVENTS 
 import { Observable, zip } from 'rxjs';
 import { map } from 'rxjs/operators'
 import { UserEvent, DeviceEvent } from '~local/types'
-import { DeviceService } from './device.service';
+import { CityService } from './city.service';
 import { cityScoped } from './city-scoped';
 
 @Injectable({
@@ -22,10 +22,10 @@ export class EventService {
     'solna': SOLNA_USER_EVENTS,
   };
 
-  private _deviceEvents = cityScoped(this.deviceService.activeCity$, this.cityDeviceEventsMap, SOLNA_DEVICE_EVENTS)
-  private _userEvents = cityScoped(this.deviceService.activeCity$, this.cityUserEventsMap, SOLNA_USER_EVENTS)
+  private _deviceEvents = cityScoped(this.cityService.activeCity$, this.cityDeviceEventsMap, SOLNA_DEVICE_EVENTS)
+  private _userEvents = cityScoped(this.cityService.activeCity$, this.cityUserEventsMap, SOLNA_USER_EVENTS)
 
-  constructor(private deviceService: DeviceService) { }
+  constructor(private cityService: CityService) { }
 
   getEvents(): Observable<any[]> {
     return zip(

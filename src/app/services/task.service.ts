@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Task } from '../types';
 import { TASKS as DAUGAVPILS_TASKS } from '~local/../assets/data/daugavpils/tasks';
 import { TASKS as SOLNA_TASKS } from '~local/../assets/data/solna/tasks';
-import { DeviceService } from './device.service';
+import { CityService } from './city.service';
 import { MessageService } from './message.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -18,10 +18,10 @@ export class TaskService {
     'solna': SOLNA_TASKS,
   };
 
-  private _tasks = cityScoped(this.deviceService.activeCity$, this.cityTasksMap, SOLNA_TASKS)
+  private _tasks = cityScoped(this.cityService.activeCity$, this.cityTasksMap, SOLNA_TASKS)
 
   constructor(
-    private deviceService: DeviceService,
+    private cityService: CityService,
     private messageService: MessageService,
   ) { }
 

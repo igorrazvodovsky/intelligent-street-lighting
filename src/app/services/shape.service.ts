@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { DeviceService } from './device.service';
+import { CityService } from './city.service';
 import { switchMap } from 'rxjs/operators';
 
 @Injectable({
@@ -9,11 +9,11 @@ import { switchMap } from 'rxjs/operators';
 export class ShapeService {
   constructor(
     private http: HttpClient,
-    private deviceService: DeviceService,
+    private cityService: CityService,
   ) { }
 
   getStateShapes() {
-    return this.deviceService.activeCity$.pipe(
+    return this.cityService.activeCity$.pipe(
       switchMap(city =>
         this.http.get(`/assets/data/${city.id}/areas.geojson`)
       )

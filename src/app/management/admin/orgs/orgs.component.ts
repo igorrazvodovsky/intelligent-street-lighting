@@ -1,16 +1,15 @@
 // TODO: Remove?
 
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { CityService } from '~local/services/city.service';
 
 @Component({
   selector: 'app-orgs',
   templateUrl: './orgs.component.html'
 })
-export class OrgsComponent implements OnInit {
+export class OrgsComponent {
+  cities = this.cityService.cities
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  constructor(private cityService: CityService) { }
 
 }

@@ -3,7 +3,7 @@ import { AREA as DAUGAVPILS_AREA } from '~local/../assets/data/daugavpils/area-e
 import { AREA as SOLNA_AREA } from '~local/../assets/data/solna/area-energy';
 import { AREA_NAMES as DAUGAVPILS_AREA_NAMES } from '~local/../assets/data/daugavpils/area-names';
 import { AREA_NAMES as SOLNA_AREA_NAMES } from '~local/../assets/data/solna/area-names';
-import { DeviceService } from '~local/services/device.service'
+import { CityService } from '~local/services/city.service'
 import { Subscription } from 'rxjs';
 
 const AREAS_MAP: { [key: string]: any[][] } = {
@@ -27,10 +27,10 @@ export class AreasComponent implements OnInit, OnDestroy {
   unassignedLamps = 14;
   private sub: Subscription
 
-  constructor(private deviceService: DeviceService) { }
+  constructor(private cityService: CityService) { }
 
   ngOnInit(): void {
-    this.sub = this.deviceService.activeCity$.subscribe(city => {
+    this.sub = this.cityService.activeCity$.subscribe(city => {
       this.data = AREAS_MAP[city.id] || DAUGAVPILS_AREA;
       this.areas = AREA_NAMES_MAP[city.id] || AREA_NAMES_MAP['daugavpils'];
     });

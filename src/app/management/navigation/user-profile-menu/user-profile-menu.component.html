@@ -22,7 +22,7 @@
   <button (click)="logout()" mat-menu-item>Log out</button>
 </mat-menu>
 <mat-menu #languages="matMenu">
-  <button mat-menu-item>English</button>
-  <button mat-menu-item>Latvian</button>
-  <button mat-menu-item>Estonian</button>
+  <button *ngFor="let language of languages" mat-menu-item>
+    {{ language }}
+  </button>
 </mat-menu>

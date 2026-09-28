@@ -9,6 +9,7 @@ export interface City {
   id: string
   name: string
   country: string
+  language: string
   centerLat: number
   centerLng: number
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Profile } from '../types';
 import { PROFILES as DAUGAVPILS_PROFILES } from '~local/../assets/data/daugavpils/profiles';
 import { PROFILES as SOLNA_PROFILES } from '~local/../assets/data/solna/profiles';
-import { DeviceService } from './device.service';
+import { CityService } from './city.service';
 import { MessageService } from './message.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -20,13 +20,13 @@ export class ProfileService {
     'solna': SOLNA_PROFILES,
   };
 
-  private _profiles = cityScoped(this.deviceService.activeCity$, this.cityProfilesMap, SOLNA_PROFILES)
+  private _profiles = cityScoped(this.cityService.activeCity$, this.cityProfilesMap, SOLNA_PROFILES)
 
   public get Profiles(): Observable<Profile[]> {
     return this._profiles
   }
 
-  constructor(private deviceService: DeviceService, private messageService: MessageService) { }
+  constructor(private cityService: CityService, private messageService: MessageService) { }
 
   getProfile(id: number | string) {
     return this._profiles.pipe(
