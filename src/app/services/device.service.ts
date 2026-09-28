@@ -46,16 +46,16 @@ export class DeviceService {
     shareReplay(1)
   )
 
-  private _groups = cityScoped(this.cityService.activeCity$, this.cityGroupsMap, DAUGAVPILS_GROUPS)
+  private _groups = cityScoped(this.cityService.activeCity$, this.cityGroupsMap)
 
   private cityMetricsMap: { [key: string]: DeviceMetrics } = {
     'daugavpils': DAUGAVPILS_METRICS,
     'solna': SOLNA_METRICS,
   };
 
-  private _metrics = cityScoped(this.cityService.activeCity$, this.cityMetricsMap, DAUGAVPILS_METRICS)
+  private _metrics = cityScoped(this.cityService.activeCity$, this.cityMetricsMap)
 
-  private _measurements = cityScoped(this.cityService.activeCity$, this.cityMeasurementsMap, DAUGAVPILS_MEASUREMENTS)
+  private _measurements = cityScoped(this.cityService.activeCity$, this.cityMeasurementsMap)
 
   public get Devices(): Observable<Device[]> {
     return this._devices

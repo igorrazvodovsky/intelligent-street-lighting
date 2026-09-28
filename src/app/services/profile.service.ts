@@ -20,7 +20,7 @@ export class ProfileService {
     'solna': SOLNA_PROFILES,
   };
 
-  private _profiles = cityScoped(this.cityService.activeCity$, this.cityProfilesMap, SOLNA_PROFILES)
+  private _profiles = cityScoped(this.cityService.activeCity$, this.cityProfilesMap)
 
   public get Profiles(): Observable<Profile[]> {
     return this._profiles

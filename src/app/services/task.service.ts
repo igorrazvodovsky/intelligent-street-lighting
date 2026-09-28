@@ -18,7 +18,7 @@ export class TaskService {
     'solna': SOLNA_TASKS,
   };
 
-  private _tasks = cityScoped(this.cityService.activeCity$, this.cityTasksMap, SOLNA_TASKS)
+  private _tasks = cityScoped(this.cityService.activeCity$, this.cityTasksMap)
 
   constructor(
     private cityService: CityService,

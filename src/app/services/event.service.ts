@@ -22,8 +22,8 @@ export class EventService {
     'solna': SOLNA_USER_EVENTS,
   };
 
-  private _deviceEvents = cityScoped(this.cityService.activeCity$, this.cityDeviceEventsMap, SOLNA_DEVICE_EVENTS)
-  private _userEvents = cityScoped(this.cityService.activeCity$, this.cityUserEventsMap, SOLNA_USER_EVENTS)
+  private _deviceEvents = cityScoped(this.cityService.activeCity$, this.cityDeviceEventsMap)
+  private _userEvents = cityScoped(this.cityService.activeCity$, this.cityUserEventsMap)
 
   constructor(private cityService: CityService) { }
 

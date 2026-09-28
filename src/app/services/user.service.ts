@@ -18,7 +18,7 @@ export class UserService {
     'solna': SOLNA_USERS,
   };
 
-  private _users = cityScoped(this.cityService.activeCity$, this.cityUsersMap, SOLNA_USERS)
+  private _users = cityScoped(this.cityService.activeCity$, this.cityUsersMap)
 
   public get Users(): Observable<User[]> {
     return this._users

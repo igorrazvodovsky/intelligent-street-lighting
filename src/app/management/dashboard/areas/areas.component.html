@@ -21,8 +21,8 @@
     <button mat-menu-item>Custom</button>
   </mat-menu>
 </header>
-<div id="areas">
-  <mat-card *ngFor="let area of areas; let i = index">
+<div id="areas" *ngIf="data$ | async as data">
+  <mat-card *ngFor="let area of areas$ | async; let i = index">
     <mat-card-header>
       <mat-card-title
         ><span class="dot" [ngClass]="area.status" [matTooltip]="area.tooltip"></span>
@@ -33,7 +33,7 @@
     <!-- TODO: Add nominal energy level -->
     <area-chart class="card-chart" mat-card-image [data]="data[i]"></area-chart>
   </mat-card>
-  <mat-card>
+  <mat-card *ngIf="unassignedLamps$ | async as unassignedLamps">
     <mat-card-header>
       <mat-card-title>Unassigned</mat-card-title>
       <mat-card-subtitle>{{ unassignedLamps }} lamps</mat-card-subtitle>
