@@ -8,20 +8,20 @@ export const TASKS: Task[] = [
     priority: 'Low',
     deviceId: 12,
     eventId: 1,
-    assignee: 'Niall Mercado',
+    assignee: 'Andris Vītols',
     created: new Date('1/1/16'),
     updated: new Date('1/1/16'),
     comments: [
       {
         id: 1,
-        author: 'John',
+        author: 'Andris Vītols',
         comment: 'On my way.',
         created: new Date('1/1/16'),
       },
       {
         id: 2,
-        author: 'Mary',
-        comment: 'I am not doing this.',
+        author: 'Ilze Bērziņa',
+        comment: 'Cabinet is behind the depot gate, need a key from the depot first.',
         created: new Date('1/1/16'),
       }
     ]
@@ -46,7 +46,7 @@ export const TASKS: Task[] = [
     priority: 'Normal',
     deviceId: 14,
     eventId: 3,
-    assignee: 'Ava Wright',
+    assignee: 'Dmitrijs Ivanovs',
     created: new Date('1/1/16'),
     updated: new Date('1/1/16'),
     comments: []

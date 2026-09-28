@@ -9,13 +9,13 @@ export const TASKS: Task[] = [
     priority: 'High',
     deviceId: 207,
     eventId: 21,
-    assignee: 'Ava Wright',
+    assignee: 'Anna Lindqvist',
     created: new Date('6/20/26'),
     updated: new Date('6/25/26'),
     comments: [
       {
         id: 3,
-        author: 'Lori Bryson',
+        author: 'Karin Ekström',
         comment: 'Last seen 14:32 yesterday. No ping since.',
         created: new Date('6/24/26'),
       }
@@ -29,13 +29,13 @@ export const TASKS: Task[] = [
     priority: 'High',
     deviceId: 248,
     eventId: 22,
-    assignee: 'Noah Pierre',
+    assignee: 'Erik Johansson',
     created: new Date('6/23/26'),
     updated: new Date('6/25/26'),
     comments: [
       {
         id: 4,
-        author: 'Noah Pierre',
+        author: 'Erik Johansson',
         comment: 'Module ordered, ETA 2 days.',
         created: new Date('6/24/26'),
       }
@@ -62,7 +62,7 @@ export const TASKS: Task[] = [
     priority: 'Low',
     deviceId: 300,
     eventId: 24,
-    assignee: 'Kate Morrison',
+    assignee: 'Sara Holm',
     created: new Date('6/23/26'),
     updated: new Date('6/24/26'),
     comments: []
@@ -75,13 +75,13 @@ export const TASKS: Task[] = [
     priority: 'Normal',
     deviceId: 225,
     eventId: 25,
-    assignee: 'Dustin Mock',
+    assignee: 'Johan Nilsson',
     created: new Date('6/21/26'),
     updated: new Date('6/25/26'),
     comments: [
       {
         id: 5,
-        author: 'Dustin Mock',
+        author: 'Johan Nilsson',
         comment: 'Grid meter readings normal. Checking distribution panel.',
         created: new Date('6/23/26'),
       }
@@ -94,13 +94,13 @@ export const TASKS: Task[] = [
     status: 'Resolved',
     priority: 'Low',
     deviceId: 316,
-    assignee: 'Sophia Perez',
+    assignee: 'Oskar Lundgren',
     created: new Date('6/19/26'),
     updated: new Date('6/22/26'),
     comments: [
       {
         id: 6,
-        author: 'Sophia Perez',
+        author: 'Oskar Lundgren',
         comment: 'Re-angled to 90°, no more glare.',
         created: new Date('6/22/26'),
       }
@@ -125,13 +125,13 @@ export const TASKS: Task[] = [
     status: 'Rejected',
     priority: 'Normal',
     deviceId: 268,
-    assignee: 'Jahlil Kyle',
+    assignee: 'Emma Karlsson',
     created: new Date('6/18/26'),
     updated: new Date('6/20/26'),
     comments: [
       {
         id: 7,
-        author: 'Jahlil Kyle',
+        author: 'Emma Karlsson',
         comment: 'Lamp is offline due to construction work. Will re-activate when site clears.',
         created: new Date('6/20/26'),
       }

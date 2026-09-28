@@ -8,9 +8,9 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class UserProfileComponent {
   addressForm = this.fb.group({
-    email: 'john.doe@mail.com',
-    firstName: ['John', Validators.required],
-    lastName: ['Doe', Validators.required],
+    email: 'anna.lindqvist@mail.com',
+    firstName: ['Anna', Validators.required],
+    lastName: ['Lindqvist', Validators.required],
     phone: null,
     timezone: null,
     password: null,

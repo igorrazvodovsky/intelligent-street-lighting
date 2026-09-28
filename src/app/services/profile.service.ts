@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Profile } from '../types';
-import { PROFILES as DAUGAVPILS_PROFILES } from '~local/../assets/data/daugavpils/profiles';
-import { PROFILES as SOLNA_PROFILES } from '~local/../assets/data/solna/profiles';
-import { CityService } from './city.service';
+import { PROFILES } from '~local/../assets/data/profiles';
 import { MessageService } from './message.service';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { cityScoped } from './city-scoped';
 import * as d3Scale from 'd3-scale';
 import * as d3ScaleChromatic from 'd3-scale-chromatic';
 
@@ -15,18 +12,14 @@ import * as d3ScaleChromatic from 'd3-scale-chromatic';
 })
 export class ProfileService {
 
-  private cityProfilesMap: { [key: string]: Profile[] } = {
-    'daugavpils': DAUGAVPILS_PROFILES,
-    'solna': SOLNA_PROFILES,
-  };
-
-  private _profiles = cityScoped(this.cityService.activeCity$, this.cityProfilesMap)
+  // Profiles are a catalogue shared by every city, so they aren't city-scoped
+  private _profiles = of(PROFILES)
 
   public get Profiles(): Observable<Profile[]> {
     return this._profiles
   }
 
-  constructor(private cityService: CityService, private messageService: MessageService) { }
+  constructor(private messageService: MessageService) { }
 
   getProfile(id: number | string) {
     return this._profiles.pipe(
@@ -34,10 +27,11 @@ export class ProfileService {
     );
   }
 
-  // Built from the union of every city's profile ids, so the colour scale stays
-  // consistent even if one city's catalogue diverges from another's.
-  getProfileColour = d3Scale
+  private profileColourScale = d3Scale
     .scaleOrdinal(d3ScaleChromatic.schemeCategory10)
-    .domain([...new Set([...DAUGAVPILS_PROFILES, ...SOLNA_PROFILES].map((p: any) => p.id))])
+    .domain(PROFILES.map(p => String(p.id)))
+
+  // Callers pass ids as numbers or strings, so key the scale on strings
+  getProfileColour = (id: number | string): string => this.profileColourScale(String(id))
 
 }

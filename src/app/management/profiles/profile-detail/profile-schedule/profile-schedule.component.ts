@@ -29,15 +29,17 @@ export class ProfileScheduleComponent implements OnInit {
     this.schedule.time.week.forEach((weekDay, i) => {
       if (weekDay.enabled) {
         if (weekDay.start || weekDay.end) {
-          // Check if time is the same
-          const found = this.timeGroups.some(group => group.start == weekDay.start && group.end == weekDay.end);
-          if (!found) this.timeGroups.push({
+          // Check if time is the same. Compare timestamps, since equal times
+          // are usually separate Date instances.
+          const sameTime = (group: TimeGroup) =>
+            group.start?.getTime() === weekDay.start?.getTime() && group.end?.getTime() === weekDay.end?.getTime();
+          const groupIndex = this.timeGroups.findIndex(sameTime);
+          if (groupIndex === -1) this.timeGroups.push({
             days: [i],
             start: weekDay.start,
             end: weekDay.end
           }); else {
-            const groupIndex = this.timeGroups.findIndex((group => group.start == weekDay.start && group.end == weekDay.end));
-            this.timeGroups[groupIndex].days.push[i]
+            this.timeGroups[groupIndex].days.push(i)
           };
 
           if (weekDay.end !== this.schedule.time.end) { }

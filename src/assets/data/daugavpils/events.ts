@@ -76,8 +76,8 @@ export const USER_EVENTS: UserEvent[] = [
     userId: 17,
     action: 'update',
     property: 'location',
-    from: '49.241934, 12.447425',
-    to: '49.241934, 12.447425'
+    from: '55.906420, 26.522870',
+    to: '55.906548, 26.523120'
   },
   {
     id: 14,
@@ -88,7 +88,7 @@ export const USER_EVENTS: UserEvent[] = [
     action: 'update',
     property: 'profile',
     from: 'Default',
-    to: 'New'
+    to: 'Residential'
   },
   {
     id: 15,
@@ -98,8 +98,8 @@ export const USER_EVENTS: UserEvent[] = [
     userId: 9,
     action: 'update',
     property: 'location',
-    from: '49.241934, 12.447425',
-    to: '49.241934, 12.447425'
+    from: '55.906390, 26.523310',
+    to: '55.906506, 26.523539'
   },
   {
     id: 16,

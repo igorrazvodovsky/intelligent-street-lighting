@@ -1,5 +1,3 @@
-// TODO: Get user name
-
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { UserEvent } from '~local/types'
 import { EventService } from '~local/services/event.service';
@@ -15,6 +13,7 @@ import { takeUntil } from 'rxjs/operators';
 export class DeviceHistoryComponent implements OnInit, OnDestroy {
   @Input() id!: number;
   events: UserEvent[] = [];
+  userNames: { [id: number]: string } = {};
   private destroy$ = new Subject<void>();
 
   constructor(private eventService: EventService, private userService: UserService) { }
@@ -28,6 +27,9 @@ export class DeviceHistoryComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.userService.Users.pipe(takeUntil(this.destroy$)).subscribe(users => {
+      this.userNames = Object.fromEntries(users.map(user => [user.id, user.name]));
+    });
     this.getEvents();
   }
 
