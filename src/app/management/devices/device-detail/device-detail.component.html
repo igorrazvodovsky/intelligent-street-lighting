@@ -15,7 +15,7 @@
         <device-motion-sensor></device-motion-sensor>
       </mat-tab>
       <mat-tab *ngIf="device.type == 'sc'" label="Segment">
-        <sc-connected-devices></sc-connected-devices>
+        <sc-connected-devices [device]="device"></sc-connected-devices>
       </mat-tab>
       <mat-tab label="Metrics">
         <device-metrics></device-metrics>

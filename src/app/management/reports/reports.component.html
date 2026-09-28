@@ -27,26 +27,30 @@
 </app-page-actions>
 
 <header>
-  <section class="stats">
+  <section class="stats" *ngIf="stats$ | async as stats">
     <!-- TODO: Replace cards with simple stuff -->
     <mat-card>
       <mat-card-header>
         <mat-card-subtitle>Energy consumption</mat-card-subtitle>
-        <mat-card-title>56 761 kWh</mat-card-title>
+        <mat-card-title>{{ stats.energy | number }} kWh</mat-card-title>
       </mat-card-header>
     </mat-card>
     <mat-card>
       <mat-card-header>
         <mat-card-subtitle>Economy</mat-card-subtitle>
-        <mat-card-title>32%</mat-card-title>
-        <mat-card-subtitle class="text-success">▲ 4%</mat-card-subtitle>
+        <mat-card-title>{{ stats.economy }}%</mat-card-title>
+        <mat-card-subtitle
+          [class.text-success]="stats.economyChange >= 0"
+          matTooltip="August compared with July"
+          >{{ stats.economyChange >= 0 ? "▲" : "▼" }}
+          {{ stats.economyChangeSize }}%</mat-card-subtitle
+        >
       </mat-card-header>
     </mat-card>
     <mat-card>
       <mat-card-header>
         <mat-card-subtitle>Worked</mat-card-subtitle>
-        <!-- TODO: locale thousand separator -->
-        <mat-card-title>31 261 h</mat-card-title>
+        <mat-card-title>{{ stats.worked | number }} h</mat-card-title>
       </mat-card-header>
     </mat-card>
   </section>
@@ -111,7 +115,7 @@
     </thead>
   </table>
 
-  <ng-container *ngFor="let group of reports2">
+  <ng-container *ngFor="let group of reports$ | async">
     <article>
       <!-- TODO: Link to group -->
 

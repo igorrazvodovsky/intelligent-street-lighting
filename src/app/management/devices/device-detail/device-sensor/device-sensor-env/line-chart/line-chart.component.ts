@@ -50,9 +50,14 @@ export class LineChartComponent implements OnChanges {
       .append('svg')
       .attr('height', this.height);
 
+    // Pad relative to the values so small-valued series (e.g. 0.27 ppm) aren't
+    // drawn flat, and near-constant ones (e.g. 1007 hPa) don't magnify noise
+    const max = d3Array.max(this.data, d => d.value);
+    const min = d3Array.min(this.data, d => d.value);
+    const padding = Math.max((max - min) * 0.1, Math.abs(max) * 0.02) || 1;
     this.y = d3Scale
       .scaleLinear()
-      .domain([d3Array.max(this.data, d => d.value) + 1, d3Array.min(this.data, d => d.value) - 1])
+      .domain([max + padding, min - padding])
       .range([0, this.height - 2 * this.margin]);
 
     this.x = d3Scale.scaleTime().domain([new Date(null, null, 1, 0, 0), new Date(null, null, 2, 0, 0)])

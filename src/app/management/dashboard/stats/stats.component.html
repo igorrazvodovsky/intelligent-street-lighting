@@ -1,4 +1,4 @@
-<div class="stats">
+<div class="stats" *ngIf="stats$ | async as stats">
   <dl>
     <dt>Power consumption</dt>
     <dd>
@@ -13,18 +13,18 @@
   <!-- Click: redirects to filtered device list -->
   <dl>
     <dt>Inactive devices</dt>
-    <dd class="mat-title">71</dd>
+    <dd class="mat-title">{{ stats.inactiveDevices }}</dd>
   </dl>
   <!-- Click: filters the task list -->
   <!-- TODO: Find a way to disable hover for "empty" items -->
   <dl>
     <dt>New tasks</dt>
-    <dd class="mat-title">2</dd>
+    <dd class="mat-title">{{ stats.newTasks }}</dd>
     <!-- <dd class="mat-title text-disabled">&mdash;</dd> -->
   </dl>
   <!-- Click: filters the task list -->
   <dl>
     <dt>Resolved tasks</dt>
-    <dd class="mat-title">6</dd>
+    <dd class="mat-title">{{ stats.resolvedTasks }}</dd>
   </dl>
 </div>

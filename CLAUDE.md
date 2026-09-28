@@ -4,12 +4,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Angular 12 front-end **prototype** for an intelligent street-lighting control solution (city: Daugavpils). It is UI-focused: there is no real backend. Services return mock data, either imported from in-memory TypeScript fixtures or fetched as static GeoJSON assets. When something is missing, fill in with dummy data rather than wiring up an API.
+Angular 12 front-end **prototype** for an intelligent street-lighting control solution, with mock data for two cities: Solna (default) and Daugavpils. It is UI-focused: there is no real backend. Services return mock data, either imported from in-memory TypeScript fixtures or fetched as static GeoJSON assets. When something is missing, fill in with dummy data rather than wiring up an API.
 
 ## Commands
 
 ```bash
-npm start          # ng serve — dev server at http://localhost:4200/ (hash routing, so URLs look like /#/management)
+npm start          # ng serve (Node 17+ needs NODE_OPTIONS=--openssl-legacy-provider) — dev server at http://localhost:4200/ (hash routing, so URLs look like /#/management)
 npm run build      # ng build → dist/intelligent-street-lighting (add -- --prod for production)
 npm test           # ng test — Karma + Jasmine (Chrome), watch mode
 npm run lint       # ng lint — TSLint (deprecated toolchain, Angular 12 era)
@@ -27,6 +27,8 @@ Note: components scaffold with SCSS by default (`ng generate component <name>`).
 **Data layer.** Services in `src/app/services/` are the single source of truth and expose data as RxJS `Observable`s via getters (e.g. `DeviceService.Devices`, `UserService.Users`). Two patterns coexist:
 - In-memory fixtures imported from `src/assets/data/*.ts` and wrapped with `of(...)` (e.g. `USERS`, `GROUPS`, `DEVICE_METRICS`).
 - Static files fetched over `HttpClient` from `/assets/data/*.geojson` (devices, areas), then mapped (e.g. `data.features.map(e => e.properties)`).
+
+**Cities.** `CityService` owns the city list, the active city (`activeCity$`, remembered in `localStorage`) and `setCity`. City-specific fixtures live in `src/assets/data/<city>/`; services and components pick the active city's entry with `cityScoped(activeCity$, map)` from `services/city-scoped.ts`, which falls back to `DEFAULT_CITY_ID`. Fixtures that aren't tied to a place (`users.ts`, `profiles.ts`, `profile-time-options.ts`) sit directly in `src/assets/data/` and are wrapped with `of(...)`. Adding a city means adding its folder, an entry in `CITIES`, and a key in each lookup map.
 
 To change displayed data, edit the corresponding file under `src/assets/data/`. Domain interfaces (`Device`, `DeviceGroup`, `Task`, `User`, `DeviceMetrics`, etc.) live in `src/app/types.ts`.
 

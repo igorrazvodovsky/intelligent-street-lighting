@@ -205,3 +205,17 @@ export interface Profile {
   motionSensor: boolean
   parentId: number | null
 }
+
+// Monthly figures for one group in the reports page. Each array holds the
+// period total followed by one value per month, newest first; null means the
+// group didn't exist yet that month.
+export interface ReportGroup {
+  group: string
+  lamps: number
+  data: {
+    h: (number | null)[]
+    nominal: (number | null)[]
+    real: (number | null)[]
+    economy: (number | null)[]
+  }
+}

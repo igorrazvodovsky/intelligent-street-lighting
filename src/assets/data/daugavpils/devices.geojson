@@ -1530,7 +1530,7 @@
       "type": "Feature",
       "properties": {
         "id": 66,
-        "type": "Lamp",
+        "type": "lamp",
         "name": "03-017",
         "groupId": 3,
         "status": "alarm",
