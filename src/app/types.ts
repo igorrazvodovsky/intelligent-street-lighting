@@ -12,6 +12,8 @@ export interface City {
   language: string
   centerLat: number
   centerLng: number
+  // IANA time zone, for local sunrise and sunset
+  timeZone: string
 }
 
 export type Category = "Area" | "Street" | "Function" | "Custom"
@@ -155,16 +157,21 @@ export interface Measurement {
   }
 }
 
+// A clock time, or the moment the sun sets or rises that day. Clock times are
+// Dates on an arbitrary day; 24:00 rolls over to the next day.
+export type ScheduleTime = Date | 'sunset' | 'sunrise'
+
 export interface Schedule {
   name?: string
   brightness: number
   time: {
-    start: Date
-    end: Date
+    start: ScheduleTime
+    end: ScheduleTime
+    // Monday to Sunday. Start and end override the schedule's on that day.
     week: {
       enabled?: boolean
-      start?: Date
-      end?: Date
+      start?: ScheduleTime
+      end?: ScheduleTime
     }[]
   }
 }
@@ -172,16 +179,15 @@ export interface Schedule {
 export interface ScheduleDynamic {
   brightness: number
   time: {
-    // ??? How to encode sunrise/sunset?
-    start: Date | string
-    end: Date | string
+    start: ScheduleTime
+    end: ScheduleTime
   }
 }
 
 export interface TimeGroup {
   days: number[]
-  start: Date
-  end: Date
+  start: ScheduleTime
+  end: ScheduleTime
 }
 
 export interface Profile {

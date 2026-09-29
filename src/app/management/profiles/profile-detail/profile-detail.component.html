@@ -20,10 +20,16 @@
     <!-- <h2>Brightness</h2> -->
     <!-- ??? merge? better wording maybe: flatten? -->
     <p>Schedules overlap and merge. Order determines the&nbsp;priority.</p>
-    <mat-slide-toggle color="primary" [(ngModel)]="profile.dynamic"
+    <mat-slide-toggle
+      color="primary"
+      [(ngModel)]="profile.dynamic"
+      (ngModelChange)="updateSeries()"
       >Account for traffic 🚗 🚶</mat-slide-toggle
     >
-    <mat-slide-toggle color="primary" [(ngModel)]="profile.isInterpolated"
+    <mat-slide-toggle
+      color="primary"
+      [(ngModel)]="profile.isInterpolated"
+      (ngModelChange)="updateSeries()"
       >Сhange the brightness smoothly</mat-slide-toggle
     >
   </div>
@@ -31,21 +37,36 @@
     <figure class="preview">
       <!-- ???: As button-toggle? -->
       <!-- TODO: Replace with specifc date selection if multiple are set  -->
-      <mat-tab-group *ngIf="active !== 'date'" animationDuration="0">
+      <mat-tab-group
+        *ngIf="active !== 'date'"
+        animationDuration="0"
+        [selectedIndex]="weekday"
+        (selectedIndexChange)="selectWeekday($event)"
+      >
         <mat-tab label="Mon"></mat-tab>
         <mat-tab label="Tue"></mat-tab>
         <mat-tab label="Wed"></mat-tab>
         <mat-tab label="Thu"></mat-tab>
         <mat-tab label="Fri"></mat-tab>
         <mat-tab label="Sat"></mat-tab>
+        <mat-tab label="Sun"></mat-tab>
       </mat-tab-group>
-      <profile-visualisation [data]="data"></profile-visualisation>
+      <profile-visualisation
+        [data]="series"
+        [interpolated]="profile.isInterpolated"
+        [sunset]="sun.sunset"
+        [sunrise]="sun.sunrise"
+      ></profile-visualisation>
       <figcaption class="preview__legend mat-caption">
         <div>
           <span><i class="dot accent"></i> Base brightness</span>
           <span
             ><i class="dot accent-2"></i> In the presence of vehicles or
             pedestrians</span
+          >
+          <span class="text-secondary"
+            >Sunset and sunrise in {{ city.name }} on the night of
+            {{ sun.date | date: "EEE d MMM" }}</span
           >
         </div>
         <div>
@@ -67,10 +88,15 @@
         [schedule]="schedule"
         [last]="isLast"
         [first]="isFirst"
+        [expanded]="schedule === added"
+        [removable]="profile.schedules.length > 1"
+        (changed)="updateSeries()"
+        (move)="move(profile.schedules, schedule, $event)"
+        (remove)="remove(profile.schedules, schedule)"
       ></profile-schedule>
     </mat-accordion>
-    <mat-selection-list [multiple]="false">
-      <mat-list-option>
+    <mat-action-list>
+      <button mat-list-item (click)="addSchedule()">
         <div class="text-secondary" matLine>
           <mat-icon
             class="small"
@@ -79,8 +105,8 @@
           ></mat-icon>
           Add
         </div>
-      </mat-list-option>
-    </mat-selection-list>
+      </button>
+    </mat-action-list>
 
     <ng-container *ngIf="profile.dynamic">
       <mat-list role="list">
@@ -103,11 +129,14 @@
           [schedule]="schedule"
           [last]="isLast"
           [first]="isFirst"
+          [expanded]="schedule === added"
+          (changed)="updateSeries()"
+          (move)="move(profile.schedulesDynamic, schedule, $event)"
+          (remove)="remove(profile.schedulesDynamic, schedule)"
         ></profile-schedule-dynamic>
-        <!-- TODO: Reordering -->
       </mat-accordion>
-      <mat-selection-list [multiple]="false">
-        <mat-list-option>
+      <mat-action-list>
+        <button mat-list-item (click)="addBoost()">
           <div class="text-secondary" matLine>
             <mat-icon
               class="small"
@@ -116,8 +145,8 @@
             ></mat-icon>
             Add
           </div>
-        </mat-list-option>
-      </mat-selection-list>
+        </button>
+      </mat-action-list>
     </ng-container>
   </div>
 </section>
@@ -125,7 +154,11 @@
 <section>
   <h2>Settings</h2>
   <mat-selection-list role="list">
-    <mat-list-option role="listitem">
+    <mat-list-option
+      role="listitem"
+      [selected]="profile.naturalLight"
+      (selectedChange)="profile.naturalLight = $event; updateSeries()"
+    >
       <div matLine>Account for ☀️ natural light</div>
       <span class="text-secondary" matLine
         >Amount of ambient light will be taken into account in the calculation

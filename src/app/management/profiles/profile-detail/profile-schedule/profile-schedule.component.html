@@ -1,16 +1,12 @@
 <!-- TODO: Extract common with dynamic schedule parts into separate component -->
 
-<mat-expansion-panel>
+<mat-expansion-panel [expanded]="expanded">
   <mat-expansion-panel-header>
     <mat-panel-title class="mat-subheading-2">
       <strong>{{ schedule.brightness | percent }}</strong
       >&nbsp;
       <ng-container *ngFor="let group of timeGroups">
-        {{
-          last && last !== first
-            ? (group | conversationalTimeGroup: "last")
-            : (group | conversationalTimeGroup)
-        }}
+        {{ group | conversationalTimeGroup: (first && !last ? "rest" : "first") }}
       </ng-container>
       <!-- weekdays from 6:30 to 23:00, on weekends from 8:00 to 22:00. -->
     </mat-panel-title>
@@ -20,16 +16,23 @@
   <!-- TODO: Describe prioritisation? -->
   <mat-slider
     [value]="schedule.brightness"
+    (input)="setBrightness($event.value)"
+    [displayWith]="percent"
+    thumbLabel
     aria-label="brightness"
     min="0"
     max="1"
+    step="0.05"
   ></mat-slider>
   <div class="schedule-settings">
     <form>
       <div>
         <span>Active</span>
         <mat-form-field class="no-label no-hint input-auto-width time">
-          <mat-select [value]="schedule.time.start | date: 'HH:mm'">
+          <mat-select
+            [value]="toOption(schedule.time.start)"
+            (selectionChange)="setTime('start', $event.value)"
+          >
             <mat-option
               *ngFor="let option of timeOptions"
               [value]="option.value"
@@ -40,7 +43,10 @@
         </mat-form-field>
         <span class="text-secondary">&mdash;</span>
         <mat-form-field class="no-label no-hint input-auto-width time">
-          <mat-select [value]="schedule.time.end | date: 'HH:mm'">
+          <mat-select
+            [value]="toOption(schedule.time.end)"
+            (selectionChange)="setTime('end', $event.value)"
+          >
             <mat-option
               *ngFor="let option of timeOptions"
               [value]="option.value"
@@ -52,7 +58,10 @@
       </div>
       <ng-container *ngFor="let day of week; let i = index">
         <div>
-          <mat-checkbox [checked]="schedule.time.week[i].enabled">{{
+          <mat-checkbox
+            [checked]="schedule.time.week[i].enabled"
+            (change)="setDay(i, $event.checked)"
+            >{{
             week[i]
           }}</mat-checkbox>
           <mat-form-field class="no-label no-hint input-auto-width time">
@@ -60,14 +69,15 @@
               [disabled]="!schedule.time.week[i].enabled"
               [placeholder]="
                 schedule.time.week[i].enabled
-                  ? (schedule.time.start | date: 'HH:mm')
+                  ? toOption(schedule.time.start)
                   : null
               "
               [value]="
                 schedule.time.week[i].start
-                  ? (schedule.time.week[i].start | date: 'HH:mm')
+                  ? toOption(schedule.time.week[i].start)
                   : null
               "
+              (selectionChange)="setDayTime(i, 'start', $event.value)"
             >
               <mat-option
                 *ngFor="let option of timeOptions"
@@ -83,14 +93,15 @@
               [disabled]="!schedule.time.week[i].enabled"
               [placeholder]="
                 schedule.time.week[i].enabled
-                  ? (schedule.time.end | date: 'HH:mm')
+                  ? toOption(schedule.time.end)
                   : null
               "
               [value]="
                 schedule.time.week[i].end
-                  ? (schedule.time.week[i].end | date: 'HH:mm')
+                  ? toOption(schedule.time.week[i].end)
                   : null
               "
+              (selectionChange)="setDayTime(i, 'end', $event.value)"
             >
               <mat-option
                 *ngFor="let option of timeOptions"
@@ -104,13 +115,31 @@
       </ng-container>
     </form>
     <div>
-      <button [disabled]="first" class="text-secondary" mat-icon-button>
+      <button
+        [disabled]="first"
+        (click)="move.emit(-1)"
+        class="text-secondary"
+        aria-label="Move up"
+        mat-icon-button
+      >
         <mat-icon svgIcon="arrowThinUpRegular" aria-hidden="true"></mat-icon>
       </button>
-      <button [disabled]="last" class="text-secondary" mat-icon-button>
+      <button
+        [disabled]="last"
+        (click)="move.emit(1)"
+        class="text-secondary"
+        aria-label="Move down"
+        mat-icon-button
+      >
         <mat-icon svgIcon="arrowThinDownRegular" aria-hidden="true"></mat-icon>
       </button>
-      <button class="text-secondary" mat-icon-button>
+      <button
+        [disabled]="!removable"
+        (click)="remove.emit()"
+        class="text-secondary"
+        aria-label="Delete"
+        mat-icon-button
+      >
         <mat-icon svgIcon="trashRegular" aria-hidden="true"></mat-icon>
       </button>
     </div>

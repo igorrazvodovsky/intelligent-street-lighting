@@ -48,6 +48,7 @@ section > div > {
     }
     & > div {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       gap: 1ch;
     }

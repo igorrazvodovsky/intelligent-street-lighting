@@ -1,9 +1,9 @@
 // TODO: Connect last day with 'and' in English
 // TODO: Better array comparision?
 
-import { Pipe, PipeTransform, Inject, LOCALE_ID } from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 import { TimeGroup } from '../types';
-import { formatDate } from '@angular/common';
+import { timeToOption } from '~local/management/profiles/profile-detail/schedule-time';
 
 @Pipe({
   name: 'conversationalTimeGroup'
@@ -17,20 +17,19 @@ export class ConversationalTimeGroupPipe implements PipeTransform {
   days = ''
   time = ''
 
-  constructor(@Inject(LOCALE_ID) private locale: string) { }
-
+  // `position` is 'rest' for a schedule that others override
   transform(group: TimeGroup, position: string = 'first'): any {
     const entireWeek = JSON.stringify(group.days) == JSON.stringify(this.entireWeek)
-    const fullDay = (group.start.getHours() + group.start.getMinutes() == 0 && group.end.getHours() + group.end.getMinutes() == 0)
+    const fullDay = ['00:00', '24:00'].includes(timeToOption(group.start)) && ['00:00', '24:00'].includes(timeToOption(group.end))
 
-    // TODO: add 'from sunrise/to sunset' cases
     if (!fullDay) {
-      this.time = 'from ' + formatDate(group.start, 'HH:mm', this.locale) + ' to ' + formatDate(group.end, 'HH:mm', this.locale)
+      this.time = 'from ' + timeToOption(group.start) + ' to ' + timeToOption(group.end)
     }
 
-    if (fullDay) this.time = 'full day'
+    // Lamps only burn in the dark, so a full day means dusk to dawn
+    if (fullDay) this.time = 'from dusk to dawn'
     if (entireWeek && fullDay) {
-      this.days = position == 'last' ? 'rest of the time' : 'around the clock'
+      this.days = position == 'rest' ? 'rest of the night' : 'from dusk to dawn'
       this.time = ''
     }
     else if (entireWeek) this.days = ''

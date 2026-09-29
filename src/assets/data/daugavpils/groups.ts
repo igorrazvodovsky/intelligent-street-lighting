@@ -31,7 +31,7 @@ export const GROUPS: DeviceGroup[] = [
   {
     id: 4,
     name: 'Čerepova',
-    profileId: 4,
+    profileId: 3,
     parentId: null,
     children: [],
     created: new Date(2021, 1),
@@ -76,7 +76,7 @@ export const GROUPS: DeviceGroup[] = [
   {
     id: 9,
     name: 'Skate park',
-    profileId: 1,
+    profileId: 5,
     parentId: null,
     children: [],
     created: new Date(2021, 1),

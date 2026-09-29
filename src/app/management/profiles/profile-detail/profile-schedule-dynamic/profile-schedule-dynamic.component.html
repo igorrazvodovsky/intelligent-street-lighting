@@ -1,39 +1,75 @@
-<mat-expansion-panel>
+<mat-expansion-panel [expanded]="expanded">
   <mat-expansion-panel-header>
     <mat-panel-title class="mat-subheading-2"
       ><strong>+{{ schedule.brightness | percent }}</strong
-      >&nbsp; from {{ schedule.time.start | date: "HH:mm" }} to
-      {{ schedule.time.end | date: "HH:mm" }}</mat-panel-title
+      >&nbsp;
+      <ng-container *ngIf="wholeNight">from dusk to dawn</ng-container>
+      <ng-container *ngIf="!wholeNight"
+        >from {{ toOption(schedule.time.start) }} to
+        {{ toOption(schedule.time.end) }}</ng-container
+      ></mat-panel-title
     >
   </mat-expansion-panel-header>
   <div class="schedule-settings">
     <div>
       <mat-form-field class="no-label no-hint input-auto-width time">
-        <mat-select value="20">
-          <mat-option value="20"> 10% </mat-option>
+        <mat-select
+          [value]="schedule.brightness"
+          (selectionChange)="setBoost($event.value)"
+        >
+          <mat-option *ngFor="let option of boostOptions" [value]="option">
+            +{{ option | percent }}
+          </mat-option>
         </mat-select>
       </mat-form-field>
       <span class="text-secondary">from</span>
       <mat-form-field class="no-label no-hint input-auto-width time">
-        <mat-select value="02:00">
-          <mat-option value="02:00"> 02:00 </mat-option>
+        <mat-select
+          [value]="toOption(schedule.time.start)"
+          (selectionChange)="setTime('start', $event.value)"
+        >
+          <mat-option *ngFor="let option of timeOptions" [value]="option.value">
+            {{ option.viewValue }}
+          </mat-option>
         </mat-select>
       </mat-form-field>
       <span class="text-secondary">to</span>
       <mat-form-field class="no-label no-hint input-auto-width time">
-        <mat-select value="05:00">
-          <mat-option value="05:00"> 05:00 </mat-option>
+        <mat-select
+          [value]="toOption(schedule.time.end)"
+          (selectionChange)="setTime('end', $event.value)"
+        >
+          <mat-option *ngFor="let option of timeOptions" [value]="option.value">
+            {{ option.viewValue }}
+          </mat-option>
         </mat-select>
       </mat-form-field>
     </div>
     <div>
-      <button [disabled]="first" class="text-secondary" mat-icon-button>
+      <button
+        [disabled]="first"
+        (click)="move.emit(-1)"
+        class="text-secondary"
+        aria-label="Move up"
+        mat-icon-button
+      >
         <mat-icon svgIcon="arrowThinUpRegular" aria-hidden="true"></mat-icon>
       </button>
-      <button [disabled]="last" class="text-secondary" mat-icon-button>
+      <button
+        [disabled]="last"
+        (click)="move.emit(1)"
+        class="text-secondary"
+        aria-label="Move down"
+        mat-icon-button
+      >
         <mat-icon svgIcon="arrowThinDownRegular" aria-hidden="true"></mat-icon>
       </button>
-      <button class="text-secondary" mat-icon-button>
+      <button
+        (click)="remove.emit()"
+        class="text-secondary"
+        aria-label="Delete"
+        mat-icon-button
+      >
         <mat-icon svgIcon="trashRegular" aria-hidden="true"></mat-icon>
       </button>
     </div>
