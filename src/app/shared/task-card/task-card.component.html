@@ -56,7 +56,7 @@
         svgIcon="messageRegular"
         aria-hidden="true"
       ></mat-icon>
-      {{ task.comments.length }} comments
+      {{ task.comments.length }} {{ task.comments.length === 1 ? "comment" : "comments" }}
     </div>
   </mat-card-content>
 </mat-card>

@@ -14,10 +14,8 @@
     [matMenuTriggerFor]="categoryMenu"
     class="crumb"
   >
-    <span class="home-label"
-      >{{ category
-      }}<mat-icon inline svgIcon="dropdownMedium" aria-hidden="true"></mat-icon
-    ></span>
+    <span>{{ category }}</span>
+    <mat-icon inline svgIcon="dropdownMedium" aria-hidden="true"></mat-icon>
   </a>
 
   <ng-container *ngIf="currentGroup">

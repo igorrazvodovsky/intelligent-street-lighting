@@ -22,4 +22,18 @@ h3,
   display: flex;
   gap: 1ch;
   flex-direction: column;
+
+  // Centre each icon on its text line rather than the inherited baseline
+  > div {
+    display: flex;
+    align-items: center;
+    gap: 0.5ch;
+  }
+
+  .mat-icon {
+    flex: none;
+    ::ng-deep svg {
+      display: block;
+    }
+  }
 }
