@@ -3,7 +3,7 @@ import { ScheduleDynamic } from '~local/types'
 import { TIME_OPTIONS } from '~local/../assets/data/profile-time-options'
 import { optionToTime, sameTime, timeToOption } from '../schedule-time'
 
-const BOOSTS = [0.1, 0.2, 0.25, 0.3, 0.33, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
+export const BOOSTS = [0.1, 0.2, 0.25, 0.3, 0.33, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
 
 // Edits a traffic boost in place and emits `changed` after each edit
 @Component({

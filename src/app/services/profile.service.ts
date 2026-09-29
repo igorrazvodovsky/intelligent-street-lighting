@@ -27,6 +27,29 @@ export class ProfileService {
     );
   }
 
+  // A new profile lights every night fully until someone decides where to dim,
+  // so a profile nobody has configured never under-lights a street. Adds to
+  // the in-memory catalogue, so it lasts until the page reloads.
+  createProfile(name: string): number {
+    const id = Math.max(...PROFILES.map(p => p.id)) + 1;
+    PROFILES.push({
+      id,
+      name,
+      description: '100% from dusk to dawn',
+      dynamic: false,
+      isInterpolated: true,
+      schedules: [
+        { name: 'Dusk to dawn', brightness: 1, time: { start: new Date(0, 0, 0, 0), end: new Date(0, 0, 0, 24), week: Array.from({ length: 7 }, () => ({ enabled: true })) } },
+      ],
+      schedulesDynamic: [],
+      naturalLight: true,
+      sun: true,
+      motionSensor: false,
+      parentId: null
+    });
+    return id;
+  }
+
   private profileColourScale = d3Scale
     .scaleOrdinal(d3ScaleChromatic.schemeCategory10)
     .domain(PROFILES.map(p => String(p.id)))

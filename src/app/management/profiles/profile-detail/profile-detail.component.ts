@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Profile, DeviceGroup, City, Schedule, ScheduleDynamic } from '~local/types'
+import { Profile, DeviceGroup, City, Schedule, ScheduleDynamic, ScheduleTime } from '~local/types'
 import { combineLatest, Observable, Subject } from 'rxjs';
 import { switchMap, takeUntil } from 'rxjs/operators';
 import { ActivatedRoute, ParamMap } from '@angular/router';
@@ -8,7 +8,8 @@ import { DeviceService } from '~local/services/device.service'
 import { CityService } from '~local/services/city.service'
 import { profileToSeries, SeriesPoint } from './profile-series'
 import { nextWeekday, nightSun, NightSun } from './sun-times'
-import { clockTime } from './schedule-time'
+import { clockTime, sameTime, timeToOption } from './schedule-time'
+import { BOOSTS } from './profile-schedule-dynamic/profile-schedule-dynamic.component'
 
 @Component({
   selector: 'profile-detail',
@@ -64,20 +65,64 @@ export class ProfileDetailComponent implements OnInit, OnDestroy {
 
   // Edits change the in-memory profile, so they last until the page reloads
 
+  // A new schedule dims one step further inside the one before it, the way
+  // operators cut in stages: 100% at dusk, 75% from 22:00 to 06:00, 50% from
+  // 00:00 to 05:00. Each step takes 25 points off, down to 20%.
   addSchedule() {
+    const last = this.profile.schedules[this.profile.schedules.length - 1];
+    const brightness = Math.max(Math.min(last.brightness, 0.2), Math.round((last.brightness - 0.25) * 20) / 20);
+    const { start, end } = narrower(last.time.start, last.time.end);
     this.added = {
       name: 'New schedule',
-      brightness: 0.5,
-      time: { start: clockTime(22), end: clockTime(6), week: Array.from({ length: 7 }, () => ({ enabled: true })) },
+      brightness,
+      time: { start, end, week: Array.from({ length: 7 }, () => ({ enabled: true })) },
     };
     this.profile.schedules.push(this.added);
     this.updateSeries();
   }
 
   addBoost() {
-    this.added = { brightness: 0.3, time: { start: clockTime(22), end: clockTime(6) } };
-    this.profile.schedulesDynamic = [...(this.profile.schedulesDynamic || []), this.added];
+    const boosts = this.profile.schedulesDynamic || [];
+    const suggested = this.suggestBoosts(boosts)[0];
+    this.added = suggested?.boost || { brightness: 0.2, time: { start: clockTime(0), end: clockTime(24) } };
+    // Later boosts override earlier ones, so a boost for an earlier schedule
+    // goes before the boosts for later ones
+    const at = suggested ? boosts.findIndex(b => this.scheduleIndex(b) > suggested.index) : -1;
+    this.profile.schedulesDynamic = at < 0 ? [...boosts, this.added] : [...boosts.slice(0, at), this.added, ...boosts.slice(at)];
     this.updateSeries();
+  }
+
+  // Turning traffic on starts with boosts wherever the profile dims
+  toggleDynamic() {
+    if (this.profile.dynamic && !this.profile.schedulesDynamic?.length) {
+      this.profile.schedulesDynamic = this.suggestBoosts([]).map(s => s.boost).reverse();
+    }
+    this.updateSeries();
+  }
+
+  // Boosts that bring dimmed schedules back to the profile's brightest level,
+  // latest schedule first, skipping schedules that already have one
+  private suggestBoosts(boosts: ScheduleDynamic[]): { boost: ScheduleDynamic, index: number }[] {
+    const { schedules } = this.profile;
+    const top = Math.max(...schedules.map(s => s.brightness));
+    return schedules
+      .map((schedule, index) => ({ schedule, index }))
+      .filter(({ schedule, index }) => schedule.brightness < top && !boosts.some(b => this.scheduleIndex(b) === index))
+      .reverse()
+      .map(({ schedule, index }) => {
+        const gap = top - schedule.brightness;
+        const brightness = BOOSTS.reduce((a, b) => Math.abs(b - gap) < Math.abs(a - gap) ? b : a);
+        return { boost: { brightness, time: { start: schedule.time.start, end: schedule.time.end } }, index };
+      });
+  }
+
+  // The last schedule with the same times as the boost, or -1
+  private scheduleIndex(boost: ScheduleDynamic): number {
+    const { schedules } = this.profile;
+    for (let i = schedules.length - 1; i >= 0; i--) {
+      if (sameTime(schedules[i].time.start, boost.time.start) && sameTime(schedules[i].time.end, boost.time.end)) return i;
+    }
+    return -1;
   }
 
   // Later items override earlier ones, so order is priority
@@ -107,3 +152,19 @@ export class ProfileDetailComponent implements OnInit, OnDestroy {
 
 
 
+
+// Two hours later and an hour earlier than the given times, or 22:00 to 06:00
+// inside a dusk-to-dawn schedule. Keeps the times when that leaves under two
+// hours or they follow the sun.
+function narrower(start: ScheduleTime, end: ScheduleTime): { start: ScheduleTime, end: ScheduleTime } {
+  const whole = sameTime(start, end) || ['00:00', '24:00'].includes(timeToOption(start)) && ['00:00', '24:00'].includes(timeToOption(end));
+  if (whole) return { start: clockTime(22), end: clockTime(6) };
+  if (!(start instanceof Date) || !(end instanceof Date)) return { start, end };
+  // Hours after noon, so a night reads as one increasing range
+  const fromNoon = (d: Date) => ((d.getHours() + d.getMinutes() / 60) + 12) % 24;
+  const from = fromNoon(start) + 2;
+  const to = fromNoon(end) - 1;
+  if (to - from < 2) return { start, end };
+  const toClock = (h: number) => clockTime(Math.floor((h + 12) % 24), Math.round((h % 1) * 60));
+  return { start: toClock(from), end: toClock(to) };
+}

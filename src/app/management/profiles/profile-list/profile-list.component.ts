@@ -44,8 +44,10 @@ export class ProfileListComponent implements OnInit, OnDestroy {
     });
 
     dialogRef.afterClosed().pipe(takeUntil(this.destroy$)).subscribe(result => {
-      // TODO: Navigate to created profile
-      if (result) this.router.navigate(['6'], { relativeTo: this.route });
+      // Close returns undefined; Create with an empty name still creates
+      if (result === undefined) return;
+      const id = this.service.createProfile(result.trim() || 'New profile');
+      this.router.navigate([id], { relativeTo: this.route });
     });
 
   }
