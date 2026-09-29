@@ -25,15 +25,17 @@
     </mat-menu>
   </mat-chip-list>
 </section>
-<mat-dialog-content>
+<mat-dialog-content *ngIf="device$ | async as d">
   <mat-card>
     <mat-card-header>
-      <mat-card-title>LC-01-03-D02</mat-card-title>
-      <mat-card-subtitle> Model KN-3, SN000786345 </mat-card-subtitle>
+      <mat-card-title>{{ d.device.name }}</mat-card-title>
+      <mat-card-subtitle>
+        Model {{ d.device.model }}<ng-container *ngIf="d.group"> &bull; {{ d.group.name }}</ng-container>
+      </mat-card-subtitle>
     </mat-card-header>
     <mat-card-actions>
-      <button mat-button>Details</button>
-      <button mat-button>Show on map</button>
+      <button mat-button (click)="openDevice(d.device)">Details</button>
+      <button mat-button (click)="openDevice(d.device, true)">Show on map</button>
     </mat-card-actions>
   </mat-card>
 </mat-dialog-content>

@@ -2,14 +2,14 @@
 
 import { Component, AfterViewInit, OnInit, OnDestroy, Input, NgZone } from '@angular/core';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { filter, startWith, takeUntil } from 'rxjs/operators';
 import * as L from 'leaflet';
 import 'leaflet.markercluster';
 import { MarkerService } from '~local/services/marker.service';
 import { ProfileService } from '~local/services/profile.service'
 import { ShapeService } from '~local/services/shape.service';
 import { CityService } from '~local/services/city.service';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import * as d3Scale from 'd3-scale';
 import * as d3ScaleChromatic from 'd3-scale-chromatic';
 import { Profile, DeviceStatus } from '~local/types'
@@ -52,7 +52,10 @@ type DeviceLayer = 'status' | 'sc' | 'profile'
 
 export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
-  selectedDevice: number = 15;
+  selectedDevice: number = null;
+  // Set by "Show on map" (?show=map); consumed once the marker exists
+  private focusPending = false;
+  private deviceLayers = new Map<number, any>();
   map;
   devices: any;
   markersGeoJsonData: any;
@@ -152,7 +155,37 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
     });
   }
 
+  makeDeviceIcon(layer) {
+    const p = layer.feature.properties
+    return L.divIcon({
+      className: `marker--${p.type} ${p.status} ${p.id == this.selectedDevice ? 'selected' : ''}`,
+      html: layer.iconHtml
+    })
+  }
+
+  // Highlights the device open in the side panel and, when asked, zooms the
+  // map (expanding its cluster if needed) until the marker is visible
+  selectDevice(id: number, focus: boolean) {
+    const previous = this.deviceLayers.get(this.selectedDevice)
+    this.selectedDevice = id
+    if (previous) previous.setIcon(this.makeDeviceIcon(previous))
+    const layer = this.deviceLayers.get(id)
+    if (layer) layer.setIcon(this.makeDeviceIcon(layer))
+    this.focusPending = focus
+    this.focusSelectedDevice()
+  }
+
+  private focusSelectedDevice() {
+    const layer = this.deviceLayers.get(this.selectedDevice)
+    if (!this.focusPending || !layer || !this.map) return
+    this.focusPending = false
+    this.markers.zoomToShowLayer(layer, () => {
+      this.map.setView(layer.getLatLng(), Math.max(this.map.getZoom(), 17))
+    })
+  }
+
   initGroupsLayer() {
+    this.deviceLayers.clear()
     this.markers = L.markerClusterGroup({
       iconCreateFunction: (cluster) => {
         const clusterMarkers = cluster.getAllChildMarkers()
@@ -184,10 +217,10 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
         if (feature.properties.type == "lamp" && feature.properties.orientation !== 0) pointer = `<div class="pointer" style="transform: rotate(${feature.properties.orientation}deg)"></div>`
 
 
-        layer.setIcon(L.divIcon({
-          className: `marker--${feature.properties.type} ${feature.properties.status} ${feature.properties.id == this.selectedDevice ? 'selected' : ''}`,
-          html: pointer + `<figure>${icon}</figure><label>${label}</label>`
-        }))
+        const html = pointer + `<figure>${icon}</figure><label>${label}</label>`
+        layer.iconHtml = html
+        layer.setIcon(this.makeDeviceIcon(layer))
+        this.deviceLayers.set(feature.properties.id, layer)
 
         // Re-enter the Angular zone so routing triggers change detection.
         layer.on('click', () => this.ngZone.run(() => this.router.navigate(['/management/devices/device/' + feature.properties.id])));
@@ -201,10 +234,24 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
     // const markerBounds = L.latLngBounds(latLngs)
     // this.map.fitBounds(markerBounds)
     // https://leafletjs.com/reference-1.7.1.html#map-flyto
-    this.map.fitBounds(this.markers.getBounds(), { padding: [50, 50] })
+    if (this.focusPending && this.deviceLayers.has(this.selectedDevice)) {
+      this.focusSelectedDevice()
+    } else {
+      this.map.fitBounds(this.markers.getBounds(), { padding: [50, 50] })
+    }
   }
 
   ngOnInit(): void {
+    this.router.events.pipe(
+      filter(e => e instanceof NavigationEnd),
+      startWith(null),
+      takeUntil(this.destroy$)
+    ).subscribe(() => {
+      const match = this.router.url.match(/\/devices\/device\/(\d+)/)
+      const focus = this.router.parseUrl(this.router.url).queryParams.show === 'map'
+      this.ngZone.runOutsideAngular(() => this.selectDevice(match ? +match[1] : null, focus))
+    });
+
     this.cityService.activeCity$.pipe(takeUntil(this.destroy$)).subscribe(city => {
       if (this.map) {
         this.map.setView([city.centerLat, city.centerLng], 13);

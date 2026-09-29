@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { GroupDialogComponent } from './group-dialog/group-dialog.component'
 import { AppStateService } from '~local/services/app-state.service'
@@ -25,7 +26,8 @@ export class DevicesComponent implements OnInit, OnDestroy {
 
   constructor(
     public dialog: MatDialog,
-    private appStateService: AppStateService
+    private appStateService: AppStateService,
+    private route: ActivatedRoute
   ) { }
 
 
@@ -39,6 +41,11 @@ export class DevicesComponent implements OnInit, OnDestroy {
     this.appStateService.isHandset.pipe(takeUntil(this.destroy$)).subscribe(value => {
       this.isHandset = value;
       this.opened = !value;
+    });
+
+    // "Show on map" from a task: on phones the list covers the map, so hide it
+    this.route.queryParamMap.pipe(takeUntil(this.destroy$)).subscribe(params => {
+      if (this.isHandset && params.get('show') === 'map') this.opened = false;
     });
   }
 
