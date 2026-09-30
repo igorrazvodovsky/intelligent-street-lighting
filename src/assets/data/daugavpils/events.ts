@@ -8,7 +8,8 @@ function getTime() {
   return new Date(d);
 }
 
-
+// Ids stay clear of Solna's (20–35), so one city's events never stand in for
+// the other's
 export const DEVICE_EVENTS: DeviceEvent[] = [
   {
     id: 1,
@@ -34,9 +35,9 @@ export const DEVICE_EVENTS: DeviceEvent[] = [
     type: 'device',
     deviceId: 13,
     value: 'communicationFailure',
-    title: 'Communication failure	',
-    level: 'info',
-    taskId: 4
+    title: 'Communication failure',
+    level: 'critical',
+    taskId: 1
   },
   {
     id: 4,
@@ -62,15 +63,74 @@ export const DEVICE_EVENTS: DeviceEvent[] = [
     type: 'device',
     deviceId: 23,
     value: 'communicationFailure',
-    title: 'Communication failure	',
+    title: 'Communication failure',
     level: 'info'
+  },
+  {
+    id: 7,
+    created: getTime(),
+    type: 'device',
+    deviceId: 66,
+    value: 'lampFailure',
+    title: 'LED module failure',
+    level: 'critical',
+    taskId: 15
+  },
+  {
+    id: 8,
+    created: getTime(),
+    type: 'device',
+    deviceId: 11,
+    value: 'doorOpen',
+    title: 'Cabinet door open',
+    level: 'warning',
+    taskId: 3
+  },
+  {
+    id: 9,
+    created: getTime(),
+    type: 'device',
+    deviceId: 74,
+    value: 'communicationFailure',
+    title: 'Lost communication with controller',
+    level: 'critical'
+  },
+  {
+    id: 10,
+    created: getTime(),
+    type: 'device',
+    deviceId: 116,
+    value: 'noPower',
+    title: 'No power supply',
+    description: 'The lamp reports no mains voltage.',
+    level: 'critical',
+    taskId: 16
+  },
+  {
+    id: 11,
+    created: getTime(),
+    type: 'device',
+    deviceId: 85,
+    value: 'lampVoltageTooLow',
+    title: 'Voltage fluctuation detected',
+    level: 'warning'
+  },
+  {
+    id: 12,
+    created: getTime(),
+    type: 'device',
+    deviceId: 11,
+    value: 'gsmSignalLow',
+    title: 'Poor GSM signal',
+    level: 'warning',
+    taskId: 2
   },
 ]
 
 export const USER_EVENTS: UserEvent[] = [
   {
     id: 13,
-    created: new Date(),
+    created: getTime(),
     type: 'user',
     deviceId: 11,
     userId: 17,
@@ -81,7 +141,7 @@ export const USER_EVENTS: UserEvent[] = [
   },
   {
     id: 14,
-    created: new Date(),
+    created: getTime(),
     type: 'user',
     deviceId: 11,
     userId: 6,
@@ -127,22 +187,22 @@ export const USER_EVENTS: UserEvent[] = [
     id: 18,
     created: getTime(),
     type: 'user',
-    deviceId: 19,
-    userId: 1,
+    deviceId: 70,
+    userId: 13,
     action: 'update',
-    property: 'workingStatus',
-    from: false,
-    to: true
+    property: 'profile',
+    from: 'Default',
+    to: 'Residential'
   },
   {
     id: 19,
     created: getTime(),
     type: 'user',
-    deviceId: 13,
-    userId: 2,
+    deviceId: 94,
+    userId: 4,
     action: 'update',
     property: 'orientation',
-    from: 60,
-    to: 85
+    from: 0,
+    to: 45
   },
 ]

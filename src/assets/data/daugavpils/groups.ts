@@ -1,5 +1,7 @@
 import { DeviceGroup, MeasurementGroup } from '~local/types';
 
+// Positions of the devices in these groups are approximate. Autoosta was
+// commissioned in July 2026, see reports.ts.
 export const GROUPS: DeviceGroup[] = [
   {
     id: 1,
@@ -25,7 +27,7 @@ export const GROUPS: DeviceGroup[] = [
     profileId: 3,
     parentId: null,
     children: [],
-    created: new Date(2021, 1),
+    created: new Date(2026, 6),
     profileLocked: false
   },
   {
@@ -34,7 +36,7 @@ export const GROUPS: DeviceGroup[] = [
     profileId: 3,
     parentId: null,
     children: [],
-    created: new Date(2021, 1),
+    created: new Date(2021, 4),
     profileLocked: false
   },
   {
@@ -43,7 +45,7 @@ export const GROUPS: DeviceGroup[] = [
     profileId: 5,
     parentId: null,
     children: [],
-    created: new Date(2021, 1),
+    created: new Date(2021, 8),
     profileLocked: false
   },
   {
@@ -52,7 +54,7 @@ export const GROUPS: DeviceGroup[] = [
     profileId: 2,
     parentId: null,
     children: [],
-    created: new Date(2021, 1),
+    created: new Date(2022, 3),
     profileLocked: false
   },
   {
@@ -61,7 +63,7 @@ export const GROUPS: DeviceGroup[] = [
     profileId: 1,
     parentId: null,
     children: [],
-    created: new Date(2021, 1),
+    created: new Date(2022, 3),
     profileLocked: false
   },
   {
@@ -70,7 +72,7 @@ export const GROUPS: DeviceGroup[] = [
     profileId: 1,
     parentId: null,
     children: [],
-    created: new Date(2021, 1),
+    created: new Date(2023, 2),
     profileLocked: false
   },
   {
@@ -79,7 +81,7 @@ export const GROUPS: DeviceGroup[] = [
     profileId: 5,
     parentId: null,
     children: [],
-    created: new Date(2021, 1),
+    created: new Date(2024, 5),
     profileLocked: false
   },
   {
@@ -88,7 +90,7 @@ export const GROUPS: DeviceGroup[] = [
     profileId: 1,
     parentId: null,
     children: [11, 12],
-    created: new Date(2021, 1),
+    created: new Date(2025, 4),
     profileLocked: false
   },
   {
@@ -97,7 +99,7 @@ export const GROUPS: DeviceGroup[] = [
     profileId: 1,
     parentId: 10,
     children: [],
-    created: new Date(2021, 1),
+    created: new Date(2025, 4),
     profileLocked: false
   },
   {
@@ -106,7 +108,7 @@ export const GROUPS: DeviceGroup[] = [
     profileId: 1,
     parentId: 10,
     children: [],
-    created: new Date(2021, 1),
+    created: new Date(2025, 4),
     profileLocked: false
   }
 ];
@@ -119,29 +121,15 @@ export const MEASUREMENTS: MeasurementGroup[] = [
         id: 1,
         name: "Communication",
         units: "%",
-        thresholds: {
-          min: 50,
-        },
-        values: [
-          {
-            value: 90,
-            date: new Date()
-          }
-        ]
+        thresholds: { min: 50 },
+        values: [{ value: 90, date: new Date() }]
       },
       {
         id: 2,
         name: "Temperature",
         units: "°C",
-        thresholds: {
-          min: 50,
-        },
-        values: [
-          {
-            value: 23,
-            date: new Date()
-          }
-        ]
+        thresholds: { min: 50 },
+        values: [{ value: 23, date: new Date() }]
       }
     ]
   },
@@ -152,15 +140,8 @@ export const MEASUREMENTS: MeasurementGroup[] = [
         id: 3,
         name: "Brightness",
         units: "%",
-        thresholds: {
-          min: 50,
-        },
-        values: [
-          {
-            value: 50,
-            date: new Date()
-          }
-        ]
+        thresholds: { min: 50 },
+        values: [{ value: 50, date: new Date() }]
       }
     ]
   },
@@ -171,12 +152,7 @@ export const MEASUREMENTS: MeasurementGroup[] = [
         id: 4,
         name: "Counted objects",
         units: "",
-        values: [
-          {
-            value: 7781,
-            date: new Date()
-          }
-        ]
+        values: [{ value: 7781, date: new Date() }]
       }
     ]
   },
@@ -187,45 +163,25 @@ export const MEASUREMENTS: MeasurementGroup[] = [
         id: 5,
         name: "Energy",
         units: "kWh",
-        values: [
-          {
-            value: 0,
-            date: new Date()
-          }
-        ]
+        values: [{ value: 912.4, date: new Date() }]
       },
       {
         id: 6,
         name: "Operating",
         units: "h",
-        values: [
-          {
-            value: 0,
-            date: new Date()
-          }
-        ]
+        values: [{ value: 21850, date: new Date() }]
       },
       {
         id: 7,
         name: "Up time (by controller)",
         units: "h",
-        values: [
-          {
-            value: 0,
-            date: new Date()
-          }
-        ]
+        values: [{ value: 48230, date: new Date() }]
       },
       {
         id: 8,
         name: "Burn time (by controller)",
         units: "h",
-        values: [
-          {
-            value: 0,
-            date: new Date()
-          }
-        ]
+        values: [{ value: 21790, date: new Date() }]
       }
     ]
   },
@@ -236,56 +192,31 @@ export const MEASUREMENTS: MeasurementGroup[] = [
         id: 9,
         name: "Frequency",
         units: "Hz",
-        values: [
-          {
-            value: 0,
-            date: new Date()
-          }
-        ]
+        values: [{ value: 50.0, date: new Date() }]
       },
       {
         id: 10,
         name: "Voltage",
         units: "V",
-        values: [
-          {
-            value: 0,
-            date: new Date()
-          }
-        ]
+        values: [{ value: 231, date: new Date() }]
       },
       {
         id: 11,
         name: "Current",
         units: "A",
-        values: [
-          {
-            value: 0,
-            date: new Date()
-          }
-        ]
+        values: [{ value: 0.21, date: new Date() }]
       },
       {
         id: 12,
         name: "Power factor",
         units: "",
-        values: [
-          {
-            value: 0,
-            date: new Date()
-          }
-        ]
+        values: [{ value: 0.95, date: new Date() }]
       },
       {
         id: 13,
         name: "Power",
         units: "W",
-        values: [
-          {
-            value: 0,
-            date: new Date()
-          }
-        ]
+        values: [{ value: 46, date: new Date() }]
       }
     ]
   },
@@ -296,25 +227,14 @@ export const MEASUREMENTS: MeasurementGroup[] = [
         id: 14,
         name: "Voltage",
         units: "V",
-        values: [
-          {
-            value: 0,
-            date: new Date()
-          }
-        ]
+        values: [{ value: 145, date: new Date() }]
       },
       {
         id: 15,
         name: "Current",
         units: "A",
-        values: [
-          {
-            value: 0,
-            date: new Date()
-          }
-        ]
+        values: [{ value: 0.28, date: new Date() }]
       }
     ]
   }
-]
-
+];

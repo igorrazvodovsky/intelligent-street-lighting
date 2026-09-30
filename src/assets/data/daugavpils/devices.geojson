@@ -762,7 +762,7 @@
       "properties": {
         "id": 37,
         "type": "sc",
-        "groupId": 1,
+        "groupId": 2,
         "name": "12",
         "status": "active",
         "model": "SCM24UL8-868-44",
@@ -771,8 +771,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          26.53793692588806,
-          55.90496632437185
+          26.5066,
+          55.8858
         ]
       }
     },
@@ -1553,6 +1553,2069 @@
         "coordinates": [
           26.531043648719788,
           55.86975204691173
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 67,
+        "type": "sc",
+        "name": "13",
+        "groupId": 3,
+        "status": "active",
+        "model": "SCM24UL8-868-44",
+        "firmware": "0.2.1"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.5302,
+          55.8686
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 68,
+        "type": "sc",
+        "name": "14",
+        "groupId": 4,
+        "status": "active",
+        "model": "SCM24UL8-868-44",
+        "firmware": "0.2.1"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.572051882143562,
+          55.875808135106006
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 69,
+        "type": "lamp",
+        "name": "04-001",
+        "groupId": 4,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 3
+        },
+        "SC": 4,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.1.0",
+        "surgeProtector": false,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.57218,
+          55.87588
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 70,
+        "type": "lamp",
+        "name": "04-002",
+        "groupId": 4,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 3
+        },
+        "SC": 4,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": false,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.572636927458323,
+          55.87579672197421
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 71,
+        "type": "lamp",
+        "name": "04-003",
+        "groupId": 4,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 3
+        },
+        "SC": 4,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": false,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.573093854916642,
+          55.87571344394841
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 72,
+        "type": "lamp",
+        "name": "04-004",
+        "groupId": 4,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 3
+        },
+        "SC": 4,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": false,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.573550782374966,
+          55.87563016592262
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 73,
+        "type": "lamp",
+        "name": "04-005",
+        "groupId": 4,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 3
+        },
+        "SC": 4,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": false,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.57400770983329,
+          55.87554688789683
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 74,
+        "type": "lamp",
+        "name": "04-006",
+        "groupId": 4,
+        "status": "not responding",
+        "profile": {
+          "source": "group",
+          "id": 3
+        },
+        "SC": 4,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": true,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.57446463729161,
+          55.87546360987104
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 75,
+        "type": "lamp",
+        "name": "04-007",
+        "groupId": 4,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 3
+        },
+        "SC": 4,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.1.0",
+        "surgeProtector": false,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.574921564749932,
+          55.87538033184524
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 76,
+        "type": "lamp",
+        "name": "04-008",
+        "groupId": 4,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 3
+        },
+        "SC": 4,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.1.0",
+        "surgeProtector": true,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.575378492208255,
+          55.87529705381945
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 77,
+        "type": "lamp",
+        "name": "04-009",
+        "groupId": 4,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 3
+        },
+        "SC": 4,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.1.0",
+        "surgeProtector": false,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.575835419666575,
+          55.87521377579366
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 78,
+        "type": "lamp",
+        "name": "04-010",
+        "groupId": 4,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 3
+        },
+        "SC": 4,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.1.0",
+        "surgeProtector": true,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.576292347124898,
+          55.87513049776787
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 79,
+        "type": "lamp",
+        "name": "04-011",
+        "groupId": 4,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 3
+        },
+        "SC": 4,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.1.0",
+        "surgeProtector": false,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.57674927458322,
+          55.87504721974207
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 80,
+        "type": "lamp",
+        "name": "04-012",
+        "groupId": 4,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 3
+        },
+        "SC": 4,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.1.0",
+        "surgeProtector": false,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.57720620204154,
+          55.87496394171628
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 81,
+        "type": "sc",
+        "name": "15",
+        "groupId": 5,
+        "status": "active",
+        "model": "SCM24UL8-868-44",
+        "firmware": "0.2.1"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.543871882143563,
+          55.879928135106006
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 82,
+        "type": "lamp",
+        "name": "05-001",
+        "groupId": 5,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 5
+        },
+        "SC": 5,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": false,
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.544,
+          55.88
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 83,
+        "type": "lamp",
+        "name": "05-002",
+        "groupId": 5,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 5
+        },
+        "SC": 5,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": true,
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.544480441961642,
+          55.88
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 84,
+        "type": "lamp",
+        "name": "05-003",
+        "groupId": 5,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 5
+        },
+        "SC": 5,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": false,
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.544960883923284,
+          55.88
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 85,
+        "type": "lamp",
+        "name": "05-004",
+        "groupId": 5,
+        "status": "warning",
+        "profile": {
+          "source": "group",
+          "id": 5
+        },
+        "SC": 5,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": false,
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.54544132588493,
+          55.88
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 86,
+        "type": "lamp",
+        "name": "05-005",
+        "groupId": 5,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 5
+        },
+        "SC": 5,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": true,
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.545921767846572,
+          55.88
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 87,
+        "type": "lamp",
+        "name": "05-006",
+        "groupId": 5,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 5
+        },
+        "SC": 5,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": false,
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.546402209808214,
+          55.88
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 88,
+        "type": "lamp",
+        "name": "05-007",
+        "groupId": 5,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 5
+        },
+        "SC": 5,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": false,
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.546882651769856,
+          55.88
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 89,
+        "type": "lamp",
+        "name": "05-008",
+        "groupId": 5,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 5
+        },
+        "SC": 5,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": false,
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.5473630937315,
+          55.88
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 90,
+        "type": "lamp",
+        "name": "05-009",
+        "groupId": 5,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 5
+        },
+        "SC": 5,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": false,
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.547843535693143,
+          55.88
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 91,
+        "type": "lamp",
+        "name": "05-010",
+        "groupId": 5,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 5
+        },
+        "SC": 5,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.1.0",
+        "surgeProtector": false,
+        "sensors": [
+          "motion",
+          "traffic"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.548323977654785,
+          55.88
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 92,
+        "type": "sc",
+        "name": "16",
+        "groupId": 6,
+        "status": "active",
+        "model": "SCM24UL8-868-44",
+        "firmware": "0.2.1"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.502371882143564,
+          55.887928135106
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 93,
+        "type": "lamp",
+        "name": "06-001",
+        "groupId": 6,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 2
+        },
+        "SC": 6,
+        "orientation": 0,
+        "model": "LC2M1806R",
+        "firmware": "0.1.0",
+        "surgeProtector": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.5025,
+          55.888
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 94,
+        "type": "lamp",
+        "name": "06-002",
+        "groupId": 6,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 2
+        },
+        "SC": 6,
+        "orientation": 0,
+        "model": "LC2M1806R",
+        "firmware": "0.1.0",
+        "surgeProtector": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.502980441961643,
+          55.888
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 95,
+        "type": "lamp",
+        "name": "06-003",
+        "groupId": 6,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 2
+        },
+        "SC": 6,
+        "orientation": 0,
+        "model": "LC2M1806R",
+        "firmware": "0.2.1",
+        "surgeProtector": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.503460883923285,
+          55.888
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 96,
+        "type": "lamp",
+        "name": "06-004",
+        "groupId": 6,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 2
+        },
+        "SC": 6,
+        "orientation": 0,
+        "model": "LC2M1806R",
+        "firmware": "0.2.1",
+        "surgeProtector": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.50394132588493,
+          55.888
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 97,
+        "type": "lamp",
+        "name": "06-005",
+        "groupId": 6,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 2
+        },
+        "SC": 6,
+        "orientation": 0,
+        "model": "LC2M1806R",
+        "firmware": "0.2.1",
+        "surgeProtector": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.504421767846573,
+          55.888
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 98,
+        "type": "lamp",
+        "name": "06-006",
+        "groupId": 6,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 2
+        },
+        "SC": 6,
+        "orientation": 0,
+        "model": "LC2M1806R",
+        "firmware": "0.2.1",
+        "surgeProtector": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.504902209808215,
+          55.888
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 99,
+        "type": "sc",
+        "name": "17",
+        "groupId": 7,
+        "status": "active",
+        "model": "SCM24UL8-868-44",
+        "firmware": "0.2.1"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.523801882143562,
+          55.885788135106004
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 100,
+        "type": "lamp",
+        "name": "07-001",
+        "groupId": 7,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 7,
+        "orientation": 0,
+        "model": "LC2M1806R",
+        "firmware": "0.1.0",
+        "surgeProtector": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.52393,
+          55.88586
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 101,
+        "type": "lamp",
+        "name": "07-002",
+        "groupId": 7,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 7,
+        "orientation": 0,
+        "model": "LC2M1806R",
+        "firmware": "0.2.1",
+        "surgeProtector": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.52435420507354,
+          55.88573348053465
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 102,
+        "type": "lamp",
+        "name": "07-003",
+        "groupId": 7,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 7,
+        "orientation": 0,
+        "model": "LC2M1806R",
+        "firmware": "0.1.0",
+        "surgeProtector": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.524778410147082,
+          55.885606961069286
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 103,
+        "type": "lamp",
+        "name": "07-004",
+        "groupId": 7,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 7,
+        "orientation": 0,
+        "model": "LC2M1806R",
+        "firmware": "0.2.1",
+        "surgeProtector": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.52520261522062,
+          55.88548044160393
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 104,
+        "type": "lamp",
+        "name": "07-005",
+        "groupId": 7,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 7,
+        "orientation": 0,
+        "model": "LC2M1806R",
+        "firmware": "0.2.1",
+        "surgeProtector": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.525626820294164,
+          55.88535392213857
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 105,
+        "type": "lamp",
+        "name": "07-006",
+        "groupId": 7,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 7,
+        "orientation": 0,
+        "model": "LC2M1806R",
+        "firmware": "0.1.0",
+        "surgeProtector": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.526051025367703,
+          55.885227402673216
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 106,
+        "type": "lamp",
+        "name": "07-007",
+        "groupId": 7,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 7,
+        "orientation": 0,
+        "model": "LC2M1806R",
+        "firmware": "0.2.1",
+        "surgeProtector": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.526475230441246,
+          55.885100883207855
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 107,
+        "type": "lamp",
+        "name": "07-008",
+        "groupId": 7,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 7,
+        "orientation": 0,
+        "model": "LC2M1806R",
+        "firmware": "0.2.1",
+        "surgeProtector": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.526899435514785,
+          55.8849743637425
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 108,
+        "type": "sc",
+        "name": "18",
+        "groupId": 8,
+        "status": "active",
+        "model": "SCM24UL8-868-44",
+        "firmware": "0.2.1"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.552041882143563,
+          55.856418135106004
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 109,
+        "type": "lamp",
+        "name": "08-001",
+        "groupId": 8,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 8,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.1.0",
+        "surgeProtector": false,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.55217,
+          55.85649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 110,
+        "type": "lamp",
+        "name": "08-002",
+        "groupId": 8,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 8,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": true,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.552650441961642,
+          55.85649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 111,
+        "type": "lamp",
+        "name": "08-003",
+        "groupId": 8,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 8,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": false,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.553130883923284,
+          55.85649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 112,
+        "type": "lamp",
+        "name": "08-004",
+        "groupId": 8,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 8,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": true,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.55361132588493,
+          55.85649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 113,
+        "type": "lamp",
+        "name": "08-005",
+        "groupId": 8,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 8,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.1.0",
+        "surgeProtector": false,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.55409176784657,
+          55.85649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 114,
+        "type": "lamp",
+        "name": "08-006",
+        "groupId": 8,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 8,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": false,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.554572209808214,
+          55.85649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 115,
+        "type": "lamp",
+        "name": "08-007",
+        "groupId": 8,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 8,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.1.0",
+        "surgeProtector": false,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.555052651769856,
+          55.85649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 116,
+        "type": "lamp",
+        "name": "08-008",
+        "groupId": 8,
+        "status": "no power",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 8,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": false,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.5555330937315,
+          55.85649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 117,
+        "type": "lamp",
+        "name": "08-009",
+        "groupId": 8,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 8,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": false,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.556013535693143,
+          55.85649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 118,
+        "type": "lamp",
+        "name": "08-010",
+        "groupId": 8,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 8,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": true,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.556493977654785,
+          55.85649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 119,
+        "type": "sc",
+        "name": "19",
+        "groupId": 9,
+        "status": "active",
+        "model": "SCM24UL8-868-44",
+        "firmware": "0.2.1"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.554501882143562,
+          55.895848135106
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 120,
+        "type": "lamp",
+        "name": "09-001",
+        "groupId": 9,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 5
+        },
+        "SC": 9,
+        "orientation": 0,
+        "model": "LC2M1806R",
+        "firmware": "0.2.1",
+        "surgeProtector": false,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.55463,
+          55.89592
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 121,
+        "type": "lamp",
+        "name": "09-002",
+        "groupId": 9,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 5
+        },
+        "SC": 9,
+        "orientation": 0,
+        "model": "LC2M1806R",
+        "firmware": "0.1.0",
+        "surgeProtector": true,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.555086927458323,
+          55.89600327802579
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 122,
+        "type": "lamp",
+        "name": "09-003",
+        "groupId": 9,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 5
+        },
+        "SC": 9,
+        "orientation": 0,
+        "model": "LC2M1806R",
+        "firmware": "0.1.0",
+        "surgeProtector": true,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.555543854916642,
+          55.896086556051586
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 123,
+        "type": "lamp",
+        "name": "09-004",
+        "groupId": 9,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 5
+        },
+        "SC": 9,
+        "orientation": 0,
+        "model": "LC2M1806R",
+        "firmware": "0.1.0",
+        "surgeProtector": true,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.556000782374966,
+          55.89616983407738
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 124,
+        "type": "lamp",
+        "name": "09-005",
+        "groupId": 9,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 5
+        },
+        "SC": 9,
+        "orientation": 0,
+        "model": "LC2M1806R",
+        "firmware": "0.1.0",
+        "surgeProtector": false,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.55645770983329,
+          55.89625311210317
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 125,
+        "type": "lamp",
+        "name": "09-006",
+        "groupId": 9,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 5
+        },
+        "SC": 9,
+        "orientation": 0,
+        "model": "LC2M1806R",
+        "firmware": "0.2.1",
+        "surgeProtector": true,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.55691463729161,
+          55.89633639012896
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 126,
+        "type": "sc",
+        "name": "20",
+        "groupId": 10,
+        "status": "active",
+        "model": "SCM24UL8-868-44",
+        "firmware": "0.2.1"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.585231882143564,
+          55.889448135106
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 127,
+        "type": "lamp",
+        "name": "11-001",
+        "groupId": 11,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 10,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": true,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.58536,
+          55.88952
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 128,
+        "type": "lamp",
+        "name": "11-002",
+        "groupId": 11,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 10,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": false,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.585795428291057,
+          55.88963389281218
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 129,
+        "type": "lamp",
+        "name": "11-003",
+        "groupId": 11,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 10,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": false,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.586230856582112,
+          55.889747785624365
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 130,
+        "type": "lamp",
+        "name": "11-004",
+        "groupId": 11,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 10,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.1.0",
+        "surgeProtector": true,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.58666628487317,
+          55.889861678436546
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 131,
+        "type": "lamp",
+        "name": "11-005",
+        "groupId": 11,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 10,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": true,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.587101713164227,
+          55.889975571248726
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 132,
+        "type": "lamp",
+        "name": "11-006",
+        "groupId": 11,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 10,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.1.0",
+        "surgeProtector": true,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.587537141455282,
+          55.890089464060914
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 133,
+        "type": "lamp",
+        "name": "11-007",
+        "groupId": 11,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 10,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.1.0",
+        "surgeProtector": false,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.587972569746338,
+          55.890203356873094
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 134,
+        "type": "lamp",
+        "name": "11-008",
+        "groupId": 11,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 10,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": false,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.588407998037393,
+          55.89031724968528
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 135,
+        "type": "lamp",
+        "name": "12-001",
+        "groupId": 12,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 10,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.1.0",
+        "surgeProtector": true,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.58884342632845,
+          55.89043114249746
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 136,
+        "type": "lamp",
+        "name": "12-002",
+        "groupId": 12,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 10,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": true,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.589278854619508,
+          55.89054503530964
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 137,
+        "type": "lamp",
+        "name": "12-003",
+        "groupId": 12,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 10,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": true,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.589714282910563,
+          55.89065892812183
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 138,
+        "type": "lamp",
+        "name": "12-004",
+        "groupId": 12,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 10,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.1.0",
+        "surgeProtector": false,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.59014971120162,
+          55.89077282093401
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 139,
+        "type": "lamp",
+        "name": "12-005",
+        "groupId": 12,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 10,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": true,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.590585139492674,
+          55.89088671374619
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 140,
+        "type": "lamp",
+        "name": "12-006",
+        "groupId": 12,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 10,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": false,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.59102056778373,
+          55.89100060655838
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 141,
+        "type": "lamp",
+        "name": "12-007",
+        "groupId": 12,
+        "status": "active",
+        "profile": {
+          "source": "group",
+          "id": 1
+        },
+        "SC": 10,
+        "orientation": 0,
+        "model": "LC2M2305R",
+        "firmware": "0.2.1",
+        "surgeProtector": true,
+        "sensors": [
+          "motion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.591455996074785,
+          55.89111449937056
         ]
       }
     }

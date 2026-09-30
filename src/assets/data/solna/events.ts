@@ -46,7 +46,8 @@ export const DEVICE_EVENTS: DeviceEvent[] = [
     deviceId: 282,
     value: 'overheating',
     title: 'Controller overheating',
-    level: 'warning'
+    level: 'warning',
+    taskId: 9
   },
   {
     id: 24,
@@ -55,7 +56,8 @@ export const DEVICE_EVENTS: DeviceEvent[] = [
     deviceId: 300,
     value: 'temperatureHigh',
     title: 'Cabinet temperature above threshold',
-    level: 'info'
+    level: 'info',
+    taskId: 10
   },
   {
     id: 25,
@@ -64,7 +66,8 @@ export const DEVICE_EVENTS: DeviceEvent[] = [
     deviceId: 225,
     value: 'lampVoltageTooLow',
     title: 'Voltage drop during peak hours',
-    level: 'warning'
+    level: 'warning',
+    taskId: 11
   },
 ]
 
