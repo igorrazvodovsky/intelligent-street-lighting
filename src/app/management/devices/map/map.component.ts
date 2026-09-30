@@ -1,6 +1,6 @@
 // TODO: Map shows only currently selected (in the list) groups/devices
 
-import { Component, AfterViewInit, OnInit, OnDestroy, Input, NgZone } from '@angular/core';
+import { Component, AfterViewInit, OnInit, OnDestroy, Input, NgZone, ElementRef } from '@angular/core';
 import { Subject } from 'rxjs';
 import { filter, startWith, takeUntil } from 'rxjs/operators';
 import * as L from 'leaflet';
@@ -27,12 +27,16 @@ const originalRecalculateBounds = (L as any).MarkerCluster.prototype._recalculat
   originalRecalculateBounds.call(this);
   const centroid = this._latlng;
   const members = this.getAllChildMarkers();
+  // The original returns early for an empty cluster (e.g. after its last marker is removed)
+  if (!members.length) return;
+  // A degree of longitude shrinks with latitude (~0.5 of a latitude degree at 60°N)
+  const lngScale = Math.cos(centroid.lat * Math.PI / 180);
   let closest = members[0];
   let closestDistSq = Infinity;
   for (const marker of members) {
     const ll = marker.getLatLng();
     const dLat = ll.lat - centroid.lat;
-    const dLng = ll.lng - centroid.lng;
+    const dLng = (ll.lng - centroid.lng) * lngScale;
     const distSq = dLat * dLat + dLng * dLng;
     if (distSq < closestDistSq) {
       closestDistSq = distSq;
@@ -43,6 +47,23 @@ const originalRecalculateBounds = (L as any).MarkerCluster.prototype._recalculat
 };
 
 type DeviceLayer = 'status' | 'sc' | 'profile'
+
+// Street lights sit ~30 m apart, so from this zoom on every device is drawn on
+// its own. markercluster works on integer zooms, so with zoomSnap 0.5 this
+// already applies at 16.5.
+const UNCLUSTERED_ZOOM = 17
+
+const WARNING_STATUSES = ['not responding', 'no power', 'unassigned', 'warning']
+const DANGER_STATUSES = ['alarm', 'error']
+
+// One severity scale shared by device markers and the cluster badges that
+// summarise them, so a cluster flagged red opens up to a marker that's red too
+function severity(status: string): 'danger' | 'warning' | 'off' | '' {
+  if (DANGER_STATUSES.includes(status)) return 'danger'
+  if (WARNING_STATUSES.includes(status)) return 'warning'
+  if (status === 'off') return 'off'
+  return ''
+}
 
 @Component({
   selector: 'devices-map',
@@ -92,6 +113,7 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
     private shapeService: ShapeService,
     private cityService: CityService,
     private ngZone: NgZone,
+    private host: ElementRef<HTMLElement>,
     public router: Router
   ) { }
 
@@ -101,10 +123,11 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
   //   });
   // }
 
+  // Only the cluster badges depend on the layer, so redraw those in place
+  // rather than rebuilding the markers and losing the current view
   changeLayer(layer) {
     this.deviceLayer = layer;
-    this.markers.clearLayers()
-    this.initGroupsLayer();
+    this.ngZone.runOutsideAngular(() => this.markers.refreshClusters())
   }
 
   makeSCMarker(clusterMarkers, childCount) {
@@ -125,27 +148,21 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
     const clusterProfilesColours = this.getClusterProfileIds(clusterMarkers).map(id => this.profileService.getProfileColour(id.toString()))
     const profileDots = clusterProfilesColours.map(colour => `<i class="dot" style="background: ${colour}"></i> `).join('')
     return L.divIcon({
-      className: 'marker--cluster ' + status,
+      className: 'marker--cluster',
       iconSize: [0, 0],
       html: `<div>${childCount} ${profileDots}</div>`
     });
   }
 
   makeStatusMarker(clusterMarkers, childCount) {
-    let status = "active"
-    let icon = ""
-    // TODO:
-    let warningStatuses = ['not responding', 'no power', 'unassigned', 'warning']
-    let dangerStatuses = ['alarm', 'error']
-    const warning = clusterMarkers.filter(e => warningStatuses.includes(e.feature.properties.status)).length > 0
-    const danger = clusterMarkers.filter(e => dangerStatuses.includes(e.feature.properties.status)).length > 0
-    const offline = clusterMarkers.filter(e => e.feature.properties.status === 'off').length == clusterMarkers.length
-
-    if (warning || danger) icon = iconAlert
-    if (warning) status = "warning"
-    if (danger) status = "danger"
-    if (offline) {
-      status = "off"
+    const severities = clusterMarkers.map(e => severity(e.feature.properties.status))
+    let status = 'active'
+    let icon = ''
+    if (severities.includes('warning')) status = 'warning'
+    if (severities.includes('danger')) status = 'danger'
+    if (status !== 'active') icon = iconAlert
+    if (severities.every(s => s === 'off')) {
+      status = 'off'
       icon = iconOff
     }
     return L.divIcon({
@@ -157,8 +174,12 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
 
   makeDeviceIcon(layer) {
     const p = layer.feature.properties
+    // Lamps are a 24px dot, SCs and sensors a 40px badge; iconSize lets Leaflet
+    // centre the icon on the device's coordinate
+    const size = p.type === 'lamp' ? 24 : 40
     return L.divIcon({
-      className: `marker--${p.type} ${p.status} ${p.id == this.selectedDevice ? 'selected' : ''}`,
+      className: `marker--${p.type} ${p.status} ${severity(p.status)} ${p.id == this.selectedDevice ? 'selected' : ''}`,
+      iconSize: [size, size],
       html: layer.iconHtml
     })
   }
@@ -168,9 +189,15 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
   selectDevice(id: number, focus: boolean) {
     const previous = this.deviceLayers.get(this.selectedDevice)
     this.selectedDevice = id
-    if (previous) previous.setIcon(this.makeDeviceIcon(previous))
+    if (previous) {
+      previous.setIcon(this.makeDeviceIcon(previous))
+      previous.setZIndexOffset(0)
+    }
     const layer = this.deviceLayers.get(id)
-    if (layer) layer.setIcon(this.makeDeviceIcon(layer))
+    if (layer) {
+      layer.setIcon(this.makeDeviceIcon(layer))
+      layer.setZIndexOffset(1000)
+    }
     this.focusPending = focus
     this.focusSelectedDevice()
   }
@@ -179,9 +206,31 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
     const layer = this.deviceLayers.get(this.selectedDevice)
     if (!this.focusPending || !layer || !this.map) return
     this.focusPending = false
+    // zoomToShowLayer treats a marker under the device list as already visible,
+    // so always re-centre it in the uncovered part of the map afterwards
     this.markers.zoomToShowLayer(layer, () => {
-      this.map.setView(layer.getLatLng(), Math.max(this.map.getZoom(), 17))
+      const zoom = Math.max(this.map.getZoom(), UNCLUSTERED_ZOOM)
+      const inset = this.coveredLeft()
+      const center = this.map.unproject(this.map.project(layer.getLatLng(), zoom).subtract([inset / 2, 0]), zoom)
+      this.map.setView(center, zoom)
     })
+  }
+
+  // Width of the map hidden under the device list, which slides over the map
+  // rather than beside it. Ignored when the list covers (nearly) all of it, as
+  // on handsets or when maximized.
+  private coveredLeft(): number {
+    const panel = this.host.nativeElement.closest('mat-sidenav-container')?.querySelector('.mat-drawer-opened')
+    if (!panel) return 0
+    const mapRect = this.map.getContainer().getBoundingClientRect()
+    const covered = panel.getBoundingClientRect().right - mapRect.left
+    return covered > 0 && covered < mapRect.width * 0.7 ? covered : 0
+  }
+
+  private fitToDevices() {
+    const bounds = this.markers.getBounds()
+    if (!bounds.isValid()) return
+    this.map.fitBounds(bounds, { paddingTopLeft: [this.coveredLeft() + 50, 50], paddingBottomRight: [50, 50] })
   }
 
   initGroupsLayer() {
@@ -195,7 +244,8 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
       },
       // Leaflet's default coverage polygon is solid blue; className hands
       // styling over to map.scss to match the dark cluster badges instead.
-      polygonOptions: { className: 'cluster-coverage' }
+      polygonOptions: { className: 'cluster-coverage' },
+      disableClusteringAtZoom: UNCLUSTERED_ZOOM,
     });
 
     let geoJsonLayer = L.geoJson(this.markersGeoJsonData, {
@@ -220,6 +270,7 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
         const html = pointer + `<figure>${icon}</figure><label>${label}</label>`
         layer.iconHtml = html
         layer.setIcon(this.makeDeviceIcon(layer))
+        if (feature.properties.id == this.selectedDevice) layer.setZIndexOffset(1000)
         this.deviceLayers.set(feature.properties.id, layer)
 
         // Re-enter the Angular zone so routing triggers change detection.
@@ -237,7 +288,7 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
     if (this.focusPending && this.deviceLayers.has(this.selectedDevice)) {
       this.focusSelectedDevice()
     } else {
-      this.map.fitBounds(this.markers.getBounds(), { padding: [50, 50] })
+      this.fitToDevices()
     }
   }
 
@@ -252,12 +303,8 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
       this.ngZone.runOutsideAngular(() => this.selectDevice(match ? +match[1] : null, focus))
     });
 
-    this.cityService.activeCity$.pipe(takeUntil(this.destroy$)).subscribe(city => {
-      if (this.map) {
-        this.map.setView([city.centerLat, city.centerLng], 13);
-      }
-    });
-
+    // Switching city needs no view change of its own: the new city's markers
+    // arrive through getMarkers() and the map fits itself to them
     this.markerService.getMarkers().pipe(takeUntil(this.destroy$)).subscribe((markers: any) => {
       this.ngZone.runOutsideAngular(() => {
         if (this.markers) {
