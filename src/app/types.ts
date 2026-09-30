@@ -14,6 +14,8 @@ export interface City {
   centerLng: number
   // IANA time zone, for local sunrise and sunset
   timeZone: string
+  // A street address near the centre, prefilled where a form asks for one
+  address: string
 }
 
 export type Category = "Area" | "Street" | "Function" | "Custom"
@@ -231,12 +233,8 @@ export interface Profile {
 // period total followed by one value per month, newest first; null means the
 // group didn't exist yet that month.
 export interface ReportGroup {
-  group: string
-  lamps: number
-  data: {
-    h: (number | null)[]
-    nominal: (number | null)[]
-    real: (number | null)[]
-    economy: (number | null)[]
-  }
+  groupId: number
+  // Dimming economy in %, latest complete month first. Null before the group
+  // was commissioned.
+  economy: (number | null)[]
 }

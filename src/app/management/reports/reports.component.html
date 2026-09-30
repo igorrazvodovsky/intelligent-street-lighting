@@ -41,7 +41,7 @@
         <mat-card-title>{{ stats.economy }}%</mat-card-title>
         <mat-card-subtitle
           [class.text-success]="stats.economyChange >= 0"
-          matTooltip="August compared with July"
+          matTooltip="{{ months[0] | date: 'MMMM' }} compared with {{ months[1] | date: 'MMMM' }}"
           >{{ stats.economyChange >= 0 ? "▲" : "▼" }}
           {{ stats.economyChangeSize }}%</mat-card-subtitle
         >
@@ -88,16 +88,16 @@
       <th mat-header-cell *matHeaderCellDef>Total</th>
     </ng-container>
     <ng-container matColumnDef="1">
-      <th mat-header-cell *matHeaderCellDef>Aug</th>
+      <th mat-header-cell *matHeaderCellDef>{{ months[0] | date: "MMM" }}</th>
     </ng-container>
     <ng-container matColumnDef="2">
-      <th mat-header-cell *matHeaderCellDef>Jul</th>
+      <th mat-header-cell *matHeaderCellDef>{{ months[1] | date: "MMM" }}</th>
     </ng-container>
     <ng-container matColumnDef="3">
-      <th mat-header-cell *matHeaderCellDef>Jun</th>
+      <th mat-header-cell *matHeaderCellDef>{{ months[2] | date: "MMM" }}</th>
     </ng-container>
     <ng-container matColumnDef="4">
-      <th mat-header-cell *matHeaderCellDef>May</th>
+      <th mat-header-cell *matHeaderCellDef>{{ months[3] | date: "MMM" }}</th>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   </table>
@@ -107,15 +107,14 @@
       <tr class="mat-row">
         <th class="mat-header-cell"></th>
         <th class="mat-header-cell">Total</th>
-        <th class="mat-header-cell">Aug</th>
-        <th class="mat-header-cell">Jul</th>
-        <th class="mat-header-cell">Jun</th>
-        <th class="mat-header-cell">May</th>
+        <th class="mat-header-cell" *ngFor="let month of months">
+          {{ month | date: "MMM" }}
+        </th>
       </tr>
     </thead>
   </table>
 
-  <ng-container *ngFor="let group of reports$ | async">
+  <ng-container *ngFor="let group of rows$ | async">
     <article>
       <!-- TODO: Link to group -->
 
@@ -139,23 +138,23 @@
         <tbody>
           <tr class="mat-row">
             <th class="mat-header-cell">Worked, h</th>
-            <td class="mat-cell" *ngFor="let i of group.data.h">{{ i }}</td>
+            <td class="mat-cell" *ngFor="let i of group.h">{{ i }}</td>
           </tr>
           <tr class="mat-row">
             <th class="mat-header-cell">Nominal energy, kWh</th>
-            <td class="mat-cell" *ngFor="let i of group.data.nominal">
+            <td class="mat-cell" *ngFor="let i of group.nominal">
               {{ i }}
             </td>
           </tr>
           <tr class="mat-row">
             <th class="mat-header-cell">Real energy, kWh</th>
-            <td class="mat-cell" *ngFor="let i of group.data.real">
+            <td class="mat-cell" *ngFor="let i of group.real">
               {{ i }}
             </td>
           </tr>
           <tr class="mat-row">
             <th class="mat-header-cell">Economy, %</th>
-            <td class="mat-cell" *ngFor="let i of group.data.economy">
+            <td class="mat-cell" *ngFor="let i of group.economy">
               {{ i }}
             </td>
           </tr>

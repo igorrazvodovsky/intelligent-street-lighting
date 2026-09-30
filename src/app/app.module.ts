@@ -1,4 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localeEnGb from '@angular/common/locales/en-GB';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,6 +15,10 @@ import { RippleGlobalOptions, MAT_RIPPLE_GLOBAL_OPTIONS } from '@angular/materia
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+
+// Both cities write dates day first with a 24-hour clock, like en-SE for date-fns
+// in app.component.ts
+registerLocaleData(localeEnGb);
 
 const globalRippleConfig: RippleGlobalOptions = {
   disabled: true,
@@ -44,6 +50,7 @@ const globalRippleConfig: RippleGlobalOptions = {
   ],
   bootstrap: [AppComponent],
   providers: [
+    { provide: LOCALE_ID, useValue: 'en-GB' },
     { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig },
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
   ]

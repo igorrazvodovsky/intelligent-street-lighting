@@ -3,8 +3,8 @@ import { BehaviorSubject } from 'rxjs';
 import { City } from '../types';
 
 export const CITIES: City[] = [
-  { id: 'daugavpils', name: 'Daugavpils', country: 'Latvia', language: 'Latvian', centerLat: 55.875, centerLng: 26.53, timeZone: 'Europe/Riga' },
-  { id: 'solna', name: 'Solna', country: 'Sweden', language: 'Swedish', centerLat: 59.363, centerLng: 18.00, timeZone: 'Europe/Stockholm' },
+  { id: 'daugavpils', name: 'Daugavpils', country: 'Latvia', language: 'Latvian', centerLat: 55.875, centerLng: 26.53, timeZone: 'Europe/Riga', address: 'Rīgas iela 1, Daugavpils, LV-5401, Latvia' },
+  { id: 'solna', name: 'Solna', country: 'Sweden', language: 'Swedish', centerLat: 59.363, centerLng: 18.00, timeZone: 'Europe/Stockholm', address: 'Solna torg 1, 171 45 Solna, Sweden' },
 ];
 
 // City shown on first visit, and the one city-scoped lookups fall back to.

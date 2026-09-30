@@ -8,20 +8,20 @@
       <div class="col">
         <mat-form-field>
           <mat-label>Latitude</mat-label>
-          <input matInput value="48.875417" />
+          <input matInput [value]="city?.centerLat | number: '1.6-6'" />
         </mat-form-field>
       </div>
       <div class="col">
         <mat-form-field>
           <mat-label>Longitude</mat-label>
-          <input matInput value="2.212076" />
+          <input matInput [value]="city?.centerLng | number: '1.6-6'" />
         </mat-form-field>
       </div>
     </div>
 
     <mat-form-field>
       <mat-label>Address</mat-label>
-      <input matInput value="37 Rue Voltaire 92500 Rueil-Malmaison, France" />
+      <input matInput [value]="city?.address" />
       <button
         mat-icon-button
         matSuffix
@@ -37,9 +37,10 @@
     <mat-form-field>
       <mat-label>Group</mat-label>
       <mat-select [(value)]="group">
-        <mat-option value="option1"> None </mat-option>
-        <mat-option value="option1"> Some existing group nearby </mat-option>
-        <mat-option value="option2"> Another existing group nearby </mat-option>
+        <mat-option value="none"> None </mat-option>
+        <mat-option *ngFor="let g of nearbyGroups" [value]="g.id">
+          {{ g.name }}
+        </mat-option>
         <mat-option value="new"> Create new group </mat-option>
       </mat-select>
     </mat-form-field>
