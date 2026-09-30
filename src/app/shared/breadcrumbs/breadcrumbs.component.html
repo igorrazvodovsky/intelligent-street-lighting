@@ -21,11 +21,17 @@
   <ng-container *ngIf="currentGroup">
     <span class="crumb" *ngFor="let level of currentGroup; let i = index">
       <a
-        [matMenuTriggerFor]="i + 1 == currentGroup.length ? renameMenu : ''"
+        *ngIf="i + 1 == currentGroup.length; else parentCrumb"
+        [matMenuTriggerFor]="renameMenu"
         [attr.aria-current]="!deviceId ? 'page' : 'false'"
         [routerLink]="'group/' + currentGroup[i].id"
         >{{ currentGroup[i].name }}</a
       >
+      <ng-template #parentCrumb>
+        <a [routerLink]="'group/' + currentGroup[i].id">{{
+          currentGroup[i].name
+        }}</a>
+      </ng-template>
       <span *ngIf="groupSiblings[i].length > 1" class="crumbicon">
         <mat-icon svgIcon="dropdownMedium" aria-hidden="true"></mat-icon>
         <select
@@ -82,7 +88,7 @@
 <mat-menu #renameMenu="matMenu">
   <mat-form-field appearance="fill">
     <mat-label>Name</mat-label>
-    <input autofocus matInput value="05-012" />
+    <input autofocus matInput [value]="currentName" />
   </mat-form-field>
 </mat-menu>
 

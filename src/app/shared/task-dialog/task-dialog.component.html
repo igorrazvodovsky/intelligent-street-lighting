@@ -50,35 +50,26 @@
   <p>{{ data.task.description }}</p>
 </section>
 
-<mat-selection-list [multiple]="false">
-  <h3 matSubheader>Event</h3>
-  <mat-list-option class="list-item-icon-right">
-    <mat-icon
-      svgIcon="chevronRightRegular"
-      matListIcon
-      aria-hidden="true"
-    ></mat-icon>
-    <!-- TODO: Get event data -->
-    <h4 matLine>Lamp failure</h4>
-    <p matLine class="text-secondary">12:36</p>
-  </mat-list-option>
-</mat-selection-list>
-<!-- TODO: iterate over comments -->
-<mat-divider></mat-divider>
-<mat-list>
+<ng-container *ngIf="event$ | async as event">
+  <mat-selection-list [multiple]="false">
+    <h3 matSubheader>Event</h3>
+    <mat-list-option class="list-item-icon-right">
+      <mat-icon
+        svgIcon="chevronRightRegular"
+        matListIcon
+        aria-hidden="true"
+      ></mat-icon>
+      <h4 matLine>{{ event.title }}</h4>
+      <p matLine class="text-secondary">{{ event.created | date: "HH:mm" }}</p>
+    </mat-list-option>
+  </mat-selection-list>
+  <mat-divider></mat-divider>
+</ng-container>
+<mat-list *ngIf="comments.length > 0">
   <h3 matSubheader>Comments</h3>
-  <mat-list-item>
-    <h4 matLine>Alec Whitten</h4>
-    <p matLine>Haha, no</p>
-  </mat-list-item>
-  <mat-list-item>
-    <h4 matLine>Kari Rasmussen</h4>
-    <p matLine>
-      We’ll be creating a visualization of population density per US state. As
-      the amount of data (state shapes and the density value for each state) is
-      not very big, the most convenient and simple way to store and then display
-      it is GeoJSON.
-    </p>
+  <mat-list-item *ngFor="let comment of comments">
+    <h4 matLine>{{ comment.author }}</h4>
+    <p matLine>{{ comment.comment }}</p>
   </mat-list-item>
 </mat-list>
 <form id="task__new-comment">

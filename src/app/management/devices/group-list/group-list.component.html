@@ -1,10 +1,12 @@
 <!-- TODO: Don't show the category if empty? -->
 <!-- TODO: Category creation through assignemt?-->
 
-<mat-selection-list role="list" [multiple]="false">
-  <group-list-item
-    *ngFor="let group of groups; trackBy: trackByGroupId"
-    [group]="group"
-  ></group-list-item>
-</mat-selection-list>
-<mat-divider *ngIf="groups.length > 0"></mat-divider>
+<ng-container *ngIf="groups$ | async as groups">
+  <mat-selection-list role="list" [multiple]="false">
+    <group-list-item
+      *ngFor="let group of groups; trackBy: trackByGroupId"
+      [group]="group"
+    ></group-list-item>
+  </mat-selection-list>
+  <mat-divider *ngIf="groups.length > 0"></mat-divider>
+</ng-container>

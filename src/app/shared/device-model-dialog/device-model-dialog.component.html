@@ -9,23 +9,37 @@
   <mat-icon svgIcon="linkRegular" aria-hidden="true"></mat-icon>
 </a>
 
-<mat-list>
-  <mat-list-item>
-    <div mat-line>Name</div>
-    <div mat-line>SRL068757L11B032SNMG1</div>
-  </mat-list-item>
-  <mat-list-item>
-    <div mat-line>Wattage</div>
-    <div mat-line>68</div>
-  </mat-list-item>
-  <mat-list-item>
-    <div mat-line>Control type</div>
-    <div mat-line>DALI</div>
-  </mat-list-item>
-  <mat-list-item>
-    <div mat-line>...</div>
-  </mat-list-item>
-</mat-list>
+<ng-container *ngIf="model$ | async as model; else unknownModel">
+  <mat-list>
+    <mat-list-item>
+      <div mat-line>Name</div>
+      <div mat-line>{{ model.name }}</div>
+    </mat-list-item>
+    <mat-list-item>
+      <div mat-line>Type</div>
+      <div mat-line>{{ model.type }}</div>
+    </mat-list-item>
+    <mat-list-item *ngIf="model.luminaire">
+      <div mat-line>Luminaire</div>
+      <div mat-line>{{ model.luminaire }}</div>
+    </mat-list-item>
+    <mat-list-item *ngIf="model.wattage">
+      <div mat-line>Wattage</div>
+      <div mat-line>{{ model.wattage }}</div>
+    </mat-list-item>
+    <mat-list-item>
+      <div mat-line>Control type</div>
+      <div mat-line>{{ model.controlType }}</div>
+    </mat-list-item>
+    <mat-list-item>
+      <div mat-line>Hardware version</div>
+      <div mat-line>{{ model.hardwareVersion }}</div>
+    </mat-list-item>
+  </mat-list>
+</ng-container>
+<ng-template #unknownModel>
+  <p class="text-secondary">No details for model {{ data.name }}.</p>
+</ng-template>
 <mat-dialog-actions align="end">
   <button mat-button [mat-dialog-close]="true">Close</button>
   <!-- TODO: Edit in the same dialog -->

@@ -7,60 +7,70 @@
 ></device-filters>
 
 <mat-accordion>
-  <mat-expansion-panel
-    id="category-profiles"
-    *ngIf="profile$ | async as profile"
-    hideToggle
-  >
-    <mat-expansion-panel-header>
-      <!-- TODO: 1 profile → singular -->
-      <mat-panel-title> Profiles </mat-panel-title>
-      <mat-panel-description class="text-secondary">
-        <div class="truncate">
-          {{ profile.name }}, Pedestrian crossing, 12 in manual mode
-        </div>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <mat-action-list>
-      <button mat-list-item [routerLink]="'../../../profiles/' + [profile.id]">
-        <div matLine>{{ profile.name }}</div>
-        <div matLine>120 lamps &bull; segment controller 13</div>
-      </button>
-      <button mat-list-item>
-        <div matLine>Pedestrian crossing</div>
-        <div matLine>4 lamps &bull; Protected</div>
-      </button>
-      <button mat-list-item>
-        <div matLine>Manual mode 🙌</div>
-        <div matLine>12 lamps</div>
-      </button>
-      <button mat-list-item [matMenuTriggerFor]="profileMenu">Assign</button>
-    </mat-action-list>
-  </mat-expansion-panel>
+  <ng-container *ngIf="profile$ | async as profile">
+    <mat-expansion-panel
+      id="category-profiles"
+      *ngIf="profileUsage$ | async as usage"
+      hideToggle
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ usage.length === 1 ? "Profile" : "Profiles" }}
+        </mat-panel-title>
+        <mat-panel-description class="text-secondary">
+          <div class="truncate">
+            <ng-container *ngFor="let u of usage; let last = last"
+              >{{ u.profile.name }}{{ last ? "" : ", " }}</ng-container
+            >
+          </div>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-action-list>
+        <button
+          mat-list-item
+          *ngFor="let u of usage"
+          [routerLink]="'../../../profiles/' + [u.profile.id]"
+        >
+          <div matLine>{{ u.profile.name }}</div>
+          <div matLine>
+            {{ u.lamps | i18nPlural: lampMapping
+            }}{{ u.profile.id === profile.id ? " • group profile" : "" }}
+          </div>
+        </button>
+        <button mat-list-item [matMenuTriggerFor]="profileMenu">Assign</button>
+      </mat-action-list>
+    </mat-expansion-panel>
+  </ng-container>
   <!-- Subcategories for current selection -->
-  <mat-expansion-panel id="category-subcategories" hideToggle>
-    <mat-expansion-panel-header>
-      <mat-panel-title> Subcategories </mat-panel-title>
-      <mat-panel-description class="text-secondary">
-        Pedestrian crossing, Side street
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <mat-action-list>
-      <button mat-list-item>
-        <div matLine>Pedestrian crossing</div>
-        <div matLine>4 lamps</div>
-      </button>
-      <button mat-list-item>
-        <div matLine>Pedestrian crossing</div>
-        <div matLine>4 lamps</div>
-      </button>
-      <button mat-list-item>
-        <div matLine>Side street</div>
-        <div matLine>12 lamps</div>
-      </button>
-      <button mat-list-item>Add</button>
-    </mat-action-list>
-  </mat-expansion-panel>
+  <ng-container *ngIf="subgroups$ | async as subgroups">
+    <mat-expansion-panel
+      *ngIf="subgroups.length > 0"
+      id="category-subcategories"
+      hideToggle
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title> Subcategories </mat-panel-title>
+        <mat-panel-description class="text-secondary">
+          <div class="truncate">
+            <ng-container *ngFor="let sub of subgroups; let last = last"
+              >{{ sub.group.name }}{{ last ? "" : ", " }}</ng-container
+            >
+          </div>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-action-list>
+        <button
+          mat-list-item
+          *ngFor="let sub of subgroups"
+          [routerLink]="'../' + [sub.group.id]"
+        >
+          <div matLine>{{ sub.group.name }}</div>
+          <div matLine>{{ sub.lamps | i18nPlural: lampMapping }}</div>
+        </button>
+        <button mat-list-item>Add</button>
+      </mat-action-list>
+    </mat-expansion-panel>
+  </ng-container>
 </mat-accordion>
 
 <!-- (click)="isEditable = !isEditable" -->
@@ -98,13 +108,9 @@
           {{ device.name }}
         </span>
       </div>
-      <span *ngIf="device.type !== 'sensor'" matLine
-        >SC11, 1 luminaire{{ device.surgeProtector ? ", surge protector" : null
-        }}{{ device.sensors ? ", " + device.sensors.join(", ") : null }}
-        <!-- <ng-container *ngFor="let sensor of device.sensors">
-        {{ sensor }}</ng-container
-      > -->
-      </span>
+      <span *ngIf="device.type !== 'sensor' && details[device.id]" matLine>{{
+        details[device.id]
+      }}</span>
     </mat-list-option>
     <mat-list-option role="listitem">
       <div class="text-secondary" matLine>Add</div>
@@ -120,10 +126,7 @@
       *ngFor="let device of filteredDevices$ | async; trackBy: trackByDeviceId"
     >
       <div matLine>{{ device.name }}</div>
-      <span matLine
-        >SC11, 1 luminaire{{ device.surgeProtector ? ", surge protector" : null
-        }}{{ device.sensors ? ", " + device.sensors.join(", ") : null }}
-      </span>
+      <span *ngIf="details[device.id]" matLine>{{ details[device.id] }}</span>
     </mat-list-option>
   </mat-selection-list>
 </ng-container>

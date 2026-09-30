@@ -14,7 +14,7 @@
       Controlled manually
     </ng-container>
     <ng-template #profileControlled>
-      <div matLine>{{ profile.name }}</div>
+      <div matLine>{{ (profile$ | async)?.name }}</div>
       <span matLine class="text-secondary">
         <ng-container
           *ngIf="device.profile.source !== 'itself'; else selfAssigned"
@@ -30,11 +30,11 @@
     <div
       matListIcon
       matTooltip="Overrides are disabled for this group"
-      [matTooltipDisabled]="!group.profileLocked"
+      [matTooltipDisabled]="!group?.profileLocked"
     >
       <button
         (click)="onProfileSelectClick($event)"
-        [disabled]="group.profileLocked"
+        [disabled]="group?.profileLocked"
         mat-icon-button
         [matMenuTriggerFor]="profileMenu"
       >
@@ -49,7 +49,7 @@
   <button
     [disabled]="device.profile.id == profile.id"
     mat-menu-item
-    *ngFor="let profile of profiles"
+    *ngFor="let profile of profiles$ | async"
   >
     {{ profile.name }}
   </button>
@@ -65,7 +65,8 @@
     <mat-expansion-panel-header>
       <mat-panel-title>Brightness</mat-panel-title>
       <mat-panel-description>
-        50%. Target is set to 60% until 07:00.
+        50%. Target is set to 60% until
+        {{ sunrise$ | async | date: "HH:mm" }}.
       </mat-panel-description>
     </mat-expansion-panel-header>
     <mat-slider
@@ -93,7 +94,9 @@
     <mat-expansion-panel-header>
       <!-- TODO: On, off, no monitoring? -->
       <mat-panel-title>Surge protector</mat-panel-title>
-      <mat-panel-description>No</mat-panel-description>
+      <mat-panel-description>{{
+        device.surgeProtector ? "Yes" : "No"
+      }}</mat-panel-description>
     </mat-expansion-panel-header>
   </mat-expansion-panel>
   <mat-divider></mat-divider>
@@ -118,7 +121,7 @@
   <mat-list-option disabled role="listitem">
     <mat-icon matListIcon svgIcon="firmwareRegular"></mat-icon>
     <div matLine>Update firmware</div>
-    <span class="text-secondary" matLine>Up to date — 0.1.3.</span>
+    <span class="text-secondary" matLine>Up to date — {{ device.firmware }}.</span>
   </mat-list-option>
   <mat-list-option role="listitem">
     <mat-icon matListIcon svgIcon="trashRegular"></mat-icon>

@@ -4,9 +4,10 @@
 
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { ProfileService } from '~local/services/profile.service'
-import { Profile, DeviceType, DeviceStatus, DeviceFilters } from '~local/types'
-import { BehaviorSubject, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { DeviceService } from '~local/services/device.service'
+import { Profile, Device, DeviceType, DeviceStatus, DeviceFilters } from '~local/types'
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { map, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'device-filters',
@@ -18,6 +19,12 @@ export class DeviceFiltersComponent implements OnInit, OnDestroy {
   types: DeviceType[] = ['lamp', 'sc', 'sensor'];
   statuses: DeviceStatus[] = ['active', 'inactive', 'off', 'not responding', 'no power', 'alarm', 'unassigned', 'error', 'warning'];
   private destroy$ = new Subject<void>();
+  // Segment controllers in the active city
+  controllers$: Observable<Device[]> = this.deviceService.Devices.pipe(
+    map(devices => devices.filter(device => device.type === 'sc'))
+  );
+  // What a street is lit for, the same in every city
+  functions = ['Main road', 'Residential street', 'Pedestrian crossing', 'Cycle path', 'Park'];
 
   @Input() selected$: BehaviorSubject<DeviceFilters>
   selected: DeviceFilters
@@ -37,7 +44,7 @@ export class DeviceFiltersComponent implements OnInit, OnDestroy {
     'warning': 'Warning'
   }
 
-  constructor(private profileService: ProfileService) { }
+  constructor(private profileService: ProfileService, private deviceService: DeviceService) { }
 
   ngOnInit() {
     this.selected$.pipe(takeUntil(this.destroy$)).subscribe(filters => this.selected = filters)

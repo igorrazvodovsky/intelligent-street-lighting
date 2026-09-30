@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Task, Device, DeviceEvent } from '~local/types'
+import { Observable } from 'rxjs';
+import { Device, Profile } from '~local/types'
+import { ProfileService } from '~local/services/profile.service';
 
 @Component({
   selector: 'device-sc',
@@ -10,7 +12,9 @@ export class DeviceScComponent implements OnInit {
   @Input() device!: Device;
   on = true
   powerlines = true
+  profiles$: Observable<Profile[]> = this.profileService.Profiles
 
+  // Relays aren't in the fixtures, so every controller shows these four
   relays = [
     {
       name: "RO1",
@@ -24,7 +28,7 @@ export class DeviceScComponent implements OnInit {
     },
         {
       name: "RO2",
-      profile: "Default",
+      profileId: 1,
       comment: "Disable the power on contactor 1.",
       settings: {
         on: true,
@@ -34,7 +38,7 @@ export class DeviceScComponent implements OnInit {
     },
             {
       name: "RO3",
-              profile: "Default",
+      profileId: 1,
       comment: "",
       settings: {
         on: true,
@@ -44,7 +48,7 @@ export class DeviceScComponent implements OnInit {
     },
                 {
       name: "RO4",
-      profile: "Default",
+      profileId: 1,
       comment: "",
       settings: {
         on: false,
@@ -55,7 +59,10 @@ export class DeviceScComponent implements OnInit {
 
 ]
 
-  constructor() { }
+  // keyvalue sorts by key unless given a comparator; keep the declared order
+  keepOrder = () => 0
+
+  constructor(private profileService: ProfileService) { }
 
   ngOnInit(): void {
   }

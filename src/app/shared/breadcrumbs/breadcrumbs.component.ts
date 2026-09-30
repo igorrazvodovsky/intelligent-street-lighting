@@ -1,11 +1,9 @@
-// TODO: Empty current group on change
-
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { DeviceService } from '~local/services/device.service'
 import { CityService } from '~local/services/city.service'
-import { Observable, BehaviorSubject, Subject } from 'rxjs';
+import { Observable, BehaviorSubject, Subject, combineLatest } from 'rxjs';
 import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
-import { Device, Category, City } from '~local/types'
+import { Device, DeviceGroup, Category, City } from '~local/types'
 import { Router, ActivatedRoute, Event, NavigationEnd } from '@angular/router';
 
 interface Crumb { name: string, id: number, type?: string };
@@ -23,7 +21,7 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
   deviceId: number
   private destroy$ = new Subject<void>();
 
-  currentGroup: any[] = []
+  currentGroup: Crumb[] = []
   groupSiblings: Crumb[][] = []
   deviceSiblings$: Observable<Device[]>
   devices: Crumb[] = []
@@ -46,6 +44,11 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
     public router: Router,
     private activatedRoute: ActivatedRoute
   ) { }
+
+  // Prefills the rename field with whatever the last crumb names
+  get currentName(): string {
+    return this.currentDevice?.name ?? this.currentGroup[this.currentGroup.length - 1]?.name ?? ''
+  }
 
   getRouteInfo() {
     const url = this.router.routerState.snapshot.url
@@ -75,32 +78,36 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
     })
     this.getRouteInfo()
 
-    this.groupId$.pipe(distinctUntilChanged(), takeUntil(this.destroy$)).subscribe((id: number) => {
-      this.groupId = id
-      if (id) {
-        this.getSelectedGroup(id)
-      }
-      else this.currentGroup = []
-    });
+    // Rebuilt from the whole group list on every change, so a city switch
+    // replaces the crumbs rather than adding to them
+    combineLatest([this.groupId$.pipe(distinctUntilChanged()), this.service.Groups])
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(([id, groups]: [number, DeviceGroup[]]) => {
+        this.groupId = id
+        const chain: DeviceGroup[] = []
+        let group = id ? groups.find(g => g.id == id) : undefined
+        while (group) {
+          chain.unshift(group)
+          const parentId = group.parentId
+          group = parentId != null ? groups.find(g => g.id == parentId) : undefined
+        }
+        this.currentGroup = chain.map(g => ({ id: g.id, name: g.name }))
+        this.groupSiblings = chain.map(g => groups
+          .filter(sibling => sibling.parentId == g.parentId)
+          .map(sibling => ({ id: sibling.id, name: sibling.name })))
+      });
 
-    this.deviceId$.pipe(distinctUntilChanged(), takeUntil(this.destroy$)).subscribe((id: number) => {
-      this.deviceId = id
-      if (id) {
-        // Get device...
-        this.service.getDevice(id).pipe(takeUntil(this.destroy$)).subscribe(device => {
-          this.currentDevice = device
-          // ...siblings
-          this.service.getDevicesByGroup(device.groupId).pipe(takeUntil(this.destroy$)).subscribe(devices => {
-            this.devices = devices.map(device => ({ name: device.name, id: device.id, type: device.type }))
-          });
-          // group
-          if (this.groupId !== device.groupId) {
-            this.groupId$.next(device.groupId)
-          }
-        })
-      }
-      else this.currentDevice = null
-    });
+    combineLatest([this.deviceId$.pipe(distinctUntilChanged()), this.service.Devices])
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(([id, devices]: [number, Device[]]) => {
+        this.deviceId = id
+        const device = id ? devices.find(d => d.id == id) : undefined
+        this.currentDevice = device ?? null
+        this.devices = device
+          ? devices.filter(d => d.groupId == device.groupId).map(d => ({ name: d.name, id: d.id, type: d.type }))
+          : []
+        if (device && this.groupId !== device.groupId) this.groupId$.next(device.groupId)
+      });
 
     this.router.events.pipe(takeUntil(this.destroy$)).subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
@@ -115,16 +122,7 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  getSelectedGroup(id) {
-    this.service.getGroup(id).pipe(takeUntil(this.destroy$)).subscribe(group => {
-      this.currentGroup.unshift({ id: group.id, name: group.name })
-      this.service.getGroupsByParent(group.parentId).pipe(takeUntil(this.destroy$)).subscribe(groups => this.groupSiblings.unshift(groups))
-      if (group.parentId) this.getSelectedGroup(group.parentId);
-    })
-  }
-
   onGroupChange(value) {
-    this.currentGroup = []
     let id = this.groupSiblings.flat().find(group => group.name == value).id
     this.router.navigate(['/management/devices/group/' + id]);
   }
@@ -134,7 +132,12 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
     this.router.navigate(['device/' + id], { relativeTo: this.activatedRoute });
   }
 
+  // Device and group ids belong to one city, so leave a device or group page
+  // before switching; its id would match nothing in the other city
   onCityChange(cityId: string) {
-    this.cityService.setCity(cityId)
+    if (/^\/management\/devices\/(device|group)\//.test(this.router.url)) {
+      this.router.navigate(['/management/devices']).then(() => this.cityService.setCity(cityId))
+    }
+    else this.cityService.setCity(cityId)
   }
 }

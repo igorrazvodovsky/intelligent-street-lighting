@@ -119,6 +119,9 @@ export interface Device {
   // TODO: lamps only
   orientation?: number
   firmware: string
+  // From the GeoJSON geometry
+  lat?: number
+  lng?: number
   profile: {
     source: 'group' | 'sc' | 'itself'
     id?: number,
@@ -127,6 +130,18 @@ export interface Device {
   sensor?: {
     type: 'env' | 'traffic'
   }
+}
+
+export interface DeviceModel {
+  name: string
+  type: 'Luminaire controller' | 'Segment controller' | 'Sensor'
+  controlType: string
+  hardwareVersion: string
+  // Luminaire controllers only
+  luminaire?: string
+  wattage?: number
+  driverModel?: string
+  driverProducer?: string
 }
 
 export interface MotionSensor {

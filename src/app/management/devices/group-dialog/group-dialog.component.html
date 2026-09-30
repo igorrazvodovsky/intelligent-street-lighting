@@ -13,8 +13,9 @@
   <mat-label>Subcategory of</mat-label>
   <mat-select [(value)]="parent">
     <mat-option value="root">{{ cityName }}</mat-option>
-    <mat-option value="one">First option</mat-option>
-    <mat-option value="two">Second option</mat-option>
+    <mat-option *ngFor="let group of groups$ | async" [value]="group.id">
+      {{ group.name }}
+    </mat-option>
   </mat-select>
 </mat-form-field>
 <mat-dialog-actions align="end">

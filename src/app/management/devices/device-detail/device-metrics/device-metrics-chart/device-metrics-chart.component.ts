@@ -61,6 +61,7 @@ export class DeviceMetricsChartComponent implements OnInit, OnDestroy {
       takeUntil(this.destroy$)
     ).subscribe(metrics => {
       this.data = metrics
+      this.reset();
       this.createSvg();
       this.initializeChart();
       this.drawPlot();
@@ -73,6 +74,15 @@ export class DeviceMetricsChartComponent implements OnInit, OnDestroy {
   }
 
   parseTime: any = d3TimeFormat.timeParse("%H:%M");
+
+  // Another device or city draws from scratch, not on top of the last chart
+  private reset(): void {
+    d3.select(this.chartElem.nativeElement).selectAll("svg").remove();
+    this.dates = [];
+    this.groupValuesByY = {};
+    this.bucketNames = [];
+    this.maxYAxisValue = -Infinity;
+  }
 
   private createSvg(): void {
     this.svg = d3

@@ -28,7 +28,7 @@ export class GroupListItemComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.deviceService.getDevicesByGroup(this.group.id).pipe(takeUntil(this.destroy$)).subscribe(devices => this.devices = devices);
-    this.profileService.getProfile(this.group.id).pipe(takeUntil(this.destroy$)).subscribe(profile => this.profile = profile);
+    this.profileService.getProfile(this.group.profileId).pipe(takeUntil(this.destroy$)).subscribe(profile => this.profile = profile);
   }
 
   ngOnDestroy(): void {

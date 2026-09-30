@@ -1,5 +1,5 @@
 <!-- TODO: Filter out alerts with tasks -->
-<section *ngFor="let alert of alerts" class="alert">
+<section *ngFor="let alert of alerts$ | async" class="alert">
   <div class="alert__message">
     <mat-icon
       inline

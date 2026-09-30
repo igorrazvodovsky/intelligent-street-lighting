@@ -1,44 +1,54 @@
-<mat-action-list>
-  <button mat-list-item (click)="openModelDialog()">
-    <div mat-line>Model</div>
-    <div mat-line>MSLC205R</div>
-  </button>
-</mat-action-list>
-<mat-list>
-  <mat-list-item>
-    <div mat-line>Serial</div>
-    <div mat-line>FF04203452202020514E5334D07AD0F0</div>
-  </mat-list-item>
-  <mat-list-item>
-    <div mat-line>Address</div>
-    <div mat-line>dev:lc06248</div>
-  </mat-list-item>
-  <mat-list-item>
-    <div mat-line>SC address</div>
-    <div mat-line>DEV:TB8be6fe46521a400494617e5b4638643d</div>
-  </mat-list-item>
-  <mat-list-item>
-    <div mat-line>Location</div>
-    <div mat-line>55.885524953771, 26.507931053638</div>
-  </mat-list-item>
-  <mat-list-item>
-    <div mat-line>hW version</div>
-    <div mat-line>1.00ZHAGA</div>
-  </mat-list-item>
-  <mat-list-item>
-    <div mat-line>sW version</div>
-    <div mat-line>1.9.83A</div>
-  </mat-list-item>
-  <mat-list-item>
-    <div mat-line>Driver model</div>
-    <div mat-line>111-111-111</div>
-  </mat-list-item>
-  <mat-list-item>
-    <div mat-line>Driver producer</div>
-    <div mat-line>Drivers Inc.</div>
-  </mat-list-item>
-  <mat-list-item>
-    <div mat-line>Luminier max power, W</div>
-    <div mat-line>1000</div>
-  </mat-list-item>
-</mat-list>
+<ng-container *ngIf="info$ | async as info">
+  <mat-action-list>
+    <button mat-list-item (click)="openModelDialog()">
+      <div mat-line>Model</div>
+      <div mat-line>{{ device.model }}</div>
+    </button>
+  </mat-action-list>
+  <mat-list>
+    <mat-list-item>
+      <div mat-line>Serial</div>
+      <div mat-line>{{ info.serial }}</div>
+    </mat-list-item>
+    <mat-list-item>
+      <div mat-line>Address</div>
+      <div mat-line>{{ info.address }}</div>
+    </mat-list-item>
+    <mat-list-item *ngIf="info.controllerAddress">
+      <div mat-line>SC address</div>
+      <div mat-line>{{ info.controllerAddress }}</div>
+    </mat-list-item>
+    <mat-list-item *ngIf="device.lat != null">
+      <div mat-line>Location</div>
+      <div mat-line>
+        {{ device.lat | number: "1.6-6" }}, {{ device.lng | number: "1.6-6" }}
+      </div>
+    </mat-list-item>
+    <mat-list-item *ngIf="info.model">
+      <div mat-line>hW version</div>
+      <div mat-line>{{ info.model.hardwareVersion }}</div>
+    </mat-list-item>
+    <mat-list-item>
+      <div mat-line>sW version</div>
+      <div mat-line>{{ device.firmware }}</div>
+    </mat-list-item>
+    <ng-container *ngIf="info.model?.luminaire">
+      <mat-list-item>
+        <div mat-line>Luminaire</div>
+        <div mat-line>{{ info.model.luminaire }}</div>
+      </mat-list-item>
+      <mat-list-item>
+        <div mat-line>Driver model</div>
+        <div mat-line>{{ info.model.driverModel }}</div>
+      </mat-list-item>
+      <mat-list-item>
+        <div mat-line>Driver producer</div>
+        <div mat-line>{{ info.model.driverProducer }}</div>
+      </mat-list-item>
+      <mat-list-item>
+        <div mat-line>Luminaire max power, W</div>
+        <div mat-line>{{ info.model.wattage }}</div>
+      </mat-list-item>
+    </ng-container>
+  </mat-list>
+</ng-container>

@@ -2,11 +2,12 @@ import { GROUPS as DAUGAVPILS_GROUPS, MEASUREMENTS as DAUGAVPILS_MEASUREMENTS } 
 import { GROUPS as SOLNA_GROUPS, MEASUREMENTS as SOLNA_MEASUREMENTS } from '~local/../assets/data/solna/groups';
 import { DEVICE_METRICS as DAUGAVPILS_METRICS } from '~local/../assets/data/daugavpils/device-metrics'
 import { DEVICE_METRICS as SOLNA_METRICS } from '~local/../assets/data/solna/device-metrics'
+import { DEVICE_MODELS } from '~local/../assets/data/device-models'
 
 import { Injectable } from '@angular/core';
-import { Device, DeviceGroup, DeviceMetrics, MeasurementGroup } from '../types';
+import { Device, DeviceGroup, DeviceMetrics, DeviceModel, MeasurementGroup } from '../types';
 import { MessageService } from './message.service';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest, of } from 'rxjs';
 import { map, switchMap, shareReplay } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { cityScoped } from './city-scoped';
@@ -40,7 +41,12 @@ export class DeviceService {
   private _devices = this.cityService.activeCity$.pipe(
     switchMap(city =>
       this.http.get(`/assets/data/${city.id}/devices.geojson`).pipe(
-        map((data: any) => data.features.map(e => e.properties))
+        // GeoJSON points are [lng, lat]
+        map((data: any) => data.features.map(e => ({
+          ...e.properties,
+          lat: e.geometry.coordinates[1],
+          lng: e.geometry.coordinates[0],
+        })))
       )
     ),
     shareReplay(1)
@@ -91,6 +97,17 @@ export class DeviceService {
     return scaled;
   }
 
+  // Models are a hardware catalogue shared by every city, so they aren't city-scoped
+  private _models = of(DEVICE_MODELS)
+
+  public get Models(): Observable<DeviceModel[]> {
+    return this._models
+  }
+
+  getModel(name: string): Observable<DeviceModel | undefined> {
+    return this._models.pipe(map(models => models.find(model => model.name === name)))
+  }
+
   public get Measurements(): Observable<MeasurementGroup[]> {
     return this._measurements
   }
@@ -120,6 +137,27 @@ export class DeviceService {
     return this._devices.pipe(
       map((devices: Device[]) => devices.find(device => device.id == +id)!)
     );
+  }
+
+  // The device and its group, or null when the active city has no such device,
+  // e.g. a URL kept from the other city
+  getDeviceWithGroup(id: number | string): Observable<{ device: Device, group?: DeviceGroup } | null> {
+    return combineLatest([this._devices, this._groups]).pipe(
+      map(([devices, groups]) => {
+        const device = devices.find(d => d.id == +id)
+        if (!device) return null
+        return { device, group: groups.find(g => g.id == device.groupId) }
+      })
+    );
+  }
+
+  // A controller drives the lamps in its own group and that group's child
+  // groups, so a lamp's controller sits in its group or the parent group. Same
+  // rule as the controller's Segment tab.
+  getSegmentController(device: Device, devices: Device[], groups: DeviceGroup[]): Device | undefined {
+    const group = groups.find(g => g.id == device.groupId)
+    const controllerIn = (groupId: number) => devices.find(d => d.type === 'sc' && d.groupId == groupId)
+    return controllerIn(device.groupId) ?? (group?.parentId != null ? controllerIn(group.parentId) : undefined)
   }
 
   getDevicesByGroup(id: number | string) {

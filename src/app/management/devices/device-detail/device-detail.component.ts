@@ -1,9 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Device, DeviceGroup } from '~local/types'
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { switchMap, takeUntil } from 'rxjs/operators';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { DeviceService } from '~local/services/device.service'
+import { CityService } from '~local/services/city.service'
 
 @Component({
   selector: 'device-detail',
@@ -11,27 +12,30 @@ import { DeviceService } from '~local/services/device.service'
   styleUrls: ['./device-detail.component.scss']
 })
 export class DeviceDetailComponent implements OnInit, OnDestroy {
-  device$!: Observable<Device>;
   device: Device;
   group: DeviceGroup;
+  loaded = false;
   private destroy$ = new Subject<void>();
 
   constructor(
     private route: ActivatedRoute,
-    private service: DeviceService
+    private service: DeviceService,
+    private cityService: CityService
   ) { }
 
-  ngOnInit() {
-    this.device$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-        this.service.getDevice(params.get('deviceId')!))
-    );
+  get cityName(): string {
+    return this.cityService.city.name
+  }
 
-    this.device$.pipe(takeUntil(this.destroy$)).subscribe(device => {
-      this.device = device;
-      this.service.getGroup(device.groupId).pipe(takeUntil(this.destroy$)).subscribe(group => this.group = group)
-    }
-    );
+  ngOnInit() {
+    this.route.paramMap.pipe(
+      switchMap((params: ParamMap) => this.service.getDeviceWithGroup(params.get('deviceId')!)),
+      takeUntil(this.destroy$)
+    ).subscribe(found => {
+      this.loaded = true;
+      this.device = found?.device;
+      this.group = found?.group;
+    });
   }
 
   ngOnDestroy() {

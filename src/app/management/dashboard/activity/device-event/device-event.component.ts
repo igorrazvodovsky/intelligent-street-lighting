@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { filter, tap, takeUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { DeviceEvent, Device, DeviceGroup } from '~local/types'
 import { DeviceService } from '~local/services/device.service';
@@ -19,28 +19,17 @@ export class DeviceEventComponent implements OnInit, OnDestroy {
   constructor(private service: DeviceService) { }
 
   ngOnInit(): void {
-    this.service.getDevice(this.event.deviceId).pipe(
-      tap((d: Device | undefined) => { if (!d) { this.device = null; this.group = null; } }),
-      filter((d: Device | undefined): d is Device => !!d),
+    this.service.getDeviceWithGroup(this.event.deviceId).pipe(
       takeUntil(this.destroy$)
-    ).subscribe(device => {
-        this.device = device;
-        this.getGroup(device.groupId).pipe(
-          filter((g: DeviceGroup | undefined): g is DeviceGroup => !!g),
-          takeUntil(this.destroy$)
-        ).subscribe(group => {
-          this.group = group
-        })
-      });
+    ).subscribe(found => {
+      this.device = found?.device ?? null;
+      this.group = found?.group ?? null;
+    });
   }
 
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
-  }
-
-  getGroup(id) {
-    return this.service.getGroup(id);
   }
 
 }

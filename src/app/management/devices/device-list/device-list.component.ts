@@ -1,6 +1,6 @@
 // TODO: No sense in using Obseravle for things that won't change (group)
 
-import { Observable, BehaviorSubject, Subject } from 'rxjs';
+import { Observable, BehaviorSubject, Subject, combineLatest, of } from 'rxjs';
 import { switchMap, filter, map, takeUntil } from 'rxjs/operators';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Device, DeviceGroup, Profile, DeviceStatus, DeviceType, DeviceFilters } from '~local/types'
@@ -23,6 +23,11 @@ export class DeviceListComponent implements OnInit, OnDestroy {
   filteredDevices$: Observable<Device[]>;
   profile$!: Observable<Profile>;
   profiles!: Profile[];
+  // Profiles in use in the group, and child groups, each with its lamp count
+  profileUsage$!: Observable<{ profile: Profile, lamps: number }[]>;
+  subgroups$!: Observable<{ group: DeviceGroup, lamps: number }[]>;
+  // Secondary line of each device row, by device id
+  details: { [id: number]: string } = {};
 
   isEditable: boolean = false;
   selectedDevices: string[] = [];
@@ -31,6 +36,8 @@ export class DeviceListComponent implements OnInit, OnDestroy {
     type: null,
     status: null
   })
+
+  lampMapping: { [k: string]: string } = { '=1': '1 lamp', 'other': '# lamps' };
 
   deviceTypeMap: any = {
     'lamp': 'Lamp',
@@ -101,10 +108,44 @@ export class DeviceListComponent implements OnInit, OnDestroy {
         })
       )
 
-    this.group$.pipe(takeUntil(this.destroy$)).subscribe(group => {
-      if (group) this.profile$ = this.profileService.getProfile(group.profileId)
-    });
+    const lampsIn = (devices: Device[]) => devices.filter(device => device.type === 'lamp')
 
+
+    this.subgroups$ = combineLatest([this.group$, this.deviceService.Groups, this.deviceService.Devices]).pipe(
+      map(([group, groups, devices]) => !group ? [] : groups
+        .filter(child => child.parentId === group.id)
+        .map(child => ({ group: child, lamps: lampsIn(devices).filter(lamp => lamp.groupId === child.id).length })))
+    );
+
+    combineLatest([this.devices$, this.deviceService.Devices, this.deviceService.Groups])
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(([shown, devices, groups]) => {
+        this.details = Object.fromEntries(shown.map(device => [device.id, this.describe(device, devices, groups)]))
+      });
+
+    // The group's own profile is listed even when no lamp uses it yet
+    this.profileUsage$ = combineLatest([this.devices$, this.group$, this.profileService.Profiles]).pipe(
+      map(([devices, group, profiles]) => profiles
+        .map(profile => ({ profile, lamps: lampsIn(devices).filter(lamp => lamp.profile?.id === profile.id).length }))
+        .filter(usage => usage.lamps > 0 || usage.profile.id === group?.profileId)
+        .sort((a, b) => b.lamps - a.lamps))
+    );
+
+    // No group (the root list, or a group id from the other city) means no profile panel
+    this.profile$ = this.group$.pipe(
+      switchMap(group => group ? this.profileService.getProfile(group.profileId) : of(undefined))
+    );
+
+  }
+
+  private describe(device: Device, devices: Device[], groups: DeviceGroup[]): string {
+    if (device.type === 'sc') return device.model
+    const controller = this.deviceService.getSegmentController(device, devices, groups)
+    return [
+      controller?.name,
+      device.surgeProtector ? 'surge protector' : null,
+      ...(device.sensors ?? []),
+    ].filter(Boolean).join(', ')
   }
 
   ngOnDestroy() {

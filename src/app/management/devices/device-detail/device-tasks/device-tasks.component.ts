@@ -1,8 +1,8 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnChanges, Input } from '@angular/core';
 import { Task } from '~local/types'
 import { TaskService } from '~local/services/task.service';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'device-tasks',
@@ -10,30 +10,16 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./device-tasks.component.scss']
 })
 
-export class DeviceTasksComponent implements OnInit, OnDestroy {
+export class DeviceTasksComponent implements OnChanges {
   @Input() deviceId: number
-  tasks: Task[]
-  activeTasks: Task[] = []
-  private destroy$ = new Subject<void>();
+  activeTasks$: Observable<Task[]>
   constructor(private service: TaskService) { }
 
-  ngOnInit() {
-    this.service.getTasksByDevice(this.deviceId)
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(tasks => {
-        this.tasks = tasks
-        this.activeTasks = tasks.filter(task => task.status !== 'Closed')
-      }
-      );
-  }
-
-  ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
-
-  getTasks(): void {
-
+  // Reused when going from one device to another of the same type
+  ngOnChanges() {
+    this.activeTasks$ = this.service.getTasksByDevice(this.deviceId).pipe(
+      map(tasks => tasks.filter(task => task.status !== 'Closed'))
+    );
   }
 
 }

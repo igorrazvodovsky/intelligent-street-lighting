@@ -81,16 +81,12 @@
 
 <mat-menu #categoryLocation="matMenu">
   <button disabled mat-menu-item>All</button>
-  <button mat-menu-item>SC1</button>
-  <button mat-menu-item>SC2</button>
-  <button mat-menu-item>SC3</button>
-  <button mat-menu-item>...</button>
+  <button mat-menu-item *ngFor="let controller of controllers$ | async">
+    {{ controller.name }}
+  </button>
 </mat-menu>
 
 <mat-menu #categoryFunction="matMenu">
   <button mat-menu-item>All</button>
-  <button mat-menu-item>Centrs (Gaismekli no 1-718 un 763-768)</button>
-  <button mat-menu-item>Centrs (Gaismekli no 719-762)</button>
-  <button mat-menu-item>Centrs (bez kategorijas)</button>
-  <button mat-menu-item>...</button>
+  <button mat-menu-item *ngFor="let f of functions">{{ f }}</button>
 </mat-menu>

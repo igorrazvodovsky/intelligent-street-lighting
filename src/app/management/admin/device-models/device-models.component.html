@@ -13,7 +13,7 @@
   </select>
 </mat-form-field>
 <mat-action-list>
-  <button *ngFor="let model of models" (click)="openDialog()" mat-list-item>
+  <button *ngFor="let model of models$ | async" (click)="openDialog(model)" mat-list-item>
     <div matLine>{{ model.name }}</div>
     <div matLine class="text-secondary">{{ model.type }}</div>
   </button>

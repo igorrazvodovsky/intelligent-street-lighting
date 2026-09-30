@@ -1,4 +1,3 @@
-<!-- TODO: -->
 <ng-container *ngIf="device">
   <div *ngIf="device.type=='sc' || device.type=='lamp'">
     <!-- <device-categories></device-categories> -->
@@ -24,13 +23,13 @@
         <ng-template mat-tab-label>
           <mat-icon svgIcon="infoMedium" aria-hidden="true"></mat-icon>
         </ng-template>
-        <device-info></device-info>
+        <device-info [device]="device"></device-info>
       </mat-tab>
       <mat-tab>
         <ng-template mat-tab-label>
           <mat-icon svgIcon="historyMedium" aria-hidden="true"></mat-icon>
         </ng-template>
-        <device-history [id]="device.id"></device-history>
+        <device-history [id]="device.id" [group]="group"></device-history>
       </mat-tab>
     </mat-tab-group>
   </div>
@@ -39,3 +38,8 @@
     <device-sensor-traffic *ngIf="device.sensor.type=='traffic'"></device-sensor-traffic>
   </ng-container>
 </ng-container>
+
+<!-- Also reached from a link kept from the other city -->
+<p *ngIf="loaded && !device" class="text-secondary">
+  This device isn't in {{ cityName }}.
+</p>
