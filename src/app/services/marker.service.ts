@@ -1,29 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import * as L from 'leaflet';
-import { PopupService } from './popup.service';
-import { CityService } from './city.service';
-import { switchMap } from 'rxjs/operators';
+import { DeviceService } from './device.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MarkerService {
-  constructor(
-    private http: HttpClient,
-    private popupService: PopupService,
-    private cityService: CityService,
-  ) { }
+  constructor(private deviceService: DeviceService) { }
 
-  static scaledRadius(val: number, maxVal: number): number {
-    return 5 + 10 * (val / maxVal);
-  }
-
+  // The active city's devices as GeoJSON, from the same request as DeviceService.Devices
   getMarkers() {
-    return this.cityService.activeCity$.pipe(
-      switchMap(city =>
-        this.http.get(`/assets/data/${city.id}/devices.geojson`)
-      )
-    );
+    return this.deviceService.DevicesGeoJson;
   }
 }

@@ -7,7 +7,6 @@ import * as L from 'leaflet';
 import 'leaflet.markercluster';
 import { MarkerService } from '~local/services/marker.service';
 import { ProfileService } from '~local/services/profile.service'
-import { ShapeService } from '~local/services/shape.service';
 import { CityService } from '~local/services/city.service';
 import { NavigationEnd, Router } from '@angular/router';
 import * as d3Scale from 'd3-scale';
@@ -110,7 +109,6 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
   constructor(
     private markerService: MarkerService,
     private profileService: ProfileService,
-    private shapeService: ShapeService,
     private cityService: CityService,
     private ngZone: NgZone,
     private host: ElementRef<HTMLElement>,

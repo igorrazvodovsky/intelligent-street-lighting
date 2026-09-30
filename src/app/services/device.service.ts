@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 import { Device, DeviceGroup, DeviceMetrics, DeviceModel, MeasurementGroup } from '../types';
 import { MessageService } from './message.service';
 import { Observable, combineLatest, of } from 'rxjs';
-import { map, switchMap, shareReplay } from 'rxjs/operators';
+import { catchError, map, switchMap, shareReplay } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { cityScoped } from './city-scoped';
 import { CityService } from './city.service';
@@ -38,19 +38,35 @@ export class DeviceService {
     'solna': SOLNA_MEASUREMENTS,
   };
 
-  private _devices = this.cityService.activeCity$.pipe(
+  // Fetched once per city and shared by the device list and the map markers.
+  // A failed fetch shows an empty city rather than ending the stream, so
+  // switching city still works afterwards.
+  private _geoJson = this.cityService.activeCity$.pipe(
     switchMap(city =>
-      this.http.get(`/assets/data/${city.id}/devices.geojson`).pipe(
-        // GeoJSON points are [lng, lat]
-        map((data: any) => data.features.map(e => ({
-          ...e.properties,
-          lat: e.geometry.coordinates[1],
-          lng: e.geometry.coordinates[0],
-        })))
+      this.http.get<any>(`/assets/data/${city.id}/devices.geojson`).pipe(
+        catchError(error => {
+          this.messageService.add(`DeviceService: couldn't load devices for ${city.id}: ${error.message}`)
+          return of({ type: 'FeatureCollection', features: [] })
+        })
       )
     ),
     shareReplay(1)
   )
+
+  private _devices: Observable<Device[]> = this._geoJson.pipe(
+    // GeoJSON points are [lng, lat]
+    map((data: any) => data.features.map(e => ({
+      ...e.properties,
+      lat: e.geometry.coordinates[1],
+      lng: e.geometry.coordinates[0],
+    }))),
+    shareReplay(1)
+  )
+
+  // The raw feature collection, for Leaflet
+  public get DevicesGeoJson(): Observable<any> {
+    return this._geoJson
+  }
 
   private _groups = cityScoped(this.cityService.activeCity$, this.cityGroupsMap)
 

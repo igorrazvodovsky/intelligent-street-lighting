@@ -26,13 +26,13 @@ Note: components scaffold with SCSS by default (`ng generate component <name>`).
 
 **Data layer.** Services in `src/app/services/` are the single source of truth and expose data as RxJS `Observable`s via getters (e.g. `DeviceService.Devices`, `UserService.Users`). Two patterns coexist:
 - In-memory fixtures imported from `src/assets/data/*.ts` and wrapped with `of(...)` (e.g. `USERS`, `GROUPS`, `DEVICE_METRICS`).
-- Static files fetched over `HttpClient` from `/assets/data/*.geojson` (devices, areas), then mapped (e.g. `data.features.map(e => e.properties)`).
+- Each city's `devices.geojson`, fetched once over `HttpClient` by `DeviceService` and shared: `Devices` maps features to properties plus `lat`/`lng`, and `DevicesGeoJson` hands the raw collection to the map.
 
 **Cities.** `CityService` owns the city list, the active city (`activeCity$`, remembered in `localStorage`) and `setCity`. City-specific fixtures live in `src/assets/data/<city>/`; services and components pick the active city's entry with `cityScoped(activeCity$, map)` from `services/city-scoped.ts`, which falls back to `DEFAULT_CITY_ID`. Fixtures that aren't tied to a place (`users.ts`, `profiles.ts`, `profile-time-options.ts`) sit directly in `src/assets/data/` and are wrapped with `of(...)`. Adding a city means adding its folder, an entry in `CITIES`, and a key in each lookup map.
 
 To change displayed data, edit the corresponding file under `src/assets/data/`. Domain interfaces (`Device`, `DeviceGroup`, `Task`, `User`, `DeviceMetrics`, etc.) live in `src/app/types.ts`.
 
-**Map subsystem.** Device/area maps are built on **Leaflet** (`leaflet`, `leaflet.markercluster`) with **d3** for scaling/visuals, centered in `management/devices/map/`. Responsibilities are split across services: `MarkerService` (markers from GeoJSON), `ShapeService` (area polygons), `PopupService` (marker popups), `IconService` (SVG icons from `src/assets/icons/`). Leaflet CSS and its marker images are wired in via `angular.json` assets/styles — don't expect them from component SCSS.
+**Map subsystem.** Device maps are built on **Leaflet** (`leaflet`, `leaflet.markercluster`) with **d3** for scaling/visuals, centered in `management/devices/map/`. Responsibilities are split across services: `MarkerService` (markers from `DeviceService`'s GeoJSON), `PopupService` (marker popups), `IconService` (SVG icons from `src/assets/icons/`). Leaflet CSS and its marker images are wired in via `angular.json` assets/styles — don't expect them from component SCSS.
 
 **Other cross-cutting services.** `AppStateService` exposes `isHandset` (responsive breakpoints via CDK). `MessageService` is a simple log sink. `DialogService` + Angular Material dialogs drive the many `*-dialog` shared components. `LoadingService` tracks in-flight state.
 

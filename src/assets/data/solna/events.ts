@@ -71,6 +71,7 @@ export const DEVICE_EVENTS: DeviceEvent[] = [
   },
 ]
 
+// Each change leaves the device as devices.geojson has it now
 export const USER_EVENTS: UserEvent[] = [
   {
     id: 30,
@@ -80,8 +81,8 @@ export const USER_EVENTS: UserEvent[] = [
     userId: 3,
     action: 'update',
     property: 'profile',
-    from: 'Default',
-    to: 'Shopping centre'
+    from: 'Shopping centre',
+    to: 'Default'
   },
   {
     id: 31,
@@ -91,8 +92,8 @@ export const USER_EVENTS: UserEvent[] = [
     userId: 8,
     action: 'update',
     property: 'orientation',
-    from: 45,
-    to: 32
+    from: 32,
+    to: 45
   },
   {
     id: 32,
@@ -102,8 +103,8 @@ export const USER_EVENTS: UserEvent[] = [
     userId: 12,
     action: 'update',
     property: 'location',
-    from: '59.349200, 18.033000',
-    to: '59.350100, 18.034200'
+    from: '59.350890, 18.023310',
+    to: '59.350977, 18.023465'
   },
   {
     id: 33,
@@ -124,8 +125,8 @@ export const USER_EVENTS: UserEvent[] = [
     userId: 15,
     action: 'update',
     property: 'profile',
-    from: 'Shopping centre',
-    to: 'Pedestrian crossing'
+    from: 'Pedestrian crossing',
+    to: 'Shopping centre'
   },
   {
     id: 35,
@@ -136,6 +137,6 @@ export const USER_EVENTS: UserEvent[] = [
     action: 'update',
     property: 'orientation',
     from: 90,
-    to: 180
+    to: 0
   },
 ]

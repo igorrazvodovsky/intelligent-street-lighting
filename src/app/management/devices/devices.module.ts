@@ -7,7 +7,6 @@ import { DeviceDetailComponent } from './device-detail/device-detail.component';
 import { MapComponent } from './map/map.component';
 import { MarkerService } from '~local/services/marker.service';
 import { PopupService } from '~local/services/popup.service';
-import { ShapeService } from '~local/services/shape.service';
 import { DevicesRoutingModule } from './devices-routing.module';
 import { GroupListComponent } from './group-list/group-list.component';
 import { DeviceLampComponent } from './device-detail/device-lamp/device-lamp.component';
@@ -73,8 +72,7 @@ import { TimeAxisComponent } from './device-detail/device-sensor/device-sensor-e
   ],
   providers: [
     MarkerService,
-    PopupService,
-    ShapeService
+    PopupService
   ]
 })
 export class DevicesModule { }
