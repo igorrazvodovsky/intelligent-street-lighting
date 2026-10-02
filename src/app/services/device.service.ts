@@ -147,15 +147,6 @@ export class DeviceService {
     );
   }
 
-  // A controller drives the lamps in its own group and that group's child
-  // groups, so a lamp's controller sits in its group or the parent group. Same
-  // rule as the controller's Segment tab.
-  getSegmentController(device: Device, devices: Device[], groups: DeviceGroup[]): Device | undefined {
-    const group = groups.find(g => g.id == device.groupId)
-    const controllerIn = (groupId: number) => devices.find(d => d.type === 'sc' && d.groupId == groupId)
-    return controllerIn(device.groupId) ?? (group?.parentId != null ? controllerIn(group.parentId) : undefined)
-  }
-
   getDevicesByGroup(id: number | string) {
     return this._devices.pipe(
       map((devices: Device[]) => devices.filter(device => device.groupId == +id)!)

@@ -32,9 +32,9 @@ Note: components scaffold with SCSS by default (`ng generate component <name>`).
 
 To change displayed data, edit the corresponding file under `src/assets/data/`. Domain interfaces (`Device`, `DeviceGroup`, `Task`, `User`, `DeviceMetrics`, etc.) live in `src/app/types.ts`.
 
-**Map subsystem.** Device maps are built on **Leaflet** (`leaflet`, `leaflet.markercluster`) with **d3** for scaling/visuals, centered in `management/devices/map/`. Responsibilities are split across services: `MarkerService` (markers from `DeviceService`'s GeoJSON), `PopupService` (marker popups), `IconService` (SVG icons from `src/assets/icons/`). Leaflet CSS and its marker images are wired in via `angular.json` assets/styles — don't expect them from component SCSS.
+**Map subsystem.** Device maps are built on **Leaflet** (`leaflet`, `leaflet.markercluster`) with **d3** for scaling/visuals, centered in `management/devices/map/`. `MapComponent` draws markers from `DeviceService.DevicesGeoJson`; `IconService` registers the SVG icons from `src/assets/icons/`. Leaflet CSS and its marker images are wired in via `angular.json` assets/styles — don't expect them from component SCSS.
 
-**Other cross-cutting services.** `AppStateService` exposes `isHandset` (responsive breakpoints via CDK). `MessageService` is a simple log sink. `DialogService` + Angular Material dialogs drive the many `*-dialog` shared components. `LoadingService` tracks in-flight state.
+**Other cross-cutting services.** Group-hierarchy rules (lamps a group covers, ancestor chain, a lamp's segment controller) are pure functions in `services/device-tree.ts`. `AppStateService` exposes `isHandset` (responsive breakpoints via CDK). `MessageService` is a simple log sink. `DialogService` + Angular Material dialogs drive the many `*-dialog` shared components. `LoadingService` tracks in-flight state.
 
 ## Conventions
 

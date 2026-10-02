@@ -6,6 +6,7 @@ import { nightSun } from '~local/management/profiles/profile-detail/sun-times';
 import { AreaSummary } from '../types';
 import { CityService } from './city.service';
 import { DeviceService } from './device.service';
+import { lamps } from './device-tree';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +35,7 @@ export class AreaService {
   unassignedLamps$: Observable<number> = combineLatest([this.deviceService.Devices, this.deviceService.Groups]).pipe(
     map(([devices, groups]) => {
       const groupIds = new Set(groups.map(group => group.id));
-      return devices.filter(device => device.type.toLowerCase() === 'lamp' && !groupIds.has(device.groupId)).length;
+      return lamps(devices).filter(lamp => !groupIds.has(lamp.groupId)).length;
     })
   )
 

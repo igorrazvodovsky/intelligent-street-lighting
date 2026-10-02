@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { DeviceGroup, Device, Profile } from '~local/types';
 import { DeviceService } from '~local/services/device.service';
 import { ProfileService } from '~local/services/profile.service';
+import { lampsInGroup } from '~local/services/device-tree';
 import { combineLatest, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -27,10 +28,8 @@ export class GroupListItemComponent implements OnInit, OnDestroy {
     private profileService: ProfileService,) { }
 
   ngOnInit(): void {
-    // Lamps in the group and its child groups
     combineLatest([this.deviceService.Devices, this.deviceService.Groups]).pipe(takeUntil(this.destroy$)).subscribe(([devices, groups]) => {
-      const groupIds = [this.group.id, ...groups.filter(g => g.parentId === this.group.id).map(g => g.id)];
-      this.devices = devices.filter(device => device.type === 'lamp' && groupIds.includes(device.groupId));
+      this.devices = lampsInGroup(devices, groups, this.group.id);
     });
     this.profileService.getProfile(this.group.profileId).pipe(takeUntil(this.destroy$)).subscribe(profile => this.profile = profile);
   }

@@ -4,6 +4,7 @@ import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Device, DeviceModel } from '~local/types';
 import { DeviceService } from '~local/services/device.service';
+import { segmentController } from '~local/services/device-tree';
 import { DeviceModelDialogComponent } from '~local/shared/device-model-dialog/device-model-dialog.component';
 
 interface DeviceInfo {
@@ -42,7 +43,7 @@ export class DeviceInfoComponent implements OnChanges {
     ]).pipe(
       map(([model, devices, groups]) => {
         const controller = this.device.type === 'sc' ? undefined
-          : this.deviceService.getSegmentController(this.device, devices, groups);
+          : segmentController(this.device, devices, groups);
         return {
           model,
           serial: hexFromId(this.device.id, 4).toUpperCase(),

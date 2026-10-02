@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import { filter, startWith, takeUntil } from 'rxjs/operators';
 import * as L from 'leaflet';
 import 'leaflet.markercluster';
-import { MarkerService } from '~local/services/marker.service';
+import { DeviceService } from '~local/services/device.service';
 import { ProfileService } from '~local/services/profile.service'
 import { CityService } from '~local/services/city.service';
 import { NavigationEnd, Router } from '@angular/router';
@@ -102,7 +102,7 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   constructor(
-    private markerService: MarkerService,
+    private deviceService: DeviceService,
     private profileService: ProfileService,
     private cityService: CityService,
     private ngZone: NgZone,
@@ -297,8 +297,8 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
     });
 
     // Switching city needs no view change of its own: the new city's markers
-    // arrive through getMarkers() and the map fits itself to them
-    this.markerService.getMarkers().pipe(takeUntil(this.destroy$)).subscribe((markers: any) => {
+    // arrive through DevicesGeoJson and the map fits itself to them
+    this.deviceService.DevicesGeoJson.pipe(takeUntil(this.destroy$)).subscribe((markers: any) => {
       this.ngZone.runOutsideAngular(() => {
         if (this.markers) {
           this.map.removeLayer(this.markers);

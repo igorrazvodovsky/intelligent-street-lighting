@@ -2,6 +2,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 import { Device, DeviceGroup, Profile } from '~local/types';
 import { DeviceService } from '~local/services/device.service';
 import { ProfileService } from '~local/services/profile.service';
+import { childGroups, lamps } from '~local/services/device-tree';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -30,16 +31,15 @@ export class ScConnectedDevicesComponent implements OnChanges {
       this.profileService.Profiles,
     ]).pipe(
       map(([devices, groups, profiles]) => {
-        const lamps = devices.filter(device => device.type === 'lamp');
+        const allLamps = lamps(devices);
         const toSegment = (group: DeviceGroup): Segment => ({
           name: group.name,
-          lamps: lamps.filter(lamp => lamp.groupId === group.id).length,
+          lamps: allLamps.filter(lamp => lamp.groupId === group.id).length,
           profile: profiles.find((profile: Profile) => profile.id === group.profileId)?.name,
         });
         const own = groups.find(group => group.id === this.device.groupId);
         if (!own) return [];
-        const children = groups.filter(group => group.parentId === own.id);
-        return [own, ...children].map(toSegment).filter(segment => segment.lamps > 0);
+        return [own, ...childGroups(groups, own.id)].map(toSegment).filter(segment => segment.lamps > 0);
       })
     );
   }

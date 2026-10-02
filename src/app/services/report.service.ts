@@ -5,6 +5,7 @@ import { nightSun } from '~local/management/profiles/profile-detail/sun-times';
 import { City } from '../types';
 import { CityService } from './city.service';
 import { DeviceService } from './device.service';
+import { lampsInGroup } from './device-tree';
 
 // Columns of each row: the total, then the last four complete months, latest first
 export type Columns = (number | null)[]
@@ -72,8 +73,7 @@ export class ReportService {
         const hours = this.months.map(month => darkHours(city, month));
         return reports.map((report): ReportRow => {
           const group = groups.find(g => g.id === report.groupId);
-          const lamps = devices.filter(device => device.type === 'lamp' &&
-            (device.groupId === report.groupId || groups.find(g => g.id === device.groupId)?.parentId === report.groupId)).length;
+          const lamps = lampsInGroup(devices, groups, report.groupId).length;
           const running = report.economy.map(economy => economy != null);
           const h = hours.map((value, i) => running[i] ? value : null);
           const nominal = h.map(value => value == null ? null : Math.round(lamps * value * +perLamp));

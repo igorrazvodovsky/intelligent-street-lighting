@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DeviceService } from '~local/services/device.service'
 import { CityService } from '~local/services/city.service'
+import { groupChain } from '~local/services/device-tree'
 import { Observable, BehaviorSubject, Subject, combineLatest } from 'rxjs';
 import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
 import { Device, DeviceGroup, Category, City, DEVICE_TYPE_LABELS } from '~local/types'
@@ -80,13 +81,7 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe(([id, groups]: [number, DeviceGroup[]]) => {
         this.groupId = id
-        const chain: DeviceGroup[] = []
-        let group = id ? groups.find(g => g.id == id) : undefined
-        while (group) {
-          chain.unshift(group)
-          const parentId = group.parentId
-          group = parentId != null ? groups.find(g => g.id == parentId) : undefined
-        }
+        const chain = id ? groupChain(groups, id) : []
         this.currentGroup = chain.map(g => ({ id: g.id, name: g.name }))
         this.groupSiblings = chain.map(g => groups
           .filter(sibling => sibling.parentId == g.parentId)

@@ -7,6 +7,7 @@ import { Device, DeviceGroup, Profile, DeviceFilters, DEVICE_TYPE_LABELS } from 
 import { ActivatedRoute } from '@angular/router';
 import { DeviceService } from '~local/services/device.service';
 import { ProfileService } from '~local/services/profile.service';
+import { childGroups, lamps, segmentController } from '~local/services/device-tree';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { DeviceListEditActionsComponent } from './device-list-edit-actions/device-list-edit-actions.component'
 
@@ -104,13 +105,9 @@ export class DeviceListComponent implements OnInit, OnDestroy {
         })
       )
 
-    const lampsIn = (devices: Device[]) => devices.filter(device => device.type === 'lamp')
-
-
     this.subgroups$ = combineLatest([this.group$, this.deviceService.Groups, this.deviceService.Devices]).pipe(
-      map(([group, groups, devices]) => !group ? [] : groups
-        .filter(child => child.parentId === group.id)
-        .map(child => ({ group: child, lamps: lampsIn(devices).filter(lamp => lamp.groupId === child.id).length })))
+      map(([group, groups, devices]) => !group ? [] : childGroups(groups, group.id)
+        .map(child => ({ group: child, lamps: lamps(devices).filter(lamp => lamp.groupId === child.id).length })))
     );
 
     combineLatest([this.devices$, this.deviceService.Devices, this.deviceService.Groups])
@@ -122,7 +119,7 @@ export class DeviceListComponent implements OnInit, OnDestroy {
     // The group's own profile is listed even when no lamp uses it yet
     this.profileUsage$ = combineLatest([this.devices$, this.group$, this.profileService.Profiles]).pipe(
       map(([devices, group, profiles]) => profiles
-        .map(profile => ({ profile, lamps: lampsIn(devices).filter(lamp => lamp.profile?.id === profile.id).length }))
+        .map(profile => ({ profile, lamps: lamps(devices).filter(lamp => lamp.profile?.id === profile.id).length }))
         .filter(usage => usage.lamps > 0 || usage.profile.id === group?.profileId)
         .sort((a, b) => b.lamps - a.lamps))
     );
@@ -136,7 +133,7 @@ export class DeviceListComponent implements OnInit, OnDestroy {
 
   private describe(device: Device, devices: Device[], groups: DeviceGroup[]): string {
     if (device.type === 'sc') return device.model
-    const controller = this.deviceService.getSegmentController(device, devices, groups)
+    const controller = segmentController(device, devices, groups)
     return [
       controller?.name,
       device.surgeProtector ? 'surge protector' : null,
