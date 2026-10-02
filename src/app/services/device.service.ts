@@ -1,7 +1,3 @@
-import { GROUPS as DAUGAVPILS_GROUPS, MEASUREMENTS as DAUGAVPILS_MEASUREMENTS } from '~local/../assets/data/daugavpils/groups';
-import { GROUPS as SOLNA_GROUPS, MEASUREMENTS as SOLNA_MEASUREMENTS } from '~local/../assets/data/solna/groups';
-import { DEVICE_METRICS as DAUGAVPILS_METRICS } from '~local/../assets/data/daugavpils/device-metrics'
-import { DEVICE_METRICS as SOLNA_METRICS } from '~local/../assets/data/solna/device-metrics'
 import { DEVICE_MODELS } from '~local/../assets/data/device-models'
 
 import { Injectable } from '@angular/core';
@@ -10,7 +6,6 @@ import { MessageService } from './message.service';
 import { Observable, combineLatest, of } from 'rxjs';
 import { catchError, map, switchMap, shareReplay } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-import { cityScoped } from './city-scoped';
 import { CityService } from './city.service';
 
 function mulberry32(seed: number) {
@@ -28,16 +23,6 @@ function mulberry32(seed: number) {
 })
 
 export class DeviceService {
-  private cityGroupsMap: { [key: string]: DeviceGroup[] } = {
-    'daugavpils': DAUGAVPILS_GROUPS,
-    'solna': SOLNA_GROUPS,
-  };
-
-  private cityMeasurementsMap: { [key: string]: MeasurementGroup[] } = {
-    'daugavpils': DAUGAVPILS_MEASUREMENTS,
-    'solna': SOLNA_MEASUREMENTS,
-  };
-
   // Fetched once per city and shared by the device list and the map markers.
   // A failed fetch shows an empty city rather than ending the stream, so
   // switching city still works afterwards.
@@ -68,16 +53,11 @@ export class DeviceService {
     return this._geoJson
   }
 
-  private _groups = cityScoped(this.cityService.activeCity$, this.cityGroupsMap)
+  private _groups = this.cityService.data('groups')
 
-  private cityMetricsMap: { [key: string]: DeviceMetrics } = {
-    'daugavpils': DAUGAVPILS_METRICS,
-    'solna': SOLNA_METRICS,
-  };
+  private _metrics = this.cityService.data('metrics')
 
-  private _metrics = cityScoped(this.cityService.activeCity$, this.cityMetricsMap)
-
-  private _measurements = cityScoped(this.cityService.activeCity$, this.cityMeasurementsMap)
+  private _measurements = this.cityService.data('measurements')
 
   public get Devices(): Observable<Device[]> {
     return this._devices

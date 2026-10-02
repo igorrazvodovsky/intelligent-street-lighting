@@ -1,29 +1,16 @@
 import { Injectable } from '@angular/core';
-import { DEVICE_EVENTS as DAUGAVPILS_DEVICE_EVENTS, USER_EVENTS as DAUGAVPILS_USER_EVENTS } from '~local/../assets/data/daugavpils/events';
-import { DEVICE_EVENTS as SOLNA_DEVICE_EVENTS, USER_EVENTS as SOLNA_USER_EVENTS } from '~local/../assets/data/solna/events';
 import { Observable, zip } from 'rxjs';
 import { map } from 'rxjs/operators'
 import { UserEvent, DeviceEvent } from '~local/types'
 import { CityService } from './city.service';
-import { cityScoped } from './city-scoped';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
 
-  private cityDeviceEventsMap: { [key: string]: DeviceEvent[] } = {
-    'daugavpils': DAUGAVPILS_DEVICE_EVENTS,
-    'solna': SOLNA_DEVICE_EVENTS,
-  };
-
-  private cityUserEventsMap: { [key: string]: UserEvent[] } = {
-    'daugavpils': DAUGAVPILS_USER_EVENTS,
-    'solna': SOLNA_USER_EVENTS,
-  };
-
-  private _deviceEvents = cityScoped(this.cityService.activeCity$, this.cityDeviceEventsMap)
-  private _userEvents = cityScoped(this.cityService.activeCity$, this.cityUserEventsMap)
+  private _deviceEvents = this.cityService.data('deviceEvents')
+  private _userEvents = this.cityService.data('userEvents')
 
   constructor(private cityService: CityService) { }
 

@@ -238,3 +238,26 @@ export interface ReportGroup {
   // was commissioned.
   economy: (number | null)[]
 }
+
+// A dashboard card summarising one top-level group
+export interface AreaSummary {
+  name: string
+  children: AreaSummary[]
+  profileId: number
+  status: string
+  tooltip: string
+  profiles: number
+  lamps: number
+}
+
+// Every fixture tied to one city, exported from its src/assets/data/<city>/index.ts
+export interface CityData {
+  groups: DeviceGroup[]
+  measurements: MeasurementGroup[]
+  metrics: DeviceMetrics
+  deviceEvents: DeviceEvent[]
+  userEvents: UserEvent[]
+  tasks: Task[]
+  reports: ReportGroup[]
+  areas: AreaSummary[]
+}

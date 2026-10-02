@@ -1,24 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../types';
-import { TASKS as DAUGAVPILS_TASKS } from '~local/../assets/data/daugavpils/tasks';
-import { TASKS as SOLNA_TASKS } from '~local/../assets/data/solna/tasks';
 import { CityService } from './city.service';
 import { MessageService } from './message.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { cityScoped } from './city-scoped';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
 
-  private cityTasksMap: { [key: string]: Task[] } = {
-    'daugavpils': DAUGAVPILS_TASKS,
-    'solna': SOLNA_TASKS,
-  };
-
-  private _tasks = cityScoped(this.cityService.activeCity$, this.cityTasksMap)
+  private _tasks = this.cityService.data('tasks')
 
   constructor(
     private cityService: CityService,
