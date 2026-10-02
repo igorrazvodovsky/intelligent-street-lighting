@@ -7,17 +7,18 @@ import { map, shareReplay } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AppStateService {
-  private isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
+  // Phones, either way up: drawers slide over the content instead of beside it
+  readonly isHandset$: Observable<boolean> = this.matches([Breakpoints.Handset]);
+
+  // Phones held upright and small tablets: too narrow for side-by-side panels
+  readonly isNarrow$: Observable<boolean> = this.matches([Breakpoints.Small, Breakpoints.HandsetPortrait]);
+
+  constructor(private breakpointObserver: BreakpointObserver) { }
+
+  private matches(queries: string[]): Observable<boolean> {
+    return this.breakpointObserver.observe(queries).pipe(
       map(result => result.matches),
-      shareReplay()
-  );
-
-  public get isHandset(): Observable<boolean> {
-    return this.isHandset$
+      shareReplay(1)
+    );
   }
-
-  constructor(private breakpointObserver: BreakpointObserver) {
-  }
-
 }

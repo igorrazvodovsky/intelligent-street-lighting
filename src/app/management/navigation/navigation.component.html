@@ -4,15 +4,15 @@
   <mat-sidenav
     #drawer
     id="sidenav"
-    [attr.role]="isHandset ? 'dialog' : 'navigation'"
-    [mode]="isHandset ? 'over' : 'side'"
-    [opened]="isHandset === false"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
   >
     <div>
       <!-- primary nav -->
       <mat-selection-list
         [multiple]="false"
-        *ngIf="isHandset; else desktopPrimaryNav"
+        *ngIf="isHandset$ | async; else desktopPrimaryNav"
       >
         <mat-list-option
           (click)="drawer.close()"
@@ -51,7 +51,7 @@
     <div class="text-secondary">
       <mat-selection-list
         [multiple]="false"
-        *ngIf="isHandset; else desktopSecondaryNav"
+        *ngIf="isHandset$ | async; else desktopSecondaryNav"
       >
         <mat-list-option
           (click)="drawer.close()"

@@ -1,40 +1,27 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
-import { map, takeUntil } from 'rxjs/operators';
-import { Breakpoints, BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { AppStateService } from '~local/services/app-state.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit, OnDestroy {
+export class DashboardComponent implements OnInit {
   sessionId: Observable<string>;
   token: Observable<string>;
-  isHandset: boolean;
-  private destroy$ = new Subject<void>();
+  // Tabs instead of a single scrolling page
+  isNarrow$ = this.appStateService.isNarrow$;
 
   constructor(
     private route: ActivatedRoute,
-    private breakpointObserver: BreakpointObserver,
+    private appStateService: AppStateService,
   ) {
   }
 
-  ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
-
   ngOnInit() {
-    this.breakpointObserver
-      .observe([Breakpoints.Small, Breakpoints.HandsetPortrait])
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((state: BreakpointState) => {
-        if (state.matches) this.isHandset = true
-        else this.isHandset = false
-      });
-
     this.sessionId = this.route
       .queryParamMap
       .pipe(map(params => params.get('session_id') || 'None'));

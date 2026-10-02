@@ -1,16 +1,13 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { AppStateService } from '~local/services/app-state.service'
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
-export class NavigationComponent implements OnInit, OnDestroy {
-  isHandset: boolean;
-  private destroy$ = new Subject<void>();
+export class NavigationComponent {
+  isHandset$ = this.appStateService.isHandset$;
 
   primaryNavItems = [
     {
@@ -38,15 +35,4 @@ export class NavigationComponent implements OnInit, OnDestroy {
   constructor(
     private appStateService: AppStateService
   ) { };
-
-  ngOnInit() {
-    this.appStateService.isHandset.pipe(takeUntil(this.destroy$)).subscribe(value =>
-      this.isHandset = value
-    );
-  }
-
-  ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
 }

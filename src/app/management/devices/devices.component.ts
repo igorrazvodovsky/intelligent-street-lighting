@@ -38,7 +38,7 @@ export class DevicesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.appStateService.isHandset.pipe(takeUntil(this.destroy$)).subscribe(value => {
+    this.appStateService.isHandset$.pipe(takeUntil(this.destroy$)).subscribe(value => {
       this.isHandset = value;
       this.opened = !value;
     });

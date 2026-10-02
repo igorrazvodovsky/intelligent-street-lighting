@@ -5,7 +5,7 @@
     aria-label="Toggle sidenav"
     mat-icon-button
     (click)="toggleNav()"
-    *ngIf="isHandset"
+    *ngIf="isHandset$ | async"
   >
     <mat-icon svgIcon="menuBold" aria-hidden="true"></mat-icon>
   </button>

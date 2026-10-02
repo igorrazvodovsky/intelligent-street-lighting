@@ -4,7 +4,7 @@
   <breadcrumbs></breadcrumbs>
 </app-page-actions>
 
-<ng-container *ngIf="isHandset; else desktop">
+<ng-container *ngIf="isNarrow$ | async; else desktop">
   <app-stats></app-stats>
   <mat-tab-group>
     <mat-tab label="Areas"> <areas></areas> </mat-tab>

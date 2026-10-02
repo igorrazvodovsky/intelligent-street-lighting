@@ -13,7 +13,7 @@ import { takeUntil } from 'rxjs/operators';
 export class ToolbarComponent implements OnInit, OnDestroy {
   modalMode = false;
   modalModeRoutes = ['/management/initialise']
-  isHandset: boolean
+  isHandset$ = this.appStateService.isHandset$
   private destroy$ = new Subject<void>();
 
   @Output() navToggle = new EventEmitter<void>();
@@ -28,9 +28,6 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     this.router.events.pipe(takeUntil(this.destroy$)).subscribe((event: Event) => {
       this.checkRoute()
     });
-    this.appStateService.isHandset.pipe(takeUntil(this.destroy$)).subscribe(value =>
-      this.isHandset = value
-    );
   }
 
   ngOnDestroy() {
