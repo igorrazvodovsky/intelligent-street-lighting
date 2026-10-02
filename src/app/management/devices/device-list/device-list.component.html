@@ -84,32 +84,32 @@
   <mat-icon svgIcon="editMedium"></mat-icon>
 </button>
 
-<group-list [category]="category"></group-list>
+<group-list [category]="groupId$ | async"></group-list>
 
 <ng-container>
   <!-- https://material.angular.io/components/select/overview#error-cannot-change-multiple-mode-of-select-after-initialization -->
   <mat-selection-list *ngIf="!isEditable" role="list" [multiple]="false">
     <mat-list-option
-      [routerLink]="'../../device/' + [device.id]"
+      [routerLink]="'../../device/' + [row.device.id]"
       role="listitem"
-      *ngFor="let device of filteredDevices$ | async; trackBy: trackByDeviceId"
+      *ngFor="let row of rows$ | async; trackBy: trackByDeviceId"
     >
       <div matLine>
         <mat-icon
-          *ngIf="device.type == 'sensor'"
+          *ngIf="row.device.type == 'sensor'"
           inline
           [svgIcon]="
-            device.sensor.type == 'env' ? 'treeRegular' : 'cameraRegular'
+            row.device.sensor.type == 'env' ? 'treeRegular' : 'cameraRegular'
           "
           aria-hidden="true"
         ></mat-icon>
         <span>
-          {{ device.type | i18nSelect: deviceTypeMap }}
-          {{ device.name }}
+          {{ row.device.type | i18nSelect: deviceTypeMap }}
+          {{ row.device.name }}
         </span>
       </div>
-      <span *ngIf="device.type !== 'sensor' && details[device.id]" matLine>{{
-        details[device.id]
+      <span *ngIf="row.device.type !== 'sensor' && row.detail" matLine>{{
+        row.detail
       }}</span>
     </mat-list-option>
     <mat-list-option role="listitem">
@@ -123,10 +123,10 @@
   >
     <mat-list-option
       role="listitem"
-      *ngFor="let device of filteredDevices$ | async; trackBy: trackByDeviceId"
+      *ngFor="let row of rows$ | async; trackBy: trackByDeviceId"
     >
-      <div matLine>{{ device.name }}</div>
-      <span *ngIf="details[device.id]" matLine>{{ details[device.id] }}</span>
+      <div matLine>{{ row.device.name }}</div>
+      <span *ngIf="row.detail" matLine>{{ row.detail }}</span>
     </mat-list-option>
   </mat-selection-list>
 </ng-container>
@@ -144,7 +144,7 @@
 <mat-menu #profileMenu="matMenu">
   <button
     [disabled]="profile.id === (profile$ | async)?.id"
-    *ngFor="let profile of profiles"
+    *ngFor="let profile of profiles$ | async"
     mat-menu-item
   >
     {{ profile.name }}

@@ -2,12 +2,16 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DeviceService } from '~local/services/device.service'
 import { CityService } from '~local/services/city.service'
 import { groupChain } from '~local/services/device-tree'
-import { Observable, BehaviorSubject, Subject, combineLatest } from 'rxjs';
-import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
+import { BehaviorSubject, Subject, combineLatest } from 'rxjs';
+import { distinctUntilChanged, filter, startWith, takeUntil } from 'rxjs/operators';
 import { Device, DeviceGroup, Category, City, DEVICE_TYPE_LABELS } from '~local/types'
-import { Router, ActivatedRoute, Event, NavigationEnd } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 interface Crumb { name: string, id: number, type?: string };
+
+// /management/devices, optionally followed by a device or group id. Anchored on
+// the path alone, so a query such as ?show=map doesn't end up in the id.
+const DEVICES_ROUTE = /^\/management\/devices(?:\/(device|group)\/(\d+))?(?=[/?#]|$)/
 
 @Component({
   selector: 'breadcrumbs',
@@ -16,15 +20,14 @@ interface Crumb { name: string, id: number, type?: string };
 })
 
 export class BreadcrumbsComponent implements OnInit, OnDestroy {
-  groupId$ = new BehaviorSubject(null)
-  deviceId$ = new BehaviorSubject(null)
+  groupId$ = new BehaviorSubject<number | null>(null)
+  deviceId$ = new BehaviorSubject<number | null>(null)
   groupId: number
   deviceId: number
   private destroy$ = new Subject<void>();
 
   currentGroup: Crumb[] = []
   groupSiblings: Crumb[][] = []
-  deviceSiblings$: Observable<Device[]>
   devices: Crumb[] = []
   currentDevice: Crumb
   city: string
@@ -47,34 +50,28 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
     return this.currentDevice?.name ?? this.currentGroup[this.currentGroup.length - 1]?.name ?? ''
   }
 
-  getRouteInfo() {
-    const url = this.router.routerState.snapshot.url
-    this.isDevicesRoute = url.startsWith('/management/devices')
-    const objectType = url.substring(20).split('/')[0]
-    const objectId = url.substring(20).split('/')[1]
-    switch (objectType) {
-      case 'device':
-        this.deviceId$.next(+objectId)
-        break;
-      case 'group':
-        this.deviceId$.next(null)
-        this.groupId$.next(+objectId)
-        break;
-      default:
-        this.groupId$.next(null)
-        this.deviceId$.next(null)
+  // A device page leaves groupId$ alone: the device's own group fills it in
+  private getRouteInfo() {
+    const match = this.router.url.match(DEVICES_ROUTE)
+    this.isDevicesRoute = !!match
+    const [, type, id] = match ?? []
+    if (type === 'device') {
+      this.deviceId$.next(+id)
+    } else if (type === 'group') {
+      this.deviceId$.next(null)
+      this.groupId$.next(+id)
+    } else {
+      this.groupId$.next(null)
+      this.deviceId$.next(null)
     }
   }
 
   ngOnInit(): void {
     this.cities = this.cityService.cities
-    this.activeCityId = this.cityService.city.id
     this.cityService.activeCity$.pipe(takeUntil(this.destroy$)).subscribe(city => {
       this.city = city.name
       this.activeCityId = city.id
     })
-    this.getRouteInfo()
-
     // Rebuilt from the whole group list on every change, so a city switch
     // replaces the crumbs rather than adding to them
     combineLatest([this.groupId$.pipe(distinctUntilChanged()), this.service.Groups])
@@ -100,11 +97,11 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
         if (device && this.groupId !== device.groupId) this.groupId$.next(device.groupId)
       });
 
-    this.router.events.pipe(takeUntil(this.destroy$)).subscribe((event: Event) => {
-      if (event instanceof NavigationEnd) {
-        this.getRouteInfo()
-      }
-    });
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      startWith(null),
+      takeUntil(this.destroy$)
+    ).subscribe(() => this.getRouteInfo());
 
   }
 
@@ -126,7 +123,7 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
   // Device and group ids belong to one city, so leave a device or group page
   // before switching; its id would match nothing in the other city
   onCityChange(cityId: string) {
-    if (/^\/management\/devices\/(device|group)\//.test(this.router.url)) {
+    if (this.router.url.match(DEVICES_ROUTE)?.[1]) {
       this.router.navigate(['/management/devices']).then(() => this.cityService.setCity(cityId))
     }
     else this.cityService.setCity(cityId)
