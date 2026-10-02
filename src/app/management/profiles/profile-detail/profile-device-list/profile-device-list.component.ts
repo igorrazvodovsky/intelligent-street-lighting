@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { DeviceGroup } from '~local/types'
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { DeviceService } from '~local/services/device.service'
 
 @Component({

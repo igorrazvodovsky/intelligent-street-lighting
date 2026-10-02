@@ -3,7 +3,7 @@ import { Device, DeviceGroup, Profile } from '~local/types'
 import { ProfileService } from '~local/services/profile.service';
 import { CityService } from '~local/services/city.service';
 import { nightSun } from '~local/management/profiles/profile-detail/sun-times';
-import { combineLatest, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({

@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnInit, OnDestroy, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
 import * as d3 from 'd3-selection';
 import * as d3Scale from 'd3-scale';
 import * as d3Array from 'd3-array';
@@ -6,7 +6,6 @@ import * as d3Axis from 'd3-axis';
 import * as d3Shape from 'd3-shape';
 import * as d3TimeFormat from 'd3-time-format';
 import * as d3Pointer from 'd3-selection';
-import * as d3ScaleChromatic from 'd3-scale-chromatic';
 import { DeviceService } from '~local/services/device.service'
 import { DeviceMetrics } from '~local/types';
 import { ActivatedRoute, ParamMap } from '@angular/router';
@@ -98,8 +97,6 @@ export class DeviceMetricsChartComponent implements OnInit, OnDestroy {
 
   private initializeChart(): void {
 
-    // group all dates to get range for x axis later
-    let dates = [];
     // group y axis values (value) of all lines to x axis (key)
 
     for (let key of Object.keys(this.data)) {

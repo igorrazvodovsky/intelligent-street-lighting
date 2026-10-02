@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { DevicesComponent } from './devices.component'
 import { DeviceListComponent } from './device-list/device-list.component'
-import { GroupListComponent } from './group-list/group-list.component'
 import { DeviceDetailComponent } from './device-detail/device-detail.component'
 
 const devicesRoutes: Routes = [

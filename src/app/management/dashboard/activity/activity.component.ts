@@ -5,8 +5,6 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { UserEvent, DeviceEvent, Event } from '~local/types'
 import { EventService } from '~local/services/event.service';
-import { DeviceService } from '~local/services/device.service';
-import { UserService } from '~local/services/user.service';
 
 @Component({
   selector: 'activity',
@@ -16,7 +14,7 @@ import { UserService } from '~local/services/user.service';
 export class ActivityComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   events: UserEvent[] | DeviceEvent[] = [];
-  fileredEvents: UserEvent[] | DeviceEvent[] = [];
+  filteredEvents: UserEvent[] | DeviceEvent[] = [];
   filter = {
     user: true,
     critical: true,
@@ -25,9 +23,7 @@ export class ActivityComponent implements OnInit, OnDestroy {
   };
   constructor(
     private renderer: Renderer2,
-    private eventService: EventService,
-    private deviceService: DeviceService,
-    private userService: UserService) {
+    private eventService: EventService) {
       this.renderer.addClass(document.body, 'dashboard');
     }
 
@@ -60,21 +56,13 @@ export class ActivityComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe(events => {
         this.events = events
-        this.fileredEvents = this.filterEvents(events)
+        this.filteredEvents = this.filterEvents(events)
       });
-  }
-
-  getDevice(id) {
-    return this.deviceService.getDevice(id)
-  }
-
-  getUser(id) {
-    return this.userService.getUser(id)
   }
 
   handleFilterChange(event, f) {
     event.stopPropagation();
     this.filter[f] = !this.filter[f];
-    this.fileredEvents = this.filterEvents(this.events)
+    this.filteredEvents = this.filterEvents(this.events)
   }
 }

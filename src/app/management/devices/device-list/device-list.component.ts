@@ -1,9 +1,9 @@
 // TODO: No sense in using Obseravle for things that won't change (group)
 
 import { Observable, BehaviorSubject, Subject, combineLatest, of } from 'rxjs';
-import { switchMap, filter, map, takeUntil } from 'rxjs/operators';
+import { switchMap, map, takeUntil } from 'rxjs/operators';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Device, DeviceGroup, Profile, DeviceStatus, DeviceType, DeviceFilters } from '~local/types'
+import { Device, DeviceGroup, Profile, DeviceFilters, DEVICE_TYPE_LABELS } from '~local/types'
 import { ActivatedRoute } from '@angular/router';
 import { DeviceService } from '~local/services/device.service';
 import { ProfileService } from '~local/services/profile.service';
@@ -39,11 +39,7 @@ export class DeviceListComponent implements OnInit, OnDestroy {
 
   lampMapping: { [k: string]: string } = { '=1': '1 lamp', 'other': '# lamps' };
 
-  deviceTypeMap: any = {
-    'lamp': 'Lamp',
-    'sc': 'Segment controller',
-    'sensor': '',
-  }
+  deviceTypeMap = DEVICE_TYPE_LABELS
 
   constructor(
     private _bottomSheet: MatBottomSheet,

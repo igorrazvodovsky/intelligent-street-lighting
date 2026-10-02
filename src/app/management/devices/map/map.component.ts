@@ -1,6 +1,6 @@
 // TODO: Map shows only currently selected (in the list) groups/devices
 
-import { Component, AfterViewInit, OnInit, OnDestroy, Input, NgZone, ElementRef } from '@angular/core';
+import { Component, AfterViewInit, OnInit, OnDestroy, NgZone, ElementRef } from '@angular/core';
 import { Subject } from 'rxjs';
 import { filter, startWith, takeUntil } from 'rxjs/operators';
 import * as L from 'leaflet';
@@ -9,9 +9,6 @@ import { MarkerService } from '~local/services/marker.service';
 import { ProfileService } from '~local/services/profile.service'
 import { CityService } from '~local/services/city.service';
 import { NavigationEnd, Router } from '@angular/router';
-import * as d3Scale from 'd3-scale';
-import * as d3ScaleChromatic from 'd3-scale-chromatic';
-import { Profile, DeviceStatus } from '~local/types'
 import { iconAlert, iconOff, iconSensorEnv, iconSensorTraffic, iconSC } from './icons'
 
 // leaflet.markercluster centers a cluster icon on the average lat/lng of its
@@ -77,12 +74,10 @@ export class MapComponent implements AfterViewInit, OnInit, OnDestroy {
   private focusPending = false;
   private deviceLayers = new Map<number, any>();
   map;
-  devices: any;
   markersGeoJsonData: any;
   markers: any;
   accessToken = 'pk.eyJ1IjoiaWdvcnJhenZvZG92c2t5IiwiYSI6ImNrczV3dHI3ODA1YTQycnF5bnV4N2xjcm0ifQ.1b4VIA7aqOZc_oiiTyNl-w';
-  deviceLayer = 'status'
-  profileNames: string[]
+  deviceLayer: DeviceLayer = 'status'
   showNames: boolean = true
 
   private initMap(): void {

@@ -1,7 +1,6 @@
 import { Component, ElementRef, Input, OnChanges, OnDestroy } from '@angular/core';
 import * as d3 from 'd3-selection';
 import * as d3Scale from 'd3-scale';
-import * as d3Array from 'd3-array';
 import * as d3Axis from 'd3-axis';
 import * as d3Shape from 'd3-shape';
 import * as d3TimeFormat from 'd3-time-format';
@@ -137,12 +136,6 @@ export class ProfileVisualisationComponent implements OnChanges, OnDestroy {
       .ticks(4);
 
     this.yAxis.call(yAxis);
-
-    const line = d3Shape
-      .area()
-      .x(d => d[0])
-      .y0(this.height - this.marginY * 2)
-      .y1(d => d[1])
 
     const midnight = this.xScale(new Date(null, null, 2, 0, 0));
     this.morningDark

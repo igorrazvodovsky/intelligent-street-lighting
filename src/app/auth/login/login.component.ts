@@ -2,7 +2,6 @@ import { Component, OnDestroy } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { LoadingService } from '~local/services/loading.service';
-import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -19,7 +18,6 @@ export class LoginComponent implements OnDestroy {
     public authService: AuthService,
     public router: Router,
     public loader: LoadingService,
-    private http: HttpClient,
   ) {
   }
 

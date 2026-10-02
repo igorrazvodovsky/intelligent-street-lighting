@@ -1,9 +1,7 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import * as d3 from 'd3-selection';
 import * as d3Scale from 'd3-scale';
-import * as d3Array from 'd3-array';
 import * as d3Axis from 'd3-axis';
-import * as d3Shape from 'd3-shape';
 import * as d3TimeFormat from 'd3-time-format';
 
 @Component({
@@ -71,11 +69,6 @@ export class TimeAxisComponent implements OnInit {
 
     this.xAxis
       .call(customXAxis)
-
-    const stack = d3Shape.stack()
-      .keys(["static", "dynamic"])
-      .order(d3Shape.stackOrderNone)
-      .offset(d3Shape.stackOffsetNone);
   }
 
 }

@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DeviceService } from '~local/services/device.service'
 import { CityService } from '~local/services/city.service'
 import { Observable, BehaviorSubject, Subject, combineLatest } from 'rxjs';
 import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
-import { Device, DeviceGroup, Category, City } from '~local/types'
+import { Device, DeviceGroup, Category, City, DEVICE_TYPE_LABELS } from '~local/types'
 import { Router, ActivatedRoute, Event, NavigationEnd } from '@angular/router';
 
 interface Crumb { name: string, id: number, type?: string };
@@ -32,11 +32,7 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
   category: Category = "Area"
   isDevicesRoute: boolean
 
-  deviceTypeMap: any = {
-    'lamp': 'Lamp',
-    'sc': 'Segment controller',
-    'sensor': '',
-  }
+  deviceTypeMap = DEVICE_TYPE_LABELS
 
   constructor(
     private service: DeviceService,

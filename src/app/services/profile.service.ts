@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Profile } from '../types';
 import { PROFILES } from '~local/../assets/data/profiles';
-import { MessageService } from './message.service';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as d3Scale from 'd3-scale';
@@ -19,7 +18,7 @@ export class ProfileService {
     return this._profiles
   }
 
-  constructor(private messageService: MessageService) { }
+  constructor() { }
 
   getProfile(id: number | string) {
     return this._profiles.pipe(

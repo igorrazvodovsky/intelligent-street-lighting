@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { SelectivePreloadingStrategyService } from '~local/selective-preloading-strategy.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,7 +18,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private breakpointObserver: BreakpointObserver,
-    preloadStrategy: SelectivePreloadingStrategyService,
   ) {
   }
 

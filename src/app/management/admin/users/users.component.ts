@@ -33,7 +33,7 @@ export class UsersComponent implements AfterViewInit {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(InviteDialogComponent, {
+    this.dialog.open(InviteDialogComponent, {
       id: 'invite-dialog'
     });
   }

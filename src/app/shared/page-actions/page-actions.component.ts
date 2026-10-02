@@ -4,14 +4,12 @@ import {
   AfterViewInit,
   ComponentFactoryResolver,
   Injector,
-  ViewContainerRef,
   ApplicationRef,
   ViewChild,
   OnDestroy
 } from '@angular/core';
 import {
   DomPortalHost,
-  TemplatePortal,
   PortalHost,
   CdkPortal
 } from '@angular/cdk/portal';

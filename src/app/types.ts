@@ -91,6 +91,13 @@ export interface DeviceEvent extends Event {
 export type SensorType = 'motion' | 'wifi' | 'traffic'
 
 export type DeviceType = 'lamp' | 'sc' | 'sensor'
+
+// For i18nSelect. Sensors are labelled by their sensor type instead.
+export const DEVICE_TYPE_LABELS: Record<DeviceType, string> = {
+  'lamp': 'Lamp',
+  'sc': 'Segment controller',
+  'sensor': '',
+}
 export type DeviceStatus = 'active' | 'inactive' | 'off' | 'not responding' | 'no power' | 'alarm' | 'unassigned' | 'error' | 'warning'
 
 export interface DeviceFilters {

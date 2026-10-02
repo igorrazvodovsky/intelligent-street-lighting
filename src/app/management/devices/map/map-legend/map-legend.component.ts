@@ -1,8 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProfileService } from '~local/services/profile.service';
 import { Profile } from '~local/types'
-import * as d3Scale from 'd3-scale';
-import * as d3ScaleChromatic from 'd3-scale-chromatic';
 import { Input } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
