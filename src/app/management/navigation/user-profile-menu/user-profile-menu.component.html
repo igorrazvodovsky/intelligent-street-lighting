@@ -14,14 +14,14 @@
   <mat-icon svgIcon="userBold" aria-hidden="true"></mat-icon>
 </button>
 <mat-menu #userMenu="matMenu">
-  <button mat-menu-item [matMenuTriggerFor]="languages">Language</button>
+  <button mat-menu-item [matMenuTriggerFor]="languageMenu">Language</button>
   <button (click)="closeNav()" mat-menu-item routerLink="./user-profile">
     Profile
   </button>
   <mat-divider></mat-divider>
   <button (click)="logout()" mat-menu-item>Log out</button>
 </mat-menu>
-<mat-menu #languages="matMenu">
+<mat-menu #languageMenu="matMenu">
   <button *ngFor="let language of languages" mat-menu-item>
     {{ language }}
   </button>
